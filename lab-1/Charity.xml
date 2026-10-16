@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="2_nuLfyOfhapuQL_LUpJ">
-    <mxGraphModel dx="1373" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1411" dy="792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -725,7 +725,7 @@
           </mxCell>
         </UserObject>
         <mxCell id="qYmU7hcDKWD4ik8BLNuV-1" parent="cCKoyMSyWge2oUJGkUto-1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Участник" vertex="1">
-          <mxGeometry height="225.75" width="160" x="924.67" y="299.97" as="geometry" />
+          <mxGeometry height="240" width="160" x="924.67" y="299.97" as="geometry" />
         </mxCell>
         <mxCell id="qYmU7hcDKWD4ik8BLNuV-2" parent="qYmU7hcDKWD4ik8BLNuV-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- сборы: List&amp;lt;Сбор&amp;gt;&lt;br&gt;- передачи: List&amp;lt;Передача&amp;gt;&lt;br&gt;- принесенныеВещи: List&amp;lt;Вещь&amp;gt;" vertex="1">
           <mxGeometry height="86" width="160" y="26" as="geometry" />
@@ -733,8 +733,8 @@
         <mxCell id="qYmU7hcDKWD4ik8BLNuV-1-l" parent="qYmU7hcDKWD4ik8BLNuV-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="160" y="112" as="geometry" />
         </mxCell>
-        <mxCell id="qYmU7hcDKWD4ik8BLNuV-1-m" parent="qYmU7hcDKWD4ik8BLNuV-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ вноситВклад(сбор: Сбор)&amp;lt;br&amp;gt;+ приносит(вещь: Вещь)&lt;br&gt;+ участвуетВ(передача: Передача)&lt;br&gt;+ помогает(работник: Работник)&lt;br&gt;+ посещает(приют: Приют)" vertex="1">
-          <mxGeometry height="105.75" width="160" y="120" as="geometry" />
+        <mxCell id="qYmU7hcDKWD4ik8BLNuV-1-m" parent="qYmU7hcDKWD4ik8BLNuV-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ вноситВклад(сбор: Сбор)&lt;br&gt;+ приносит(вещь: Вещь)&lt;br&gt;+ участвуетВ(передача: Передача)&lt;br&gt;+ помогает(работник: Работник)&lt;br&gt;+ посещает(приют: Приют)" vertex="1">
+          <mxGeometry height="120" width="160" y="120" as="geometry" />
         </mxCell>
         <UserObject label="" plantUmlId="rel_106" plantUmlBaseStyle="endArrow=block;endFill=0;endSize=12;dashed=1;html=1;strokeColor=#181818;fontColor=#000000;fontSize=11;curved=1;rounded=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="cCKoyMSyWge2oUJGkUto-106">
           <mxCell edge="1" parent="cCKoyMSyWge2oUJGkUto-1" source="cCKoyMSyWge2oUJGkUto-15" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;entryX=0.993;entryY=0.041;entryDx=0;entryDy=0;entryPerimeter=0;" target="qYmU7hcDKWD4ik8BLNuV-1">
@@ -771,7 +771,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="===---" plantUmlId="rel_135" plantUmlBaseStyle="endArrow=open;html=1;strokeColor=#181818;fontColor=#000000;fontSize=11;curved=1;rounded=0;endSize=6;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="вносит вклад в" id="cCKoyMSyWge2oUJGkUto-135">
+        <UserObject label="Приносит вещь" plantUmlId="rel_135" plantUmlBaseStyle="endArrow=open;html=1;strokeColor=#181818;fontColor=#000000;fontSize=11;curved=1;rounded=0;endSize=6;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="вносит вклад в" id="cCKoyMSyWge2oUJGkUto-135">
           <mxCell edge="1" parent="cCKoyMSyWge2oUJGkUto-1" source="qYmU7hcDKWD4ik8BLNuV-1-m" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=open;html=1;rounded=0;endSize=6;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;exitX=0.996;exitY=0.895;exitDx=0;exitDy=0;exitPerimeter=0;" target="cCKoyMSyWge2oUJGkUto-81">
             <mxGeometry relative="1" as="geometry">
               <Array as="points">
@@ -784,11 +784,6 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <mxCell id="xsKvYgG1hsacVChgaY_b-1" connectable="0" parent="cCKoyMSyWge2oUJGkUto-135" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Text" vertex="1">
-          <mxGeometry relative="1" x="-0.2935" y="-2" as="geometry">
-            <mxPoint x="-1" as="offset" />
-          </mxGeometry>
-        </mxCell>
         <UserObject label="знает" plantUmlId="rel_103" plantUmlBaseStyle="startArrow=diamond;startFill=0;startSize=12;endArrow=none;html=1;strokeColor=#181818;fontColor=#000000;fontSize=11;curved=1;rounded=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="знает" id="cCKoyMSyWge2oUJGkUto-103">
           <mxCell edge="1" parent="cCKoyMSyWge2oUJGkUto-1" source="cCKoyMSyWge2oUJGkUto-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=diamond;startFill=0;startSize=12;endArrow=none;html=1;rounded=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="qYmU7hcDKWD4ik8BLNuV-1">
             <mxGeometry relative="1" as="geometry">
