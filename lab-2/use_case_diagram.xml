@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Use Case Diagram" id="fairy_tale_use_case">
-    <mxGraphModel dx="705" dy="396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+    <mxGraphModel dx="866" dy="486" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -111,22 +111,22 @@
         <mxCell id="uc26" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC26: Привязать ведьму к коню" vertex="1">
           <mxGeometry height="50" width="220" x="810" y="1330" as="geometry" />
         </mxCell>
-        <mxCell id="e_inc1" edge="1" parent="1" source="uc4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc5" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
+        <mxCell id="e_inc1" edge="1" parent="1" source="uc4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc5" value="include">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_inc2" edge="1" parent="1" source="uc8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc9" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
+        <mxCell id="e_inc2" edge="1" parent="1" source="uc8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc9" value="include">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_inc3" edge="1" parent="1" source="uc10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc11" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
+        <mxCell id="e_inc3" edge="1" parent="1" source="uc10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc11" value="include">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_inc4" edge="1" parent="1" source="uc12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc13" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
+        <mxCell id="e_inc4" edge="1" parent="1" source="uc12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc13" value="include">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_ext1" edge="1" parent="1" source="uc20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc17" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;">
+        <mxCell id="e_ext1" edge="1" parent="1" source="uc20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc17" value="extend">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_inc5" edge="1" parent="1" source="uc23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc24" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
+        <mxCell id="e_inc5" edge="1" parent="1" source="uc23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc24" value="include">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ea1" edge="1" parent="1" source="act_ivan" style="endArrow=none;html=1;" target="uc1">
