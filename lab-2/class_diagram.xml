@@ -1,0 +1,228 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram" id="fairy_tale_class_diagram">
+    <mxGraphModel dx="1062" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam classAttributeIconSize 0\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam packageStyle rectangle\n\nskinparam class {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nenum ТипЖивотного {\n    КОРОВА\n    ЛОШАДЬ\n    КОЗА\n}\n\nenum СостояниеАлёнушки {\n    ДЕВИЦА\n    СУПРУГА\n    УТОПЛЕННИЦА\n    ОЖИВШАЯ\n}\n\ninterface Персонаж {\n    - имя: String\n    - жив: Boolean\n    + переместиться(локация: String)\n    + сказать(фраза: String)\n}\n\ninterface ВолшебноеСущество {\n    + трансформироваться(новыйОблик: String)\n}\n\nabstract class Человек implements Персонаж {\n    - имя: String\n    - жив: Boolean\n    - пол: String\n    + одеть(одежда: String)\n    + переместиться(локация: String)\n    + сказать(фраза: String)\n}\n\nclass Алёнушка extends Человек {\n    - состояние: СостояниеАлёнушки\n    - замужем: Boolean\n    + предостеречьБратца(копытце: Копытце)\n    + оплакиватьБеду()\n    + выйтиЗамуж(купец: Купец)\n    + доверитьсяВедьме(ведьма: Ведьма)\n    + ответитьСоДна(братец: Козлёночек): String\n    + ожить(вода: ВодаКлючевая)\n}\n\nclass Иванушка extends Человек {\n    - испытываетЖажду: Boolean\n    + попроситьНапиться(копытце: Копытце)\n    + напиться(копытце: Копытце)\n    + превратитьсяВКозлёнка(): Козлёночек\n}\n\nclass Козлёночек extends Иванушка implements ВолшебноеСущество {\n    - цветШерсти: String\n    - сохраняетЧеловеческийРазум: Boolean\n    - знаетОЗлодеянии: Boolean\n    - подУгрозойЗаклания: Boolean\n    + бежатьЗаСестрой()\n    + тосковать()\n    + отказатьсяОтПищи()\n    + отпроситьсяНаРеку(купец: Купец): Boolean\n    + зватьСестрицу(река: Река)\n    + кувыркнутьсяТрижды()\n    + расколдоваться(): Иванушка\n}\n\nclass Купец extends Человек {\n    - вОтъезде: Boolean\n    + предложитьЗамужество(девица: Алёнушка)\n    + приютитьКозлёнка(козлёночек: Козлёночек)\n    + согласитьсяНаЗаклание()\n    + отпуститьКозлёнка(козлёночек: Козлёночек)\n    + выслушатьДоклад(слуга: Слуга)\n    + собратьНарод()\n    + спастиСупругу()\n    + наказатьВедьму(ведьма: Ведьма)\n}\n\nclass Ведьма extends Человек implements ВолшебноеСущество {\n    - текущийОблик: String\n    - разоблачена: Boolean\n    + выследитьОтсутствие(купец: Купец)\n    + заманитьНаРеку(жертва: Алёнушка)\n    + утопитьСКамнем(жертва: Алёнушка, камень: Камень, река: Река)\n    + принятьОблик(человек: Алёнушка)\n    + упрашиватьМужа(купец: Купец)\n    + приказатьСлугамТочитьНожи()\n    + послатьНаПоиски(слуга: Слуга)\n}\n\nclass Слуга extends Человек {\n    + выполнятьПоручение(ведьма: Ведьма)\n    + искатьКозлёнка(река: Река)\n    + подслушатьДиалог(): String\n    + доложитьКупцу(купец: Купец, весть: String)\n}\n\nclass Народ {\n    - численность: Integer\n    + закинутьСети(река: Река, сети: СетиШёлковые)\n    + вытащитьНаБерег(жертва: Алёнушка)\n    + снятьКамень(жертва: Алёнушка)\n    + окунутьВКлючевуюВоду(жертва: Алёнушка)\n    + привязатьККоню(ведьма: Ведьма, конь: Конь)\n    + отправитьВПоле(конь: Конь)\n}\n\nabstract class ИсточникВоды {\n    - локация: String\n    - полноВодицы: Boolean\n    + испить()\n}\n\nclass Копытце extends ИсточникВоды {\n    - животное: ТипЖивотного\n    - эффектПревращения: ТипЖивотного\n    + оказатьМагическийЭффект(персонаж: Иванушка)\n}\n\nclass Колодец extends ИсточникВоды {\n    - расстояние: String\n}\n\nclass Река extends ИсточникВоды {\n    - шёлковаТрава: Boolean\n    - жёлтыПески: Boolean\n}\n\nclass Камень {\n    - тяжесть: Double\n    - привязанКШее: Boolean\n}\n\nclass СетиШёлковые {\n    - материал: String\n    + закинуть()\n    + извлечь()\n}\n\nclass ВодаКлючевая {\n    - живительнаяСила: Boolean\n    + оживить(персонаж: Алёнушка)\n}\n\nclass Конь {\n    - привязанаВедьма: Boolean\n    + скакатьВЧистоеПоле()\n}\n\n\&quot; Отношения и ассоциации\nАлёнушка &quot;1&quot; -- &quot;1&quot; Иванушка : родство (сестра и брат)\nКупец &quot;1&quot; -- &quot;0..1&quot; Алёнушка : супруги\nКупец &quot;1&quot; o-- &quot;*&quot; Слуга : хозяин и слуги\nКупец &quot;1&quot; --&gt; &quot;1&quot; Козлёночек : приютил в доме\n\nВедьма &quot;1&quot; ..&gt; &quot;1&quot; Алёнушка : топит и принимает облик\nВедьма &quot;1&quot; ..&gt; &quot;1&quot; Козлёночек : добивается заклания\nВедьма &quot;1&quot; ..&gt; &quot;*&quot; Слуга : посылает на поиски\n\nСлуга &quot;1&quot; ..&gt; &quot;1&quot; Купец : доносит правду\nСлуга &quot;1&quot; ..&gt; &quot;1&quot; Козлёночек : выслеживает у реки\n\nКозлёночек &quot;1&quot; ..&gt; &quot;1&quot; Река : ходит и зовет сестрицу\nАлёнушка &quot;1&quot; o-- &quot;0..1&quot; Камень : скована на дне\n\nИванушка &quot;1&quot; ..&gt; &quot;1&quot; Копытце : пьет воду из\n\nНарод &quot;*&quot; ..&gt; &quot;1&quot; Алёнушка : спасает сетями\nНарод &quot;*&quot; ..&gt; &quot;1&quot; СетиШёлковые : использует\nНарод &quot;*&quot; ..&gt; &quot;1&quot; ВодаКлючевая : использует\nНарод &quot;*&quot; ..&gt; &quot;1&quot; Ведьма : связывает\nНарод &quot;*&quot; ..&gt; &quot;1&quot; Конь : пускает в поле\n\n@enduml\n&quot;, &quot;config&quot;: None}" id="puml_root">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="cls_pers" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;Персонаж" vertex="1">
+          <mxGeometry height="120" width="220" x="580" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_pers_f" parent="cls_pers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- имя: String&#xa;- жив: Boolean" vertex="1">
+          <mxGeometry height="35" width="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_pers_l" parent="cls_pers" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_pers_m" parent="cls_pers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ переместиться(локация: String)&#xa;+ сказать(фраза: String)" vertex="1">
+          <mxGeometry height="37" width="220" y="83" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_human" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Человек" vertex="1">
+          <mxGeometry height="125" width="220" x="580" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_human_f" parent="cls_human" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- пол: String" vertex="1">
+          <mxGeometry height="26" width="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_human_l" parent="cls_human" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_human_m" parent="cls_human" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ одеть(одежда: String)" vertex="1">
+          <mxGeometry height="51" width="220" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="e_h_p" edge="1" parent="1" source="cls_human" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" target="cls_pers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_alen" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Алёнушка" vertex="1">
+          <mxGeometry height="155" width="260" x="120" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_alen_f" parent="cls_alen" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- состояние: СостояниеАлёнушки&#xa;- замужем: Boolean" vertex="1">
+          <mxGeometry height="35" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_alen_l" parent="cls_alen" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_alen_m" parent="cls_alen" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ предостеречьБратца(копытце)&#xa;+ оплакиватьБеду()&#xa;+ выйтиЗамуж(купец: Купец)&#xa;+ ответитьСоДна(козлёночек): String&#xa;+ ожить(вода: ВодаКлючевая)" vertex="1">
+          <mxGeometry height="86" width="260" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ivan" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Иванушка" vertex="1">
+          <mxGeometry height="135" width="240" x="490" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ivan_f" parent="cls_ivan" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- испытываетЖажду: Boolean" vertex="1">
+          <mxGeometry height="26" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ivan_l" parent="cls_ivan" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ivan_m" parent="cls_ivan" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ попроситьНапиться(копытце)&#xa;+ напиться(копытце: Копытце)&#xa;+ превратитьсяВКозлёнка(): Козлёночек" vertex="1">
+          <mxGeometry height="75" width="240" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_goat" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Козлёночек" vertex="1">
+          <mxGeometry height="194" width="260" x="480" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_goat_f" parent="cls_goat" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- цветШерсти: String = &quot;белый&quot;&#xa;- сохраняетЧеловеческийРазум: Boolean&#xa;- знаетОЗлодеянии: Boolean&#xa;- подУгрозойЗаклания: Boolean" vertex="1">
+          <mxGeometry height="65" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_goat_l" parent="cls_goat" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_goat_m" parent="cls_goat" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ бежатьЗаСестрой()&#xa;+ тосковать() / отказатьсяОтПищи()&#xa;+ отпроситьсяНаРеку(купец): Boolean&#xa;+ зватьСестрицу(река: Река)&#xa;+ кувыркнутьсяТрижды()&#xa;+ расколдоваться(): Иванушка" vertex="1">
+          <mxGeometry height="95" width="260" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="e_g_i" edge="1" parent="1" source="cls_goat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_ivan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_merch" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Купец" vertex="1">
+          <mxGeometry height="175" width="250" x="760" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_merch_f" parent="cls_merch" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- вОтъезде: Boolean" vertex="1">
+          <mxGeometry height="26" width="250" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_merch_l" parent="cls_merch" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="250" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_merch_m" parent="cls_merch" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ предложитьЗамужество(девица)&#xa;+ приютитьКозлёнка(козлёночек)&#xa;+ согласитьсяНаЗаклание()&#xa;+ отпуститьКозлёнка(козлёночек)&#xa;+ выслушатьДоклад(слуга: Слуга)&#xa;+ собратьНарод()&#xa;+ наказатьВедьму(ведьма: Ведьма)" vertex="1">
+          <mxGeometry height="115" width="250" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_witch" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Ведьма" vertex="1">
+          <mxGeometry height="175" width="260" x="210" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_witch_f" parent="cls_witch" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- текущийОблик: String&#xa;- разоблачена: Boolean" vertex="1">
+          <mxGeometry height="35" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_witch_l" parent="cls_witch" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_witch_m" parent="cls_witch" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ выследитьОтсутствие(купец)&#xa;+ заманитьНаРеку(жертва)&#xa;+ утопитьСКамнем(жертва, камень)&#xa;+ принятьОблик(человек)&#xa;+ упрашиватьМужа(купец)&#xa;+ приказатьСлугамТочитьНожи()&#xa;+ послатьНаПоиски(слуга: Слуга)" vertex="1">
+          <mxGeometry height="106" width="260" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_serv" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Слуга" vertex="1">
+          <mxGeometry height="135" width="240" x="840" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_serv_f" parent="cls_serv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- верностьХозяину: Boolean" vertex="1">
+          <mxGeometry height="26" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_serv_l" parent="cls_serv" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_serv_m" parent="cls_serv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ выполнятьПоручение(ведьма)&#xa;+ искатьКозлёнка(река: Река)&#xa;+ подслушатьДиалог(): String&#xa;+ доложитьКупцу(купец, весть)" vertex="1">
+          <mxGeometry height="75" width="240" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ppl" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Народ" vertex="1">
+          <mxGeometry height="155" width="250" x="1110" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ppl_f" parent="cls_ppl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- численность: Integer" vertex="1">
+          <mxGeometry height="26" width="250" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ppl_l" parent="cls_ppl" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="250" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ppl_m" parent="cls_ppl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ закинутьСети(река, сети)&#xa;+ вытащитьНаБерег(жертва)&#xa;+ снятьКамень(жертва)&#xa;+ окунутьВКлючевуюВоду(жертва)&#xa;+ привязатьККоню(ведьма, конь)&#xa;+ отправитьВПоле(конь)" vertex="1">
+          <mxGeometry height="95" width="250" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_src" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;ИсточникВоды" vertex="1">
+          <mxGeometry height="105" width="200" x="240" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_src_f" parent="cls_src" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- локация: String&#xa;- полноВодицы: Boolean" vertex="1">
+          <mxGeometry height="35" width="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_src_l" parent="cls_src" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="200" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_src_m" parent="cls_src" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ испить()" vertex="1">
+          <mxGeometry height="22" width="200" y="83" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_hoof" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Копытце" vertex="1">
+          <mxGeometry height="110" width="230" x="120" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_hoof_f" parent="cls_hoof" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- животное: ТипЖивотного&#xa;- эффектПревращения: Тип" vertex="1">
+          <mxGeometry height="35" width="230" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_hoof_l" parent="cls_hoof" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="230" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_hoof_m" parent="cls_hoof" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ оказатьМагическийЭффект(иванушка)" vertex="1">
+          <mxGeometry height="41" width="230" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_river" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Река" vertex="1">
+          <mxGeometry height="95" width="200" x="380" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_river_f" parent="cls_river" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- шёлковаТрава: Boolean&#xa;- жёлтыПески: Boolean" vertex="1">
+          <mxGeometry height="35" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_river_l" parent="cls_river" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="200" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_river_m" parent="cls_river" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ укрытьНаДне(персонаж)" vertex="1">
+          <mxGeometry height="26" width="200" y="69" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hoof_src" edge="1" parent="1" source="cls_hoof" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_src">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_river_src" edge="1" parent="1" source="cls_river" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_src">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_stone" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Камень" vertex="1">
+          <mxGeometry height="75" width="180" x="10" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_stone_f" parent="cls_stone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- тяжесть: Double&#xa;- привязанКШее: Boolean" vertex="1">
+          <mxGeometry height="49" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_nets" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="СетиШёлковые" vertex="1">
+          <mxGeometry height="85" width="180" x="980" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_nets_f" parent="cls_nets" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- материал: String = &quot;шёлк&quot;" vertex="1">
+          <mxGeometry height="26" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_nets_l" parent="cls_nets" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_nets_m" parent="cls_nets" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ закинуть() / извлечь()" vertex="1">
+          <mxGeometry height="25" width="180" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_horse" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Конь" vertex="1">
+          <mxGeometry height="85" width="180" x="1200" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_horse_f" parent="cls_horse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- привязанаВедьма: Boolean" vertex="1">
+          <mxGeometry height="26" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_horse_l" parent="cls_horse" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_horse_m" parent="cls_horse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ скакатьВЧистоеПоле()" vertex="1">
+          <mxGeometry height="25" width="180" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_alen_ivan" edge="1" parent="1" source="cls_alen" style="endArrow=none;html=1;strokeWidth=1;" target="cls_ivan" value="1          сестра и брат          1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_merch_alen" edge="1" parent="1" source="cls_merch" style="endArrow=none;html=1;strokeWidth=1;" target="cls_alen" value="1          супруги          0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_merch_serv" edge="1" parent="1" source="cls_merch" style="endArrow=diamond;endFill=0;html=1;strokeWidth=1;" target="cls_serv" value="1          нанимает          *">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_merch_goat" edge="1" parent="1" source="cls_merch" style="endArrow=classic;html=1;strokeWidth=1;" target="cls_goat" value="1          приютил          1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_witch_alen" edge="1" parent="1" source="cls_witch" style="endArrow=classic;dashed=1;html=1;strokeWidth=1;" target="cls_alen" value="топит и заменяет">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_alen_stone" edge="1" parent="1" source="cls_alen" style="endArrow=diamond;endFill=0;html=1;strokeWidth=1;" target="cls_stone" value="0..1          тянет на дно          1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_goat_river" edge="1" parent="1" source="cls_goat" style="endArrow=classic;dashed=1;html=1;strokeWidth=1;" target="cls_river" value="зовет сестрицу">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ppl_horse" edge="1" parent="1" source="cls_ppl" style="endArrow=classic;dashed=1;html=1;strokeWidth=1;" target="cls_horse" value="пускает в поле">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ppl_nets" edge="1" parent="1" source="cls_ppl" style="endArrow=classic;dashed=1;html=1;strokeWidth=1;" target="cls_nets" value="использует">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
