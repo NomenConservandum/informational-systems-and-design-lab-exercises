@@ -1,0 +1,177 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam roundcorner 10
+skinparam packageStyle rectangle
+
+skinparam class {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+}
+
+enum AcademicDegree {
+    NONE
+    CANDIDATE_OF_SCIENCES
+    DOCTOR_OF_SCIENCES
+    PHD
+}
+
+enum AcademicTitle {
+    NONE
+    DOCENT
+    PROFESSOR
+}
+
+enum Position {
+    ASSISTANT
+    SENIOR_LECTURER
+    DOCENT
+    PROFESSOR
+    DEPARTMENT_HEAD
+}
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum CourseStatus {
+    DRAFT
+    DEPARTMENT_REVIEW
+    DEAN_APPROVED
+    ASSIGNED
+    IN_PROGRESS
+    SESSION_EVALUATION
+    COMPLETED
+    ARCHIVED
+}
+
+class Faculty {
+    - name: String
+    - deanFullName: String
+    - phone: String
+    - deanOfficeRoom: String
+    - studentCount: Integer
+    - foundationDate: Date
+    + addDepartment(dept: Department): void
+    + removeDepartment(dept: Department): void
+    + getDepartments(): List<Department>
+    + calculateTotalTeachers(): Integer
+    + validateStaffToStudentRatio(): Boolean
+}
+
+class Department {
+    - name: String
+    - headFullName: String
+    - phone: String
+    - roomNumber: String
+    - isGraduating: Boolean
+    - foundationDate: Date
+    + addTeacher(teacher: Teacher): void
+    + removeTeacher(teacher: Teacher): void
+    + getTeachers(): List<Teacher>
+    + addCourse(course: Course): void
+    + getCourses(): List<Course>
+    + getTeacherCount(): Integer
+    + calculateTotalLoadHours(): Integer
+}
+
+class Teacher {
+    - lastName: String
+    - firstName: String
+    - middleName: String
+    - academicDegree: AcademicDegree
+    - academicTitle: AcademicTitle
+    - position: Position
+    - gender: Gender
+    - birthDate: Date
+    + getFullName(): String
+    + assignCourse(course: Course): void
+    + removeCourse(course: Course): void
+    + getCourses(): List<Course>
+    + getCourseCount(): Integer
+    + calculateTotalLoad(): Integer
+}
+
+class Course {
+    - title: String
+    - specialty: String
+    - studyYear: Integer
+    - semester: Integer
+    - studentCount: Integer
+    - lectureHours: Integer
+    - practiceHours: Integer
+    - labHours: Integer
+    - hasCredit: Boolean
+    - hasExam: Boolean
+    - testCount: Integer
+    - startDate: Date
+    - endDate: Date
+    - status: CourseStatus
+    + addTopic(topic: Topic): void
+    + removeTopic(topic: Topic): void
+    + getTopics(): List<Topic>
+    + calculateWeeks(): Integer
+    + calculateConsultationHours(): Double
+    + calculateExamConsultationHours(): Double
+    + calculateExamEvaluationHours(): Double
+    + calculateCreditEvaluationHours(): Double
+    + calculateTestGradingHours(): Double
+    + calculateTotalHours(): Integer
+    + calculateLecturePairsPerWeek(): Double
+    + calculatePracticePairsPerWeek(): Double
+    + calculateLabPairsPerWeek(): Double
+    + validateSelfStudyLimits(): Boolean
+    + updateStatus(newStatus: CourseStatus): void
+}
+
+class Topic {
+    - title: String
+    - lectureHours: Integer
+    - practiceHours: Integer
+    - labHours: Integer
+    - isMandatory: Boolean
+    + getTotalHours(): Integer
+    + canBeSelfStudy(): Boolean
+    + setMandatory(mandatory: Boolean): void
+}
+
+Faculty "1" *-- "1..*" Department : contains >
+Department "1" *-- "1..*" Teacher : employs >
+Department "1" o-- "*" Course : oversees >
+Teacher "1" o-- "*" Course : lectures >
+Course "1" *-- "1..*" Topic : consists of >
+
+Teacher ..> AcademicDegree : uses
+Teacher ..> AcademicTitle : uses
+Teacher ..> Position : uses
+Teacher ..> Gender : uses
+Course ..> CourseStatus : tracks
+
+note right of Faculty
+  <b>Бизнес-правило 1:</b>
+  calculateTotalTeachers() <= studentCount / 10
+end note
+
+note bottom of Course
+  <b>Формула нагрузки:</b>
+  TotalHours = ceil(
+    Lectures + Practices + Labs
+    + 0.05 * Lectures
+    + (hasExam ? 2.0 : 0)
+    + (hasExam ? 0.5 * studentCount : 0)
+    + (hasCredit ? 0.25 * studentCount : 0)
+    + (0.15 * studentCount * testCount)
+  )
+  <b>Пар в неделю:</b>
+  Pairs = Hours / (2 * Weeks)
+end note
+
+note right of Topic
+  <b>Бизнес-правило 2:</b>
+  Для тем на СРС (isMandatory = false):
+  hoursSelfStudy <= 0.15 * courseTotalHours
+end note
+
+@enduml

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case Diagram - ИС Кафедры" id="departments_use_case">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nleft to right direction\nskinparam packageStyle rectangle\nskinparam roundcorner 10\nskinparam actorStyle awesome\nskinparam monochrome false\nskinparam handwritten false\n\nskinparam usecase {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nskinparam actor {\n    BackgroundColor White\n    BorderColor #2C3E50\n}\n\nactor \&quot;\u0414\u0435\u043a\u0430\u043d / \u0414\u0435\u043a\u0430\u043d\u0430\u0442\&quot; as Dean\nactor \&quot;\u0417\u0430\u0432\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u043e\u0439\&quot; as Head\nactor \&quot;\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c\&quot; as Teacher\nactor \&quot;\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043e\u0442\u0434\u0435\u043b\u0430\&quot; as Registrar\nactor \&quot;\u0421\u0442\u0443\u0434\u0435\u043d\u0442 / \u0413\u043e\u0441\u0442\u044c\&quot; as Student\n\nrectangle \&quot;\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb\&quot; {\n\n    package \&quot;\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0430 \u0438 \u0434\u0435\u043a\u0430\u043d\u0430\u0442\u0430\&quot; {\n        usecase \&quot;UC1: \u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043e\u0439 \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0430\&quot; as UC1\n        usecase \&quot;UC1.1: \u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043a\u0432\u043e\u0442\u0443 \u041f\u041f\u0421 \u043a \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430\u043c (10:1)\&quot; as UC1_1\n        usecase \&quot;UC6: \u0423\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0440\u0430\u0431\u043e\u0447\u0443\u044e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u043a\u0443\u0440\u0441\u0430\&quot; as UC6\n        usecase \&quot;UC9: \u0424\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u044b\u0439 \u043e\u0442\u0447\u0451\u0442 \u043f\u043e \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0443\&quot; as UC9\n\n        UC1 ..&gt; UC1_1 : &lt;&lt;include&gt;&gt;\n    }\n\n    package \&quot;\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043a\u0430\u0444\u0435\u0434\u0440\u044b\&quot; {\n        usecase \&quot;UC2: \u0412\u0435\u0441\u0442\u0438 \u0443\u0447\u0451\u0442 \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u044b\&quot; as UC2\n        usecase \&quot;UC3: \u0420\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u043a\u0443\u0440\u0441\u044b \u043c\u0435\u0436\u0434\u0443 \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044f\u043c\u0438\&quot; as UC3\n        usecase \&quot;UC3.1: \u041a\u043e\u043d\u0442\u0440\u043e\u043b\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0443\u043c\u043c\u0430\u0440\u043d\u0443\u044e \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0443 \u043a\u0430\u0444\u0435\u0434\u0440\u044b\&quot; as UC3_1\n        usecase \&quot;UC6.1: \u0421\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u043a\u0443\u0440\u0441\u0430 \u043d\u0430 \u043a\u0430\u0444\u0435\u0434\u0440\u0435\&quot; as UC6_1\n\n        UC3 ..&gt; UC3_1 : &lt;&lt;include&gt;&gt;\n    }\n\n    package \&quot;\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0430 \u0438 \u0442\u0435\u043c\&quot; {\n        usecase \&quot;UC4: \u0421\u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0430\u0431\u043e\u0447\u0443\u044e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u043a\u0443\u0440\u0441\u0430\&quot; as UC4\n        usecase \&quot;UC4.1: \u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0439 (0.05*\u043b\u0435\u043a\u0446\u0438\u0438 + 2\u0447)\&quot; as UC4_1\n        usecase \&quot;UC4.2: \u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430 / \u0437\u0430\u0447\u0451\u0442\u0430\&quot; as UC4_2\n        usecase \&quot;UC4.3: \u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u041a\u0420\&quot; as UC4_3\n        usecase \&quot;UC4.4: \u041e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u043e\u0431\u0449\u0443\u044e \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0443 \u0432\u0432\u0435\u0440\u0445\&quot; as UC4_4\n\n        usecase \&quot;UC5: \u0421\u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0435\u043c\u044b \u0438 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u0447\u0430\u0441\u044b\&quot; as UC5\n        usecase \&quot;UC5.1: \u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043b\u0438\u043c\u0438\u0442 \u0421\u0420\u0421 (&lt;= 15% \u043f\u043e \u0432\u0438\u0434\u0430\u043c)\&quot; as UC5_1\n\n        UC4 ..&gt; UC4_1 : &lt;&lt;include&gt;&gt;\n        UC4 ..&gt; UC4_2 : &lt;&lt;include&gt;&gt;\n        UC4 ..&gt; UC4_3 : &lt;&lt;include&gt;&gt;\n        UC4 ..&gt; UC4_4 : &lt;&lt;include&gt;&gt;\n\n        UC5 ..&gt; UC5_1 : &lt;&lt;include&gt;&gt;\n    }\n\n    package \&quot;\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u043e\u0435 \u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0438 \u0434\u043e\u0441\u0442\u0443\u043f\&quot; {\n        usecase \&quot;UC7: \u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0443\u044e \u0441\u0435\u0442\u043a\u0443 \u043f\u0430\u0440 \u043f\u043e \u043a\u0443\u0440\u0441\u0443\&quot; as UC7\n        usecase \&quot;UC8: \u041f\u0440\u043e\u0441\u043c\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044c \u043a\u0430\u0442\u0430\u043b\u043e\u0433 \u043a\u0430\u0444\u0435\u0434\u0440 \u0438 \u0434\u0438\u0441\u0446\u0438\u043f\u043b\u0438\u043d\&quot; as UC8\n    }\n}\n\n' \u0421\u0432\u044f\u0437\u0438 \u0430\u043a\u0442\u043e\u0440\u043e\u0432\nDean --&gt; UC1\nDean --&gt; UC6\nDean --&gt; UC9\n\nHead --&gt; UC2\nHead --&gt; UC3\nHead --&gt; UC6_1\n\nTeacher --&gt; UC4\nTeacher --&gt; UC5\nTeacher --&gt; UC8\n\nRegistrar --&gt; UC7\nRegistrar --&gt; UC9\n\nStudent --&gt; UC8\n\nUC6_1 ..&gt; UC6 : &lt;&lt;precedes&gt;&gt;\nUC5 ..&gt; UC4 : &lt;&lt;include&gt;&gt;\n\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1" />
+        </UserObject>
+        <mxCell id="sys_box" parent="1" style="shape=folder;fontStyle=1;tabWidth=320;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;whiteSpace=wrap;verticalAlign=top;align=left;spacingLeft=10;fillColor=#f8f9fa;strokeColor=#495057;" value="Информационная система «Кафедры»" vertex="1">
+          <mxGeometry x="260" y="40" width="850" height="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="act_dean" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Декан /&#10;Деканат" vertex="1">
+          <mxGeometry x="80" y="100" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_head" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Заведующий&#10;кафедрой" vertex="1">
+          <mxGeometry x="80" y="360" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_teacher" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Преподаватель" vertex="1">
+          <mxGeometry x="80" y="640" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_reg" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;" value="Диспетчер&#10;учебного отдела" vertex="1">
+          <mxGeometry x="1180" y="300" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_stud" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Студент /&#10;Гость" vertex="1">
+          <mxGeometry x="1180" y="700" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC1: Управление структурой факультета" vertex="1">
+          <mxGeometry x="320" y="90" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC1.1: Проверить квоту ППС к студентам (10:1)" vertex="1">
+          <mxGeometry x="640" y="90" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC6: Утвердить рабочую программу курса" vertex="1">
+          <mxGeometry x="320" y="180" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC9: Формировать сводный отчёт по факультету" vertex="1">
+          <mxGeometry x="640" y="180" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC2: Вести учёт преподавателей кафедры" vertex="1">
+          <mxGeometry x="320" y="310" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC3: Распределить курсы между преподавателями" vertex="1">
+          <mxGeometry x="320" y="400" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC3.1: Контролировать суммарную нагрузку кафедры" vertex="1">
+          <mxGeometry x="640" y="400" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC6.1: Согласовать программу курса на кафедре" vertex="1">
+          <mxGeometry x="320" y="490" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC4: Сформировать рабочую программу курса" vertex="1">
+          <mxGeometry x="320" y="630" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC4.1: Рассчитать часы консультаций (0.05*лек + 2ч)" vertex="1">
+          <mxGeometry x="640" y="560" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC4.2: Рассчитать часы экзамена / зачёта" vertex="1">
+          <mxGeometry x="640" y="620" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC4.3: Рассчитать часы проверки КР" vertex="1">
+          <mxGeometry x="640" y="680" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC4.4: Округлить общую нагрузку вверх" vertex="1">
+          <mxGeometry x="640" y="740" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC5: Сформировать темы и распределить часы" vertex="1">
+          <mxGeometry x="320" y="830" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC5.1: Проверить лимит СРС (&lt;= 15% по видам)" vertex="1">
+          <mxGeometry x="640" y="830" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC7: Рассчитать недельную сетку пар по курсу" vertex="1">
+          <mxGeometry x="320" y="960" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC8: Просматривать каталог кафедр и дисциплин" vertex="1">
+          <mxGeometry x="640" y="960" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d_uc1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_dean" target="uc1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d_uc6" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_dean" target="uc6" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d_uc9" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_dean" target="uc9" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_h_uc2" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_head" target="uc2" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_h_uc3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_head" target="uc3" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_h_uc61" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_head" target="uc6_1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_t_uc4" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_teacher" target="uc4" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_t_uc5" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_teacher" target="uc5" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_t_uc8" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_teacher" target="uc8" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_r_uc7" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_reg" target="uc7" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_r_uc9" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_reg" target="uc9" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s_uc8" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.2;" source="act_stud" target="uc8" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc1" target="uc1_1" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc3" target="uc3_1" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_41" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc4" target="uc4_1" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_42" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc4" target="uc4_2" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_43" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc4" target="uc4_3" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_44" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc4" target="uc4_4" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc_51" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;" source="uc5" target="uc5_1" value="&lt;&lt;include&gt;&gt;" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

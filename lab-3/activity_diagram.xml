@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Activity Diagram - Course Load &amp; Approval" id="departments_activity_diagram">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam shadowing false\nskinparam packageStyle rectangle\n\nskinparam activity {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n    StartColor #27AE60\n    EndColor #C0392B\n    BarColor #2C3E50\n}\n\nskinparam partition {\n    BackgroundColor #F8F9FA\n    BorderColor #BDC3C7\n}\n\n|\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\nstart\n:\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0447\u0435\u0440\u043d\u043e\u0432\u0438\u043a \u043a\u0443\u0440\u0441\u0430 (\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c, \u043a\u0443\u0440\u0441, \u0441\u0435\u043c\u0435\u0441\u0442\u0440,\\n\u0447\u0438\u0441\u043b\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432, \u0434\u0430\u0442\u044b \u043d\u0430\u0447\u0430\u043b\u0430 \u0438 \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f);\n:\u0417\u0430\u0434\u0430\u0442\u044c \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u043d\u044b\u0435 \u0447\u0430\u0441\u044b (\u043b\u0435\u043a\u0446\u0438\u0438, \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438, \u043b\u0430\u0431\u044b)\\n\u0438 \u0444\u043e\u0440\u043c\u044b \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044f (\u0437\u0430\u0447\u0451\u0442, \u044d\u043a\u0437\u0430\u043c\u0435\u043d, \u043a\u043e\u043b-\u0432\u043e \u041a\u0420);\n\nrepeat\n    :\u0421\u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0435\u043c\u044b \u043a\u0443\u0440\u0441\u0430 \u0438 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u0447\u0430\u0441\u044b;\n    :\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043d\u0435\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0442\u0435\u043c\u044b (\u0432\u044b\u043d\u043e\u0441 \u043d\u0430 \u0421\u0420\u0421);\n\n    |\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n    :\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043b\u0438\u043c\u0438\u0442 \u0421\u0420\u0421 \u043f\u043e \u0432\u0438\u0434\u0430\u043c \u0437\u0430\u043d\u044f\u0442\u0438\u0439\\n(\u0447\u0430\u0441\u044b \u0421\u0420\u0421 &lt;= 15% \u043e\u0442 \u043e\u0431\u0449\u0438\u0445 \u0447\u0430\u0441\u043e\u0432 \u0434\u0438\u0441\u0446\u0438\u043f\u043b\u0438\u043d\u044b);\n\n    if (\u0427\u0430\u0441\u044b \u0421\u0420\u0421 \u043f\u0440\u0435\u0432\u044b\u0448\u0430\u044e\u0442 15%?) then (\u0434\u0430)\n        |\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\n        :\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435 \u043e \u043f\u0440\u0435\u0432\u044b\u0448\u0435\u043d\u0438\u0438 \u043d\u043e\u0440\u043c\u044b \u0421\u0420\u0421;\n        :\u0421\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0435\u043c\u044b \u0438 \u0447\u0430\u0441\u044b;\n    else (\u043d\u0435\u0442)\n        break\n    endif\nrepeat while (\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u043a\u0430)\n\n|\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0439:\\n\u2022 \u0442\u0435\u043a\u0443\u0449\u0438\u0435 = 0.05 * \u043b\u0435\u043a\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b\\n\u2022 \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 = 2 \u0447 (\u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c \u044d\u043a\u0437\u0430\u043c\u0435\u043d);\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044f:\\n\u2022 \u044d\u043a\u0437\u0430\u043c\u0435\u043d = 0.5 \u0447 * \u043a\u043e\u043b-\u0432\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 (\u043f\u0440\u0438 \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0435)\\n\u2022 \u0437\u0430\u0447\u0451\u0442 = 0.25 \u0447 * \u043a\u043e\u043b-\u0432\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 (\u043f\u0440\u0438 \u0437\u0430\u0447\u0451\u0442\u0435)\\n\u2022 \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u041a\u0420 = 0.15 \u0447 * \u043a\u043e\u043b-\u0432\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 * \u043a\u043e\u043b-\u0432\u043e \u041a\u0420;\n:\u0421\u0443\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u0435 \u0447\u0430\u0441\u044b \u0438 \u043e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u0432\u0432\u0435\u0440\u0445 \u0434\u043e \u0446\u0435\u043b\u043e\u0433\u043e;\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043d\u0435\u0434\u0435\u043b\u044c W \u043c\u0435\u0436\u0434\u0443 \u0434\u0430\u0442\u0430\u043c\u0438 \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0430;\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u0430\u0440 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e \u0434\u043b\u044f \u043a\u0430\u0436\u0434\u043e\u0433\u043e \u0432\u0438\u0434\u0430:\\n\u041f\u0430\u0440\u044b = \u0427\u0430\u0441\u044b / (2 * W);\n\n|\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\n:\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u0438 \u0440\u0430\u0441\u0447\u0435\u0442 \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\n\u043d\u0430 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u0432\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u043a\u0430\u0444\u0435\u0434\u0440\u043e\u0439;\n\n|\u0417\u0430\u0432\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u043e\u0439|\n:\u041f\u0440\u043e\u0432\u0435\u0441\u0442\u0438 \u044d\u043a\u0441\u043f\u0435\u0440\u0442\u0438\u0437\u0443 \u0440\u0430\u0431\u043e\u0447\u0435\u0439 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u043a\u0443\u0440\u0441\u0430;\n\nif (\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044f\u043c?) then (\u043d\u0435\u0442)\n    :\u0412\u0435\u0440\u043d\u0443\u0442\u044c \u043d\u0430 \u0434\u043e\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u0441 \u0437\u0430\u043c\u0435\u0447\u0430\u043d\u0438\u044f\u043c\u0438;\n    |\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\n    :\u0421\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043a\u0443\u0440\u0441\u0430;\n    detach\nelse (\u0434\u0430)\n    |\u0417\u0430\u0432\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u043e\u0439|\n    :\u0423\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u043d\u0430 \u0437\u0430\u0441\u0435\u0434\u0430\u043d\u0438\u0438 \u043a\u0430\u0444\u0435\u0434\u0440\u044b \u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u044c \u0432 \u0434\u0435\u043a\u0430\u043d\u0430\u0442;\nendif\n\n|\u0414\u0435\u043a\u0430\u043d\u0430\u0442|\n:\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0432\u0441\u0435\u0445 \u043a\u0430\u0444\u0435\u0434\u0440:\\nTotalTeachers &lt;= studentCount / 10;\n\nif (\u041a\u0432\u043e\u0442\u0430 \u041f\u041f\u0421 \u0441\u043e\u0431\u043b\u044e\u0434\u0435\u043d\u0430?) then (\u043d\u0435\u0442)\n    :\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0438 \u0437\u0430\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c\\n\u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044e \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0438 \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0430;\n    stop\nelse (\u0434\u0430)\n    :\u0423\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0440\u0430\u0431\u043e\u0447\u0443\u044e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u043a\u0443\u0440\u0441\u0430;\nendif\n\n|\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n:\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u043a\u0443\u0440\u0441 \u0432 \u0441\u0442\u0430\u0442\u0443\u0441 ASSIGNED;\\n\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043a\u0443\u0440\u0441 \u0432 \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0430;\n\nstop\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1" />
+        </UserObject>
+        <mxCell id="lane_teach" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=50;" value="Преподаватель" vertex="1">
+          <mxGeometry x="40" y="40" width="240" height="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_sys" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;" value="ИС «Кафедры»" vertex="1">
+          <mxGeometry x="290" y="40" width="270" height="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_head" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=50;" value="Заведующий кафедрой" vertex="1">
+          <mxGeometry x="570" y="40" width="240" height="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_dean" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;" value="Деканат" vertex="1">
+          <mxGeometry x="820" y="40" width="240" height="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="a_start" parent="1" style="ellipse;fillColor=#27AE60;strokeColor=#1E8449;" value="" vertex="1">
+          <mxGeometry x="145" y="80" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a_t1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Создать черновик курса&#10;(специальность, курс, семестр,&#10;число студентов, даты)" vertex="1">
+          <mxGeometry x="60" y="130" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_t2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Задать аудиторные часы&#10;(лекции, практики, лабы)&#10;и формы контроля (зачет, экзамен, КР)" vertex="1">
+          <mxGeometry x="60" y="200" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="a_t3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Сформировать перечень тем,&#10;указать часы и признак СРС" vertex="1">
+          <mxGeometry x="60" y="280" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Проверить лимит СРС&#10;(часы СРС &lt;= 15% от общего объема)" vertex="1">
+          <mxGeometry x="310" y="350" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_s1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Часы СРС &gt; 15%?" vertex="1">
+          <mxGeometry x="375" y="420" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a_t_err" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Получить предупреждение о&#10;превышении нормы СРС и скорректировать" vertex="1">
+          <mxGeometry x="60" y="425" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Рассчитать часы консультаций:&#10;• текущие = 0.05 * лекции&#10;• экзаменационные = 2 ч (при экзамене)" vertex="1">
+          <mxGeometry x="305" y="520" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Рассчитать часы контроля:&#10;• экзамен = 0.5 * студ&#10;• зачет = 0.25 * студ&#10;• проверка КР = 0.15 * студ * кол-во КР" vertex="1">
+          <mxGeometry x="305" y="595" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Суммировать все часы и&#10;округлить вверх до целого (TotalHours)" vertex="1">
+          <mxGeometry x="305" y="675" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Рассчитать количество недель W и&#10;число пар в неделю: Часы / (2 * W)" vertex="1">
+          <mxGeometry x="305" y="745" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_t4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Отправить программу и расчет&#10;на согласование зав. кафедрой" vertex="1">
+          <mxGeometry x="60" y="815" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_h1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Экспертиза программы курса&#10;и соответствия специальности" vertex="1">
+          <mxGeometry x="590" y="815" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_h1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Программа&#10;соответствует?" vertex="1">
+          <mxGeometry x="640" y="890" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a_h_rej" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Вернуть на доработку&#10;преподавателю с замечаниями" vertex="1">
+          <mxGeometry x="590" y="970" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_h_app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Утвердить на заседании кафедры&#10;и передать в деканат" vertex="1">
+          <mxGeometry x="590" y="1050" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_d1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Проверить квоту факультета:&#10;TotalTeachers &lt;= studentCount / 10" vertex="1">
+          <mxGeometry x="840" y="1050" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_d1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Квота 10:1&#10;соблюдена?" vertex="1">
+          <mxGeometry x="890" y="1130" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a_d_block" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Заблокировать утверждение,&#10;запросить оптимизацию штата" vertex="1">
+          <mxGeometry x="840" y="1220" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_d_app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Утвердить рабочую программу курса" vertex="1">
+          <mxGeometry x="840" y="1300" width="200" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s_fin" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Перевести курс в статус ASSIGNED;&#10;Включить в расписание семестра" vertex="1">
+          <mxGeometry x="310" y="1370" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a_end" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry x="410" y="1445" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a_end_in" parent="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="" vertex="1">
+          <mxGeometry x="416" y="1451" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_start" target="a_t1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_t1" target="a_t2" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_t2" target="a_t3" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_t3" target="a_s1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s1" target="d_s1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_s1" target="a_t_err" value="[да]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_t_err" target="a_t3" value="корректировка" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_s1" target="a_s2" value="[нет]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s2" target="a_s3" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s3" target="a_s4" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s4" target="a_s5" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s5" target="a_t4" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_t4" target="a_h1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_h1" target="d_h1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_h1" target="a_h_rej" value="[нет]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_h_rej" target="a_t1" value="доработка" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_h1" target="a_h_app" value="[да]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_h_app" target="a_d1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_d1" target="d_d1" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_d1" target="a_d_block" value="[нет]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="d_d1" target="a_d_app" value="[да]" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_d_app" target="a_s_fin" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="a_s_fin" target="a_end" value="" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

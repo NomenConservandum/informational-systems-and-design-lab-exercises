@@ -1,0 +1,91 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam roundcorner 10
+skinparam actorStyle awesome
+skinparam monochrome false
+skinparam handwritten false
+
+skinparam usecase {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+}
+
+skinparam actor {
+    BackgroundColor White
+    BorderColor #2C3E50
+}
+
+actor "Декан / Деканат" as Dean
+actor "Заведующий кафедрой" as Head
+actor "Преподаватель" as Teacher
+actor "Диспетчер учебного отдела" as Registrar
+actor "Студент / Гость" as Student
+
+rectangle "Информационная система «Кафедры»" {
+
+    package "Уровень факультета и деканата" {
+        usecase "UC1: Управление структурой факультета" as UC1
+        usecase "UC1.1: Проверить квоту ППС к студентам (10:1)" as UC1_1
+        usecase "UC6: Утвердить рабочую программу курса" as UC6
+        usecase "UC9: Формировать сводный отчёт по факультету" as UC9
+
+        UC1 ..> UC1_1 : <<include>>
+    }
+
+    package "Уровень кафедры" {
+        usecase "UC2: Вести учёт преподавателей кафедры" as UC2
+        usecase "UC3: Распределить курсы между преподавателями" as UC3
+        usecase "UC3.1: Контролировать суммарную нагрузку кафедры" as UC3_1
+        usecase "UC6.1: Согласовать программу курса на кафедре" as UC6_1
+
+        UC3 ..> UC3_1 : <<include>>
+    }
+
+    package "Уровень учебного курса и тем" {
+        usecase "UC4: Сформировать рабочую программу курса" as UC4
+        usecase "UC4.1: Рассчитать часы консультаций (0.05*лекции + 2ч)" as UC4_1
+        usecase "UC4.2: Рассчитать часы экзамена / зачёта" as UC4_2
+        usecase "UC4.3: Рассчитать часы проверки КР" as UC4_3
+        usecase "UC4.4: Округлить общую нагрузку вверх" as UC4_4
+
+        usecase "UC5: Сформировать темы и распределить часы" as UC5
+        usecase "UC5.1: Проверить лимит СРС (<= 15% по видам)" as UC5_1
+
+        UC4 ..> UC4_1 : <<include>>
+        UC4 ..> UC4_2 : <<include>>
+        UC4 ..> UC4_3 : <<include>>
+        UC4 ..> UC4_4 : <<include>>
+
+        UC5 ..> UC5_1 : <<include>>
+    }
+
+    package "Календарное планирование и доступ" {
+        usecase "UC7: Рассчитать недельную сетку пар по курсу" as UC7
+        usecase "UC8: Просматривать каталог кафедр и дисциплин" as UC8
+    }
+}
+
+' Связи акторов
+Dean --> UC1
+Dean --> UC6
+Dean --> UC9
+
+Head --> UC2
+Head --> UC3
+Head --> UC6_1
+
+Teacher --> UC4
+Teacher --> UC5
+Teacher --> UC8
+
+Registrar --> UC7
+Registrar --> UC9
+
+Student --> UC8
+
+UC6_1 ..> UC6 : <<precedes>>
+UC5 ..> UC4 : <<include>>
+
+@enduml

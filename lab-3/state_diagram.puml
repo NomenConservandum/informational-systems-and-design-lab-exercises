@@ -1,0 +1,75 @@
+@startuml
+skinparam monochrome false
+skinparam roundcorner 10
+skinparam shadowing false
+
+skinparam state {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+    StartColor #27AE60
+    EndColor #C0392B
+}
+
+[*] --> Draft : Создание курса
+
+state Draft as "Draft\n(Черновик программы)" {
+    Draft : entry / инициализировать аудит. часы
+    Draft : do / сформировать перечень тем
+    Draft : do / распределить часы на СРС
+}
+
+Draft --> DepartmentReview : submitForReview()\n[validateSelfStudyLimits() == true]
+
+state DepartmentReview as "DepartmentReview\n(Согласование кафедрой)" {
+    DepartmentReview : do / экспертиза соответствия специальности
+    DepartmentReview : do / проверка объема учебной нагрузки
+}
+
+DepartmentReview --> Draft : rejectByDepartment(comments)\n/ вернуть на доработку
+
+DepartmentReview --> DeanApproval : approveByDepartment()\n/ передать в деканат
+
+state DeanApproval as "DeanApproval\n(Утверждение деканатом)" {
+    DeanApproval : do / контроль соответствия учебному плану
+    DeanApproval : do / проверка нормативного соотношения ППС
+}
+
+DeanApproval --> DepartmentReview : rejectByDean(comments)\n/ вернуть на кафедру
+
+DeanApproval --> Assigned : approveByDean()\n/ включить в учебный план
+
+state Assigned as "Assigned\n(Назначен в семестре)" {
+    Assigned : entry / прикрепить преподавателя и группы
+    Assigned : do / составить сетку пар в неделю
+}
+
+Assigned --> InProgress : startSemester()\n[currentDate >= startDate]
+
+state InProgress as "InProgress\n(Чтение курса в семестре)" {
+    InProgress : do / проведение лекций, практик, лаб
+    InProgress : do / проведение текущих консультаций (0.05 * лекции)
+    InProgress : do / проведение и проверка КР (0.15 * студ * кол-во КР)
+}
+
+InProgress --> SessionEvaluation : endSemester()\n[currentDate >= endDate]
+
+state SessionEvaluation as "SessionEvaluation\n(Сессионный контроль)" {
+    SessionEvaluation : do / проведение предэкзаменационной консультации (2 ч)
+    SessionEvaluation : do / прием зачета (0.25 ч * студ) [hasCredit]
+    SessionEvaluation : do / прием экзамена (0.5 ч * студ) [hasExam]
+}
+
+SessionEvaluation --> Completed : finalizeGrades()\n[все ведомости закрыты]
+
+state Completed as "Completed\n(Курс завершен)" {
+    Completed : entry / сдать отчетность по нагрузке
+}
+
+Completed --> Archived : archiveCourse()\n[учебный год завершен]
+
+state Archived as "Archived\n(В архиве)"
+
+Archived --> [*]
+
+@enduml
