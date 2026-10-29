@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Class Diagram" id="fairy_tale_class_diagram">
-    <mxGraphModel dx="1096" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2000" math="0" shadow="0">
+    <mxGraphModel dx="858" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,14 +9,14 @@
             <mxGeometry as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="cls_spk" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;Говорящий" vertex="1">
-          <mxGeometry height="90" width="280" x="240" y="40" as="geometry" />
+        <mxCell id="cls_spk" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;Говорящий" vertex="1">
+          <mxGeometry height="100" width="280" x="240" y="21" as="geometry" />
         </mxCell>
         <mxCell id="cls_spk_m" parent="cls_spk" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ сказать(кому: Персонаж, текст: String)&#xa;+ попросить(уКого: Персонаж, просьба: String): Boolean" vertex="1">
-          <mxGeometry height="60" width="280" y="30" as="geometry" />
+          <mxGeometry height="60" width="280" y="40" as="geometry" />
         </mxCell>
         <mxCell id="cls_pers" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Персонаж" vertex="1">
-          <mxGeometry height="125" width="240" x="640" y="30" as="geometry" />
+          <mxGeometry height="138" width="240" x="640" y="21" as="geometry" />
         </mxCell>
         <mxCell id="cls_pers_f" parent="cls_pers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- имя: String&#xa;- живой: Boolean&#xa;- текущееМесто: Место" vertex="1">
           <mxGeometry height="45" width="240" y="40" as="geometry" />
@@ -24,26 +24,26 @@
         <mxCell id="cls_pers_l" parent="cls_pers" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="85" as="geometry" />
         </mxCell>
-        <mxCell id="cls_pers_m" parent="cls_pers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ переместиться(куда: Место)" vertex="1">
-          <mxGeometry height="32" width="240" y="93" as="geometry" />
+        <mxCell id="cls_pers_m" parent="cls_pers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ переместиться(куда: Место)&lt;div&gt;+ испить(из: ИсточникВоды&lt;span style=&quot;background-color: transparent; color: light-dark(#000000, var(--ge-light-color, #ffffff));&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="45" width="240" y="93" as="geometry" />
         </mxCell>
-        <mxCell id="cls_human" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Человек" vertex="1">
-          <mxGeometry height="175" width="300" x="460" y="210" as="geometry" />
+        <mxCell id="cls_human" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Человек" vertex="1">
+          <mxGeometry height="185" width="300" x="460" y="200" as="geometry" />
         </mxCell>
         <mxCell id="cls_human_f" parent="cls_human" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- пол: String" vertex="1">
-          <mxGeometry height="25" width="300" y="30" as="geometry" />
+          <mxGeometry height="25" width="300" y="40" as="geometry" />
         </mxCell>
         <mxCell id="cls_human_l" parent="cls_human" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="300" y="55" as="geometry" />
+          <mxGeometry height="8" width="300" y="65" as="geometry" />
         </mxCell>
         <mxCell id="cls_human_m" parent="cls_human" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ сказать(кому: Персонаж, текст: String)&#xa;+ попросить(уКого: Персонаж, просьба: String): Boolean&#xa;+ приказать(кому: Персонаж, приказ: String)&#xa;+ надеть(вещь: Вещь)&#xa;+ снять(вещь: Вещь, сКого: Персонаж)&#xa;+ прикрепить(вещь: Вещь, кКому: Персонаж)" vertex="1">
-          <mxGeometry height="112" width="300" y="63" as="geometry" />
+          <mxGeometry height="112" width="300" y="73" as="geometry" />
         </mxCell>
         <mxCell id="e_h_p" edge="1" parent="1" source="cls_human" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_pers">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="660" y="200" />
-              <mxPoint x="660" y="200" />
+              <mxPoint x="660" y="180" />
+              <mxPoint x="660" y="180" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -54,17 +54,17 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="cls_anim" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Животное" vertex="1">
-          <mxGeometry height="95" width="200" x="880" y="210" as="geometry" />
+        <mxCell id="cls_anim" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Животное" vertex="1">
+          <mxGeometry height="105" width="200" x="880" y="200" as="geometry" />
         </mxCell>
         <mxCell id="cls_anim_f" parent="cls_anim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- порода: String" vertex="1">
-          <mxGeometry height="25" width="200" y="30" as="geometry" />
+          <mxGeometry height="25" width="200" y="40" as="geometry" />
         </mxCell>
         <mxCell id="cls_anim_l" parent="cls_anim" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="200" y="55" as="geometry" />
+          <mxGeometry height="8" width="200" y="65" as="geometry" />
         </mxCell>
         <mxCell id="cls_anim_m" parent="cls_anim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ издатьЗвук()" vertex="1">
-          <mxGeometry height="32" width="200" y="63" as="geometry" />
+          <mxGeometry height="32" width="200" y="73" as="geometry" />
         </mxCell>
         <mxCell id="e_a_p" edge="1" parent="1" source="cls_anim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_pers">
           <mxGeometry relative="1" x="0.5771" as="geometry">
@@ -75,7 +75,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="cls_horse" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Конь" vertex="1">
-          <mxGeometry height="75" width="160" x="1130" y="210" as="geometry" />
+          <mxGeometry height="75" width="160" x="1130" y="200" as="geometry" />
         </mxCell>
         <mxCell id="cls_horse_m" parent="cls_horse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ скакать(куда: Место)" vertex="1">
           <mxGeometry height="49" width="160" y="26" as="geometry" />
@@ -228,9 +228,10 @@
           <mxGeometry height="85" width="240" y="59" as="geometry" />
         </mxCell>
         <mxCell id="e_ppl_pers" edge="1" parent="1" source="cls_ppl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_pers">
-          <mxGeometry relative="1" as="geometry">
+          <mxGeometry relative="1" x="0.0737" as="geometry">
             <Array as="points">
-              <mxPoint x="830" y="702" />
+              <mxPoint x="1020" y="610" />
+              <mxPoint x="830" y="610" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -273,16 +274,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="cls_src" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=39;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;ИсточникВоды" vertex="1">
-          <mxGeometry height="104" width="200" x="540" y="811" as="geometry" />
+          <mxGeometry height="72" width="200" x="540" y="811" as="geometry" />
         </mxCell>
         <mxCell id="cls_src_f" parent="cls_src" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- полноВодицы: Boolean" vertex="1">
           <mxGeometry height="25" width="200" y="39" as="geometry" />
         </mxCell>
         <mxCell id="cls_src_l" parent="cls_src" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="200" y="64" as="geometry" />
-        </mxCell>
-        <mxCell id="cls_src_m" parent="cls_src" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ испить()" vertex="1">
-          <mxGeometry height="32" width="200" y="72" as="geometry" />
         </mxCell>
         <mxCell id="e_src_place" edge="1" parent="1" source="cls_src" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;" target="cls_place">
           <mxGeometry relative="1" as="geometry" />
@@ -321,11 +319,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="cls_thing" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Вещь" vertex="1">
-          <mxGeometry height="75" width="180" x="1050" y="820" as="geometry" />
+        <mxCell id="cls_thing" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;Вещь" vertex="1">
+          <mxGeometry height="85" width="180" x="1050" y="820" as="geometry" />
         </mxCell>
         <mxCell id="cls_thing_f" parent="cls_thing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- название: String&#xa;- вес: Double" vertex="1">
-          <mxGeometry height="45" width="180" y="30" as="geometry" />
+          <mxGeometry height="45" width="180" y="40" as="geometry" />
         </mxCell>
         <mxCell id="cls_stone" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Камень" vertex="1">
           <mxGeometry height="40" width="100" x="980" y="950" as="geometry" />
