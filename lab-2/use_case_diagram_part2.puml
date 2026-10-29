@@ -17,38 +17,33 @@ skinparam actor {
     BorderColor #2C3E50
 }
 
-title Сестрица Алёнушка и братец Иванушка\nЧасть 2: Тайна у реки, разоблачение и возмездие
-
 actor "Козлёночек\n(Иванушка)" as Goat
 actor "Алёнушка" as Alenushka
 actor "Купец" as Merchant
 actor "Слуга" as Servant
 actor "Народ" as People
 
-rectangle "Сказка: Часть 2" {
+rectangle "Тайна у реки и разоблачение" {
+    usecase "UC16: Отпроситься на речку" as UC16
+    usecase "UC17: Звать сестрицу на берегу" as UC17
+    usecase "UC18: Отвечать братцу со дна реки" as UC18
+    usecase "UC19: Искать козлёнка" as UC19
+    usecase "UC20: Подслушать диалог у реки" as UC20
+    usecase "UC21: Донести правду купцу" as UC21
 
-    rectangle "Тайна у реки и разоблачение" {
-        usecase "UC16: Отпроситься на речку" as UC16
-        usecase "UC17: Звать сестрицу на берегу" as UC17
-        usecase "UC18: Отвечать братцу со дна реки" as UC18
-        usecase "UC19: Искать козлёнка" as UC19
-        usecase "UC20: Подслушать диалог у реки" as UC20
-        usecase "UC21: Донести правду купцу" as UC21
+    UC20 .> UC17 : <<extend>>
+    UC17 ..> UC18 : <<interacts>>
+}
 
-        UC20 .> UC17 : <<extend>>
-        UC17 ..> UC18 : <<interacts>>
-    }
+rectangle "Спасение, расколдовывание и возмездие" {
+    usecase "UC22: Собрать народ на спасение" as UC22
+    usecase "UC23: Вытащить Алёнушку шёлковыми сетями" as UC23
+    usecase "UC24: Снять камень и оживить ключевой водой" as UC24
+    usecase "UC25: Кувыркнуться и расколдоваться" as UC25
+    usecase "UC26: Привязать ведьму к коню и пустить в поле" as UC26
 
-    rectangle "Спасение, расколдовывание и возмездие" {
-        usecase "UC22: Собрать народ на спасение" as UC22
-        usecase "UC23: Вытащить Алёнушку шёлковыми сетями" as UC23
-        usecase "UC24: Снять камень и оживить ключевой водой" as UC24
-        usecase "UC25: Кувыркнуться и расколдоваться" as UC25
-        usecase "UC26: Привязать ведьму к коню и пустить в поле" as UC26
-
-        UC23 .> UC24 : <<include>>
-        UC25 .> UC24 : <<extend>>
-    }
+    UC23 .> UC24 : <<include>>
+    UC25 .> UC24 : <<extend>>
 }
 
 ' Связи акторов — пакет 4
