@@ -1,112 +1,98 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
-  <root>
-    <mxCell id="0" />
-    <mxCell id="1" parent="0" />
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case Diagram - Part 2" id="fairy_tale_use_case_part2">
+    <mxGraphModel dx="866" dy="486" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nleft to right direction\nskinparam packageStyle rectangle\nskinparam roundcorner 10\nskinparam actorStyle awesome\nskinparam monochrome false\nskinparam handwritten false\n\nskinparam usecase {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nskinparam actor {\n    BackgroundColor White\n    BorderColor #2C3E50\n}\n\nactor \&quot;\u041a\u043e\u0437\u043b\u0451\u043d\u043e\u0447\u0435\u043a\\n(\u041e\u043a\u043e\u043b\u0434\u043e\u0432\u0430\u043d\u043d\u044b\u0439)\&quot; as Goat\nactor \&quot;\u0410\u043b\u0451\u043d\u0443\u0448\u043a\u0430\&quot; as Alenushka\nactor \&quot;\u041a\u0443\u043f\u0435\u0446\&quot; as Merchant\nactor \&quot;\u0421\u043b\u0443\u0433\u0430\&quot; as Servant\nactor \&quot;\u041d\u0430\u0440\u043e\u0434\&quot; as People\n\nrectangle \&quot;\u0421\u043a\u0430\u0437\u043a\u0430: \u0421\u0435\u0441\u0442\u0440\u0438\u0446\u0430 \u0410\u043b\u0451\u043d\u0443\u0448\u043a\u0430 \u0438 \u0431\u0440\u0430\u0442\u0435\u0446 \u0418\u0432\u0430\u043d\u0443\u0448\u043a\u0430\&quot; {\n\n    rectangle \&quot;\u0422\u0430\u0439\u043d\u0430 \u0443 \u0440\u0435\u043a\u0438 \u0438 \u0440\u0430\u0437\u043e\u0431\u043b\u0430\u0447\u0435\u043d\u0438\u0435\&quot; {\n        usecase \&quot;UC16: \u041e\u0442\u043f\u0440\u043e\u0441\u0438\u0442\u044c\u0441\u044f \u043d\u0430 \u0440\u0435\u0447\u043a\u0443\&quot; as UC16\n        usecase \&quot;UC17: \u0417\u0432\u0430\u0442\u044c \u0441\u0435\u0441\u0442\u0440\u0438\u0446\u0443 \u043d\u0430 \u0431\u0435\u0440\u0435\u0433\u0443\&quot; as UC17\n        usecase \&quot;UC18: \u041e\u0442\u0432\u0435\u0447\u0430\u0442\u044c \u0431\u0440\u0430\u0442\u0446\u0443 \u0441\u043e \u0434\u043d\u0430 \u0440\u0435\u043a\u0438\&quot; as UC18\n        usecase \&quot;UC19: \u0418\u0441\u043a\u0430\u0442\u044c \u043a\u043e\u0437\u043b\u0451\u043d\u043a\u0430\&quot; as UC19\n        usecase \&quot;UC20: \u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u0442\u044c \u0434\u0438\u0430\u043b\u043e\u0433 \u0443 \u0440\u0435\u043a\u0438\&quot; as UC20\n        usecase \&quot;UC21: \u0414\u043e\u043d\u0435\u0441\u0442\u0438 \u043f\u0440\u0430\u0432\u0434\u0443 \u043a\u0443\u043f\u0446\u0443\&quot; as UC21\n\n        UC20 .&gt; UC17 : &lt;&lt;extend&gt;&gt;\n        UC17 ..&gt; UC18 : &lt;&lt;interacts&gt;&gt;\n    }\n\n    rectangle \&quot;\u0421\u043f\u0430\u0441\u0435\u043d\u0438\u0435, \u0440\u0430\u0441\u043a\u043e\u043b\u0434\u043e\u0432\u044b\u0432\u0430\u043d\u0438\u0435 \u0438 \u0432\u043e\u0437\u043c\u0435\u0437\u0434\u0438\u0435\&quot; {\n        usecase \&quot;UC22: \u0421\u043e\u0431\u0440\u0430\u0442\u044c \u043d\u0430\u0440\u043e\u0434 \u043d\u0430 \u0441\u043f\u0430\u0441\u0435\u043d\u0438\u0435\&quot; as UC22\n        usecase \&quot;UC23: \u0412\u044b\u0442\u0430\u0449\u0438\u0442\u044c \u0410\u043b\u0451\u043d\u0443\u0448\u043a\u0443 \u0448\u0451\u043b\u043a\u043e\u0432\u044b\u043c\u0438 \u0441\u0435\u0442\u044f\u043c\u0438\&quot; as UC23\n        usecase \&quot;UC24: \u0421\u043d\u044f\u0442\u044c \u043a\u0430\u043c\u0435\u043d\u044c \u0438 \u043e\u0436\u0438\u0432\u0438\u0442\u044c \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0439 \u0432\u043e\u0434\u043e\u0439\&quot; as UC24\n        usecase \&quot;UC25: \u041a\u0443\u0432\u044b\u0440\u043a\u043d\u0443\u0442\u044c\u0441\u044f \u0438 \u0440\u0430\u0441\u043a\u043e\u043b\u0434\u043e\u0432\u0430\u0442\u044c\u0441\u044f\&quot; as UC25\n        usecase \&quot;UC26: \u041f\u0440\u0438\u0432\u044f\u0437\u0430\u0442\u044c \u0432\u0435\u0434\u044c\u043c\u0443 \u043a \u043a\u043e\u043d\u044e \u0438 \u043f\u0443\u0441\u0442\u0438\u0442\u044c \u0432 \u043f\u043e\u043b\u0435\&quot; as UC26\n\n        UC23 .&gt; UC24 : &lt;&lt;include&gt;&gt;\n        UC25 .&gt; UC24 : &lt;&lt;extend&gt;&gt;\n    }\n}\n\n&#x27; \u0421\u0432\u044f\u0437\u0438 \u0430\u043a\u0442\u043e\u0440\u043e\u0432 \u0441 \u043f\u0440\u0435\u0446\u0435\u0434\u0435\u043d\u0442\u0430\u043c\u0438\nGoat --&gt; UC16\nMerchant --&gt; UC16\nGoat --&gt; UC17\nAlenushka --&gt; UC18\nServant --&gt; UC19\nServant --&gt; UC20\nServant --&gt; UC21\nMerchant --&gt; UC21\n\nMerchant --&gt; UC22\nPeople --&gt; UC22\nPeople --&gt; UC23\nPeople --&gt; UC24\nGoat --&gt; UC25\nPeople --&gt; UC26\n\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="sys_box" parent="1" style="shape=folder;fontStyle=1;tabWidth=310;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;whiteSpace=wrap;verticalAlign=top;align=left;spacingLeft=10;fillColor=#f8f9fa;strokeColor=#495057;" value="Сказка: Сестрица Алёнушка и братец Иванушка" vertex="1">
+          <mxGeometry height="750" width="760" x="280" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act_goat" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Козлёночек&#xa;(Околдованный)" vertex="1">
+          <mxGeometry height="80" width="40" x="80" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="act_alen" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Алёнушка" vertex="1">
+          <mxGeometry height="80" width="40" x="80" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="act_serv" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;" value="Слуга" vertex="1">
+          <mxGeometry height="80" width="40" x="80" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="act_merch" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Купец" vertex="1">
+          <mxGeometry height="80" width="40" x="1100" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="act_ppl" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Народ" vertex="1">
+          <mxGeometry height="80" width="40" x="1100" y="500" as="geometry" />
+        </mxCell>
 
-    <!-- Title -->
-    <mxCell id="title" value="Часть 2: Тайна у реки, разоблачение и возмездие" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="327" y="20" width="1000" height="40" as="geometry" />
-    </mxCell>
+        <!-- Use Cases Part 2 -->
+        <mxCell id="uc16" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC16: Отпроситься на речку" vertex="1">
+          <mxGeometry height="50" width="180" x="590" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uc17" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC17: Звать сестрицу на берегу" vertex="1">
+          <mxGeometry height="50" width="200" x="580" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="uc18" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC18: Отвечать братцу со дна реки" vertex="1">
+          <mxGeometry height="50" width="220" x="300" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="uc19" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC19: Искать козлёнка" vertex="1">
+          <mxGeometry height="50" width="180" x="590" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="uc20" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC20: Подслушать диалог у реки" vertex="1">
+          <mxGeometry height="50" width="210" x="800" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="uc21" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC21: Донести правду купцу" vertex="1">
+          <mxGeometry height="50" width="190" x="810" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="uc22" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC22: Собрать народ на спасение" vertex="1">
+          <mxGeometry height="50" width="220" x="795" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="uc23" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC23: Вытащить Алёнушку шёлковыми сетями" vertex="1">
+          <mxGeometry height="50" width="250" x="780" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="uc24" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC24: Снять камень и оживить ключевой водой" vertex="1">
+          <mxGeometry height="50" width="260" x="775" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="uc25" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC25: Кувыркнуться и расколдоваться" vertex="1">
+          <mxGeometry height="50" width="230" x="540" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="uc26" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;" value="UC26: Привязать ведьму к коню и пустить в поле" vertex="1">
+          <mxGeometry height="50" width="260" x="775" y="690" as="geometry" />
+        </mxCell>
 
-    <!-- ========== ACTORS ========== -->
-    <!-- Козлёночек -->
-    <mxCell id="ac_goat" value="Козлёночек&#xa;(Иванушка)" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=#2C3E50;fontColor=#ffffff;labelBackgroundColor=none;" vertex="1" parent="1">
-      <mxGeometry x="40" y="200" width="60" height="80" as="geometry" />
-    </mxCell>
-    <!-- Алёнушка -->
-    <mxCell id="ac_alen" value="Алёнушка" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=#2C3E50;fontColor=#ffffff;labelBackgroundColor=none;" vertex="1" parent="1">
-      <mxGeometry x="40" y="360" width="60" height="80" as="geometry" />
-    </mxCell>
-    <!-- Слуга -->
-    <mxCell id="ac_serv" value="Слуга" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=#2C3E50;fontColor=#ffffff;labelBackgroundColor=none;" vertex="1" parent="1">
-      <mxGeometry x="40" y="500" width="60" height="80" as="geometry" />
-    </mxCell>
-    <!-- Купец -->
-    <mxCell id="ac_merch" value="Купец" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=#2C3E50;fontColor=#ffffff;labelBackgroundColor=none;" vertex="1" parent="1">
-      <mxGeometry x="1560" y="260" width="60" height="80" as="geometry" />
-    </mxCell>
-    <!-- Народ -->
-    <mxCell id="ac_people" value="Народ" style="shape=mxgraph.uml.actor;whiteSpace=wrap;html=1;fillColor=#1A5276;strokeColor=#1A5276;fontColor=#ffffff;labelBackgroundColor=none;" vertex="1" parent="1">
-      <mxGeometry x="1560" y="500" width="60" height="80" as="geometry" />
-    </mxCell>
+        <!-- Relationships Part 2 -->
+        <mxCell id="e_ext1" edge="1" parent="1" source="uc20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc17" value="extend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_int" edge="1" parent="1" source="uc17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc18" value="interacts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inc5" edge="1" parent="1" source="uc23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc24" value="include">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ext2" edge="1" parent="1" source="uc25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" target="uc24" value="extend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
 
-    <!-- ========== PACKAGE 4: Тайна у реки и разоблачение ========== -->
-    <mxCell id="pkg4" value="Тайна у реки и разоблачение" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fontSize=14;fillColor=#FEF9E7;strokeColor=#2C3E50;" vertex="1" parent="1">
-      <mxGeometry x="200" y="120" width="400" height="370" as="geometry" />
-    </mxCell>
-    <mxCell id="uc16" value="UC16: Отпроситься на речку" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="50" width="340" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc17" value="UC17: Звать сестрицу на берегу" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="100" width="340" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc18" value="UC18: Отвечать братцу со дна реки" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="160" width="340" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc19" value="UC19: Искать козлёнка" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="220" width="340" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc20" value="UC20: Подслушать диалог у реки" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D6EAF8;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="270" width="340" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc21" value="UC21: Донести правду купцу" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg4">
-      <mxGeometry x="30" y="320" width="340" height="40" as="geometry" />
-    </mxCell>
-
-    <!-- Extend: UC20 -> UC17 -->
-    <mxCell id="ext_uc20_uc17" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;strokeColor=#E67E22;" edge="1" source="uc20" target="uc17" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <!-- Interacts: UC17 -> UC18 -->
-    <mxCell id="int_uc17_uc18" value="&lt;&lt;interacts&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;strokeColor=#7F8C8D;" edge="1" source="uc17" target="uc18" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- ========== PACKAGE 5: Спасение, расколдовывание и возмездие ========== -->
-    <mxCell id="pkg5" value="Спасение, расколдовывание и возмездие" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fontSize=14;fillColor=#EAFAF1;strokeColor=#2C3E50;" vertex="1" parent="1">
-      <mxGeometry x="900" y="200" width="420" height="330" as="geometry" />
-    </mxCell>
-    <mxCell id="uc22" value="UC22: Собрать народ на спасение" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg5">
-      <mxGeometry x="30" y="50" width="360" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc23" value="UC23: Вытащить Алёнушку шёлковыми сетями" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg5">
-      <mxGeometry x="30" y="100" width="360" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc24" value="UC24: Снять камень и оживить ключевой водой" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D6EAF8;strokeColor=#2C3E50;" vertex="1" parent="pkg5">
-      <mxGeometry x="30" y="160" width="360" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc25" value="UC25: Кувыркнуться и расколдоваться" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg5">
-      <mxGeometry x="30" y="220" width="360" height="40" as="geometry" />
-    </mxCell>
-    <mxCell id="uc26" value="UC26: Привязать ведьму к коню и пустить в поле" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2C3E50;" vertex="1" parent="pkg5">
-      <mxGeometry x="30" y="280" width="360" height="40" as="geometry" />
-    </mxCell>
-
-    <!-- Include: UC23 -> UC24 -->
-    <mxCell id="incl_uc23_uc24" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;strokeColor=#2980B9;" edge="1" source="uc23" target="uc24" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <!-- Extend: UC25 -> UC24 -->
-    <mxCell id="ext_uc25_uc24" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;strokeColor=#E67E22;" edge="1" source="uc25" target="uc24" parent="1">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- ========== ACTOR ASSOCIATIONS - Part 2 ========== -->
-    <mxCell id="e_goat_uc16" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_goat" target="uc16" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_merch_uc16" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_merch" target="uc16" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_goat_uc17" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_goat" target="uc17" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_alen_uc18" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_alen" target="uc18" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_serv_uc19" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_serv" target="uc19" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_serv_uc20" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_serv" target="uc20" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_serv_uc21" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_serv" target="uc21" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_merch_uc21" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_merch" target="uc21" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_merch_uc22" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_merch" target="uc22" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_people_uc22" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1A5276;" edge="1" source="ac_people" target="uc22" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_people_uc23" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1A5276;" edge="1" source="ac_people" target="uc23" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_people_uc24" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1A5276;" edge="1" source="ac_people" target="uc24" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_goat_uc25" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#2C3E50;" edge="1" source="ac_goat" target="uc25" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e_people_uc26" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1A5276;" edge="1" source="ac_people" target="uc26" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-  </root>
-</mxGraphModel>
+        <!-- Associations Part 2 -->
+        <mxCell id="ea16" edge="1" parent="1" source="act_goat" style="endArrow=none;html=1;" target="uc16"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea17" edge="1" parent="1" source="act_merch" style="endArrow=none;html=1;" target="uc16"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea18" edge="1" parent="1" source="act_goat" style="endArrow=none;html=1;" target="uc17"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea19" edge="1" parent="1" source="act_alen" style="endArrow=none;html=1;" target="uc18"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea20" edge="1" parent="1" source="act_serv" style="endArrow=none;html=1;" target="uc19"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea21" edge="1" parent="1" source="act_serv" style="endArrow=none;html=1;" target="uc20"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea22" edge="1" parent="1" source="act_serv" style="endArrow=none;html=1;" target="uc21"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea23" edge="1" parent="1" source="act_merch" style="endArrow=none;html=1;" target="uc21"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea24" edge="1" parent="1" source="act_merch" style="endArrow=none;html=1;" target="uc22"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea25" edge="1" parent="1" source="act_ppl" style="endArrow=none;html=1;" target="uc22"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea26" edge="1" parent="1" source="act_ppl" style="endArrow=none;html=1;" target="uc23"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea27" edge="1" parent="1" source="act_ppl" style="endArrow=none;html=1;" target="uc24"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea28" edge="1" parent="1" source="act_goat" style="endArrow=none;html=1;" target="uc25"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea29" edge="1" parent="1" source="act_ppl" style="endArrow=none;html=1;" target="uc26"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
