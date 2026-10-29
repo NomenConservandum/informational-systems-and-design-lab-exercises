@@ -25,7 +25,7 @@ actor "Ведьма" as Witch
 actor "Слуга" as Servant
 actor "Народ" as People
 
-Goat --|> Ivanushka : оборотень /\nсохраняет личность
+Ivanushka -- Goat : перевоплощение
 
 rectangle "Сказка: Сестрица Алёнушка и братец Иванушка" {
 
@@ -95,6 +95,7 @@ Alenushka --> UC6
 Merchant --> UC7
 Alenushka --> UC8
 Merchant --> UC8
+Goat --> UC9
 
 Witch --> UC10
 Alenushka --> UC10
