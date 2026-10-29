@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="State Diagram - Course Lifecycle" id="departments_state_diagram">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1400" math="0" shadow="0">
+    <mxGraphModel dx="60286" dy="40357" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1400" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,69 +8,69 @@
           <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1" />
         </UserObject>
         <mxCell id="st_start" parent="1" style="ellipse;fillColor=#27AE60;strokeColor=#1E8449;" value="" vertex="1">
-          <mxGeometry x="385" y="40" width="30" height="30" as="geometry" />
+          <mxGeometry height="30" width="30" x="385" y="40" as="geometry" />
         </mxCell>
         <mxCell id="st_draft" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;Draft (Черновик)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;entry / аудит. часы&lt;br&gt;do / перечень тем, СРС (&lt;=15%)&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="110" width="260" height="70" as="geometry" />
+          <mxGeometry height="70" width="260" x="270" y="110" as="geometry" />
         </mxCell>
         <mxCell id="st_dept" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;DepartmentReview (Экспертиза кафедры)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;do / согласование программы&lt;br&gt;do / проверка объема часов&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="230" width="260" height="70" as="geometry" />
+          <mxGeometry height="70" width="260" x="270" y="230" as="geometry" />
         </mxCell>
         <mxCell id="st_dean" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;DeanApproval (Утверждение деканатом)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;do / контроль учебного плана&lt;br&gt;do / квота ППС к студентам (10:1)&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="350" width="260" height="70" as="geometry" />
+          <mxGeometry height="70" width="260" x="270" y="350" as="geometry" />
         </mxCell>
         <mxCell id="st_assigned" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;Assigned (Назначен в семестре)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;entry / прикрепить ППС и группы&lt;br&gt;do / расчет сетки пар в неделю&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="470" width="260" height="70" as="geometry" />
+          <mxGeometry height="70" width="260" x="270" y="470" as="geometry" />
         </mxCell>
         <mxCell id="st_prog" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;InProgress (Чтение курса в семестре)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;do / лекции, практики, лабы&lt;br&gt;do / текущие консультации (0.05*лек)&lt;br&gt;do / проверка КР (0.15*студ*КР)&lt;/font&gt;" vertex="1">
-          <mxGeometry x="250" y="590" width="300" height="90" as="geometry" />
+          <mxGeometry height="90" width="300" x="250" y="590" as="geometry" />
         </mxCell>
         <mxCell id="st_sess" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;SessionEvaluation (Сессионный контроль)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;do / предэкз. консультация (2 ч)&lt;br&gt;do / прием зачета (0.25*студ)&lt;br&gt;do / прием экзамена (0.5*студ)&lt;/font&gt;" vertex="1">
-          <mxGeometry x="250" y="730" width="300" height="90" as="geometry" />
+          <mxGeometry height="90" width="300" x="250" y="730" as="geometry" />
         </mxCell>
         <mxCell id="st_comp" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;Completed (Курс завершен)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;entry / сдать ведомости и отчетность&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="870" width="260" height="60" as="geometry" />
+          <mxGeometry height="60" width="260" x="270" y="870" as="geometry" />
         </mxCell>
         <mxCell id="st_arch" parent="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1.5;verticalAlign=middle;align=center;" value="&lt;b&gt;Archived (В архиве)&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#555555&quot;&gt;архивация рабочей программы&lt;/font&gt;" vertex="1">
-          <mxGeometry x="270" y="970" width="260" height="50" as="geometry" />
+          <mxGeometry height="50" width="260" x="270" y="970" as="geometry" />
         </mxCell>
         <mxCell id="st_end" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry x="385" y="1060" width="30" height="30" as="geometry" />
+          <mxGeometry height="30" width="30" x="385" y="1060" as="geometry" />
         </mxCell>
         <mxCell id="st_end_in" parent="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="" vertex="1">
-          <mxGeometry x="391" y="1066" width="18" height="18" as="geometry" />
+          <mxGeometry height="18" width="18" x="391" y="1066" as="geometry" />
         </mxCell>
-        <mxCell id="tr_0" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_start" target="st_draft" value="создание курса" edge="1">
+        <mxCell id="tr_0" edge="1" parent="1" source="st_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_draft" value="создание курса">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_draft" target="st_dept" value="submitForReview() [лимит СРС &lt;= 15%]" edge="1">
+        <mxCell id="tr_1" edge="1" parent="1" source="st_draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_dept" value="submitForReview() [лимит СРС &lt;= 15%]">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_2" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_dept" target="st_dean" value="approveByDepartment()" edge="1">
+        <mxCell id="tr_2" edge="1" parent="1" source="st_dept" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_dean" value="approveByDepartment()">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_dean" target="st_assigned" value="approveByDean()" edge="1">
+        <mxCell id="tr_3" edge="1" parent="1" source="st_dean" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_assigned" value="approveByDean()">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_4" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_assigned" target="st_prog" value="startSemester() [текущая дата &gt;= startDate]" edge="1">
+        <mxCell id="tr_4" edge="1" parent="1" source="st_assigned" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_prog" value="startSemester() [текущая дата &gt;= startDate]">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_5" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_prog" target="st_sess" value="endSemester() [текущая дата &gt;= endDate]" edge="1">
+        <mxCell id="tr_5" edge="1" parent="1" source="st_prog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_sess" value="endSemester() [текущая дата &gt;= endDate]">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_6" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_sess" target="st_comp" value="finalizeGrades() [ведомости закрыты]" edge="1">
+        <mxCell id="tr_6" edge="1" parent="1" source="st_sess" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_comp" value="finalizeGrades() [ведомости закрыты]">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_7" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_comp" target="st_arch" value="archiveCourse() [год завершен]" edge="1">
+        <mxCell id="tr_7" edge="1" parent="1" source="st_comp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_arch" value="archiveCourse() [год завершен]">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_8" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" source="st_arch" target="st_end" value="" edge="1">
+        <mxCell id="tr_8" edge="1" parent="1" source="st_arch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="st_end" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_rej_dept" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#C0392B;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;dashed=1;" source="st_dept" target="st_draft" value="rejectByDepartment(comments)" edge="1">
+        <mxCell id="tr_rej_dept" edge="1" parent="1" source="st_dept" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#C0392B;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;dashed=1;" target="st_draft" value="rejectByDepartment(comments)">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tr_rej_dean" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#C0392B;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;dashed=1;" source="st_dean" target="st_dept" value="rejectByDean(comments)" edge="1">
+        <mxCell id="tr_rej_dean" edge="1" parent="1" source="st_dean" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#C0392B;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;dashed=1;" target="st_dept" value="rejectByDean(comments)">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
