@@ -1,0 +1,86 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam roundcorner 10
+skinparam actorStyle awesome
+skinparam monochrome false
+skinparam handwritten false
+
+skinparam usecase {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+}
+
+skinparam actor {
+    BackgroundColor White
+    BorderColor #2C3E50
+}
+
+title Сестрица Алёнушка и братец Иванушка\nЧасть 1: Странствие, превращение и злодеяние ведьмы
+
+actor "Иванушка\n(Человек)" as Ivanushka
+actor "Козлёночек\n(Околдованный)" as Goat
+actor "Алёнушка" as Alenushka
+actor "Купец" as Merchant
+actor "Ведьма" as Witch
+
+Goat --|> Ivanushka : оборотень /\nсохраняет личность
+
+rectangle "Сказка: Часть 1" {
+
+    rectangle "Дорога и превращение" {
+        usecase "UC1: Испытывать жажду" as UC1
+        usecase "UC2: Просить разрешения напиться" as UC2
+        usecase "UC3: Запретить пить из копытца" as UC3
+        usecase "UC4: Напиться из козьего копытца" as UC4
+        usecase "UC5: Превратиться в козлёночка" as UC5
+
+        UC4 .> UC5 : <<include>>
+        UC2 ..> UC3 : <<communicates>>
+    }
+
+    rectangle "Спасение от сиротства и брак" {
+        usecase "UC6: Оплакивать беду" as UC6
+        usecase "UC7: Предложить замужество и кров" as UC7
+        usecase "UC8: Вступить в брак" as UC8
+        usecase "UC9: Приютить козлёночка" as UC9
+
+        UC8 .> UC9 : <<include>>
+    }
+
+    rectangle "Злодеяние ведьмы и подмена" {
+        usecase "UC10: Заманить на реку" as UC10
+        usecase "UC11: Утопить с камнем на шее" as UC11
+        usecase "UC12: Принять облик Алёнушки" as UC12
+        usecase "UC13: Обмануть купца" as UC13
+        usecase "UC14: Уговорить зарезать козлёнка" as UC14
+        usecase "UC15: Приказать точить ножи и греть котлы" as UC15
+
+        UC10 .> UC11 : <<include>>
+        UC12 .> UC13 : <<include>>
+    }
+}
+
+' Связи акторов — пакет 1
+Ivanushka --> UC1
+Ivanushka --> UC2
+Alenushka --> UC3
+Ivanushka --> UC4
+
+' Связи акторов — пакет 2
+Alenushka --> UC6
+Merchant --> UC7
+Alenushka --> UC8
+Merchant --> UC8
+
+' Связи акторов — пакет 3
+Witch --> UC10
+Alenushka --> UC10
+Witch --> UC11
+Witch --> UC12
+Witch --> UC14
+Merchant --> UC14
+Witch --> UC15
+
+@enduml
