@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Activity Diagram - Спасение Алёнушки и возмездие" id="fairy_tale_activity">
-    <mxGraphModel dx="1917" dy="1994" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+    <mxGraphModel dx="3883" dy="4016" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,103 +8,103 @@
           <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1" />
         </UserObject>
         <mxCell id="lane_witch" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=50;" value="Ведьма" vertex="1">
-          <mxGeometry height="1520" width="200" x="-1135" y="-1520" as="geometry" />
+          <mxGeometry height="1520" width="200" x="-2340" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="lane_goat" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=50;" value="Козлёночек" vertex="1">
-          <mxGeometry height="1520" width="200" x="-925" y="-1520" as="geometry" />
+          <mxGeometry height="1520" width="200" x="-2130" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="lane_servant" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=50;" value="Слуга" vertex="1">
-          <mxGeometry height="1520" width="210" x="-715" y="-1520" as="geometry" />
+          <mxGeometry height="1520" width="210" x="-1920" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="lane_merch" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;" value="Купец" vertex="1">
-          <mxGeometry height="1520" width="200" x="-495" y="-1520" as="geometry" />
+          <mxGeometry height="1520" width="200" x="-1700" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="lane_folk" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;" value="Народ" vertex="1">
-          <mxGeometry height="1520" width="230" x="-285" y="-1520" as="geometry" />
+          <mxGeometry height="1520" width="230" x="-1490" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="act_start" parent="1" style="ellipse;fillColor=#27AE60;strokeColor=#1E8449;" value="" vertex="1">
-          <mxGeometry height="30" width="30" x="-1050" y="-1470" as="geometry" />
+          <mxGeometry height="30" width="30" x="-2255" y="-3070" as="geometry" />
         </mxCell>
         <mxCell id="act_w1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Уговорить купца зарезать козлёнка" vertex="1">
-          <mxGeometry height="50" width="160" x="-1115" y="-1410" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2320" y="-3010" as="geometry" />
         </mxCell>
         <mxCell id="act_w2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Приказать челяди греть котлы и точить ножи" vertex="1">
-          <mxGeometry height="50" width="160" x="-1115" y="-1330" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2320" y="-2930" as="geometry" />
         </mxCell>
         <mxCell id="act_g1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Проведать об угрозе заклания" vertex="1">
-          <mxGeometry height="50" width="160" x="-905" y="-1330" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2110" y="-2930" as="geometry" />
         </mxCell>
         <mxCell id="act_g2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Попросить купца отпустить на реку водицы испить" vertex="1">
-          <mxGeometry height="50" width="160" x="-905" y="-1250" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2110" y="-2850" as="geometry" />
         </mxCell>
         <mxCell id="act_m1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Отпустить козлёнка к реке" vertex="1">
-          <mxGeometry height="50" width="160" x="-475" y="-1250" as="geometry" />
+          <mxGeometry height="50" width="160" x="-1680" y="-2850" as="geometry" />
         </mxCell>
         <mxCell id="act_g3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Прибежать на берег реки и взывать к сестрице" vertex="1">
-          <mxGeometry height="50" width="160" x="-905" y="-1170" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2110" y="-2770" as="geometry" />
         </mxCell>
         <mxCell id="act_w3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Заметить отсутствие козлёнка и послать слугу" vertex="1">
-          <mxGeometry height="50" width="160" x="-1115" y="-1170" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2320" y="-2770" as="geometry" />
         </mxCell>
         <mxCell id="act_s1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Прийти на берег реки и следить за козлёнком" vertex="1">
-          <mxGeometry height="50" width="170" x="-695" y="-1090" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1900" y="-2690" as="geometry" />
         </mxCell>
         <mxCell id="act_s2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Подслушать ответ Алёнушки из глубины вод" vertex="1">
-          <mxGeometry height="50" width="170" x="-695" y="-1010" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1900" y="-2610" as="geometry" />
         </mxCell>
         <mxCell id="act_s3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Осознать чудовищный обман ведьмы" vertex="1">
-          <mxGeometry height="50" width="170" x="-695" y="-930" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1900" y="-2530" as="geometry" />
         </mxCell>
         <mxCell id="act_s4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Прибежать в хоромы и доложить купцу" vertex="1">
-          <mxGeometry height="50" width="170" x="-695" y="-850" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1900" y="-2450" as="geometry" />
         </mxCell>
         <mxCell id="act_m2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Осознать подмену жены и коварство ведьмы" vertex="1">
-          <mxGeometry height="50" width="160" x="-475" y="-850" as="geometry" />
+          <mxGeometry height="50" width="160" x="-1680" y="-2450" as="geometry" />
         </mxCell>
         <mxCell id="act_m3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Собрать народ и поспешить к реке" vertex="1">
-          <mxGeometry height="50" width="160" x="-475" y="-770" as="geometry" />
+          <mxGeometry height="50" width="160" x="-1680" y="-2370" as="geometry" />
         </mxCell>
         <mxCell id="act_f1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Закинуть в воду шёлковые сети" vertex="1">
-          <mxGeometry height="45" width="170" x="-260" y="-690" as="geometry" />
+          <mxGeometry height="45" width="170" x="-1465" y="-2290" as="geometry" />
         </mxCell>
         <mxCell id="act_f2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Вытащить Алёнушку со дна реки на берег" vertex="1">
-          <mxGeometry height="45" width="170" x="-260" y="-620" as="geometry" />
+          <mxGeometry height="45" width="170" x="-1465" y="-2220" as="geometry" />
         </mxCell>
         <mxCell id="act_f3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Снять с шеи тяжёлый камень" vertex="1">
-          <mxGeometry height="45" width="170" x="-260" y="-550" as="geometry" />
+          <mxGeometry height="45" width="170" x="-1465" y="-2150" as="geometry" />
         </mxCell>
         <mxCell id="act_f4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Окунуть Алёнушку в ключевую воду" vertex="1">
-          <mxGeometry height="45" width="170" x="-260" y="-480" as="geometry" />
+          <mxGeometry height="45" width="170" x="-1465" y="-2080" as="geometry" />
         </mxCell>
         <mxCell id="act_f5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Одеть Алёнушку в нарядное платье (оживает)" vertex="1">
-          <mxGeometry height="50" width="170" x="-260" y="-410" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1465" y="-2010" as="geometry" />
         </mxCell>
         <mxCell id="act_fork" parent="1" style="line;strokeWidth=5;strokeColor=#2C3E50;" value="" vertex="1">
-          <mxGeometry height="8" width="850" x="-1025" y="-330" as="geometry" />
+          <mxGeometry height="8" width="850" x="-2230" y="-1930" as="geometry" />
         </mxCell>
         <mxCell id="act_m4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Воссоединиться с ожившей женой" vertex="1">
-          <mxGeometry height="50" width="160" x="-475" y="-300" as="geometry" />
+          <mxGeometry height="50" width="160" x="-1680" y="-1900" as="geometry" />
         </mxCell>
         <mxCell id="act_g4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Трижды перекинуться через голову" vertex="1">
-          <mxGeometry height="50" width="160" x="-905" y="-300" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2110" y="-1900" as="geometry" />
         </mxCell>
         <mxCell id="act_g5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Обернуться мальчиком Иванушкой" vertex="1">
-          <mxGeometry height="50" width="160" x="-905" y="-230" as="geometry" />
+          <mxGeometry height="50" width="160" x="-2110" y="-1830" as="geometry" />
         </mxCell>
         <mxCell id="act_f6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Схватить самозванку-ведьму" vertex="1">
-          <mxGeometry height="50" width="170" x="-260" y="-300" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1465" y="-1900" as="geometry" />
         </mxCell>
         <mxCell id="act_f7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Привязать к коню и пустить в чистое поле" vertex="1">
-          <mxGeometry height="50" width="170" x="-260" y="-230" as="geometry" />
+          <mxGeometry height="50" width="170" x="-1465" y="-1830" as="geometry" />
         </mxCell>
         <mxCell id="act_join" parent="1" style="line;strokeWidth=5;strokeColor=#2C3E50;" value="" vertex="1">
-          <mxGeometry height="8" width="850" x="-1025" y="-150" as="geometry" />
+          <mxGeometry height="8" width="850" x="-2230" y="-1750" as="geometry" />
         </mxCell>
         <mxCell id="act_end" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=3;" value="" vertex="1">
-          <mxGeometry height="30" width="30" x="-410" y="-60" as="geometry" />
+          <mxGeometry height="30" width="30" x="-1615" y="-1660" as="geometry" />
         </mxCell>
         <mxCell id="act_end_inner" parent="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="" vertex="1">
-          <mxGeometry height="18" width="18" x="-404" y="-54" as="geometry" />
+          <mxGeometry height="18" width="18" x="-1609" y="-1654" as="geometry" />
         </mxCell>
         <mxCell id="e1" edge="1" parent="1" source="act_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.5;" target="act_w1" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -124,8 +124,8 @@
         <mxCell id="e6" edge="1" parent="1" source="act_m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.5;" target="act_g3" value="">
           <mxGeometry relative="1" x="0.0025" as="geometry">
             <Array as="points">
-              <mxPoint x="-395" y="-1190" />
-              <mxPoint x="-825" y="-1190" />
+              <mxPoint x="-1600" y="-2790" />
+              <mxPoint x="-2030" y="-2790" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -133,7 +133,11 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e8" edge="1" parent="1" source="act_w3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.5;" target="act_s1" value="">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2240" y="-2665" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e9" edge="1" parent="1" source="act_g3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.5;" target="act_s1" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -196,8 +200,11 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e30" edge="1" parent="1" source="act_join" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.5;exitX=0.75;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="act_end" value="">
-          <mxGeometry relative="1" x="0.8139" as="geometry">
-            <mxPoint x="-395" y="-80" as="sourcePoint" />
+          <mxGeometry relative="1" x="0.8182" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1600" y="-1746" />
+            </Array>
+            <mxPoint x="-1600" y="-1680" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
       </root>

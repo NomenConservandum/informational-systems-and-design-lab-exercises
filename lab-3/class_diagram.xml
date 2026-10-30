@@ -1,14 +1,14 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Class Diagram - ИС Кафедры" id="departments_class_diagram">
-    <mxGraphModel dx="3917" dy="2794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="7117" dy="5194" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam classAttributeIconSize 0\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam packageStyle rectangle\n\nskinparam class {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nenum AcademicDegree {\n    NONE\n    CANDIDATE_OF_SCIENCES\n    DOCTOR_OF_SCIENCES\n    PHD\n}\n\nenum AcademicTitle {\n    NONE\n    DOCENT\n    PROFESSOR\n}\n\nenum Position {\n    ASSISTANT\n    SENIOR_LECTURER\n    DOCENT\n    PROFESSOR\n    DEPARTMENT_HEAD\n}\n\nenum Gender {\n    MALE\n    FEMALE\n}\n\nenum CourseStatus {\n    DRAFT\n    DEPARTMENT_REVIEW\n    DEAN_APPROVED\n    ASSIGNED\n    IN_PROGRESS\n    SESSION_EVALUATION\n    COMPLETED\n    ARCHIVED\n}\n\nclass Faculty {\n    - name: String\n    - deanFullName: String\n    - phone: String\n    - deanOfficeRoom: String\n    - studentCount: Integer\n    - foundationDate: Date\n    + addDepartment(dept: Department): void\n    + removeDepartment(dept: Department): void\n    + getDepartments(): List&lt;Department&gt;\n    + calculateTotalTeachers(): Integer\n    + validateStaffToStudentRatio(): Boolean\n}\n\nclass Department {\n    - name: String\n    - headFullName: String\n    - phone: String\n    - roomNumber: String\n    - isGraduating: Boolean\n    - foundationDate: Date\n    + addTeacher(teacher: Teacher): void\n    + removeTeacher(teacher: Teacher): void\n    + getTeachers(): List&lt;Teacher&gt;\n    + addCourse(course: Course): void\n    + getCourses(): List&lt;Course&gt;\n    + getTeacherCount(): Integer\n    + calculateTotalLoadHours(): Integer\n}\n\nclass Teacher {\n    - lastName: String\n    - firstName: String\n    - middleName: String\n    - academicDegree: AcademicDegree\n    - academicTitle: AcademicTitle\n    - position: Position\n    - gender: Gender\n    - birthDate: Date\n    + getFullName(): String\n    + assignCourse(course: Course): void\n    + removeCourse(course: Course): void\n    + getCourses(): List&lt;Course&gt;\n    + getCourseCount(): Integer\n    + calculateTotalLoad(): Integer\n}\n\nclass Course {\n    - title: String\n    - specialty: String\n    - studyYear: Integer\n    - semester: Integer\n    - studentCount: Integer\n    - lectureHours: Integer\n    - practiceHours: Integer\n    - labHours: Integer\n    - hasCredit: Boolean\n    - hasExam: Boolean\n    - testCount: Integer\n    - startDate: Date\n    - endDate: Date\n    - status: CourseStatus\n    + addTopic(topic: Topic): void\n    + removeTopic(topic: Topic): void\n    + getTopics(): List&lt;Topic&gt;\n    + calculateWeeks(): Integer\n    + calculateConsultationHours(): Double\n    + calculateExamConsultationHours(): Double\n    + calculateExamEvaluationHours(): Double\n    + calculateCreditEvaluationHours(): Double\n    + calculateTestGradingHours(): Double\n    + calculateTotalHours(): Integer\n    + calculateLecturePairsPerWeek(): Double\n    + calculatePracticePairsPerWeek(): Double\n    + calculateLabPairsPerWeek(): Double\n    + validateSelfStudyLimits(): Boolean\n    + updateStatus(newStatus: CourseStatus): void\n}\n\nclass Topic {\n    - title: String\n    - lectureHours: Integer\n    - practiceHours: Integer\n    - labHours: Integer\n    - isMandatory: Boolean\n    + getTotalHours(): Integer\n    + canBeSelfStudy(): Boolean\n    + setMandatory(mandatory: Boolean): void\n}\n\nFaculty \&quot;1\&quot; *-- \&quot;1..*\&quot; Department : contains &gt;\nDepartment \&quot;1\&quot; *-- \&quot;1..*\&quot; Teacher : employs &gt;\nDepartment \&quot;1\&quot; o-- \&quot;*\&quot; Course : oversees &gt;\nTeacher \&quot;1\&quot; o-- \&quot;*\&quot; Course : lectures &gt;\nCourse \&quot;1\&quot; *-- \&quot;1..*\&quot; Topic : consists of &gt;\n\nTeacher ..&gt; AcademicDegree : uses\nTeacher ..&gt; AcademicTitle : uses\nTeacher ..&gt; Position : uses\nTeacher ..&gt; Gender : uses\nCourse ..&gt; CourseStatus : tracks\n\nnote right of Faculty\n  &lt;b&gt;\u0411\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u0430\u0432\u0438\u043b\u043e 1:&lt;/b&gt;\n  calculateTotalTeachers() &lt;= studentCount / 10\nend note\n\nnote bottom of Course\n  &lt;b&gt;\u0424\u043e\u0440\u043c\u0443\u043b\u0430 \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0438:&lt;/b&gt;\n  TotalHours = ceil(\n    Lectures + Practices + Labs\n    + 0.05 * Lectures\n    + (hasExam ? 2.0 : 0)\n    + (hasExam ? 0.5 * studentCount : 0)\n    + (hasCredit ? 0.25 * studentCount : 0)\n    + (0.15 * studentCount * testCount)\n  )\n  &lt;b&gt;\u041f\u0430\u0440 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e:&lt;/b&gt;\n  Pairs = Hours / (2 * Weeks)\nend note\n\nnote right of Topic\n  &lt;b&gt;\u0411\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u0430\u0432\u0438\u043b\u043e 2:&lt;/b&gt;\n  \u0414\u043b\u044f \u0442\u0435\u043c \u043d\u0430 \u0421\u0420\u0421 (isMandatory = false):\n  hoursSelfStudy &lt;= 0.15 * courseTotalHours\nend note\n\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
           <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1" />
         </UserObject>
-        <mxCell id="cls_faculty" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;" value="Faculty" vertex="1">
-          <mxGeometry height="226" width="310" x="-3055" y="-2240" as="geometry" />
+        <mxCell id="cls_faculty" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=0;" value="Faculty" vertex="1">
+          <mxGeometry height="226" width="310" x="-4750" y="-3560" as="geometry" />
         </mxCell>
         <mxCell id="cls_faculty_a" parent="cls_faculty" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="- name: String&#xa;- deanFullName: String&#xa;- phone: String&#xa;- deanOfficeRoom: String&#xa;- studentCount: Integer&#xa;- foundationDate: Date" vertex="1">
           <mxGeometry height="104" width="310" y="26" as="geometry" />
@@ -19,8 +19,8 @@
         <mxCell id="cls_faculty_m" parent="cls_faculty" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="+ addDepartment(dept: Department): void&#xa;+ removeDepartment(dept: Department): void&#xa;+ getDepartments(): List&lt;Department&gt;&#xa;+ calculateTotalTeachers(): Integer&#xa;+ validateStaffToStudentRatio(): Boolean" vertex="1">
           <mxGeometry height="88" width="310" y="138" as="geometry" />
         </mxCell>
-        <mxCell id="cls_dept" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;" value="Department" vertex="1">
-          <mxGeometry height="258" width="310" x="-2665" y="-2240" as="geometry" />
+        <mxCell id="cls_dept" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=0;" value="Department" vertex="1">
+          <mxGeometry height="258" width="310" x="-4360" y="-3560" as="geometry" />
         </mxCell>
         <mxCell id="cls_dept_a" parent="cls_dept" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="- name: String&#xa;- headFullName: String&#xa;- phone: String&#xa;- roomNumber: String&#xa;- isGraduating: Boolean&#xa;- foundationDate: Date" vertex="1">
           <mxGeometry height="104" width="310" y="26" as="geometry" />
@@ -31,8 +31,8 @@
         <mxCell id="cls_dept_m" parent="cls_dept" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="+ addTeacher(teacher: Teacher): void&#xa;+ removeTeacher(teacher: Teacher): void&#xa;+ getTeachers(): List&lt;Teacher&gt;&#xa;+ addCourse(course: Course): void&#xa;+ getCourses(): List&lt;Course&gt;&#xa;+ getTeacherCount(): Integer&#xa;+ calculateTotalLoadHours(): Integer" vertex="1">
           <mxGeometry height="120" width="310" y="138" as="geometry" />
         </mxCell>
-        <mxCell id="cls_teacher" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;" value="Teacher" vertex="1">
-          <mxGeometry height="274" width="310" x="-2275" y="-2240" as="geometry" />
+        <mxCell id="cls_teacher" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=0;" value="Teacher" vertex="1">
+          <mxGeometry height="274" width="310" x="-3960" y="-3560" as="geometry" />
         </mxCell>
         <mxCell id="cls_teacher_a" parent="cls_teacher" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="- lastName: String&#xa;- firstName: String&#xa;- middleName: String&#xa;- academicDegree: AcademicDegree&#xa;- academicTitle: AcademicTitle&#xa;- position: Position&#xa;- gender: Gender&#xa;- birthDate: Date" vertex="1">
           <mxGeometry height="136" width="310" y="26" as="geometry" />
@@ -43,8 +43,8 @@
         <mxCell id="cls_teacher_m" parent="cls_teacher" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="+ getFullName(): String&#xa;+ assignCourse(course: Course): void&#xa;+ removeCourse(course: Course): void&#xa;+ getCourses(): List&lt;Course&gt;&#xa;+ getCourseCount(): Integer&#xa;+ calculateTotalLoad(): Integer" vertex="1">
           <mxGeometry height="104" width="310" y="170" as="geometry" />
         </mxCell>
-        <mxCell id="cls_course" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;" value="Course" vertex="1">
-          <mxGeometry height="514" width="350" x="-2665" y="-1900" as="geometry" />
+        <mxCell id="cls_course" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=0;" value="Course" vertex="1">
+          <mxGeometry height="514" width="350" x="-4360" y="-3240" as="geometry" />
         </mxCell>
         <mxCell id="cls_course_a" parent="cls_course" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="- title: String&#xa;- specialty: String&#xa;- studyYear: Integer&#xa;- semester: Integer&#xa;- studentCount: Integer&#xa;- lectureHours: Integer&#xa;- practiceHours: Integer&#xa;- labHours: Integer&#xa;- hasCredit: Boolean&#xa;- hasExam: Boolean&#xa;- testCount: Integer&#xa;- startDate: Date&#xa;- endDate: Date&#xa;- status: CourseStatus" vertex="1">
           <mxGeometry height="232" width="350" y="26" as="geometry" />
@@ -55,8 +55,8 @@
         <mxCell id="cls_course_m" parent="cls_course" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="+ addTopic(topic: Topic): void&#xa;+ removeTopic(topic: Topic): void&#xa;+ getTopics(): List&lt;Topic&gt;&#xa;+ calculateWeeks(): Integer&#xa;+ calculateConsultationHours(): Double&#xa;+ calculateExamConsultationHours(): Double&#xa;+ calculateExamEvaluationHours(): Double&#xa;+ calculateCreditEvaluationHours(): Double&#xa;+ calculateTestGradingHours(): Double&#xa;+ calculateTotalHours(): Integer&#xa;+ calculateLecturePairsPerWeek(): Double&#xa;+ calculatePracticePairsPerWeek(): Double&#xa;+ calculateLabPairsPerWeek(): Double&#xa;+ validateSelfStudyLimits(): Boolean&#xa;+ updateStatus(newStatus: CourseStatus): void" vertex="1">
           <mxGeometry height="248" width="350" y="266" as="geometry" />
         </mxCell>
-        <mxCell id="cls_topic" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;" value="Topic" vertex="1">
-          <mxGeometry height="178" width="270" x="-2205" y="-1780" as="geometry" />
+        <mxCell id="cls_topic" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=0;" value="Topic" vertex="1">
+          <mxGeometry height="178" width="270" x="-3920" y="-3120" as="geometry" />
         </mxCell>
         <mxCell id="cls_topic_a" parent="cls_topic" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="- title: String&#xa;- lectureHours: Integer&#xa;- practiceHours: Integer&#xa;- labHours: Integer&#xa;- isMandatory: Boolean" vertex="1">
           <mxGeometry height="88" width="270" y="26" as="geometry" />
@@ -67,44 +67,44 @@
         <mxCell id="cls_topic_m" parent="cls_topic" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="+ getTotalHours(): Integer&#xa;+ canBeSelfStudy(): Boolean&#xa;+ setMandatory(mandatory: Boolean): void" vertex="1">
           <mxGeometry height="56" width="270" y="122" as="geometry" />
         </mxCell>
-        <mxCell id="enum_degree" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;" value="&lt;&lt;enumeration&gt;&gt;&#xa;AcademicDegree" vertex="1">
-          <mxGeometry height="126" width="180" x="-1905" y="-2240" as="geometry" />
+        <mxCell id="enum_degree" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=0;" value="&lt;&lt;enumeration&gt;&gt;&#xa;AcademicDegree" vertex="1">
+          <mxGeometry height="142" width="180" x="-3600" y="-3560" as="geometry" />
         </mxCell>
         <mxCell id="enum_degree_a" parent="enum_degree" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="NONE&#xa;CANDIDATE_OF_SCIENCES&#xa;DOCTOR_OF_SCIENCES&#xa;PHD" vertex="1">
-          <mxGeometry height="72" width="180" y="26" as="geometry" />
+          <mxGeometry height="72" width="180" y="42" as="geometry" />
         </mxCell>
         <mxCell id="enum_degree_l" parent="enum_degree" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="180" y="98" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_degree_m" parent="enum_degree" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
-          <mxGeometry height="20" width="180" y="106" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_title" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;" value="&lt;&lt;enumeration&gt;&gt;&#xa;AcademicTitle" vertex="1">
-          <mxGeometry height="110" width="180" x="-1905" y="-2100" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_title_a" parent="enum_title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="NONE&#xa;DOCENT&#xa;PROFESSOR" vertex="1">
-          <mxGeometry height="56" width="180" y="26" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_title_l" parent="enum_title" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="180" y="82" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_title_m" parent="enum_title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
-          <mxGeometry height="20" width="180" y="90" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_pos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Position" vertex="1">
-          <mxGeometry height="142" width="180" x="-1905" y="-1980" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_pos_a" parent="enum_pos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="ASSISTANT&#xa;SENIOR_LECTURER&#xa;DOCENT&#xa;PROFESSOR&#xa;DEPARTMENT_HEAD" vertex="1">
-          <mxGeometry height="88" width="180" y="26" as="geometry" />
-        </mxCell>
-        <mxCell id="enum_pos_l" parent="enum_pos" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="180" y="114" as="geometry" />
         </mxCell>
-        <mxCell id="enum_pos_m" parent="enum_pos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
+        <mxCell id="enum_degree_m" parent="enum_degree" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
           <mxGeometry height="20" width="180" y="122" as="geometry" />
         </mxCell>
-        <mxCell id="enum_status" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;" value="&lt;&lt;enumeration&gt;&gt;&#xa;CourseStatus" vertex="1">
-          <mxGeometry height="190" width="180" x="-1905" y="-1820" as="geometry" />
+        <mxCell id="enum_title" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=0;" value="&lt;&lt;enumeration&gt;&gt;&#xa;AcademicTitle" vertex="1">
+          <mxGeometry height="126" width="180" x="-3600" y="-3400" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_title_a" parent="enum_title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="NONE&#xa;DOCENT&#xa;PROFESSOR" vertex="1">
+          <mxGeometry height="56" width="180" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_title_l" parent="enum_title" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_title_m" parent="enum_title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
+          <mxGeometry height="20" width="180" y="106" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_pos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=0;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Position" vertex="1">
+          <mxGeometry height="154" width="180" x="-3600" y="-3240" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_pos_a" parent="enum_pos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="ASSISTANT&#xa;SENIOR_LECTURER&#xa;DOCENT&#xa;PROFESSOR&#xa;DEPARTMENT_HEAD" vertex="1">
+          <mxGeometry height="88" width="180" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_pos_l" parent="enum_pos" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="126" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_pos_m" parent="enum_pos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value=" " vertex="1">
+          <mxGeometry height="20" width="180" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="enum_status" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=0;" value="&lt;&lt;enumeration&gt;&gt;&#xa;CourseStatus" vertex="1">
+          <mxGeometry height="190" width="180" x="-3600" y="-3060" as="geometry" />
         </mxCell>
         <mxCell id="enum_status_a" parent="enum_status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;" value="DRAFT&#xa;DEPARTMENT_REVIEW&#xa;DEAN_APPROVED&#xa;ASSIGNED&#xa;IN_PROGRESS&#xa;SESSION_EVALUATION&#xa;COMPLETED&#xa;ARCHIVED" vertex="1">
           <mxGeometry height="136" width="180" y="26" as="geometry" />
@@ -116,30 +116,50 @@
           <mxGeometry height="20" width="180" y="170" as="geometry" />
         </mxCell>
         <mxCell id="note_fac" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=top;align=left;spacingTop=-6;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;Бизнес-правило 1:&lt;/b&gt;&#xa;Преподавателей на факультете:&#xa;TotalTeachers &lt;= studentCount / 10" vertex="1">
-          <mxGeometry height="70" width="220" x="-3055" y="-1990" as="geometry" />
+          <mxGeometry height="70" width="220" x="-4757" y="-3312" as="geometry" />
         </mxCell>
         <mxCell id="note_course" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=top;align=left;spacingTop=-6;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;Формула нагрузки курса:&lt;/b&gt;&#xa;TotalHours = ceil(Lec + Prac + Lab&#xa;+ 0.05 * Lec + (hasExam ? 2.0 : 0)&#xa;+ (hasExam ? 0.5 * Students : 0)&#xa;+ (hasCredit ? 0.25 * Students : 0)&#xa;+ 0.15 * Students * testCount)&#xa;&lt;b&gt;Пар в неделю:&lt;/b&gt; Hours / (2 * Weeks)" vertex="1">
-          <mxGeometry height="130" width="260" x="-3055" y="-1780" as="geometry" />
+          <mxGeometry height="130" width="260" x="-4757" y="-3102" as="geometry" />
         </mxCell>
         <mxCell id="e_fac_dept" edge="1" parent="1" source="cls_dept" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;startArrow=none;strokeColor=#2C3E50;strokeWidth=1.5;" target="cls_faculty" value="1..*            1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-4380" y="-3430" />
+              <mxPoint x="-4380" y="-3430" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e_dept_teach" edge="1" parent="1" source="cls_teacher" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;startArrow=none;strokeColor=#2C3E50;strokeWidth=1.5;" target="cls_dept" value="1..*            1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-3980" y="-3480" />
+              <mxPoint x="-3980" y="-3480" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e_dept_course" edge="1" parent="1" source="cls_course" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=0;startArrow=none;strokeColor=#2C3E50;strokeWidth=1.5;" target="cls_dept" value="*               1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-4205" y="-3250" />
+              <mxPoint x="-4205" y="-3250" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e_teach_course" edge="1" parent="1" source="cls_course" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.5;" target="cls_teacher" value="*               1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-2280" y="-1643" />
-              <mxPoint x="-2280" y="-2103" />
+              <mxPoint x="-3982" y="-2965" />
+              <mxPoint x="-3982" y="-3425" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="e_course_topic" edge="1" parent="1" source="cls_topic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;startArrow=none;strokeColor=#2C3E50;strokeWidth=1.5;" target="cls_course" value="1..*            1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-3965" y="-3031" />
+              <mxPoint x="-3965" y="-3030" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
