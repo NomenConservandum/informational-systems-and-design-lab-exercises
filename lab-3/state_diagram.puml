@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome false
+skinparam roundcorner 10
+skinparam shadowing false
+
+skinparam state {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+    StartColor #27AE60
+    EndColor #C0392B
+}
+
+[*] --> Unassigned : Курс утвержден в учебном плане специальности
+
+state Unassigned as "Unassigned\n(Не распределен / Вакантен)" {
+    Unassigned : entry / определены специальность, курс, семестр, студенты
+    Unassigned : do / ожидает назначения лектора на заседании кафедры
+}
+
+Unassigned --> Assigned : assignCourseToTeacher(teacher)\n[кафедра распределила нагрузку]
+
+state Assigned as "Assigned\n(Закреплен за преподавателем)" {
+    Assigned : entry / преподаватель назначен (courseCount++)
+    Assigned : do / формирование тем и параметров семестра
+}
+
+Assigned --> Configured : configureCurriculumPlan()\n[validateSelfStudyLimits() == true && datesSet]
+
+state Configured as "Configured\n(Календарный план и контроль согласованы)" {
+    Configured : entry / расчет TotalHours (AcademicLoad) и пар/неделю (CourseSchedule)
+    Configured : do / готов к включению в расписание учебных занятий
+}
+
+Configured --> InProgress : startSemester()\n[текущая дата >= startDate]
+
+state InProgress as "InProgress\n(Чтение курса в семестре)" {
+    InProgress : do / проведение лекций, практик, лабораторных работ
+    InProgress : do / проведение текущих консультаций (0.05 * лекционные часы)
+    InProgress : do / проведение и проверка КР (0.15 * студ * кол-во КР)
+}
+
+InProgress --> SessionEvaluation : endSemester()\n[текущая дата >= endDate]
+
+state SessionEvaluation as "SessionEvaluation\n(Сессионный контроль)" {
+    SessionEvaluation : do / если reportingForm == EXAM: 2 ч предэкз. конс. + приём 0.5 ч * студ
+    SessionEvaluation : do / если reportingForm == PASS_TEST: приём зачёта 0.25 ч * студ
+}
+
+SessionEvaluation --> Completed : finalizeGrades()\n[ведомости аттестации закрыты]
+
+state Completed as "Completed\n(Курс завершен)" {
+    Completed : entry / сдача отчета о выполнении педагогической нагрузки
+}
+
+Completed --> [*]
+
+@enduml
+

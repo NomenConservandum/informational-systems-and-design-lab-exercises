@@ -1,0 +1,206 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam roundcorner 10
+skinparam packageStyle rectangle
+
+skinparam class {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+}
+
+enum AcademicDegree {
+    NONE
+    CANDIDATE_OF_SCIENCES
+    DOCTOR_OF_SCIENCES
+    PHD
+}
+
+enum AcademicTitle {
+    NONE
+    DOCENT
+    PROFESSOR
+}
+
+enum Position {
+    ASSISTANT
+    SENIOR_LECTURER
+    DOCENT
+    PROFESSOR
+    DEPARTMENT_HEAD
+}
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum ReportingForm {
+    EXAM        ' Экзамен: 0.5 ч * студ + 2 ч предэкз. консультация
+    PASS_TEST   ' Зачёт: 0.25 ч * студ
+}
+
+class Faculty {
+    - name: String
+    - deanFullName: String
+    - phone: String
+    - deanOfficeRoom: String
+    - studentCount: Integer
+    - foundationDate: Date
+    + addDepartment(dept: Department): void
+    + removeDepartment(dept: Department): void
+    + getDepartments(): List<Department>
+    + calculateTotalTeachers(): Integer
+    + validateStaffToStudentRatio(): Boolean
+}
+
+class Department {
+    - name: String
+    - headFullName: String
+    - phone: String
+    - roomNumber: String
+    - teacherCount: Integer
+    - isGraduating: Boolean
+    - foundationDate: Date
+    + addTeacher(teacher: Teacher): void
+    + removeTeacher(teacher: Teacher): void
+    + getTeachers(): List<Teacher>
+    + addCourse(course: Course): void
+    + getCourses(): List<Course>
+    + getTeacherCount(): Integer
+    + assignCourseToTeacher(course: Course, teacher: Teacher): void
+    + calculateTotalLoadHours(): Integer
+}
+
+class Teacher {
+    - lastName: String
+    - firstName: String
+    - middleName: String
+    - academicDegree: AcademicDegree
+    - academicTitle: AcademicTitle
+    - position: Position
+    - gender: Gender
+    - birthDate: Date
+    - courseCount: Integer
+    + getFullName(): String
+    + assignCourse(course: Course): void
+    + removeCourse(course: Course): void
+    + getCourses(): List<Course>
+    + getCourseCount(): Integer
+    + calculateTotalLoad(): Integer
+}
+
+class Course {
+    - title: String
+    - specialty: String
+    - studyYear: Integer
+    - semester: Integer
+    - studentCount: Integer
+    + getAuditoryHours(): AuditoryHours
+    + getAssessmentPlan(): AssessmentPlan
+    + getSchedule(): CourseSchedule
+    + addTopic(topic: Topic): void
+    + removeTopic(topic: Topic): void
+    + getTopics(): List<Topic>
+    + calculateTotalHours(): Integer
+    + validateSelfStudyLimits(): Boolean
+}
+
+class AuditoryHours {
+    - lectureHours: Integer
+    - practiceHours: Integer
+    - labHours: Integer
+    + getLectureHours(): Integer
+    + getPracticeHours(): Integer
+    + getLabHours(): Integer
+    + getTotalAuditoryHours(): Integer
+}
+
+class AssessmentPlan {
+    - reportingForm: ReportingForm
+    - controlWorkCount: Integer
+    + getReportingForm(): ReportingForm
+    + getControlWorkCount(): Integer
+    + calculateEvaluationHours(studentCount: Integer): Double
+    + calculateExamConsultationHours(): Double
+    + calculateTestGradingHours(studentCount: Integer): Double
+}
+
+class CourseSchedule {
+    - startDate: Date
+    - endDate: Date
+    + getStartDate(): Date
+    + getEndDate(): Date
+    + calculateWeeks(): Integer
+    + calculateWeeklyPairs(hours: Integer): Double
+}
+
+class AcademicLoad <<utility>> {
+    + {static} calculateConsultationHours(lectureHours: Integer): Double
+    + {static} calculateTotalHours(auditory: AuditoryHours, assessment: AssessmentPlan, studentCount: Integer): Integer
+}
+
+class Topic {
+    - title: String
+    - lectureHours: Integer
+    - practiceHours: Integer
+    - labHours: Integer
+    - isMandatory: Boolean
+    + getTotalHours(): Integer
+    + canBeSelfStudy(): Boolean
+    + setMandatory(mandatory: Boolean): void
+}
+
+' Отношения между сущностями
+Faculty "1" *-- "1..*" Department : contains >
+Department "1" *-- "1..*" Teacher : employs >
+Department "1" o-- "*" Course : oversees >
+Teacher "1" o-- "*" Course : conducts >
+
+' Декомпозиция перегруженного класса Course
+Course "1" *-- "1" AuditoryHours : contains >
+Course "1" *-- "1" AssessmentPlan : specifies >
+Course "1" *-- "1" CourseSchedule : follows >
+Course "1" *-- "1..*" Topic : consists of >
+Course ..> AcademicLoad : calculates via >
+
+' Зависимости перечислений
+Teacher ..> AcademicDegree : uses
+Teacher ..> AcademicTitle : uses
+Teacher ..> Position : uses
+Teacher ..> Gender : uses
+AssessmentPlan ..> ReportingForm : defines
+
+note right of Faculty
+  <b>Бизнес-правило 1:</b>
+  calculateTotalTeachers() <= floor(studentCount / 10)
+end note
+
+note bottom of AssessmentPlan
+  <b>Форма отчётности:</b>
+  Взаимоисключающие формы:
+  • EXAM: 0.5 * студ + 2 ч предэкз. конс.
+  • PASS_TEST: 0.25 * студ
+  КР: 0.15 * студ * controlWorkCount
+end note
+
+note bottom of AcademicLoad
+  <b>Формула нагрузки курса:</b>
+  TotalHours = ceil(
+    Lec + Prac + Lab
+    + 0.05 * Lec
+    + (isExam ? 2.0 : 0)
+    + (isExam ? 0.5 * students : 0.25 * students)
+    + 0.15 * students * tests
+  )
+end note
+
+note right of Topic
+  <b>Бизнес-правило 2:</b>
+  Для тем на СРС (isMandatory = false):
+  hoursSelfStudy(k) <= 0.15 * Course.hours(k)
+end note
+
+@enduml
+

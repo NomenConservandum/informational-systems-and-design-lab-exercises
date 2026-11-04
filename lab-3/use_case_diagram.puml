@@ -1,0 +1,83 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam roundcorner 10
+skinparam actorStyle awesome
+skinparam monochrome false
+skinparam handwritten false
+
+skinparam usecase {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+}
+
+skinparam actor {
+    BackgroundColor White
+    BorderColor #2C3E50
+}
+
+actor "Сотрудник деканата" as Dean
+actor "Заведующий кафедрой" as Head
+actor "Преподаватель" as Teacher
+actor "Система\n(Расчетный модуль)" as System <<system>>
+
+rectangle "Информационная система «Кафедры»" {
+
+    package "Управление структурой и контингентом" {
+        usecase "UC1: Управление данными факультета" as UC1
+        usecase "UC2: Контроль норматива\nчисленности ППС (10:1)" as UC2
+        usecase "UC3: Управление данными кафедры" as UC3
+
+        UC1 ..> UC2 : <<include>>
+    }
+
+    package "Кадровый учет и распределение нагрузки" {
+        usecase "UC4: Ведение кадрового учёта\nпреподавателей кафедры" as UC4
+        usecase "UC5: Назначение преподавателя\nна готовый курс" as UC5
+
+        UC4 ..> UC2 : <<include>>
+    }
+
+    package "Календарно-тематическое планирование курса" {
+        usecase "UC6: Формирование календарно-\nтематического плана курса" as UC6
+        usecase "UC7: Выделение тем на\nсамостоятельную работу (СРС)" as UC7
+        usecase "UC8: Контроль лимита\nчасов СРС (<= 15%)" as UC8
+
+        UC6 ..> UC7 : <<include>>
+        UC7 ..> UC8 : <<include>>
+    }
+
+    package "Параметры контроля и расчет нагрузки" {
+        usecase "UC9: Уточнение параметров\nконтроля и графика курса" as UC9
+        usecase "UC10: Расчет полной\nучебной нагрузки курса" as UC10
+        usecase "UC11: Расчет недельной\nсетки пар (1 пара = 2 ч)" as UC11
+
+        UC9 ..> UC10 : <<include>>
+        UC9 ..> UC11 : <<include>>
+    }
+}
+
+' Ассоциации акторов со сценариями
+Dean --> UC1
+Dean --> UC2
+
+Head --> UC3
+Head --> UC4
+Head --> UC5
+
+Teacher --> UC6
+Teacher --> UC7
+Teacher --> UC9
+
+System --> UC2
+System --> UC8
+System --> UC10
+System --> UC11
+
+note on link
+  Курс переходит к\nнаполнению после\nназначения лектора
+end note
+
+@enduml
+
