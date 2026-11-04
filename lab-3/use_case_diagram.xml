@@ -37,10 +37,10 @@
           <mxGeometry height="60" width="250" x="900" y="615" as="geometry" />
         </mxCell>
         <mxCell id="uc9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC9: Уточнение параметров&amp;#xa;контроля и графика курса" vertex="1">
-          <mxGeometry height="60" width="280" x="280" y="780" as="geometry" />
+          <mxGeometry height="60" width="280" x="280" y="750" as="geometry" />
         </mxCell>
         <mxCell id="uc10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC10: Расчет полной&amp;#xa;учебной нагрузки курса" vertex="1">
-          <mxGeometry height="60" width="260" x="620" y="780" as="geometry" />
+          <mxGeometry height="60" width="260" x="895" y="750" as="geometry" />
         </mxCell>
         <mxCell id="uc11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="UC11: Расчет недельной&amp;#xa;сетки пар (1 пара = 2 ч)" vertex="1">
           <mxGeometry height="60" width="250" x="900" y="845" as="geometry" />
@@ -109,7 +109,12 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ei6" edge="1" parent="1" source="uc9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;" target="uc11" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" x="0.068" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="420" y="875" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

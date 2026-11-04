@@ -180,6 +180,13 @@
 
 > Подробная спецификация каждого прецедента по шаблону Коберна (предусловия, основные и альтернативные потоки, постусловия, формулы) вынесена в отдельный документ: `lab-3/use_cases.md`.
 
+#align(center)[
+  #figure(
+    image("use_case_diagram.drawio.svg", width: 100%),
+    caption: [Диаграмма вариантов использования (Use Case Diagram) ИС «Кафедры»]
+  )
+]
+
 #pagebreak()
 
 = Диаграмма классов (Class Diagram)
@@ -219,6 +226,13 @@ enum ReportingForm {
 4. *Полный объем часов курса*:
    $ "TotalHours" = ceil("lectureHours" + "practiceHours" + "labHours" + H_("consult") + H_("exam_consult") + H_("eval") + H_("tests")) $
 5. *Недельная сетка занятий*: $W = floor(("endDate" - "startDate") / 7)$, пар в неделю: $"Pairs" = "Hours" / (2 times W)$.
+
+#align(center)[
+  #figure(
+    image("class_diagram.drawio.svg", width: 100%),
+    caption: [Диаграмма классов (Class Diagram) с декомпозицией сущности `Course`]
+  )
+]
 
 #pagebreak()
 
@@ -284,6 +298,13 @@ enum ReportingForm {
 
 Файлы модели: `lab-3/state_diagram.puml` и `lab-3/state_diagram.xml`.
 
+#align(center)[
+  #figure(
+    image("state_diagram.drawio.svg", width: 60%),
+    caption: [Диаграмма состояний (State Machine Diagram) жизненного цикла учебного курса]
+  )
+]
+
 == Диаграмма деятельности (Activity Diagram)
 
 Диаграмма деятельности моделирует внутреннее межобъектное взаимодействие сущностей предметной области при распределении нагрузки и календарно-тематическом планировании. В соответствии с принципами объектно-ориентированного проектирования дорожки ответственности (swimlanes) выделены строго для классов предметной области (`Faculty`, `Department`, `Teacher`, `Course`, `AcademicLoad`), исключая фиктивные монолитные сущности:
@@ -292,10 +313,17 @@ enum ReportingForm {
 2. *`Department` (Кафедра)*: регистрирует преподавателя в штате (`addTeacher()`), выбирает готовый курс из утвержденного учебного плана специальности и закрепляет его за преподавателем (`assignCourseToTeacher()`).
 3. *`Teacher` (Преподаватель)*: принимает курс к исполнению (`assignCourse()`), фиксирует параметры контроля (`AssessmentPlan`) и границы семестра (`CourseSchedule`), формирует темы дисциплины и размечает темы для самостоятельной работы (`isMandatory = false`).
 4. *`Course` (Курс)*: проверяет соблюдение лимита СРС ($\le 15\%$ по каждому виду занятий через `validateSelfStudyLimits()`). При нарушении управление возвращается преподавателю для корректировки; при соблюдении инициируется расчет нагрузки через вызов `AcademicLoad.calculateTotalHours()`.
-5. *`AcademicLoad` (Служебный класс расчета нагрузки)*: вычисляет текущие консультации ($0.05 \times "lectureHours"$), осуществляет ветвление по форме аттестации (`EXAM`: 2 ч предэкз. консультаций + $0.5 \times "studentCount"$; `PASS_TEST`: $0.25 \times "studentCount"$), рассчитывает проверку контрольных работ ($0.15 \times "studentCount" \times "controlWorkCount"$), суммирует составляющие и производит округление вверх $ceil(dots)$.
+5. *`AcademicLoad` (Служебный класс расчета нагрузки)*: вычисляет текущие консультации ($0.05 times "lectureHours"$), осуществляет ветвление по форме аттестации (`EXAM`: 2 ч предэкз. консультаций + $0.5 times "studentCount"$; `PASS_TEST`: $0.25 times "studentCount"$), рассчитывает проверку контрольных работ ($0.15 times "studentCount" times "controlWorkCount"$), суммирует составляющие и производит округление вверх $ceil(dots)$.
 6. *`Course` (Курс)*: производит расчет недель и сетки двухчасовых пар (`calculateWeeklyPairs()`), переводит курс в состояние `Configured` и включает его в утвержденное расписание занятий.
 
 Файлы модели: `lab-3/activity_diagram.puml` и `lab-3/activity_diagram.xml`.
+
+#align(center)[
+  #figure(
+    image("activity_diagram.drawio.svg", width: 85%),
+    caption: [Диаграмма деятельности (Activity Diagram) межобъектного взаимодействия сущностей]
+  )
+]
 
 #pagebreak()
 
