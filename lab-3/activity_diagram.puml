@@ -18,60 +18,61 @@ skinparam partition {
     BorderColor #BDC3C7
 }
 
-|Деканат|
+|Faculty (Факультет)|
 start
-:Актуализировать контингент студентов факультета;
-
-|ИС «Кафедры»|
-:Проверить норматив ППС факультета:\nВсего преподавателей кафедр <= studentCount / 10;
+:updateStudentCount(newCount)\nАктуализировать контингент обучающихся;
+:validateStaffToStudentRatio()\nПроверить норматив численности ППС:\n∑teachers <= floor(studentCount / 10);
 
 if (Норматив 10:1 соблюден?) then (нет)
-    |Деканат|
-    :Заблокировать добавление новых сотрудников;\nПотребовать корректировки контингента или штата;
+    :Заблокировать расширение штата кафедр;\nСформировать ошибку о превышении квоты;
     stop
 else (да)
 
-|Заведующий кафедрой|
-:Вести кадровый учёт преподавателей кафедры\n(добавление, обновление данных о преподавателях);
-:Просмотреть курсы учебного плана кафедры\n(статус Unassigned);
-:Выбрать курс и назначить ответственного\nпреподавателя из штата кафедры;
+|Department (Кафедра)|
+:addTeacher(teacher)\nЗарегистрировать преподавателя в штате кафедры;
+:getCourses().find(Unassigned)\nВыбрать готовый курс учебного плана;
+:assignCourseToTeacher(course, teacher)\nЗакрепить курс за ответственным преподавателем;
 
-|Преподаватель|
-:Принять закрепленный курс к исполнению\n(статус курса: Assigned);
-:Указать форму отчётности (ReportingForm:\nEXAM либо PASS_TEST) и количество КР;
-:Указать календарные даты семестра (startDate, endDate);
+|Teacher (Преподаватель)|
+:assignCourse(course)\nПринять курс к исполнению (courseCount++);
+:setAssessmentPlan(reportingForm, controlWorkCount)\nВыбрать ReportingForm (EXAM / PASS_TEST) и число КР;
+:setScheduleDates(startDate, endDate)\nУказать календарные границы семестра;
 
 repeat
-    :Добавить темы курса и распределить\nчасы по видам (лекции, практики, лабы);
-    :Отметить темы для выноса на\nсамостоятельную работу (СРС);
+    :addTopic(topic)\nДобавить темы курса и распределить часы (Lec, Prac, Lab);
+    :topic.setMandatory(false)\nОтметить темы для самостоятельной работы (СРС);
 
-    |ИС «Кафедры»|
-    :Проверить лимит часов СРС по каждому виду:\nчасы СРС <= 15% от общего объема данного вида;
+    |Course (Курс)|
+    :validateSelfStudyLimits()\nПроверить лимит СРС по каждому виду:\nHours_SRS(k) <= 0.15 * AuditoryHours(k);
 
     if (Часы СРС превышают 15%?) then (да)
-        |Преподаватель|
+        |Teacher (Преподаватель)|
         :Получить предупреждение о нарушении порога СРС;\nСкорректировать темы и часы;
     else (нет)
         break
     endif
 repeat while (требуется корректировка)
 
-|ИС «Кафедры»|
-:Рассчитать часы текущих консультаций:\n0.05 * lectureHours;
+|Course (Курс)|
+:calculateTotalHours()\nИнициировать расчет учебной нагрузки курса;
 
-if (ReportingForm == EXAM?) then (да)
-    :Добавить 2 ч предэкзаменационной консультации;\nРассчитать приём экзамена: 0.5 ч * studentCount;
+|AcademicLoad (Расчет нагрузки)|
+:calculateConsultationHours(lectureHours)\nРассчитать текущие консультации: 0.05 * lectureHours;
+
+if (reportingForm == EXAM?) then (да)
+    :Добавить 2.0 ч предэкзаменационной консультации;\nРассчитать приём экзамена: 0.5 ч * studentCount;
 else (нет)
     :Рассчитать приём зачёта: 0.25 ч * studentCount;
 endif
 
-:Рассчитать часы проверки КР:\n0.15 ч * studentCount * controlWorkCount;
-:Суммировать и округлить вверх:\nTotalHours = ceil(сумма всех часов);
-:Рассчитать учебных недель W = floor((endDate - startDate) / 7);\nРассчитать сетку пар в неделю: Пары = Часы / (2 * W);
-:Перевести курс в статус Configured;\nВключить курс в официальное расписание занятий;
+:calculateTestGradingHours()\nРассчитать часы проверки КР: 0.15 ч * studentCount * tests;
+:calculateTotalHours(...)\nСуммировать все часы и округлить вверх:\nTotalHours = ceil(сумма всех часов);
+
+|Course (Курс)|
+:calculateWeeks() и calculateWeeklyPairs()\nРассчитать недели W = floor((endDate - startDate) / 7);\nРассчитать сетку пар в неделю: Пары = Часы / (2 * W);
+:updateStatus(Configured)\nПеревести курс в статус Configured;\nВключить курс в утвержденное расписание;
 
 endif
 
 stop
 @enduml
-

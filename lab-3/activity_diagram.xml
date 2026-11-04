@@ -1,190 +1,202 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
-  <diagram name="Activity Diagram - Учебный процесс и нагрузка" id="departments_activity_diagram">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1900" math="0" shadow="0">
+  <diagram name="Activity Diagram - Взаимодействие сущностей при распределении нагрузки" id="departments_activity_diagram">
+    <mxGraphModel dx="1246" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam shadowing false\nskinparam packageStyle rectangle\n\nskinparam activity {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n    StartColor #27AE60\n    EndColor #C0392B\n    BarColor #2C3E50\n}\n\nskinparam partition {\n    BackgroundColor #F8F9FA\n    BorderColor #BDC3C7\n}\n\n|\u0414\u0435\u043a\u0430\u043d\u0430\u0442|\nstart\n:\u0410\u043a\u0442\u0443\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043d\u0442\u0438\u043d\u0433\u0435\u043d\u0442 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0430;\n\n|\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n:\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u043e\u0440\u043c\u0430\u0442\u0438\u0432 \u041f\u041f\u0421 \u0444\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442\u0430:\\n\u0412\u0441\u0435\u0433\u043e \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u043a\u0430\u0444\u0435\u0434\u0440 &lt;= studentCount / 10;\n\nif (\u041d\u043e\u0440\u043c\u0430\u0442\u0438\u0432 10:1 \u0441\u043e\u0431\u043b\u044e\u0434\u0435\u043d?) then (\u043d\u0435\u0442)\n    |\u0414\u0435\u043a\u0430\u043d\u0430\u0442|\n    :\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u044b\u0445 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432;\\n\u041f\u043e\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u043a\u0438 \u043a\u043e\u043d\u0442\u0438\u043d\u0433\u0435\u043d\u0442\u0430 \u0438\u043b\u0438 \u0448\u0442\u0430\u0442\u0430;\n    stop\nelse (\u0434\u0430)\n\n|\u0417\u0430\u0432\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u043e\u0439|\n:\u0412\u0435\u0441\u0442\u0438 \u043a\u0430\u0434\u0440\u043e\u0432\u044b\u0439 \u0443\u0447\u0451\u0442 \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u043a\u0430\u0444\u0435\u0434\u0440\u044b\\n(\u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435, \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u043e \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044f\u0445);\n:\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043a\u0443\u0440\u0441\u044b \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043f\u043b\u0430\u043d\u0430 \u043a\u0430\u0444\u0435\u0434\u0440\u044b\\n(\u0441\u0442\u0430\u0442\u0443\u0441 Unassigned);\n:\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u043a\u0443\u0440\u0441 \u0438 \u043d\u0430\u0437\u043d\u0430\u0447\u0438\u0442\u044c \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e\\n\u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044f \u0438\u0437 \u0448\u0442\u0430\u0442\u0430 \u043a\u0430\u0444\u0435\u0434\u0440\u044b;\n\n|\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\n:\u041f\u0440\u0438\u043d\u044f\u0442\u044c \u0437\u0430\u043a\u0440\u0435\u043f\u043b\u0435\u043d\u043d\u044b\u0439 \u043a\u0443\u0440\u0441 \u043a \u0438\u0441\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044e\\n(\u0441\u0442\u0430\u0442\u0443\u0441 \u043a\u0443\u0440\u0441\u0430: Assigned);\n:\u0423\u043a\u0430\u0437\u0430\u0442\u044c \u0444\u043e\u0440\u043c\u0443 \u043e\u0442\u0447\u0451\u0442\u043d\u043e\u0441\u0442\u0438 (ReportingForm:\\nEXAM \u043b\u0438\u0431\u043e PASS_TEST) \u0438 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u041a\u0420;\n:\u0423\u043a\u0430\u0437\u0430\u0442\u044c \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0435 \u0434\u0430\u0442\u044b \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0430 (startDate, endDate);\n\nrepeat\n    :\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043c\u044b \u043a\u0443\u0440\u0441\u0430 \u0438 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c\\n\u0447\u0430\u0441\u044b \u043f\u043e \u0432\u0438\u0434\u0430\u043c (\u043b\u0435\u043a\u0446\u0438\u0438, \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438, \u043b\u0430\u0431\u044b);\n    :\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u0442\u0435\u043c\u044b \u0434\u043b\u044f \u0432\u044b\u043d\u043e\u0441\u0430 \u043d\u0430\\n\u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0440\u0430\u0431\u043e\u0442\u0443 (\u0421\u0420\u0421);\n\n    |\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n    :\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043b\u0438\u043c\u0438\u0442 \u0447\u0430\u0441\u043e\u0432 \u0421\u0420\u0421 \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u043c\u0443 \u0432\u0438\u0434\u0443:\\n\u0447\u0430\u0441\u044b \u0421\u0420\u0421 &lt;= 15% \u043e\u0442 \u043e\u0431\u0449\u0435\u0433\u043e \u043e\u0431\u044a\u0435\u043c\u0430 \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u0432\u0438\u0434\u0430;\n\n    if (\u0427\u0430\u0441\u044b \u0421\u0420\u0421 \u043f\u0440\u0435\u0432\u044b\u0448\u0430\u044e\u0442 15%?) then (\u0434\u0430)\n        |\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c|\n        :\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435 \u043e \u043d\u0430\u0440\u0443\u0448\u0435\u043d\u0438\u0438 \u043f\u043e\u0440\u043e\u0433\u0430 \u0421\u0420\u0421;\\n\u0421\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0435\u043c\u044b \u0438 \u0447\u0430\u0441\u044b;\n    else (\u043d\u0435\u0442)\n        break\n    endif\nrepeat while (\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u043a\u0430)\n\n|\u0418\u0421 \u00ab\u041a\u0430\u0444\u0435\u0434\u0440\u044b\u00bb|\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0439:\\n0.05 * lectureHours;\n\nif (ReportingForm == EXAM?) then (\u0434\u0430)\n    :\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c 2 \u0447 \u043f\u0440\u0435\u0434\u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0438;\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043f\u0440\u0438\u0451\u043c \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430: 0.5 \u0447 * studentCount;\nelse (\u043d\u0435\u0442)\n    :\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043f\u0440\u0438\u0451\u043c \u0437\u0430\u0447\u0451\u0442\u0430: 0.25 \u0447 * studentCount;\nendif\n\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u041a\u0420:\\n0.15 \u0447 * studentCount * controlWorkCount;\n:\u0421\u0443\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438 \u043e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u0432\u0432\u0435\u0440\u0445:\\nTotalHours = ceil(\u0441\u0443\u043c\u043c\u0430 \u0432\u0441\u0435\u0445 \u0447\u0430\u0441\u043e\u0432);\n:\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0443\u0447\u0435\u0431\u043d\u044b\u0445 \u043d\u0435\u0434\u0435\u043b\u044c W = floor((endDate - startDate) / 7);\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0435\u0442\u043a\u0443 \u043f\u0430\u0440 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e: \u041f\u0430\u0440\u044b = \u0427\u0430\u0441\u044b / (2 * W);\n:\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u043a\u0443\u0440\u0441 \u0432 \u0441\u0442\u0430\u0442\u0443\u0441 Configured;\\n\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043a\u0443\u0440\u0441 \u0432 \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u0439;\n\nendif\n\nstop\n@enduml\n\n&quot;, &quot;config&quot;: null}" id="puml_root">
-          <mxCell vertex="1" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" connectable="0">
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam shadowing false\nskinparam packageStyle rectangle\n\nskinparam activity {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n    StartColor #27AE60\n    EndColor #C0392B\n    BarColor #2C3E50\n}\n\nskinparam partition {\n    BackgroundColor #F8F9FA\n    BorderColor #BDC3C7\n}\n\n|Faculty (\u0424\u0430\u043a\u0443\u043b\u044c\u0442\u0435\u0442)|\nstart\n:updateStudentCount(newCount)\\n\u0410\u043a\u0442\u0443\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043d\u0442\u0438\u043d\u0433\u0435\u043d\u0442 \u043e\u0431\u0443\u0447\u0430\u044e\u0449\u0438\u0445\u0441\u044f;\n:validateStaffToStudentRatio()\\n\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u043e\u0440\u043c\u0430\u0442\u0438\u0432 \u0447\u0438\u0441\u043b\u0435\u043d\u043d\u043e\u0441\u0442\u0438 \u041f\u041f\u0421:\\n\u2211teachers &lt;= floor(studentCount / 10);\n\nif (\u041d\u043e\u0440\u043c\u0430\u0442\u0438\u0432 10:1 \u0441\u043e\u0431\u043b\u044e\u0434\u0435\u043d?) then (\u043d\u0435\u0442)\n    :\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435 \u0448\u0442\u0430\u0442\u0430 \u043a\u0430\u0444\u0435\u0434\u0440;\\n\u0421\u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043e\u0448\u0438\u0431\u043a\u0443 \u043e \u043f\u0440\u0435\u0432\u044b\u0448\u0435\u043d\u0438\u0438 \u043a\u0432\u043e\u0442\u044b;\n    stop\nelse (\u0434\u0430)\n\n|Department (\u041a\u0430\u0444\u0435\u0434\u0440\u0430)|\n:addTeacher(teacher)\\n\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u0448\u0442\u0430\u0442\u0435 \u043a\u0430\u0444\u0435\u0434\u0440\u044b;\n:getCourses().find(Unassigned)\\n\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0433\u043e\u0442\u043e\u0432\u044b\u0439 \u043a\u0443\u0440\u0441 \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043f\u043b\u0430\u043d\u0430;\n:assignCourseToTeacher(course, teacher)\\n\u0417\u0430\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u043a\u0443\u0440\u0441 \u0437\u0430 \u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u043c \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u0435\u043c;\n\n|Teacher (\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c)|\n:assignCourse(course)\\n\u041f\u0440\u0438\u043d\u044f\u0442\u044c \u043a\u0443\u0440\u0441 \u043a \u0438\u0441\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044e (courseCount++);\n:setAssessmentPlan(reportingForm, controlWorkCount)\\n\u0412\u044b\u0431\u0440\u0430\u0442\u044c ReportingForm (EXAM / PASS_TEST) \u0438 \u0447\u0438\u0441\u043b\u043e \u041a\u0420;\n:setScheduleDates(startDate, endDate)\\n\u0423\u043a\u0430\u0437\u0430\u0442\u044c \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u044b\u0435 \u0433\u0440\u0430\u043d\u0438\u0446\u044b \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0430;\n\nrepeat\n    :addTopic(topic)\\n\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043c\u044b \u043a\u0443\u0440\u0441\u0430 \u0438 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u0447\u0430\u0441\u044b (Lec, Prac, Lab);\n    :topic.setMandatory(false)\\n\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u0442\u0435\u043c\u044b \u0434\u043b\u044f \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u0440\u0430\u0431\u043e\u0442\u044b (\u0421\u0420\u0421);\n\n    |Course (\u041a\u0443\u0440\u0441)|\n    :validateSelfStudyLimits()\\n\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043b\u0438\u043c\u0438\u0442 \u0421\u0420\u0421 \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u043c\u0443 \u0432\u0438\u0434\u0443:\\nHours_SRS(k) &lt;= 0.15 * AuditoryHours(k);\n\n    if (\u0427\u0430\u0441\u044b \u0421\u0420\u0421 \u043f\u0440\u0435\u0432\u044b\u0448\u0430\u044e\u0442 15%?) then (\u0434\u0430)\n        |Teacher (\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c)|\n        :\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435 \u043e \u043d\u0430\u0440\u0443\u0448\u0435\u043d\u0438\u0438 \u043f\u043e\u0440\u043e\u0433\u0430 \u0421\u0420\u0421;\\n\u0421\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0435\u043c\u044b \u0438 \u0447\u0430\u0441\u044b;\n    else (\u043d\u0435\u0442)\n        break\n    endif\nrepeat while (\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u043a\u0430)\n\n|Course (\u041a\u0443\u0440\u0441)|\n:calculateTotalHours()\\n\u0418\u043d\u0438\u0446\u0438\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0430\u0441\u0447\u0435\u0442 \u0443\u0447\u0435\u0431\u043d\u043e\u0439 \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0438 \u043a\u0443\u0440\u0441\u0430;\n\n|AcademicLoad (\u0420\u0430\u0441\u0447\u0435\u0442 \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0438)|\n:calculateConsultationHours(lectureHours)\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0442\u0435\u043a\u0443\u0449\u0438\u0435 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0438: 0.05 * lectureHours;\n\nif (reportingForm == EXAM?) then (\u0434\u0430)\n    :\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c 2.0 \u0447 \u043f\u0440\u0435\u0434\u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0438;\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043f\u0440\u0438\u0451\u043c \u044d\u043a\u0437\u0430\u043c\u0435\u043d\u0430: 0.5 \u0447 * studentCount;\nelse (\u043d\u0435\u0442)\n    :\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043f\u0440\u0438\u0451\u043c \u0437\u0430\u0447\u0451\u0442\u0430: 0.25 \u0447 * studentCount;\nendif\n\n:calculateTestGradingHours()\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u041a\u0420: 0.15 \u0447 * studentCount * tests;\n:calculateTotalHours(...)\\n\u0421\u0443\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u0435 \u0447\u0430\u0441\u044b \u0438 \u043e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u0432\u0432\u0435\u0440\u0445:\\nTotalHours = ceil(\u0441\u0443\u043c\u043c\u0430 \u0432\u0441\u0435\u0445 \u0447\u0430\u0441\u043e\u0432);\n\n|Course (\u041a\u0443\u0440\u0441)|\n:calculateWeeks() \u0438 calculateWeeklyPairs()\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u043d\u0435\u0434\u0435\u043b\u0438 W = floor((endDate - startDate) / 7);\\n\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0435\u0442\u043a\u0443 \u043f\u0430\u0440 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e: \u041f\u0430\u0440\u044b = \u0427\u0430\u0441\u044b / (2 * W);\n:updateStatus(Configured)\\n\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u043a\u0443\u0440\u0441 \u0432 \u0441\u0442\u0430\u0442\u0443\u0441 Configured;\\n\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043a\u0443\u0440\u0441 \u0432 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435;\n\nendif\n\nstop\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
             <mxGeometry as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="lane_dean" parent="1" vertex="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Деканат">
-          <mxGeometry x="30" y="40" width="260" height="1780" as="geometry" />
+        <mxCell id="lane_faculty" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Faculty (Факультет)" vertex="1">
+          <mxGeometry height="1700" width="240" x="30" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="lane_head" parent="1" vertex="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Заведующий кафедрой">
-          <mxGeometry x="290" y="40" width="270" height="1780" as="geometry" />
+        <mxCell id="lane_dept" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=0;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Department (Кафедра)" vertex="1">
+          <mxGeometry height="1700" width="240" x="270" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="lane_teach" parent="1" vertex="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Преподаватель">
-          <mxGeometry x="560" y="40" width="280" height="1780" as="geometry" />
+        <mxCell id="lane_teacher" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=0;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Teacher (Преподаватель)" vertex="1">
+          <mxGeometry height="1700" width="250" x="510" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="lane_sys" parent="1" vertex="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=50;fontFamily=Helvetica;fontSize=12;" value="ИС «Кафедры»">
-          <mxGeometry x="840" y="40" width="310" height="1780" as="geometry" />
+        <mxCell id="lane_course" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=0;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=50;fontFamily=Helvetica;fontSize=12;" value="Course (Курс)" vertex="1">
+          <mxGeometry height="1700" width="250" x="760" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="act_start" parent="1" vertex="1" style="ellipse;fillColor=#27AE60;strokeColor=#1E8449;" value="">
-          <mxGeometry x="145" y="80" width="30" height="30" as="geometry" />
+        <mxCell id="lane_load" parent="1" style="swimlane;startSize=30;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=0;fillColor=#fff2cc;strokeColor=#d6b656;opacity=50;fontFamily=Helvetica;fontSize=12;" value="AcademicLoad (Расчет нагрузки)" vertex="1">
+          <mxGeometry height="1700" width="250" x="1010" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="act_d1" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Актуализировать контингент&amp;#xa;студентов факультета">
-          <mxGeometry x="50" y="130" width="220" height="50" as="geometry" />
+        <mxCell id="act_start" parent="1" style="ellipse;fillColor=#27AE60;strokeColor=#1E8449;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="135" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="act_s1" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Проверить норматив ППС:&amp;#xa;Всего преподавателей ≤ students / 10">
-          <mxGeometry x="880" y="130" width="230" height="60" as="geometry" />
+        <mxCell id="act_f1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="updateStudentCount(count)&#xa;Актуализировать контингент&#xa;студентов факультета" vertex="1">
+          <mxGeometry height="55" width="210" x="45" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="dec_10_1" parent="1" vertex="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Норматив&amp;#xa;10:1&amp;#xa;соблюден?">
-          <mxGeometry x="920" y="210" width="150" height="75" as="geometry" />
+        <mxCell id="act_f2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="validateStaffToStudentRatio()&#xa;Проверить норматив ППС:&#xa;∑teachers ≤ floor(students / 10)" vertex="1">
+          <mxGeometry height="65" width="210" x="45" y="210" as="geometry" />
         </mxCell>
-        <mxCell id="act_d_block" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Заблокировать утверждение штата;&amp;#xa;потребовать корректировки">
-          <mxGeometry x="50" y="222" width="220" height="55" as="geometry" />
+        <mxCell id="dec_ratio" parent="1" style="rhombus;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;align=center;" value="Норматив 10:1&#xa;соблюден?" vertex="1">
+          <mxGeometry height="75" width="150" x="75" y="300" as="geometry" />
         </mxCell>
-        <mxCell id="act_stop1" parent="1" vertex="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="">
-          <mxGeometry x="145" y="305" width="30" height="30" as="geometry" />
+        <mxCell id="act_f_block" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="Заблокировать расширение штата;&#xa;сообщить о превышении квоты" vertex="1">
+          <mxGeometry height="55" width="210" x="45" y="400" as="geometry" />
         </mxCell>
-        <mxCell id="act_stop1_in" parent="1" vertex="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="">
-          <mxGeometry x="151" y="311" width="18" height="18" as="geometry" />
+        <mxCell id="act_stop1" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="135" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="act_h1" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Вести кадровый учёт&amp;#xa;преподавателей кафедры">
-          <mxGeometry x="315" y="310" width="220" height="50" as="geometry" />
+        <mxCell id="act_stop1_in" parent="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="" vertex="1">
+          <mxGeometry height="18" width="18" x="141" y="486" as="geometry" />
         </mxCell>
-        <mxCell id="act_h2" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Просмотреть готовые курсы&amp;#xa;учебного плана (Unassigned)">
-          <mxGeometry x="315" y="380" width="220" height="55" as="geometry" />
+        <mxCell id="act_d1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="addTeacher(teacher)&#xa;Зарегистрировать преподавателя&#xa;в штате кафедры" vertex="1">
+          <mxGeometry height="65" width="210" x="285" y="305" as="geometry" />
         </mxCell>
-        <mxCell id="act_h3" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Выбрать курс и назначить&amp;#xa;ответственного преподавателя">
-          <mxGeometry x="315" y="455" width="220" height="55" as="geometry" />
+        <mxCell id="act_d2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="getCourses().find(Unassigned)&#xa;Выбрать готовый курс&#xa;учебного плана кафедры" vertex="1">
+          <mxGeometry height="60" width="210" x="285" y="395" as="geometry" />
         </mxCell>
-        <mxCell id="act_t1" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Принять закрепленный курс&amp;#xa;(статус курса: Assigned)">
-          <mxGeometry x="590" y="530" width="220" height="50" as="geometry" />
+        <mxCell id="act_d3" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="assignCourseToTeacher(c, t)&#xa;Закрепить курс за ответственным&#xa;преподавателем кафедры" vertex="1">
+          <mxGeometry height="65" width="210" x="285" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="act_t2" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Выбрать ReportingForm:&amp;#xa;EXAM либо PASS_TEST и число КР">
-          <mxGeometry x="590" y="600" width="220" height="55" as="geometry" />
+        <mxCell id="act_t1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="assignCourse(course)&#xa;Принять курс к исполнению&#xa;(courseCount++)" vertex="1">
+          <mxGeometry height="55" width="210" x="530" y="565" as="geometry" />
         </mxCell>
-        <mxCell id="act_t3" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Указать календарные даты&amp;#xa;семестра (startDate, endDate)">
-          <mxGeometry x="590" y="675" width="220" height="50" as="geometry" />
+        <mxCell id="act_t2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="setAssessmentPlan(form, kr)&#xa;Выбрать ReportingForm&#xa;(EXAM / PASS_TEST) и число КР" vertex="1">
+          <mxGeometry height="60" width="210" x="530" y="640" as="geometry" />
         </mxCell>
-        <mxCell id="act_t4" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Добавить темы курса и&amp;#xa;распределить часы по видам">
-          <mxGeometry x="590" y="745" width="220" height="55" as="geometry" />
+        <mxCell id="act_t3" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="setScheduleDates(start, end)&#xa;Указать календарные даты&#xa;начала и окончания семестра" vertex="1">
+          <mxGeometry height="55" width="210" x="530" y="720" as="geometry" />
         </mxCell>
-        <mxCell id="act_t5" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Отметить темы для выноса&amp;#xa;на самостоятельную работу (СРС)">
-          <mxGeometry x="590" y="820" width="220" height="55" as="geometry" />
+        <mxCell id="act_t4" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="addTopic(topic)&#xa;Сформировать темы курса и&#xa;распределить часы (Lec, Prac, Lab)" vertex="1">
+          <mxGeometry height="65" width="210" x="530" y="795" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_srs" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Проверить лимит часов СРС:&amp;#xa;часы СРС ≤ 15% от объема вида">
-          <mxGeometry x="880" y="820" width="230" height="60" as="geometry" />
+        <mxCell id="act_t5" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="topic.setMandatory(false)&#xa;Отметить темы для выноса&#xa;на самостоятельную работу (СРС)" vertex="1">
+          <mxGeometry height="60" width="210" x="530" y="880" as="geometry" />
         </mxCell>
-        <mxCell id="dec_srs" parent="1" vertex="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="Часы СРС&amp;#xa;превышают 15%?">
-          <mxGeometry x="920" y="905" width="150" height="75" as="geometry" />
+        <mxCell id="act_c_srs" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="validateSelfStudyLimits()&#xa;Проверить лимит часов СРС:&#xa;Hours_SRS(k) ≤ 0.15 * Auditory(k)" vertex="1">
+          <mxGeometry height="60" width="210" x="780" y="880" as="geometry" />
         </mxCell>
-        <mxCell id="act_t_corr" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Получить предупреждение;&amp;#xa;скорректировать темы и часы">
-          <mxGeometry x="590" y="915" width="220" height="55" as="geometry" />
+        <mxCell id="dec_srs" parent="1" style="rhombus;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;align=center;" value="Часы СРС&#xa;превышают 15%?" vertex="1">
+          <mxGeometry height="75" width="150" x="810" y="965" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_consult" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Рассчитать часы консультаций:&amp;#xa;текущие = 0.05 * lectureHours">
-          <mxGeometry x="880" y="1010" width="230" height="55" as="geometry" />
+        <mxCell id="act_t_corr" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="Получить предупреждение СРС;&#xa;скорректировать темы и часы" vertex="1">
+          <mxGeometry height="55" width="210" x="530" y="975" as="geometry" />
         </mxCell>
-        <mxCell id="dec_exam" parent="1" vertex="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" value="ReportingForm&amp;#xa;== EXAM?">
-          <mxGeometry x="920" y="1085" width="150" height="75" as="geometry" />
+        <mxCell id="act_c_calc" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="calculateTotalHours()&#xa;Инициировать расчет учебной&#xa;нагрузки курса" vertex="1">
+          <mxGeometry height="60" width="210" x="780" y="1070" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_exam" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Добавить 2 ч предэкз. конс.&amp;#xa;Приём экзамена: 0.5 ч * студенты">
-          <mxGeometry x="880" y="1180" width="230" height="55" as="geometry" />
+        <mxCell id="act_al_consult" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="calculateConsultationHours(lec)&#xa;Рассчитать текущие консультации:&#xa;0.05 * lectureHours" vertex="1">
+          <mxGeometry height="60" width="210" x="1030" y="1070" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_pass" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Приём зачёта:&amp;#xa;0.25 ч * студенты">
-          <mxGeometry x="660" y="1180" width="180" height="55" as="geometry" />
+        <mxCell id="dec_exam" parent="1" style="rhombus;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;align=center;" value="ReportingForm&#xa;== EXAM?" vertex="1">
+          <mxGeometry height="75" width="150" x="1060" y="1155" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_tests" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Рассчитать часы проверки КР:&amp;#xa;0.15 ч * студенты * число КР">
-          <mxGeometry x="880" y="1260" width="230" height="55" as="geometry" />
+        <mxCell id="act_al_exam" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="Добавить 2 ч предэкз. конс.&#xa;Приём экзамена:&#xa;0.5 ч * studentCount" vertex="1">
+          <mxGeometry height="65" width="210" x="1030" y="1255" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_total" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Суммировать и округлить:&amp;#xa;TotalHours = ceil(сумма всех часов)">
-          <mxGeometry x="880" y="1335" width="230" height="55" as="geometry" />
+        <mxCell id="act_al_pass" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="Приём зачёта:&#xa;0.25 ч * studentCount" vertex="1">
+          <mxGeometry height="65" width="210" x="780" y="1255" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_pairs" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="W = floor((endDate - startDate)/7)&amp;#xa;Сетка пар = Часы / (2 * W)">
-          <mxGeometry x="880" y="1410" width="230" height="55" as="geometry" />
+        <mxCell id="act_al_tests" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="calculateTestGradingHours()&#xa;Рассчитать часы проверки КР:&#xa;0.15 ч * studentCount * tests" vertex="1">
+          <mxGeometry height="60" width="210" x="1030" y="1345" as="geometry" />
         </mxCell>
-        <mxCell id="act_s_done" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;" value="Перевести курс в статус Configured;&amp;#xa;включить в расписание занятий">
-          <mxGeometry x="880" y="1485" width="230" height="60" as="geometry" />
+        <mxCell id="act_al_total" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="calculateTotalHours(...)&#xa;Суммировать все часы и&#xa;округлить вверх: ceil(...)" vertex="1">
+          <mxGeometry height="65" width="210" x="1030" y="1425" as="geometry" />
         </mxCell>
-        <mxCell id="act_stop2" parent="1" vertex="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="">
-          <mxGeometry x="980" y="1575" width="30" height="30" as="geometry" />
+        <mxCell id="act_c_pairs" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="calculateWeeklyPairs()&#xa;Рассчитать недели: W = floor(Δd/7)&#xa;Сетка пар = Часы / (2 * W)" vertex="1">
+          <mxGeometry height="65" width="210" x="780" y="1515" as="geometry" />
         </mxCell>
-        <mxCell id="act_stop2_in" parent="1" vertex="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="">
-          <mxGeometry x="986" y="1581" width="18" height="18" as="geometry" />
+        <mxCell id="act_c_config" parent="1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=24;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;" value="updateStatus(Configured)&#xa;Перевести курс в Configured;&#xa;включить в расписание занятий" vertex="1">
+          <mxGeometry height="60" width="210" x="780" y="1600" as="geometry" />
         </mxCell>
-        <mxCell id="ea_start" parent="1" edge="1" source="act_start" target="act_d1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="act_stop2" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#C0392B;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="870" y="1680" as="geometry" />
+        </mxCell>
+        <mxCell id="act_stop2_in" parent="1" style="ellipse;fillColor=#C0392B;strokeColor=#C0392B;" value="" vertex="1">
+          <mxGeometry height="18" width="18" x="876" y="1686" as="geometry" />
+        </mxCell>
+        <mxCell id="e_start" edge="1" parent="1" source="act_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_f1" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_d1_s1" parent="1" edge="1" source="act_d1" target="act_s1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_f1_f2" edge="1" parent="1" source="act_f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_f2" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_s1_dec" parent="1" edge="1" source="act_s1" target="dec_10_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_f2_dec" edge="1" parent="1" source="act_f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="dec_ratio" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_dec_no" parent="1" edge="1" source="dec_10_1" target="act_d_block" value="нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_dec_no" edge="1" parent="1" source="dec_ratio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_f_block" value="нет">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_block_stop" parent="1" edge="1" source="act_d_block" target="act_stop1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_block_stop" edge="1" parent="1" source="act_f_block" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_stop1" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_dec_yes" parent="1" edge="1" source="dec_10_1" target="act_h1" value="да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_dec_yes" edge="1" parent="1" source="dec_ratio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_d1" value="да">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_h1_h2" parent="1" edge="1" source="act_h1" target="act_h2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_d1_d2" edge="1" parent="1" source="act_d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_d2" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_h2_h3" parent="1" edge="1" source="act_h2" target="act_h3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_d2_d3" edge="1" parent="1" source="act_d2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_d3" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_h3_t1" parent="1" edge="1" source="act_h3" target="act_t1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_d3_t1" edge="1" parent="1" source="act_d3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t1" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_t1_t2" parent="1" edge="1" source="act_t1" target="act_t2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_t1_t2" edge="1" parent="1" source="act_t1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t2" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_t2_t3" parent="1" edge="1" source="act_t2" target="act_t3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_t2_t3" edge="1" parent="1" source="act_t2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t3" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_t3_t4" parent="1" edge="1" source="act_t3" target="act_t4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_t3_t4" edge="1" parent="1" source="act_t3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t4" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_t4_t5" parent="1" edge="1" source="act_t4" target="act_t5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_t4_t5" edge="1" parent="1" source="act_t4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t5" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_t5_srs" parent="1" edge="1" source="act_t5" target="act_s_srs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_t5_srs" edge="1" parent="1" source="act_t5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_c_srs" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_srs_dec" parent="1" edge="1" source="act_s_srs" target="dec_srs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_srs_dec" edge="1" parent="1" source="act_c_srs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="dec_srs" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_srs_yes" parent="1" edge="1" source="dec_srs" target="act_t_corr" value="да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_srs_yes" edge="1" parent="1" source="dec_srs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t_corr" value="да">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_corr_t4" parent="1" edge="1" source="act_t_corr" target="act_t4" value="исправление" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_corr_t4" edge="1" parent="1" source="act_t_corr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_t4" value="исправление">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_srs_no" parent="1" edge="1" source="dec_srs" target="act_s_consult" value="нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_srs_no" edge="1" parent="1" source="dec_srs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_c_calc" value="нет">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_consult_dec" parent="1" edge="1" source="act_s_consult" target="dec_exam" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_c_al" edge="1" parent="1" source="act_c_calc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_consult" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_exam_yes" parent="1" edge="1" source="dec_exam" target="act_s_exam" value="да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_consult_dec" edge="1" parent="1" source="act_al_consult" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="dec_exam" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_exam_no" parent="1" edge="1" source="dec_exam" target="act_s_pass" value="нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_exam_yes" edge="1" parent="1" source="dec_exam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_exam" value="да">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_exam_tests" parent="1" edge="1" source="act_s_exam" target="act_s_tests" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_exam_no" edge="1" parent="1" source="dec_exam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_pass" value="нет">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_pass_tests" parent="1" edge="1" source="act_s_pass" target="act_s_tests" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_exam_tests" edge="1" parent="1" source="act_al_exam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_tests" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_tests_total" parent="1" edge="1" source="act_s_tests" target="act_s_total" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_pass_tests" edge="1" parent="1" source="act_al_pass" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_tests" value="">
+          <mxGeometry relative="1" x="-0.02" as="geometry">
+            <Array as="points">
+              <mxPoint x="885" y="1375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_tests_total" edge="1" parent="1" source="act_al_tests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_al_total" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_total_pairs" parent="1" edge="1" source="act_s_total" target="act_s_pairs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_al_pairs" edge="1" parent="1" source="act_al_total" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_c_pairs" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_pairs_done" parent="1" edge="1" source="act_s_pairs" target="act_s_done" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_pairs_config" edge="1" parent="1" source="act_c_pairs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_c_config" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ea_done_stop" parent="1" edge="1" source="act_s_done" target="act_stop2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;">
+        <mxCell id="e_config_stop" edge="1" parent="1" source="act_c_config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" target="act_stop2" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
