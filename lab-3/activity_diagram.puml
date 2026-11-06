@@ -55,9 +55,7 @@ repeat while (требуется корректировка)
 
 |Course (Курс)|
 :calculateTotalHours()\nИнициировать расчет учебной нагрузки курса;
-
-|AcademicLoad (Расчет нагрузки)|
-:calculateConsultationHours(lectureHours)\nРассчитать текущие консультации: 0.05 * lectureHours;
+:calculateConsultationHours()\nРассчитать текущие консультации: 0.05 * lectureHours;
 
 if (reportingForm == EXAM?) then (да)
     :Добавить 2.0 ч предэкзаменационной консультации;\nРассчитать приём экзамена: 0.5 ч * studentCount;
@@ -66,9 +64,7 @@ else (нет)
 endif
 
 :calculateTestGradingHours()\nРассчитать часы проверки КР: 0.15 ч * studentCount * tests;
-:calculateTotalHours(...)\nСуммировать все часы и округлить вверх:\nTotalHours = ceil(сумма всех часов);
-
-|Course (Курс)|
+:calculateTotalHours()\nСуммировать все часы и округлить вверх:\nTotalHours = ceil(сумма всех часов);
 :calculateWeeks() и calculateWeeklyPairs()\nРассчитать недели W = floor((endDate - startDate) / 7);\nРассчитать сетку пар в неделю: Пары = Часы / (2 * W);
 :updateStatus(Configured)\nПеревести курс в статус Configured;\nВключить курс в утвержденное расписание;
 

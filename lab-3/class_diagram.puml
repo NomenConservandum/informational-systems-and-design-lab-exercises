@@ -97,12 +97,13 @@ class Course {
     - studyYear: Integer
     - semester: Integer
     - studentCount: Integer
-    + getAuditoryHours(): AuditoryHours
-    + getAssessmentPlan(): AssessmentPlan
-    + getSchedule(): CourseSchedule
+    - auditoryHours: AuditoryHours
+    - assessmentPlan: AssessmentPlan
+    - schedule: CourseSchedule
     + addTopic(topic: Topic): void
     + removeTopic(topic: Topic): void
     + getTopics(): List<Topic>
+    + calculateConsultationHours(): Double
     + calculateTotalHours(): Integer
     + validateSelfStudyLimits(): Boolean
 }
@@ -136,11 +137,6 @@ class CourseSchedule {
     + calculateWeeklyPairs(hours: Integer): Double
 }
 
-class AcademicLoad <<utility>> {
-    + {static} calculateConsultationHours(lectureHours: Integer): Double
-    + {static} calculateTotalHours(auditory: AuditoryHours, assessment: AssessmentPlan, studentCount: Integer): Integer
-}
-
 class Topic {
     - title: String
     - lectureHours: Integer
@@ -163,7 +159,6 @@ Course "1" *-- "1" AuditoryHours : contains >
 Course "1" *-- "1" AssessmentPlan : specifies >
 Course "1" *-- "1" CourseSchedule : follows >
 Course "1" *-- "1..*" Topic : consists of >
-Course ..> AcademicLoad : calculates via >
 
 ' Зависимости перечислений
 Teacher ..> AcademicDegree : uses
@@ -185,7 +180,7 @@ note bottom of AssessmentPlan
   КР: 0.15 * студ * controlWorkCount
 end note
 
-note bottom of AcademicLoad
+note right of Course
   <b>Формула нагрузки курса:</b>
   TotalHours = ceil(
     Lec + Prac + Lab

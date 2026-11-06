@@ -28,7 +28,7 @@ state Assigned as "Assigned\n(Закреплен за преподавателе
 Assigned --> Configured : configureCurriculumPlan()\n[validateSelfStudyLimits() == true && datesSet]
 
 state Configured as "Configured\n(Календарный план и контроль согласованы)" {
-    Configured : entry / расчет TotalHours (AcademicLoad) и пар/неделю (CourseSchedule)
+    Configured : entry / расчет TotalHours (Course) и пар/неделю (CourseSchedule)
     Configured : do / готов к включению в расписание учебных занятий
 }
 

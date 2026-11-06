@@ -20,7 +20,6 @@ skinparam actor {
 actor "Сотрудник деканата" as Dean
 actor "Заведующий кафедрой" as Head
 actor "Преподаватель" as Teacher
-actor "Система\n(Расчетный модуль)" as System <<system>>
 
 rectangle "Информационная система «Кафедры»" {
 
@@ -69,11 +68,6 @@ Head --> UC5
 Teacher --> UC6
 Teacher --> UC7
 Teacher --> UC9
-
-System --> UC2
-System --> UC8
-System --> UC10
-System --> UC11
 
 note on link
   Курс переходит к\nнаполнению после\nназначения лектора
