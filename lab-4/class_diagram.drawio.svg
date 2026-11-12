@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280px" height="870px" viewBox="0 0 1280 870" content="&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf-8&#x27;?&gt;
+&lt;mxfile host=&quot;app.diagrams.net&quot;&gt;
+  &lt;diagram name=&quot;Class Diagram - ATM State Pattern&quot; id=&quot;atm_class_diagram&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1422&quot; dy=&quot;762&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1300&quot; pageHeight=&quot;920&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+      &lt;root&gt;
+        &lt;mxCell id=&quot;0&quot; /&gt;
+        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
+        &lt;UserObject label=&quot;&quot; plantUmlData=&quot;{&amp;quot;data&amp;quot;: &amp;quot;@startuml\nskinparam classAttributeIconSize 0\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam packageStyle rectangle\n\nskinparam class {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nstruct OperationResult {\n    + success: bool\n    + message: string\n    + previousState: string\n    + currentState: string\n}\n\nclass ATM &amp;lt;&amp;lt;Context&amp;gt;&amp;gt; {\n    - id_: string\n    - totalCash_: int\n    - connectionLossProbability_: double\n    - validPin_: string\n    - currentState_: shared_ptr&amp;lt;ATMState&amp;gt;\n    - historyLog_: vector&amp;lt;string&amp;gt;\n    + ATM(id: string, initialCash: int, connectionLossProb: double, validPin: string)\n    + enterPin(pin: string): OperationResult\n    + withdrawCash(amount: int): OperationResult\n    + finishSession(): OperationResult\n    + loadCash(amount: int): OperationResult\n    + setState(newState: shared_ptr&amp;lt;ATMState&amp;gt;): void\n    + getState(): shared_ptr&amp;lt;ATMState&amp;gt;\n    + getStateName(): string\n    + checkBankConnection(): bool\n    + verifyPin(pin: string): bool\n    + addCash(amount: int): void\n    + deductCash(amount: int): void\n    + getId(): string\n    + getTotalCash(): int\n    + getConnectionLossProbability(): double\n    + setConnectionLossProbability(prob: double): void\n    + getStatusSummary(): string\n}\n\nabstract class ATMState &amp;lt;&amp;lt;interface / State&amp;gt;&amp;gt; {\n    + {abstract} ~ATMState()\n    + {abstract} getName(): string\n    + {abstract} enterPin(atm: ATM&amp;amp;, pin: string): OperationResult\n    + {abstract} withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult\n    + {abstract} finishSession(atm: ATM&amp;amp;): OperationResult\n    + {abstract} loadCash(atm: ATM&amp;amp;, amount: int): OperationResult\n}\n\nclass WaitingState &amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;amp;): OperationResult\n    + loadCash(atm: ATM&amp;amp;, amount: int): OperationResult\n}\n\nclass AuthenticationState &amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;amp;): OperationResult\n    + loadCash(atm: ATM&amp;amp;, amount: int): OperationResult\n}\n\nclass PerformingOperationsState &amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;amp;): OperationResult\n    + loadCash(atm: ATM&amp;amp;, amount: int): OperationResult\n}\n\nclass BlockedState &amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;amp;): OperationResult\n    + loadCash(atm: ATM&amp;amp;, amount: int): OperationResult\n}\n\nclass ATMControllerApp &amp;lt;&amp;lt;Client&amp;gt;&amp;gt; {\n    - atms: vector&amp;lt;ATM&amp;gt;\n    - activeIdx: size_t\n    + runDemonstrationScenario(): void\n    + runInteractiveMenu(): void\n}\n\nATMControllerApp \&amp;quot;1\&amp;quot; *-- \&amp;quot;1..*\&amp;quot; ATM : manages &amp;gt;\nATM \&amp;quot;1\&amp;quot; o-- \&amp;quot;1\&amp;quot; ATMState : currentState_ &amp;gt;\nATM ..&amp;gt; OperationResult : returns &amp;gt;\nATMState ..&amp;gt; OperationResult : returns &amp;gt;\n\nATMState &amp;lt;|.. WaitingState\nATMState &amp;lt;|.. AuthenticationState\nATMState &amp;lt;|.. PerformingOperationsState\nATMState &amp;lt;|.. BlockedState\n\nnote right of ATM\n  \u0421\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0448\u0430\u0431\u043b\u043e\u043d\u0443 GoF \u00abState\u00bb:\n  \u2022 Context (\u041a\u043e\u043d\u0435\u0447\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u0430\u0442) -&amp;gt; ATM\n  \u2022 State (\u0418\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f) -&amp;gt; ATMState\n  \u2022 ConcreteStateA -&amp;gt; WaitingState (\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435)\n  \u2022 ConcreteStateB -&amp;gt; AuthenticationState (\u0410\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u044f)\n  \u2022 ConcreteStateC -&amp;gt; PerformingOperationsState (\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0439)\n  \u2022 ConcreteStateD -&amp;gt; BlockedState (\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d: \u0434\u0435\u043d\u0435\u0433 \u043d\u0435\u0442)\nend note\n\n@enduml\n&amp;quot;, &amp;quot;config&amp;quot;: null}&quot; id=&quot;puml_root&quot;&gt;
+          &lt;mxCell vertex=&quot;1&quot; parent=&quot;1&quot; style=&quot;group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;&quot; connectable=&quot;0&quot;&gt;
+            &lt;mxGeometry as=&quot;geometry&quot; /&gt;
+          &lt;/mxCell&gt;
+        &lt;/UserObject&gt;
+        &lt;mxCell id=&quot;cls_app&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;Client&amp;gt;&amp;gt;&amp;#10;ATMControllerApp&quot;&gt;
+          &lt;mxGeometry x=&quot;60&quot; y=&quot;60&quot; width=&quot;340&quot; height=&quot;136&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_app_f&quot; parent=&quot;cls_app&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;- atms: vector&amp;lt;ATM&amp;gt;&amp;#10;- activeIdx: size_t&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;340&quot; height=&quot;40&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_app_l&quot; parent=&quot;cls_app&quot; vertex=&quot;1&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;&quot; value=&quot;&quot;&gt;
+          &lt;mxGeometry y=&quot;80&quot; width=&quot;340&quot; height=&quot;8&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_app_m&quot; parent=&quot;cls_app&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ runDemonstrationScenario(): void&amp;#10;+ runInteractiveMenu(): void&quot;&gt;
+          &lt;mxGeometry y=&quot;88&quot; width=&quot;340&quot; height=&quot;48&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_atm&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;Context / Конечный автомат&amp;gt;&amp;gt;&amp;#10;ATM (Банкомат)&quot;&gt;
+          &lt;mxGeometry x=&quot;60&quot; y=&quot;250&quot; width=&quot;380&quot; height=&quot;360&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_atm_f&quot; parent=&quot;cls_atm&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;- id_: string&amp;#10;- totalCash_: int&amp;#10;- connectionLossProbability_: double&amp;#10;- validPin_: string&amp;#10;- currentState_: shared_ptr&amp;lt;ATMState&amp;gt;&amp;#10;- historyLog_: vector&amp;lt;string&amp;gt;&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;380&quot; height=&quot;100&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_atm_l&quot; parent=&quot;cls_atm&quot; vertex=&quot;1&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;&quot; value=&quot;&quot;&gt;
+          &lt;mxGeometry y=&quot;140&quot; width=&quot;380&quot; height=&quot;8&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_atm_m&quot; parent=&quot;cls_atm&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ enterPin(pin: string): OperationResult&amp;#10;+ withdrawCash(amount: int): OperationResult&amp;#10;+ finishSession(): OperationResult&amp;#10;+ loadCash(amount: int): OperationResult&amp;#10;+ setState(newState: shared_ptr&amp;lt;ATMState&amp;gt;): void&amp;#10;+ getState(): shared_ptr&amp;lt;ATMState&amp;gt;&amp;#10;+ getStateName(): string&amp;#10;+ checkBankConnection(): bool&amp;#10;+ verifyPin(pin: string): bool&amp;#10;+ addCash(amount: int): void&amp;#10;+ deductCash(amount: int): void&amp;#10;+ getId(): string&amp;#10;+ getTotalCash(): int&amp;#10;+ getConnectionLossProbability(): double&quot;&gt;
+          &lt;mxGeometry y=&quot;148&quot; width=&quot;380&quot; height=&quot;212&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_res&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;struct&amp;gt;&amp;gt;&amp;#10;OperationResult&quot;&gt;
+          &lt;mxGeometry x=&quot;60&quot; y=&quot;680&quot; width=&quot;300&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_res_f&quot; parent=&quot;cls_res&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ success: bool&amp;#10;+ message: string&amp;#10;+ previousState: string&amp;#10;+ currentState: string&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;300&quot; height=&quot;75&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_state&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;interface / State&amp;gt;&amp;gt;&amp;#10;ATMState (Состояние)&quot;&gt;
+          &lt;mxGeometry x=&quot;660&quot; y=&quot;250&quot; width=&quot;400&quot; height=&quot;145&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_state_m&quot; parent=&quot;cls_state&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ getName(): string {abstract}&amp;#10;+ enterPin(atm: ATM&amp;amp;, pin: string): OperationResult {abstract}&amp;#10;+ withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult {abstract}&amp;#10;+ finishSession(atm: ATM&amp;amp;): OperationResult {abstract}&amp;#10;+ loadCash(atm: ATM&amp;amp;, amount: int): OperationResult {abstract}&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;400&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_wait&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt;&amp;#10;WaitingState (Ожидание)&quot;&gt;
+          &lt;mxGeometry x=&quot;480&quot; y=&quot;490&quot; width=&quot;360&quot; height=&quot;145&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_wait_m&quot; parent=&quot;cls_wait&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ getName(): string&amp;#10;+ enterPin(atm: ATM&amp;amp;, pin: string): OperationResult&amp;#10;+ withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult&amp;#10;+ finishSession(atm: ATM&amp;amp;): OperationResult&amp;#10;+ loadCash(atm: ATM&amp;amp;, amount: int): OperationResult&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;360&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_auth&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt;&amp;#10;AuthenticationState (Аутентификация)&quot;&gt;
+          &lt;mxGeometry x=&quot;880&quot; y=&quot;490&quot; width=&quot;360&quot; height=&quot;145&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_auth_m&quot; parent=&quot;cls_auth&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ getName(): string&amp;#10;+ enterPin(atm: ATM&amp;amp;, pin: string): OperationResult&amp;#10;+ withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult&amp;#10;+ finishSession(atm: ATM&amp;amp;): OperationResult&amp;#10;+ loadCash(atm: ATM&amp;amp;, amount: int): OperationResult&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;360&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_ops&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt;&amp;#10;PerformingOperationsState (Выполнение операций)&quot;&gt;
+          &lt;mxGeometry x=&quot;480&quot; y=&quot;700&quot; width=&quot;360&quot; height=&quot;145&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_ops_m&quot; parent=&quot;cls_ops&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ getName(): string&amp;#10;+ enterPin(atm: ATM&amp;amp;, pin: string): OperationResult&amp;#10;+ withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult&amp;#10;+ finishSession(atm: ATM&amp;amp;): OperationResult&amp;#10;+ loadCash(atm: ATM&amp;amp;, amount: int): OperationResult&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;360&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_blocked&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;arcSize=10;&quot; value=&quot;&amp;lt;&amp;lt;ConcreteState&amp;gt;&amp;gt;&amp;#10;BlockedState (Заблокирован: денег нет)&quot;&gt;
+          &lt;mxGeometry x=&quot;880&quot; y=&quot;700&quot; width=&quot;360&quot; height=&quot;145&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;cls_blocked_m&quot; parent=&quot;cls_blocked&quot; vertex=&quot;1&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;&quot; value=&quot;+ getName(): string&amp;#10;+ enterPin(atm: ATM&amp;amp;, pin: string): OperationResult&amp;#10;+ withdrawCash(atm: ATM&amp;amp;, amount: int): OperationResult&amp;#10;+ finishSession(atm: ATM&amp;amp;): OperationResult&amp;#10;+ loadCash(atm: ATM&amp;amp;, amount: int): OperationResult&quot;&gt;
+          &lt;mxGeometry y=&quot;40&quot; width=&quot;360&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;note_gof&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;shape=note;whiteSpace=wrap;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=8;size=14;fontSize=10;fontFamily=Helvetica;&quot; value=&quot;Соотношение с шаблоном проектирования GoF «State» (Состояние):&amp;#10;• Context (Конечный автомат) ──► ATM (хранит currentState_, делегирует операции)&amp;#10;• State (Интерфейс состояния) ──► ATMState (виртуальные методы операций)&amp;#10;• ConcreteStateA ──► WaitingState (Ожидание)&amp;#10;• ConcreteStateB ──► AuthenticationState (Аутентификация пользователя)&amp;#10;• ConcreteStateC ──► PerformingOperationsState (Выполнение операций)&amp;#10;• ConcreteStateD ──► BlockedState (Заблокирован: денег нет)&quot;&gt;
+          &lt;mxGeometry x=&quot;660&quot; y=&quot;60&quot; width=&quot;540&quot; height=&quot;136&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_app_atm&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_app&quot; target=&quot;cls_atm&quot; value=&quot;1   manages   1..*&quot; style=&quot;endArrow=diamond;endFill=1;strokeWidth=1.2;strokeColor=#2C3E50;edgeStyle=orthogonalEdgeStyle;rounded=0;fontFamily=Helvetica;fontSize=10;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_atm_state&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_atm&quot; target=&quot;cls_state&quot; value=&quot;1   currentState_   1&quot; style=&quot;startArrow=diamond;startFill=0;endArrow=open;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;edgeStyle=orthogonalEdgeStyle;rounded=0;fontFamily=Helvetica;fontSize=10;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_atm_res&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_atm&quot; target=&quot;cls_res&quot; value=&quot;returns&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=open;endFill=0;strokeWidth=1;strokeColor=#2980B9;fontFamily=Helvetica;fontSize=10;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_wait_st&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_wait&quot; target=&quot;cls_state&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;660&quot; y=&quot;440&quot; /&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;440&quot; /&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_auth_st&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_auth&quot; target=&quot;cls_state&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;1060&quot; y=&quot;440&quot; /&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;440&quot; /&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_ops_st&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_ops&quot; target=&quot;cls_state&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;770&quot; /&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;440&quot; /&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+        &lt;mxCell id=&quot;e_blk_st&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;cls_blocked&quot; target=&quot;cls_state&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;&quot;&gt;
+          &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+            &lt;Array as=&quot;points&quot;&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;770&quot; /&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;440&quot; /&gt;
+            &lt;/Array&gt;
+          &lt;/mxGeometry&gt;
+        &lt;/mxCell&gt;
+      &lt;/root&gt;
+    &lt;/mxGraphModel&gt;
+  &lt;/diagram&gt;
+&lt;/mxfile&gt;" style="background-color: #ffffff;">
+  <defs>
+    <marker id="open_arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#2C3E50" stroke-width="1.4"/>
+    </marker>
+    <marker id="blue_arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#2980B9" stroke-width="1.4"/>
+    </marker>
+    <marker id="hollow_tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#ffffff" stroke="#2C3E50" stroke-width="1.3"/>
+    </marker>
+    <marker id="filled_diamond" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="10" markerHeight="8" orient="auto">
+      <path d="M 1 5 L 7 1 L 13 5 L 7 9 z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1"/>
+    </marker>
+    <marker id="hollow_diamond" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="10" markerHeight="8" orient="auto">
+      <path d="M 1 5 L 7 1 L 13 5 L 7 9 z" fill="#ffffff" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="60" width="340" height="136" rx="8" ry="8" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+  <text x="230.0" y="76" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;Client&gt;&gt;</text>
+  <text x="230.0" y="93" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">ATMControllerApp</text>
+  <line x1="60" y1="100" x2="400" y2="100" stroke="#9673a6" stroke-width="1"/>
+  <text x="68" y="115" font-family="Courier New, monospace" font-size="10" fill="#000000">- atms: vector&lt;ATM&gt;</text>
+  <text x="68" y="130" font-family="Courier New, monospace" font-size="10" fill="#000000">- activeIdx: size_t</text>
+  <line x1="60" y1="137" x2="400" y2="137" stroke="#9673a6" stroke-width="1"/>
+  <text x="68" y="151" font-family="Courier New, monospace" font-size="10" fill="#000000">+ runDemonstrationScenario(): void</text>
+  <text x="68" y="165.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ runInteractiveMenu(): void</text>
+  <rect x="60" y="250" width="380" height="360" rx="8" ry="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="250.0" y="266" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;Context / Конечный автомат&gt;&gt;</text>
+  <text x="250.0" y="283" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">ATM (Банкомат)</text>
+  <line x1="60" y1="290" x2="440" y2="290" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="68" y="305" font-family="Courier New, monospace" font-size="10" fill="#000000">- id_: string</text>
+  <text x="68" y="320" font-family="Courier New, monospace" font-size="10" fill="#000000">- totalCash_: int</text>
+  <text x="68" y="335" font-family="Courier New, monospace" font-size="10" fill="#000000">- connectionLossProbability_: double</text>
+  <text x="68" y="350" font-family="Courier New, monospace" font-size="10" fill="#000000">- validPin_: string</text>
+  <text x="68" y="365" font-family="Courier New, monospace" font-size="10" fill="#000000">- currentState_: shared_ptr&lt;ATMState&gt;</text>
+  <text x="68" y="380" font-family="Courier New, monospace" font-size="10" fill="#000000">- historyLog_: vector&lt;string&gt;</text>
+  <line x1="60" y1="387" x2="440" y2="387" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="68" y="401" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(pin: string): OperationResult</text>
+  <text x="68" y="415.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(amount: int): OperationResult</text>
+  <text x="68" y="430.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(): OperationResult</text>
+  <text x="68" y="444.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(amount: int): OperationResult</text>
+  <text x="68" y="459.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ setState(newState: shared_ptr&lt;ATMState&gt;): void</text>
+  <text x="68" y="473.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getState(): shared_ptr&lt;ATMState&gt;</text>
+  <text x="68" y="488.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getStateName(): string</text>
+  <text x="68" y="502.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ checkBankConnection(): bool</text>
+  <text x="68" y="517.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ verifyPin(pin: string): bool</text>
+  <text x="68" y="531.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ addCash(amount: int): void</text>
+  <text x="68" y="546.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ deductCash(amount: int): void</text>
+  <text x="68" y="560.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getId(): string</text>
+  <text x="68" y="575.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getTotalCash(): int</text>
+  <text x="68" y="589.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getConnectionLossProbability(): double</text>
+  <rect x="60" y="680" width="300" height="115" rx="8" ry="8" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
+  <text x="210.0" y="696" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;struct&gt;&gt;</text>
+  <text x="210.0" y="713" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">OperationResult</text>
+  <line x1="60" y1="720" x2="360" y2="720" stroke="#666666" stroke-width="1"/>
+  <text x="68" y="735" font-family="Courier New, monospace" font-size="10" fill="#000000">+ success: bool</text>
+  <text x="68" y="750" font-family="Courier New, monospace" font-size="10" fill="#000000">+ message: string</text>
+  <text x="68" y="765" font-family="Courier New, monospace" font-size="10" fill="#000000">+ previousState: string</text>
+  <text x="68" y="780" font-family="Courier New, monospace" font-size="10" fill="#000000">+ currentState: string</text>
+  <rect x="660" y="250" width="400" height="130" rx="8" ry="8" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="860.0" y="266" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;interface / State&gt;&gt;</text>
+  <text x="860.0" y="283" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="italic" text-anchor="middle" fill="#000000">ATMState (Состояние)</text>
+  <line x1="660" y1="290" x2="1060" y2="290" stroke="#d6b656" stroke-width="1"/>
+  <text x="668" y="305" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getName(): string {abstract}</text>
+  <text x="668" y="319.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(atm: ATM&amp;, pin: string): OperationResult</text>
+  <text x="668" y="334.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <text x="668" y="348.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(atm: ATM&amp;): OperationResult</text>
+  <text x="668" y="363.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <rect x="480" y="490" width="360" height="130" rx="8" ry="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="660.0" y="506" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;ConcreteState&gt;&gt;</text>
+  <text x="660.0" y="523" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">WaitingState (Ожидание)</text>
+  <line x1="480" y1="530" x2="840" y2="530" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="488" y="545" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getName(): string</text>
+  <text x="488" y="559.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(atm: ATM&amp;, pin: string): OperationResult</text>
+  <text x="488" y="574.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <text x="488" y="588.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(atm: ATM&amp;): OperationResult</text>
+  <text x="488" y="603.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <rect x="880" y="490" width="360" height="130" rx="8" ry="8" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="1060.0" y="506" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;ConcreteState&gt;&gt;</text>
+  <text x="1060.0" y="523" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">AuthenticationState (Аутентификация)</text>
+  <line x1="880" y1="530" x2="1240" y2="530" stroke="#d79b00" stroke-width="1"/>
+  <text x="888" y="545" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getName(): string</text>
+  <text x="888" y="559.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(atm: ATM&amp;, pin: string): OperationResult</text>
+  <text x="888" y="574.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <text x="888" y="588.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(atm: ATM&amp;): OperationResult</text>
+  <text x="888" y="603.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <rect x="480" y="700" width="360" height="130" rx="8" ry="8" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="660.0" y="716" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;ConcreteState&gt;&gt;</text>
+  <text x="660.0" y="733" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">PerformingOperationsState (Выполнение операций)</text>
+  <line x1="480" y1="740" x2="840" y2="740" stroke="#82b366" stroke-width="1"/>
+  <text x="488" y="755" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getName(): string</text>
+  <text x="488" y="769.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(atm: ATM&amp;, pin: string): OperationResult</text>
+  <text x="488" y="784.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <text x="488" y="798.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(atm: ATM&amp;): OperationResult</text>
+  <text x="488" y="813.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <rect x="880" y="700" width="360" height="130" rx="8" ry="8" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="1060.0" y="716" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">&lt;&lt;ConcreteState&gt;&gt;</text>
+  <text x="1060.0" y="733" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">BlockedState (Заблокирован: денег нет)</text>
+  <line x1="880" y1="740" x2="1240" y2="740" stroke="#b85450" stroke-width="1"/>
+  <text x="888" y="755" font-family="Courier New, monospace" font-size="10" fill="#000000">+ getName(): string</text>
+  <text x="888" y="769.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ enterPin(atm: ATM&amp;, pin: string): OperationResult</text>
+  <text x="888" y="784.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult</text>
+  <text x="888" y="798.5" font-family="Courier New, monospace" font-size="10" fill="#000000">+ finishSession(atm: ATM&amp;): OperationResult</text>
+  <text x="888" y="813.0" font-family="Courier New, monospace" font-size="10" fill="#000000">+ loadCash(atm: ATM&amp;, amount: int): OperationResult</text>
+
+  <!-- GoF Note -->
+  <polygon points="660,60 1186,60 1200,74 1200,196 660,196" fill="#fff2cc" stroke="#d6b656" stroke-width="1.2"/>
+  <polyline points="1186,60 1186,74 1200,74" fill="none" stroke="#d6b656" stroke-width="1.2"/>
+  <text x="672" y="80" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000">Соотношение с шаблоном проектирования GoF «State» (Состояние):</text>
+  <text x="672" y="98" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• Context (Конечный автомат) ──► ATM (хранит currentState_, делегирует операции)</text>
+  <text x="672" y="115" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• State (Интерфейс состояния) ──► ATMState (виртуальные методы операций)</text>
+  <text x="672" y="132" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteStateA ──► WaitingState (Ожидание)</text>
+  <text x="672" y="149" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteStateB ──► AuthenticationState (Аутентификация пользователя)</text>
+  <text x="672" y="166" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteStateC ──► PerformingOperationsState (Выполнение операций)</text>
+  <text x="672" y="183" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteStateD ──► BlockedState (Заблокирован: денег нет)</text>
+
+  <!-- Edges -->
+  <!-- App manages ATM -->
+  <path d="M 230 196 L 230 248" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-start="url(#filled_diamond)" marker-end="url(#open_arrow)"/>
+  <text x="295" y="226" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2C3E50">1   manages   1..*</text>
+
+  <!-- ATM aggregates ATMState -->
+  <path d="M 440 315 L 658 315" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-start="url(#hollow_diamond)" marker-end="url(#open_arrow)"/>
+  <text x="550" y="306" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2C3E50">1   currentState_   1</text>
+
+  <!-- ATM ..> OperationResult -->
+  <path d="M 210 610 L 210 678" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#blue_arrow)"/>
+  <text x="242" y="648" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2980B9">returns</text>
+
+  <!-- ConcreteStates ..|> ATMState -->
+  <path d="M 660 490 L 660 440 L 860 440 L 860 382" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#hollow_tri)"/>
+  <path d="M 1060 490 L 1060 440 L 860 440" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <path d="M 840 765 L 860 765 L 860 440" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <path d="M 880 765 L 860 765" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="6,4"/>
+</svg>

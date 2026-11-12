@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram - ATM State Pattern" id="atm_class_diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&quot;data&quot;: &quot;@startuml\nskinparam classAttributeIconSize 0\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam packageStyle rectangle\n\nskinparam class {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n}\n\nstruct OperationResult {\n    + success: bool\n    + message: string\n    + previousState: string\n    + currentState: string\n}\n\nclass ATM &lt;&lt;Context&gt;&gt; {\n    - id_: string\n    - totalCash_: int\n    - connectionLossProbability_: double\n    - validPin_: string\n    - currentState_: shared_ptr&lt;ATMState&gt;\n    - historyLog_: vector&lt;string&gt;\n    + ATM(id: string, initialCash: int, connectionLossProb: double, validPin: string)\n    + enterPin(pin: string): OperationResult\n    + withdrawCash(amount: int): OperationResult\n    + finishSession(): OperationResult\n    + loadCash(amount: int): OperationResult\n    + setState(newState: shared_ptr&lt;ATMState&gt;): void\n    + getState(): shared_ptr&lt;ATMState&gt;\n    + getStateName(): string\n    + checkBankConnection(): bool\n    + verifyPin(pin: string): bool\n    + addCash(amount: int): void\n    + deductCash(amount: int): void\n    + getId(): string\n    + getTotalCash(): int\n    + getConnectionLossProbability(): double\n    + setConnectionLossProbability(prob: double): void\n    + getStatusSummary(): string\n}\n\nabstract class ATMState &lt;&lt;interface / State&gt;&gt; {\n    + {abstract} ~ATMState()\n    + {abstract} getName(): string\n    + {abstract} enterPin(atm: ATM&amp;, pin: string): OperationResult\n    + {abstract} withdrawCash(atm: ATM&amp;, amount: int): OperationResult\n    + {abstract} finishSession(atm: ATM&amp;): OperationResult\n    + {abstract} loadCash(atm: ATM&amp;, amount: int): OperationResult\n}\n\nclass WaitingState &lt;&lt;ConcreteState&gt;&gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;): OperationResult\n    + loadCash(atm: ATM&amp;, amount: int): OperationResult\n}\n\nclass AuthenticationState &lt;&lt;ConcreteState&gt;&gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;): OperationResult\n    + loadCash(atm: ATM&amp;, amount: int): OperationResult\n}\n\nclass PerformingOperationsState &lt;&lt;ConcreteState&gt;&gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;): OperationResult\n    + loadCash(atm: ATM&amp;, amount: int): OperationResult\n}\n\nclass BlockedState &lt;&lt;ConcreteState&gt;&gt; {\n    + getName(): string\n    + enterPin(atm: ATM&amp;, pin: string): OperationResult\n    + withdrawCash(atm: ATM&amp;, amount: int): OperationResult\n    + finishSession(atm: ATM&amp;): OperationResult\n    + loadCash(atm: ATM&amp;, amount: int): OperationResult\n}\n\nclass ATMControllerApp &lt;&lt;Client&gt;&gt; {\n    - atms: vector&lt;ATM&gt;\n    - activeIdx: size_t\n    + runDemonstrationScenario(): void\n    + runInteractiveMenu(): void\n}\n\nATMControllerApp \&quot;1\&quot; *-- \&quot;1..*\&quot; ATM : manages &gt;\nATM \&quot;1\&quot; o-- \&quot;1\&quot; ATMState : currentState_ &gt;\nATM ..&gt; OperationResult : returns &gt;\nATMState ..&gt; OperationResult : returns &gt;\n\nATMState &lt;|.. WaitingState\nATMState &lt;|.. AuthenticationState\nATMState &lt;|.. PerformingOperationsState\nATMState &lt;|.. BlockedState\n\nnote right of ATM\n  \u0421\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435 \u0448\u0430\u0431\u043b\u043e\u043d\u0443 GoF \u00abState\u00bb:\n  \u2022 Context (\u041a\u043e\u043d\u0435\u0447\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u0430\u0442) -&gt; ATM\n  \u2022 State (\u0418\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f) -&gt; ATMState\n  \u2022 ConcreteStateA -&gt; WaitingState (\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435)\n  \u2022 ConcreteStateB -&gt; AuthenticationState (\u0410\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u044f)\n  \u2022 ConcreteStateC -&gt; PerformingOperationsState (\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0439)\n  \u2022 ConcreteStateD -&gt; BlockedState (\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d: \u0434\u0435\u043d\u0435\u0433 \u043d\u0435\u0442)\nend note\n\n@enduml\n&quot;, &quot;config&quot;: null}" id="puml_root">
+          <mxCell vertex="1" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" connectable="0">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="cls_app" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;" value="&lt;&lt;Client&gt;&gt;&#10;ATMControllerApp">
+          <mxGeometry x="60" y="60" width="340" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_app_f" parent="cls_app" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="- atms: vector&lt;ATM&gt;&#10;- activeIdx: size_t">
+          <mxGeometry y="40" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_app_l" parent="cls_app" vertex="1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="">
+          <mxGeometry y="80" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_app_m" parent="cls_app" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ runDemonstrationScenario(): void&#10;+ runInteractiveMenu(): void">
+          <mxGeometry y="88" width="340" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_atm" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;" value="&lt;&lt;Context / Конечный автомат&gt;&gt;&#10;ATM (Банкомат)">
+          <mxGeometry x="60" y="250" width="380" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_atm_f" parent="cls_atm" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="- id_: string&#10;- totalCash_: int&#10;- connectionLossProbability_: double&#10;- validPin_: string&#10;- currentState_: shared_ptr&lt;ATMState&gt;&#10;- historyLog_: vector&lt;string&gt;">
+          <mxGeometry y="40" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_atm_l" parent="cls_atm" vertex="1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="">
+          <mxGeometry y="140" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_atm_m" parent="cls_atm" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ enterPin(pin: string): OperationResult&#10;+ withdrawCash(amount: int): OperationResult&#10;+ finishSession(): OperationResult&#10;+ loadCash(amount: int): OperationResult&#10;+ setState(newState: shared_ptr&lt;ATMState&gt;): void&#10;+ getState(): shared_ptr&lt;ATMState&gt;&#10;+ getStateName(): string&#10;+ checkBankConnection(): bool&#10;+ verifyPin(pin: string): bool&#10;+ addCash(amount: int): void&#10;+ deductCash(amount: int): void&#10;+ getId(): string&#10;+ getTotalCash(): int&#10;+ getConnectionLossProbability(): double">
+          <mxGeometry y="148" width="380" height="212" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_res" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;" value="&lt;&lt;struct&gt;&gt;&#10;OperationResult">
+          <mxGeometry x="60" y="680" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_res_f" parent="cls_res" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ success: bool&#10;+ message: string&#10;+ previousState: string&#10;+ currentState: string">
+          <mxGeometry y="40" width="300" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_state" parent="1" vertex="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;" value="&lt;&lt;interface / State&gt;&gt;&#10;ATMState (Состояние)">
+          <mxGeometry x="660" y="250" width="400" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_state_m" parent="cls_state" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ getName(): string {abstract}&#10;+ enterPin(atm: ATM&amp;, pin: string): OperationResult {abstract}&#10;+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult {abstract}&#10;+ finishSession(atm: ATM&amp;): OperationResult {abstract}&#10;+ loadCash(atm: ATM&amp;, amount: int): OperationResult {abstract}">
+          <mxGeometry y="40" width="400" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_wait" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;" value="&lt;&lt;ConcreteState&gt;&gt;&#10;WaitingState (Ожидание)">
+          <mxGeometry x="480" y="490" width="360" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_wait_m" parent="cls_wait" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ getName(): string&#10;+ enterPin(atm: ATM&amp;, pin: string): OperationResult&#10;+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult&#10;+ finishSession(atm: ATM&amp;): OperationResult&#10;+ loadCash(atm: ATM&amp;, amount: int): OperationResult">
+          <mxGeometry y="40" width="360" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_auth" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;" value="&lt;&lt;ConcreteState&gt;&gt;&#10;AuthenticationState (Аутентификация)">
+          <mxGeometry x="880" y="490" width="360" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_auth_m" parent="cls_auth" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ getName(): string&#10;+ enterPin(atm: ATM&amp;, pin: string): OperationResult&#10;+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult&#10;+ finishSession(atm: ATM&amp;): OperationResult&#10;+ loadCash(atm: ATM&amp;, amount: int): OperationResult">
+          <mxGeometry y="40" width="360" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ops" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;" value="&lt;&lt;ConcreteState&gt;&gt;&#10;PerformingOperationsState (Выполнение операций)">
+          <mxGeometry x="480" y="700" width="360" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_ops_m" parent="cls_ops" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ getName(): string&#10;+ enterPin(atm: ATM&amp;, pin: string): OperationResult&#10;+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult&#10;+ finishSession(atm: ATM&amp;): OperationResult&#10;+ loadCash(atm: ATM&amp;, amount: int): OperationResult">
+          <mxGeometry y="40" width="360" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_blocked" parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;arcSize=10;" value="&lt;&lt;ConcreteState&gt;&gt;&#10;BlockedState (Заблокирован: денег нет)">
+          <mxGeometry x="880" y="700" width="360" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_blocked_m" parent="cls_blocked" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontFamily=Courier New;fontSize=10;" value="+ getName(): string&#10;+ enterPin(atm: ATM&amp;, pin: string): OperationResult&#10;+ withdrawCash(atm: ATM&amp;, amount: int): OperationResult&#10;+ finishSession(atm: ATM&amp;): OperationResult&#10;+ loadCash(atm: ATM&amp;, amount: int): OperationResult">
+          <mxGeometry y="40" width="360" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="note_gof" parent="1" vertex="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=8;size=14;fontSize=10;fontFamily=Helvetica;" value="Соотношение с шаблоном проектирования GoF «State» (Состояние):&#10;• Context (Конечный автомат) ──► ATM (хранит currentState_, делегирует операции)&#10;• State (Интерфейс состояния) ──► ATMState (виртуальные методы операций)&#10;• ConcreteStateA ──► WaitingState (Ожидание)&#10;• ConcreteStateB ──► AuthenticationState (Аутентификация пользователя)&#10;• ConcreteStateC ──► PerformingOperationsState (Выполнение операций)&#10;• ConcreteStateD ──► BlockedState (Заблокирован: денег нет)">
+          <mxGeometry x="660" y="60" width="540" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="e_app_atm" parent="1" edge="1" source="cls_app" target="cls_atm" value="1   manages   1..*" style="endArrow=diamond;endFill=1;strokeWidth=1.2;strokeColor=#2C3E50;edgeStyle=orthogonalEdgeStyle;rounded=0;fontFamily=Helvetica;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_atm_state" parent="1" edge="1" source="cls_atm" target="cls_state" value="1   currentState_   1" style="startArrow=diamond;startFill=0;endArrow=open;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;edgeStyle=orthogonalEdgeStyle;rounded=0;fontFamily=Helvetica;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_atm_res" parent="1" edge="1" source="cls_atm" target="cls_res" value="returns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=open;endFill=0;strokeWidth=1;strokeColor=#2980B9;fontFamily=Helvetica;fontSize=10;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_wait_st" parent="1" edge="1" source="cls_wait" target="cls_state" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="440" />
+              <mxPoint x="860" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_auth_st" parent="1" edge="1" source="cls_auth" target="cls_state" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="440" />
+              <mxPoint x="860" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ops_st" parent="1" edge="1" source="cls_ops" target="cls_state" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="770" />
+              <mxPoint x="860" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_blk_st" parent="1" edge="1" source="cls_blocked" target="cls_state" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;endArrow=block;endFill=0;strokeWidth=1.2;strokeColor=#2C3E50;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="770" />
+              <mxPoint x="860" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

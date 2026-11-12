@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome false
+skinparam roundcorner 12
+skinparam shadowing false
+
+skinparam state {
+    BackgroundColor White
+    BorderColor #2C3E50
+    ArrowColor #2980B9
+    StartColor #27AE60
+    EndColor #C0392B
+}
+
+[*] --> WaitingState : Инициализация\n[totalCash > 0]
+[*] --> BlockedState : Инициализация\n[totalCash == 0]
+
+state WaitingState as "WaitingState\n(Ожидание)" {
+    WaitingState : entry / ожидание клиента (totalCash > 0)
+    WaitingState : loadCash(amount) [amount > 0] / totalCash += amount
+    WaitingState : withdrawCash(amount) / отказ: сначала введите PIN-код
+    WaitingState : finishSession() / отказ: сеанс не начат
+}
+
+state AuthenticationState as "AuthenticationState\n(Аутентификация пользователя)" {
+    AuthenticationState : entry / проверка связи с банком и PIN-кода
+    AuthenticationState : enterPin(pin) [сбой связи ИЛИ неверный PIN] / ожидание повтора
+    AuthenticationState : withdrawCash(amount) / отказ: вход не завершён
+    AuthenticationState : loadCash(amount) / отказ: сеанс клиента активен
+}
+
+state PerformingOperationsState as "PerformingOperationsState\n(Выполнение операций)" {
+    PerformingOperationsState : entry / доступ к операциям открыт
+    PerformingOperationsState : withdrawCash(amount) [связь ОК && amount < totalCash] / totalCash -= amount
+    PerformingOperationsState : withdrawCash(amount) [нет связи ИЛИ amount > totalCash] / отказ транзакции
+    PerformingOperationsState : enterPin(pin) / предупреждение: PIN уже введён
+    PerformingOperationsState : loadCash(amount) / отказ: сначала завершите сеанс
+}
+
+state BlockedState as "BlockedState\n(Заблокирован: денег нет)" {
+    BlockedState : entry / блокировка выдачи (totalCash == 0)
+    BlockedState : enterPin(pin) / отказ: нет наличных средств
+    BlockedState : withdrawCash(amount) / отказ: кассеты пусты
+    BlockedState : finishSession() / ожидание инкассации
+}
+
+WaitingState --> AuthenticationState : enterPin(pin)\n[нет связи с банком ИЛИ неверный PIN]
+WaitingState --> PerformingOperationsState : enterPin(pin)\n[связь с банком ОК И верный PIN]
+
+AuthenticationState --> PerformingOperationsState : enterPin(pin)\n[связь с банком ОК И верный PIN]
+AuthenticationState --> WaitingState : finishSession()\n/ отмена аутентификации
+
+PerformingOperationsState --> WaitingState : finishSession()\n/ завершение обслуживания
+PerformingOperationsState --> BlockedState : withdrawCash(amount)\n[связь ОК && amount == totalCash]\n/ выдача остатка (totalCash = 0)
+
+BlockedState --> WaitingState : loadCash(amount) [amount > 0]\n/ инкассация (totalCash += amount)
+
+@enduml
+
