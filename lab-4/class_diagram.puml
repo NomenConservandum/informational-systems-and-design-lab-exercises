@@ -10,106 +10,92 @@ skinparam class {
     ArrowColor #2980B9
 }
 
-struct OperationResult {
-    + success: bool
-    + message: string
-    + previousState: string
-    + currentState: string
-}
-
-class ATM <<Context>> {
-    - id_: string
-    - totalCash_: int
-    - connectionLossProbability_: double
-    - validPin_: string
-    - currentState_: shared_ptr<ATMState>
-    - historyLog_: vector<string>
-    + ATM(id: string, initialCash: int, connectionLossProb: double, validPin: string)
-    + enterPin(pin: string): OperationResult
-    + withdrawCash(amount: int): OperationResult
-    + finishSession(): OperationResult
-    + loadCash(amount: int): OperationResult
-    + setState(newState: shared_ptr<ATMState>): void
-    + getState(): shared_ptr<ATMState>
-    + getStateName(): string
-    + checkBankConnection(): bool
-    + verifyPin(pin: string): bool
-    + addCash(amount: int): void
-    + deductCash(amount: int): void
-    + getId(): string
-    + getTotalCash(): int
-    + getConnectionLossProbability(): double
-    + setConnectionLossProbability(prob: double): void
-    + getStatusSummary(): string
-}
-
-abstract class ATMState <<interface / State>> {
-    + {abstract} ~ATMState()
-    + {abstract} getName(): string
-    + {abstract} enterPin(atm: ATM&, pin: string): OperationResult
-    + {abstract} withdrawCash(atm: ATM&, amount: int): OperationResult
-    + {abstract} finishSession(atm: ATM&): OperationResult
-    + {abstract} loadCash(atm: ATM&, amount: int): OperationResult
-}
-
-class WaitingState <<ConcreteState>> {
-    + getName(): string
-    + enterPin(atm: ATM&, pin: string): OperationResult
-    + withdrawCash(atm: ATM&, amount: int): OperationResult
-    + finishSession(atm: ATM&): OperationResult
-    + loadCash(atm: ATM&, amount: int): OperationResult
-}
-
-class AuthenticationState <<ConcreteState>> {
-    + getName(): string
-    + enterPin(atm: ATM&, pin: string): OperationResult
-    + withdrawCash(atm: ATM&, amount: int): OperationResult
-    + finishSession(atm: ATM&): OperationResult
-    + loadCash(atm: ATM&, amount: int): OperationResult
-}
-
-class PerformingOperationsState <<ConcreteState>> {
-    + getName(): string
-    + enterPin(atm: ATM&, pin: string): OperationResult
-    + withdrawCash(atm: ATM&, amount: int): OperationResult
-    + finishSession(atm: ATM&): OperationResult
-    + loadCash(atm: ATM&, amount: int): OperationResult
-}
-
-class BlockedState <<ConcreteState>> {
-    + getName(): string
-    + enterPin(atm: ATM&, pin: string): OperationResult
-    + withdrawCash(atm: ATM&, amount: int): OperationResult
-    + finishSession(atm: ATM&): OperationResult
-    + loadCash(atm: ATM&, amount: int): OperationResult
-}
-
-class ATMControllerApp <<Client>> {
-    - atms: vector<ATM>
-    - activeIdx: size_t
+class ATMControllerApp {
+    - atms: List<ATM>
+    - activeIdx: Integer
     + runDemonstrationScenario(): void
     + runInteractiveMenu(): void
 }
 
+class ATM {
+    - id: String
+    - totalCash: Integer
+    - connectionLossProbability: Double
+    - validPin: String
+    - currentState: ATMState
+    - historyLog: List<String>
+    + enterPin(pin: String): OperationResult
+    + withdrawCash(amount: Integer): OperationResult
+    + finishSession(): OperationResult
+    + loadCash(amount: Integer): OperationResult
+    + setState(state: ATMState): void
+    + getState(): ATMState
+    + getStateName(): String
+    + checkBankConnection(): Boolean
+    + verifyPin(pin: String): Boolean
+    + addCash(amount: Integer): void
+    + deductCash(amount: Integer): void
+    + getId(): String
+    + getTotalCash(): Integer
+    + getConnectionLossProbability(): Double
+}
+
+class OperationResult {
+    + success: Boolean
+    + message: String
+    + previousState: String
+    + currentState: String
+}
+
+interface ATMState {
+    + getName(): String
+    + enterPin(atm: ATM, pin: String): OperationResult
+    + withdrawCash(atm: ATM, amount: Integer): OperationResult
+    + finishSession(atm: ATM): OperationResult
+    + loadCash(atm: ATM, amount: Integer): OperationResult
+}
+
+class WaitingState {
+    + getName(): String
+    + enterPin(atm: ATM, pin: String): OperationResult
+    + withdrawCash(atm: ATM, amount: Integer): OperationResult
+    + finishSession(atm: ATM): OperationResult
+    + loadCash(atm: ATM, amount: Integer): OperationResult
+}
+
+class AuthenticationState {
+    + getName(): String
+    + enterPin(atm: ATM, pin: String): OperationResult
+    + withdrawCash(atm: ATM, amount: Integer): OperationResult
+    + finishSession(atm: ATM): OperationResult
+    + loadCash(atm: ATM, amount: Integer): OperationResult
+}
+
+class PerformingOperationsState {
+    + getName(): String
+    + enterPin(atm: ATM, pin: String): OperationResult
+    + withdrawCash(atm: ATM, amount: Integer): OperationResult
+    + finishSession(atm: ATM): OperationResult
+    + loadCash(atm: ATM, amount: Integer): OperationResult
+}
+
+class BlockedState {
+    + getName(): String
+    + enterPin(atm: ATM, pin: String): OperationResult
+    + withdrawCash(atm: ATM, amount: Integer): OperationResult
+    + finishSession(atm: ATM): OperationResult
+    + loadCash(atm: ATM, amount: Integer): OperationResult
+}
+
 ATMControllerApp "1" *-- "1..*" ATM : manages >
-ATM "1" o-- "1" ATMState : currentState_ >
-ATM ..> OperationResult : returns >
-ATMState ..> OperationResult : returns >
+ATM "1" o-- "1" ATMState : currentState >
+ATM ..> OperationResult : returns
 
 ATMState <|.. WaitingState
 ATMState <|.. AuthenticationState
 ATMState <|.. PerformingOperationsState
 ATMState <|.. BlockedState
 
-note right of ATM
-  Соответствие шаблону GoF «State»:
-  • Context (Конечный автомат) -> ATM
-  • State (Интерфейс состояния) -> ATMState
-  • ConcreteStateA -> WaitingState (Ожидание)
-  • ConcreteStateB -> AuthenticationState (Аутентификация)
-  • ConcreteStateC -> PerformingOperationsState (Выполнение операций)
-  • ConcreteStateD -> BlockedState (Заблокирован: денег нет)
-end note
+note "Соответствие шаблону GoF «Состояние» (State):\n• Context → ATM\n• State → ATMState\n• ConcreteState → WaitingState, AuthenticationState,\n  PerformingOperationsState, BlockedState\n• Client → ATMControllerApp" as N1
 
 @enduml
-

@@ -1,174 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200px" height="620px" viewBox="0 0 1200 620" content="&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf-8&#x27;?&gt;
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1260px" height="600px" viewBox="0 0 1260 600" content="&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf-8&#x27;?&gt;
 &lt;mxfile host=&quot;app.diagrams.net&quot;&gt;
-  &lt;diagram name=&quot;State Diagram - ATM (Банкомат)&quot; id=&quot;atm_state_diagram&quot;&gt;
-    &lt;mxGraphModel dx=&quot;1422&quot; dy=&quot;762&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1250&quot; pageHeight=&quot;750&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+  &lt;diagram name=&quot;State Diagram - ATM&quot; id=&quot;atm_state_diagram&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1422&quot; dy=&quot;762&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1260&quot; pageHeight=&quot;600&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
       &lt;root&gt;
         &lt;mxCell id=&quot;0&quot; /&gt;
         &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
-        &lt;UserObject label=&quot;&quot; plantUmlData=&quot;{&amp;quot;data&amp;quot;: &amp;quot;@startuml\nskinparam monochrome false\nskinparam roundcorner 12\nskinparam shadowing false\n\nskinparam state {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n    StartColor #27AE60\n    EndColor #C0392B\n}\n\n[*] --&amp;gt; WaitingState : \u0418\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f\\n[totalCash &amp;gt; 0]\n[*] --&amp;gt; BlockedState : \u0418\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f\\n[totalCash == 0]\n\nstate WaitingState as \&amp;quot;WaitingState\\n(\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435)\&amp;quot; {\n    WaitingState : entry / \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u0430 (totalCash &amp;gt; 0)\n    WaitingState : loadCash(amount) [amount &amp;gt; 0] / totalCash += amount\n    WaitingState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437: \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u0432\u0432\u0435\u0434\u0438\u0442\u0435 PIN-\u043a\u043e\u0434\n    WaitingState : finishSession() / \u043e\u0442\u043a\u0430\u0437: \u0441\u0435\u0430\u043d\u0441 \u043d\u0435 \u043d\u0430\u0447\u0430\u0442\n}\n\nstate AuthenticationState as \&amp;quot;AuthenticationState\\n(\u0410\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f)\&amp;quot; {\n    AuthenticationState : entry / \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0432\u044f\u0437\u0438 \u0441 \u0431\u0430\u043d\u043a\u043e\u043c \u0438 PIN-\u043a\u043e\u0434\u0430\n    AuthenticationState : enterPin(pin) [\u0441\u0431\u043e\u0439 \u0441\u0432\u044f\u0437\u0438 \u0418\u041b\u0418 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 PIN] / \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u043f\u043e\u0432\u0442\u043e\u0440\u0430\n    AuthenticationState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437: \u0432\u0445\u043e\u0434 \u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\n    AuthenticationState : loadCash(amount) / \u043e\u0442\u043a\u0430\u0437: \u0441\u0435\u0430\u043d\u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430 \u0430\u043a\u0442\u0438\u0432\u0435\u043d\n}\n\nstate PerformingOperationsState as \&amp;quot;PerformingOperationsState\\n(\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0439)\&amp;quot; {\n    PerformingOperationsState : entry / \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f\u043c \u043e\u0442\u043a\u0440\u044b\u0442\n    PerformingOperationsState : withdrawCash(amount) [\u0441\u0432\u044f\u0437\u044c \u041e\u041a &amp;amp;&amp;amp; amount &amp;lt; totalCash] / totalCash -= amount\n    PerformingOperationsState : withdrawCash(amount) [\u043d\u0435\u0442 \u0441\u0432\u044f\u0437\u0438 \u0418\u041b\u0418 amount &amp;gt; totalCash] / \u043e\u0442\u043a\u0430\u0437 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u0438\n    PerformingOperationsState : enterPin(pin) / \u043f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435: PIN \u0443\u0436\u0435 \u0432\u0432\u0435\u0434\u0451\u043d\n    PerformingOperationsState : loadCash(amount) / \u043e\u0442\u043a\u0430\u0437: \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0435\u0430\u043d\u0441\n}\n\nstate BlockedState as \&amp;quot;BlockedState\\n(\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d: \u0434\u0435\u043d\u0435\u0433 \u043d\u0435\u0442)\&amp;quot; {\n    BlockedState : entry / \u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043a\u0430 \u0432\u044b\u0434\u0430\u0447\u0438 (totalCash == 0)\n    BlockedState : enterPin(pin) / \u043e\u0442\u043a\u0430\u0437: \u043d\u0435\u0442 \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\n    BlockedState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437: \u043a\u0430\u0441\u0441\u0435\u0442\u044b \u043f\u0443\u0441\u0442\u044b\n    BlockedState : finishSession() / \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0438\u043d\u043a\u0430\u0441\u0441\u0430\u0446\u0438\u0438\n}\n\nWaitingState --&amp;gt; AuthenticationState : enterPin(pin)\\n[\u043d\u0435\u0442 \u0441\u0432\u044f\u0437\u0438 \u0441 \u0431\u0430\u043d\u043a\u043e\u043c \u0418\u041b\u0418 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 PIN]\nWaitingState --&amp;gt; PerformingOperationsState : enterPin(pin)\\n[\u0441\u0432\u044f\u0437\u044c \u0441 \u0431\u0430\u043d\u043a\u043e\u043c \u041e\u041a \u0418 \u0432\u0435\u0440\u043d\u044b\u0439 PIN]\n\nAuthenticationState --&amp;gt; PerformingOperationsState : enterPin(pin)\\n[\u0441\u0432\u044f\u0437\u044c \u0441 \u0431\u0430\u043d\u043a\u043e\u043c \u041e\u041a \u0418 \u0432\u0435\u0440\u043d\u044b\u0439 PIN]\nAuthenticationState --&amp;gt; WaitingState : finishSession()\\n/ \u043e\u0442\u043c\u0435\u043d\u0430 \u0430\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438\n\nPerformingOperationsState --&amp;gt; WaitingState : finishSession()\\n/ \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u0435 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u044f\nPerformingOperationsState --&amp;gt; BlockedState : withdrawCash(amount)\\n[\u0441\u0432\u044f\u0437\u044c \u041e\u041a &amp;amp;&amp;amp; amount == totalCash]\\n/ \u0432\u044b\u0434\u0430\u0447\u0430 \u043e\u0441\u0442\u0430\u0442\u043a\u0430 (totalCash = 0)\n\nBlockedState --&amp;gt; WaitingState : loadCash(amount) [amount &amp;gt; 0]\\n/ \u0438\u043d\u043a\u0430\u0441\u0441\u0430\u0446\u0438\u044f (totalCash += amount)\n\n@enduml\n&amp;quot;, &amp;quot;config&amp;quot;: null}&quot; id=&quot;puml_root&quot;&gt;
+        &lt;UserObject label=&quot;&quot; plantUmlData=&quot;{&amp;quot;data&amp;quot;: &amp;quot;@startuml\nskinparam monochrome false\nskinparam roundcorner 10\nskinparam shadowing false\n\nskinparam state {\n    BackgroundColor White\n    BorderColor #2C3E50\n    ArrowColor #2980B9\n    StartColor #27AE60\n    EndColor #C0392B\n}\n\n[*] --&amp;gt; WaitingState : [totalCash &amp;gt; 0]\n[*] --&amp;gt; BlockedState : [totalCash == 0]\n\nstate WaitingState as \&amp;quot;WaitingState\\n(\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435)\&amp;quot; {\n    WaitingState : entry / \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\n    WaitingState : loadCash(amount) [amount &amp;gt; 0] / totalCash += amount\n    WaitingState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437\n    WaitingState : finishSession() / \u043e\u0442\u043a\u0430\u0437\n}\n\nstate AuthenticationState as \&amp;quot;AuthenticationState\\n(\u0410\u0443\u0442\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f)\&amp;quot; {\n    AuthenticationState : entry / \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0432\u044f\u0437\u0438 \u0441 \u0431\u0430\u043d\u043a\u043e\u043c \u0438 PIN-\u043a\u043e\u0434\u0430\n    AuthenticationState : enterPin(pin) [\u043d\u0435\u0442 \u0441\u0432\u044f\u0437\u0438 \u0438\u043b\u0438 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 PIN] / \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u044b\u0439 \u0432\u0432\u043e\u0434\n    AuthenticationState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437\n    AuthenticationState : loadCash(amount) / \u043e\u0442\u043a\u0430\u0437\n}\n\nstate PerformingOperationsState as \&amp;quot;PerformingOperationsState\\n(\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0439)\&amp;quot; {\n    PerformingOperationsState : entry / \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f\u043c \u043e\u0442\u043a\u0440\u044b\u0442\n    PerformingOperationsState : withdrawCash(amount) [\u0441\u0432\u044f\u0437\u044c \u0435\u0441\u0442\u044c \u0438 amount &amp;lt; totalCash] / \u0432\u044b\u0434\u0430\u0447\u0430\n    PerformingOperationsState : withdrawCash(amount) [\u043d\u0435\u0442 \u0441\u0432\u044f\u0437\u0438 \u0438\u043b\u0438 amount &amp;gt; totalCash] / \u043e\u0442\u043a\u0430\u0437\n    PerformingOperationsState : enterPin(pin) / \u043e\u0442\u043a\u0430\u0437\n    PerformingOperationsState : loadCash(amount) / \u043e\u0442\u043a\u0430\u0437\n}\n\nstate BlockedState as \&amp;quot;BlockedState\\n(\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d: \u0434\u0435\u043d\u0435\u0433 \u043d\u0435\u0442)\&amp;quot; {\n    BlockedState : entry / \u0432\u044b\u0434\u0430\u0447\u0430 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u0430 (totalCash == 0)\n    BlockedState : enterPin(pin) / \u043e\u0442\u043a\u0430\u0437\n    BlockedState : withdrawCash(amount) / \u043e\u0442\u043a\u0430\u0437\n    BlockedState : finishSession() / \u043e\u0442\u043a\u0430\u0437\n}\n\nWaitingState --&amp;gt; AuthenticationState : enterPin(pin) [\u043d\u0435\u0442 \u0441\u0432\u044f\u0437\u0438 \u0438\u043b\u0438 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 PIN]\nAuthenticationState --&amp;gt; WaitingState : finishSession()\nWaitingState --&amp;gt; PerformingOperationsState : enterPin(pin) [\u0441\u0432\u044f\u0437\u044c \u0435\u0441\u0442\u044c \u0438 PIN \u0432\u0435\u0440\u043d\u044b\u0439]\nAuthenticationState --&amp;gt; PerformingOperationsState : enterPin(pin) [\u0441\u0432\u044f\u0437\u044c \u0435\u0441\u0442\u044c \u0438 PIN \u0432\u0435\u0440\u043d\u044b\u0439]\nPerformingOperationsState --&amp;gt; WaitingState : finishSession()\nPerformingOperationsState --&amp;gt; BlockedState : withdrawCash(amount) [amount == totalCash]\nBlockedState --&amp;gt; WaitingState : loadCash(amount) [amount &amp;gt; 0]\n\n@enduml\n&amp;quot;, &amp;quot;config&amp;quot;: null}&quot; id=&quot;puml_root&quot;&gt;
           &lt;mxCell vertex=&quot;1&quot; parent=&quot;1&quot; style=&quot;group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;&quot; connectable=&quot;0&quot;&gt;
             &lt;mxGeometry as=&quot;geometry&quot; /&gt;
           &lt;/mxCell&gt;
         &lt;/UserObject&gt;
         &lt;mxCell id=&quot;st_start&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;ellipse;fillColor=#27AE60;strokeColor=#1E8449;&quot; value=&quot;&quot;&gt;
-          &lt;mxGeometry x=&quot;275&quot; y=&quot;30&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;
+          &lt;mxGeometry x=&quot;305&quot; y=&quot;30&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;st_waiting&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=14;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=middle;align=left;spacingLeft=10;fontFamily=Helvetica;fontSize=11;&quot; value=&quot;WaitingState (Ожидание)&amp;#10;────────────────────────────────────────&amp;#10;entry / ожидание клиента (totalCash &amp;gt; 0)&amp;#10;do / loadCash(amount) [amount &amp;gt; 0] : totalCash += amount&amp;#10;do / withdrawCash(amount) : отказ (введите PIN-код)&amp;#10;do / finishSession() : отказ (сеанс не начат)&quot;&gt;
-          &lt;mxGeometry x=&quot;80&quot; y=&quot;130&quot; width=&quot;420&quot; height=&quot;120&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxCell id=&quot;st_waiting&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=16;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; value=&quot;WaitingState (Ожидание)&amp;#xa;entry / ожидание клиента&amp;#xa;loadCash(amount) [amount &amp;gt; 0] / totalCash += amount&amp;#xa;withdrawCash(amount) / отказ&amp;#xa;finishSession() / отказ&quot;&gt;
+          &lt;mxGeometry x=&quot;120&quot; y=&quot;110&quot; width=&quot;400&quot; height=&quot;100&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;st_auth&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=14;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;verticalAlign=middle;align=left;spacingLeft=10;fontFamily=Helvetica;fontSize=11;&quot; value=&quot;AuthenticationState (Аутентификация пользователя)&amp;#10;────────────────────────────────────────&amp;#10;entry / проверка связи с банком и PIN-кода&amp;#10;do / enterPin(pin) [нет связи || неверный PIN] : повтор&amp;#10;do / withdrawCash(amount) : отказ (вход не завершён)&amp;#10;do / loadCash(amount) : отказ (сеанс клиента активен)&quot;&gt;
-          &lt;mxGeometry x=&quot;720&quot; y=&quot;130&quot; width=&quot;440&quot; height=&quot;120&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxCell id=&quot;st_auth&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=16;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; value=&quot;AuthenticationState (Аутентификация пользователя)&amp;#xa;entry / проверка связи с банком и PIN-кода&amp;#xa;enterPin(pin) [нет связи или неверный PIN] / повторный ввод&amp;#xa;withdrawCash(amount) / отказ&amp;#xa;loadCash(amount) / отказ&quot;&gt;
+          &lt;mxGeometry x=&quot;780&quot; y=&quot;110&quot; width=&quot;440&quot; height=&quot;100&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;st_ops&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=14;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;verticalAlign=middle;align=left;spacingLeft=10;fontFamily=Helvetica;fontSize=11;&quot; value=&quot;PerformingOperationsState (Выполнение операций)&amp;#10;────────────────────────────────────────&amp;#10;entry / доступ к операциям открыт&amp;#10;do / withdrawCash(amount) [связь ОК &amp;amp;&amp;amp; amount &amp;lt; totalCash] : выдача&amp;#10;do / withdrawCash(amount) [нет связи || amount &amp;gt; totalCash] : отказ&amp;#10;do / enterPin(pin) : предупреждение (PIN уже введён)&amp;#10;do / loadCash(amount) : отказ (сначала завершите сеанс)&quot;&gt;
-          &lt;mxGeometry x=&quot;720&quot; y=&quot;450&quot; width=&quot;440&quot; height=&quot;135&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxCell id=&quot;st_blocked&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=16;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; value=&quot;BlockedState (Заблокирован: денег нет)&amp;#xa;entry / выдача заблокирована (totalCash == 0)&amp;#xa;enterPin(pin) / отказ&amp;#xa;withdrawCash(amount) / отказ&amp;#xa;finishSession() / отказ&quot;&gt;
+          &lt;mxGeometry x=&quot;120&quot; y=&quot;440&quot; width=&quot;400&quot; height=&quot;100&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;st_blocked&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=14;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;verticalAlign=middle;align=left;spacingLeft=10;fontFamily=Helvetica;fontSize=11;&quot; value=&quot;BlockedState (Заблокирован: денег нет)&amp;#10;────────────────────────────────────────&amp;#10;entry / блокировка выдачи (totalCash == 0)&amp;#10;do / enterPin(pin) : отказ (нет наличных средств)&amp;#10;do / withdrawCash(amount) : отказ (кассеты пусты)&amp;#10;do / finishSession() : ожидание инкассации&quot;&gt;
-          &lt;mxGeometry x=&quot;80&quot; y=&quot;450&quot; width=&quot;420&quot; height=&quot;120&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxCell id=&quot;st_ops&quot; parent=&quot;1&quot; vertex=&quot;1&quot; style=&quot;rounded=1;arcSize=16;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; value=&quot;PerformingOperationsState (Выполнение операций)&amp;#xa;entry / доступ к операциям открыт&amp;#xa;withdrawCash(amount) [связь есть и amount &amp;lt; totalCash] / выдача&amp;#xa;withdrawCash(amount) [нет связи или amount &amp;gt; totalCash] / отказ&amp;#xa;enterPin(pin) / отказ&amp;#xa;loadCash(amount) / отказ&quot;&gt;
+          &lt;mxGeometry x=&quot;780&quot; y=&quot;440&quot; width=&quot;440&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_init_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_start&quot; target=&quot;st_waiting&quot; value=&quot;[totalCash &amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;&quot;&gt;
+        &lt;mxCell id=&quot;tr_init_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_start&quot; target=&quot;st_waiting&quot; value=&quot;[totalCash &amp;amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_init_block&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_start&quot; target=&quot;st_blocked&quot; value=&quot;[totalCash == 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#C0392B;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_init_block&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_start&quot; target=&quot;st_blocked&quot; value=&quot;[totalCash == 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
             &lt;Array as=&quot;points&quot;&gt;
-              &lt;mxPoint x=&quot;35&quot; y=&quot;45&quot; /&gt;
-              &lt;mxPoint x=&quot;35&quot; y=&quot;510&quot; /&gt;
+              &lt;mxPoint x=&quot;50&quot; y=&quot;45&quot; /&gt;
+              &lt;mxPoint x=&quot;50&quot; y=&quot;490&quot; /&gt;
             &lt;/Array&gt;
           &lt;/mxGeometry&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_wait_auth&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_auth&quot; value=&quot;enterPin(pin)&amp;#10;[сбой связи ИЛИ неверный PIN]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#d79b00;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_wait_auth&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_auth&quot; value=&quot;enterPin(pin) [нет связи или неверный PIN]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_auth_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_auth&quot; target=&quot;st_waiting&quot; value=&quot;finishSession()&amp;#10;/ отмена входа&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#6c8ebf;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_auth_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_auth&quot; target=&quot;st_waiting&quot; value=&quot;finishSession()&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_wait_ops&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_ops&quot; value=&quot;enterPin(pin)&amp;#10;[связь ОК И верный PIN]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#27AE60;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_wait_ops&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_ops&quot; value=&quot;enterPin(pin) [связь есть и PIN верный]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.1818;entryY=0;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
             &lt;Array as=&quot;points&quot;&gt;
-              &lt;mxPoint x=&quot;437&quot; y=&quot;320&quot; /&gt;
-              &lt;mxPoint x=&quot;830&quot; y=&quot;320&quot; /&gt;
+              &lt;mxPoint x=&quot;460&quot; y=&quot;300&quot; /&gt;
+              &lt;mxPoint x=&quot;860&quot; y=&quot;300&quot; /&gt;
             &lt;/Array&gt;
           &lt;/mxGeometry&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_auth_ops&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_auth&quot; target=&quot;st_ops&quot; value=&quot;enterPin(pin)&amp;#10;[связь ОК И верный PIN]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#27AE60;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.65;exitY=1;exitDx=0;exitDy=0;entryX=0.65;entryY=0;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_auth_ops&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_auth&quot; target=&quot;st_ops&quot; value=&quot;enterPin(pin) [связь есть и PIN верный]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.7727;exitY=1;exitDx=0;exitDy=0;entryX=0.7727;entryY=0;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_ops_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_ops&quot; target=&quot;st_waiting&quot; value=&quot;finishSession()&amp;#10;/ завершение сеанса&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#6c8ebf;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_ops_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_ops&quot; target=&quot;st_waiting&quot; value=&quot;finishSession()&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.2609;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
             &lt;Array as=&quot;points&quot;&gt;
-              &lt;mxPoint x=&quot;580&quot; y=&quot;484&quot; /&gt;
-              &lt;mxPoint x=&quot;580&quot; y=&quot;370&quot; /&gt;
-              &lt;mxPoint x=&quot;332&quot; y=&quot;370&quot; /&gt;
+              &lt;mxPoint x=&quot;660&quot; y=&quot;470&quot; /&gt;
+              &lt;mxPoint x=&quot;660&quot; y=&quot;360&quot; /&gt;
+              &lt;mxPoint x=&quot;360&quot; y=&quot;360&quot; /&gt;
             &lt;/Array&gt;
           &lt;/mxGeometry&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_ops_block&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_ops&quot; target=&quot;st_blocked&quot; value=&quot;withdrawCash(amount)&amp;#10;[связь ОК &amp;amp;&amp;amp; amount == totalCash]&amp;#10;/ выдача остатка (totalCash = 0)&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#b85450;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_ops_block&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_ops&quot; target=&quot;st_blocked&quot; value=&quot;withdrawCash(amount) [amount == totalCash]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0;exitY=0.6957;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
-        &lt;mxCell id=&quot;tr_block_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_blocked&quot; target=&quot;st_waiting&quot; value=&quot;loadCash(amount) [amount &amp;gt; 0]&amp;#10;/ инкассация (totalCash += amount)&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=1;strokeColor=#27AE60;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;&quot;&gt;
+        &lt;mxCell id=&quot;tr_block_wait&quot; parent=&quot;1&quot; edge=&quot;1&quot; source=&quot;st_blocked&quot; target=&quot;st_waiting&quot; value=&quot;loadCash(amount) [amount &amp;amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2C3E50;strokeWidth=1.2;fontFamily=Helvetica;fontSize=10;exitX=0.175;exitY=0;exitDx=0;exitDy=0;entryX=0.175;entryY=1;entryDx=0;entryDy=0;&quot;&gt;
           &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
         &lt;/mxCell&gt;
       &lt;/root&gt;
     &lt;/mxGraphModel&gt;
   &lt;/diagram&gt;
-&lt;/mxfile&gt;" style="background-color: #ffffff;">
-  <defs>
-    <marker id="arrow_dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2C3E50"/>
-    </marker>
-    <marker id="arrow_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#27AE60"/>
-    </marker>
-    <marker id="arrow_orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d79b00"/>
-    </marker>
-    <marker id="arrow_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#6c8ebf"/>
-    </marker>
-    <marker id="arrow_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#b85450"/>
-    </marker>
-  </defs>
-
-  <!-- Start node -->
-  <circle cx="290" cy="45" r="15" fill="#27AE60" stroke="#1E8449" stroke-width="1.5"/>
-
-  <!-- State 1: WaitingState -->
-  <rect x="80" y="130" width="420" height="120" rx="14" ry="14" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
-  <text x="290" y="152" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">WaitingState (Ожидание)</text>
-  <line x1="80" y1="162" x2="500" y2="162" stroke="#6c8ebf" stroke-width="1"/>
-  <text x="92" y="180" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">entry / ожидание клиента (totalCash &gt; 0)</text>
-  <text x="92" y="198" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / loadCash(amount) [amount &gt; 0] : totalCash += amount</text>
-  <text x="92" y="216" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / withdrawCash(amount) : отказ (введите PIN-код)</text>
-  <text x="92" y="234" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / finishSession() : отказ (сеанс не начат)</text>
-
-  <!-- State 2: AuthenticationState -->
-  <rect x="720" y="130" width="440" height="120" rx="14" ry="14" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
-  <text x="940" y="152" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">AuthenticationState (Аутентификация пользователя)</text>
-  <line x1="720" y1="162" x2="1160" y2="162" stroke="#d79b00" stroke-width="1"/>
-  <text x="732" y="180" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">entry / проверка связи с банком и PIN-кода</text>
-  <text x="732" y="198" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / enterPin(pin) [нет связи || неверный PIN] : повтор</text>
-  <text x="732" y="216" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / withdrawCash(amount) : отказ (вход не завершён)</text>
-  <text x="732" y="234" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / loadCash(amount) : отказ (сеанс клиента активен)</text>
-
-  <!-- State 3: PerformingOperationsState -->
-  <rect x="720" y="450" width="440" height="135" rx="14" ry="14" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="940" y="472" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">PerformingOperationsState (Выполнение операций)</text>
-  <line x1="720" y1="482" x2="1160" y2="482" stroke="#82b366" stroke-width="1"/>
-  <text x="732" y="500" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">entry / доступ к операциям открыт</text>
-  <text x="732" y="518" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / withdrawCash(amount) [связь ОК &amp;&amp; amount &lt; totalCash] : выдача</text>
-  <text x="732" y="536" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / withdrawCash(amount) [нет связи || amount &gt; totalCash] : отказ</text>
-  <text x="732" y="554" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / enterPin(pin) : предупреждение (PIN уже введён)</text>
-  <text x="732" y="572" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / loadCash(amount) : отказ (сначала завершите сеанс)</text>
-
-  <!-- State 4: BlockedState -->
-  <rect x="80" y="450" width="420" height="120" rx="14" ry="14" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
-  <text x="290" y="472" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">BlockedState (Заблокирован: денег нет)</text>
-  <line x1="80" y1="482" x2="500" y2="482" stroke="#b85450" stroke-width="1"/>
-  <text x="92" y="500" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">entry / блокировка выдачи (totalCash == 0)</text>
-  <text x="92" y="518" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / enterPin(pin) : отказ (нет наличных средств)</text>
-  <text x="92" y="536" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / withdrawCash(amount) : отказ (кассеты пусты)</text>
-  <text x="92" y="554" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000">do / finishSession() : ожидание инкассации</text>
-
-  <!-- Transitions -->
-  <!-- Start -> Waiting -->
-  <path d="M 290 60 L 290 128" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow_dark)"/>
-  <text x="345" y="98" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2C3E50">[totalCash &gt; 0]</text>
-
-  <!-- Start -> Blocked -->
-  <path d="M 275 45 L 35 45 L 35 510 L 78 510" fill="none" stroke="#b85450" stroke-width="1.3" marker-end="url(#arrow_red)"/>
-  <text x="155" y="38" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#b85450">[totalCash == 0]</text>
-
-  <!-- Waiting -> Auth -->
-  <path d="M 500 160 L 718 160" fill="none" stroke="#d79b00" stroke-width="1.3" marker-end="url(#arrow_orange)"/>
-  <text x="610" y="142" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#000000">enterPin(pin)</text>
-  <text x="610" y="155" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#000000">[сбой связи || неверный PIN]</text>
-
-  <!-- Auth -> Waiting -->
-  <path d="M 720 220 L 502 220" fill="none" stroke="#6c8ebf" stroke-width="1.3" marker-end="url(#arrow_blue)"/>
-  <text x="610" y="212" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#000000">finishSession() / отмена входа</text>
-
-  <!-- Waiting -> Ops -->
-  <path d="M 437 250 L 437 320 L 830 320 L 830 448" fill="none" stroke="#27AE60" stroke-width="1.3" marker-end="url(#arrow_green)"/>
-  <text x="635" y="302" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1E8449">enterPin(pin) [связь ОК &amp;&amp; верный PIN]</text>
-
-  <!-- Auth -> Ops -->
-  <path d="M 1006 250 L 1006 448" fill="none" stroke="#27AE60" stroke-width="1.3" marker-end="url(#arrow_green)"/>
-  <text x="1095" y="340" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1E8449">enterPin(pin)</text>
-  <text x="1095" y="354" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1E8449">[связь ОК &amp;&amp; верный PIN]</text>
-
-  <!-- Ops -> Waiting -->
-  <path d="M 720 484 L 580 484 L 580 370 L 332 370 L 332 252" fill="none" stroke="#6c8ebf" stroke-width="1.3" marker-end="url(#arrow_blue)"/>
-  <text x="460" y="362" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2C3E50">finishSession() / завершение сеанса</text>
-
-  <!-- Ops -> Blocked -->
-  <path d="M 720 545 L 502 545" fill="none" stroke="#b85450" stroke-width="1.3" marker-end="url(#arrow_red)"/>
-  <text x="610" y="525" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#b85450">withdrawCash(amount)</text>
-  <text x="610" y="538" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#b85450">[amount == totalCash] / totalCash = 0</text>
-
-  <!-- Blocked -> Waiting -->
-  <path d="M 206 450 L 206 252" fill="none" stroke="#27AE60" stroke-width="1.3" marker-end="url(#arrow_green)"/>
-  <text x="125" y="345" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1E8449">loadCash(amount)</text>
-  <text x="125" y="359" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1E8449">[amount &gt; 0]</text>
+&lt;/mxfile&gt;
+" style="background-color: #ffffff;">
+  <rect x="0" y="0" width="1260" height="600" fill="#ffffff"/>
+  <ellipse cx="320" cy="45" rx="15" ry="15" fill="#27AE60" stroke="#1E8449"/>
+  <rect x="120" y="110" width="400" height="100" rx="16.0" ry="16.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="320.0" y="135.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">WaitingState (Ожидание)</text>
+  <text x="320.0" y="149.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">entry / ожидание клиента</text>
+  <text x="320.0" y="163.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">loadCash(amount) [amount &gt; 0] / totalCash += amount</text>
+  <text x="320.0" y="178.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">withdrawCash(amount) / отказ</text>
+  <text x="320.0" y="192.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">finishSession() / отказ</text>
+  <rect x="780" y="110" width="440" height="100" rx="16.0" ry="16.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="1000.0" y="135.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">AuthenticationState (Аутентификация пользователя)</text>
+  <text x="1000.0" y="149.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">entry / проверка связи с банком и PIN-кода</text>
+  <text x="1000.0" y="163.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">enterPin(pin) [нет связи или неверный PIN] / повторный ввод</text>
+  <text x="1000.0" y="178.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">withdrawCash(amount) / отказ</text>
+  <text x="1000.0" y="192.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">loadCash(amount) / отказ</text>
+  <rect x="120" y="440" width="400" height="100" rx="16.0" ry="16.0" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="320.0" y="465.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">BlockedState (Заблокирован: денег нет)</text>
+  <text x="320.0" y="479.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">entry / выдача заблокирована (totalCash == 0)</text>
+  <text x="320.0" y="493.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">enterPin(pin) / отказ</text>
+  <text x="320.0" y="508.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">withdrawCash(amount) / отказ</text>
+  <text x="320.0" y="522.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">finishSession() / отказ</text>
+  <rect x="780" y="440" width="440" height="115" rx="18.4" ry="18.4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="1000.0" y="465.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">PerformingOperationsState (Выполнение операций)</text>
+  <text x="1000.0" y="479.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">entry / доступ к операциям открыт</text>
+  <text x="1000.0" y="494.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">withdrawCash(amount) [связь есть и amount &lt; totalCash] / выдача</text>
+  <text x="1000.0" y="508.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">withdrawCash(amount) [нет связи или amount &gt; totalCash] / отказ</text>
+  <text x="1000.0" y="522.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">enterPin(pin) / отказ</text>
+  <text x="1000.0" y="537.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="12" text-anchor="middle" fill="#000000">loadCash(amount) / отказ</text>
+  <path d="M 320.0 60.0 L 320.0 102.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 320.0 110.0 L 316.0 102.0 L 324.0 102.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="276.0" y="78.8" width="88.0" height="12.5" fill="#ffffff"/>
+  <text x="320.0" y="88.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">[totalCash &gt; 0]</text>
+  <path d="M 305.0 45.0 L 50.0 45.0 L 50.0 490.0 L 112.0 490.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 120.0 490.0 L 112.0 494.0 L 112.0 486.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="3.2" y="168.8" width="93.6" height="12.5" fill="#ffffff"/>
+  <text x="50.0" y="178.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">[totalCash == 0]</text>
+  <path d="M 520.0 140.0 L 772.0 140.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 780.0 140.0 L 772.0 144.0 L 772.0 136.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="530.4" y="133.8" width="239.2" height="12.5" fill="#ffffff"/>
+  <text x="650.0" y="143.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">enterPin(pin) [нет связи или неверный PIN]</text>
+  <path d="M 780.0 185.0 L 528.0 185.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 520.0 185.0 L 528.0 181.0 L 528.0 189.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="606.0" y="178.8" width="88.0" height="12.5" fill="#ffffff"/>
+  <text x="650.0" y="188.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">finishSession()</text>
+  <path d="M 460.0 210.0 L 460.0 300.0 L 860.0 300.0 L 860.0 432.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 860.0 440.0 L 856.0 432.0 L 864.0 432.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="573.8" y="293.8" width="222.4" height="12.5" fill="#ffffff"/>
+  <text x="685.0" y="303.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">enterPin(pin) [связь есть и PIN верный]</text>
+  <path d="M 1120.0 210.0 L 1120.0 432.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 1120.0 440.0 L 1116.0 432.0 L 1124.0 432.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="1008.8" y="318.8" width="222.4" height="12.5" fill="#ffffff"/>
+  <text x="1120.0" y="328.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">enterPin(pin) [связь есть и PIN верный]</text>
+  <path d="M 780.0 470.0 L 660.0 470.0 L 660.0 360.0 L 360.0 360.0 L 360.0 218.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 360.0 210.0 L 364.0 218.0 L 356.0 218.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="506.0" y="353.8" width="88.0" height="12.5" fill="#ffffff"/>
+  <text x="550.0" y="363.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">finishSession()</text>
+  <path d="M 780.0 520.0 L 528.0 520.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 520.0 520.0 L 528.0 516.0 L 528.0 524.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="530.4" y="513.8" width="239.2" height="12.5" fill="#ffffff"/>
+  <text x="650.0" y="523.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">withdrawCash(amount) [amount == totalCash]</text>
+  <path d="M 190.0 440.0 L 190.0 218.0" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 190.0 210.0 L 194.0 218.0 L 186.0 218.0 Z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+  <rect x="106.8" y="318.8" width="166.4" height="12.5" fill="#ffffff"/>
+  <text x="190.0" y="328.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="10" text-anchor="middle" fill="#000000">loadCash(amount) [amount &gt; 0]</text>
 </svg>
