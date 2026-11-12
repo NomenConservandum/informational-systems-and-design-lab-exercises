@@ -3,7 +3,7 @@
 #align(center)[
     = Лабораторная работа №4
     *Разработка программных компонент на основе шаблонов проектирования* \
-    *Вариант 5/1: Паттерн «Состояние» — система «Банкомат»*
+    *Вариант 5/1: Паттерн «Состояние» — система «Телефон»*
 ]
 #align(right)[
     Выполнил Храмов Александр, 451 группа, фКНиИТ
@@ -17,10 +17,10 @@
 
 Целью работы является освоение методов объектно-ориентированного проектирования программных компонент на основе шаблонов проектирования (GoF).
 
-В соответствии с вариантом *5/1* (задание №5 «Паттерн „Состояние“», подпункт 1 «Банкомат») необходимо:
-1. Разработать диаграмму конечных автоматов (диаграмму состояний) для системы «Банкомат» и описать варианты реакции экземпляра класса на операции, вызываемые в указанных состояниях.
+В соответствии с вариантом *5/1* (задание №5 «Паттерн „Состояние“», подпункт 1 «Телефон») необходимо:
+1. Разработать диаграмму конечных автоматов (диаграмму состояний) для системы «Телефон» и описать варианты реакции экземпляра класса на операции, вызываемые в указанных состояниях.
 2. Разработать на основе шаблона проектирования *«Состояние» (State)* UML-диаграмму классов реализуемой программы и указать соответствие классов на этой диаграмме классам шаблона.
-3. Разработать на объектно-ориентированном языке программирования (C++) библиотеку классов, включающую класс «Конечный автомат» (`ATM`), интерфейс «Состояние» (`ATMState`) и классы «Конкретные состояния» (`WaitingState`, `AuthenticationState`, `PerformingOperationsState`, `BlockedState`).
+3. Разработать на объектно-ориентированном языке программирования (C++) библиотеку классов, включающую класс «Конечный автомат» (`Phone`), интерфейс «Состояние» (`PhoneState`) и классы «Конкретные состояния» (`WaitingState`, `CallingState`, `TalkingState`, `BlockedState`).
 4. Разработать консольное приложение для управления состояниями экземпляров класса «Конечный автомат» и привести результаты тестирования программы.
 
 == Спецификация класса, атрибутов, операций и состояний по ТЗ
@@ -29,24 +29,24 @@
     columns: (1.2fr, 2fr, 1.8fr),
     align: (left, left, left),
     [*Класс*], [*Атрибуты и операции*], [*Состояния автомата*],
-    [*Банкомат* (`ATM`)],
+    [*Телефон* (`Phone`)],
     [
         *Атрибуты:*
-        - `id` --- уникальный идентификатор (ID) банкомата;
-        - `totalCash` --- общая сумма денег в банкомате;
-        - `connectionLossProbability` --- вероятность отсутствия связи с банком ($p in [0.0, 1.0]$).
+        - `phoneNumber` --- абонентский номер телефона;
+        - `balance` --- текущий баланс средств на счёте;
+        - `callProbability` --- вероятность дозвона / поступления вызова ($p in [0.0, 1.0]$).
 
         *Операции:*
-        - `enterPin(pin)` --- ввести PIN-код;
-        - `withdrawCash(amount)` --- снять заданную сумму;
-        - `finishSession()` --- завершить работу;
-        - `loadCash(amount)` --- загрузить деньги в банкомат.
+        - `makeCall(target)` --- позвонить;
+        - `answerCall()` --- ответить на звонок;
+        - `endCall()` --- завершить разговор (или сбросить вызов);
+        - `topUpBalance(amount)` --- пополнить баланс.
     ],
     [
         1. *Ожидание* (`WaitingState`)
-        2. *Аутентификация пользователя* (`AuthenticationState`)
-        3. *Выполнение операций* (`PerformingOperationsState`)
-        4. *Заблокирован (денег нет)* (`BlockedState`)
+        2. *Звонок* (`CallingState`)
+        3. *Разговор* (`TalkingState`)
+        4. *Заблокирован (нет средств)* (`BlockedState`)
     ]
 )
 
@@ -65,72 +65,72 @@
 #table(
     columns: (1.2fr, 1.4fr, 2.4fr),
     align: (left, left, left),
-    [*Элемент шаблона GoF*], [*Класс / метод в программе*], [*Роль и ответственность в системе «Банкомат»*],
+    [*Элемент шаблона GoF*], [*Класс / метод в программе*], [*Роль и ответственность в системе «Телефон»*],
     [`Context` \ (Контекст / Конечный автомат)],
-    [Класс `atm::ATM`],
-    [Хранит бизнес-атрибуты банкомата (`id_`, `totalCash_`, `connectionLossProbability_`) и умный указатель `currentState_` на активный объект состояния. Делегирует вызовы `enterPin`, `withdrawCash`, `finishSession`, `loadCash` объекту `currentState_` и предоставляет метод `setState()` для смены состояния.],
+    [Класс `phone::Phone`],
+    [Хранит бизнес-атрибуты телефона (`phoneNumber_`, `balance_`, `callProbability_`, `callCost_`) и умный указатель `currentState_` на активный объект состояния. Делегирует вызовы `makeCall`, `answerCall`, `endCall`, `topUpBalance` объекту `currentState_` и предоставляет метод `setState()` для смены состояния.],
     [`State` \ (Интерфейс состояния)],
-    [Абстрактный класс `atm::ATMState`],
-    [Определяет чистые виртуальные методы для всех 4 операций ТЗ (`enterPin`, `withdrawCash`, `finishSession`, `loadCash`), каждый из которых принимает ссылку на контекст `ATM&`.],
+    [Абстрактный класс `phone::PhoneState`],
+    [Определяет чистые виртуальные методы для всех 4 операций ТЗ (`makeCall`, `answerCall`, `endCall`, `topUpBalance`), каждый из которых принимает ссылку на контекст `Phone&`.],
     [`ConcreteStateA` \ (Конкретное состояние 1)],
-    [Класс `atm::WaitingState`],
-    [Реализует поведение банкомата в состоянии *«Ожидание»*: принимает ввод PIN-кода (переводя автомат в режим аутентификации) и разрешает плановую загрузку денег; блокирует выдачу средств без авторизации.],
+    [Класс `phone::WaitingState`],
+    [Реализует поведение телефона в состоянии *«Ожидание»*: при наличии средств (`balance > 0`) и срабатывании вероятности дозвона переводит аппарат в состояние `CallingState`; разрешает пополнение баланса; отклоняет `answerCall` и `endCall`.],
     [`ConcreteStateB` \ (Конкретное состояние 2)],
-    [Класс `atm::AuthenticationState`],
-    [Реализует поведение в состоянии *«Аутентификация пользователя»*: обрабатывает повторный ввод PIN-кода после ошибки или временного сбоя связи с банком, позволяет отменить сеанс (`finishSession` $->$ `WaitingState`) и запрещает снятие наличных до успешной проверки.],
+    [Класс `phone::CallingState`],
+    [Реализует поведение в состоянии *«Звонок»*: по вызову `answerCall()` устанавливает соединение и переводит автомат в `TalkingState`; по `endCall()` сбрасывает вызов без списания средств с возвратом в `WaitingState`; запрещает повторный набор номера.],
     [`ConcreteStateC` \ (Конкретное состояние 3)],
-    [Класс `atm::PerformingOperationsState`],
-    [Реализует поведение в состоянии *«Выполнение операций»*: проверяет связь с банком и достаточность средств при выдаче наличных; при обнулении остатка (`totalCash == 0`) автоматически переводит автомат в `BlockedState`; по `finishSession()` возвращает в `WaitingState`.],
+    [Класс `phone::TalkingState`],
+    [Реализует поведение в состоянии *«Разговор»*: при завершении разговора (`endCall()`) списывает стоимость вызова (`balance -= callCost`); при `balance <= 0` автоматически переводит телефон в `BlockedState`, а при `balance > 0` возвращает в `WaitingState`.],
     [`ConcreteStateD` \ (Конкретное состояние 4)],
-    [Класс `atm::BlockedState`],
-    [Реализует поведение в состоянии *«Заблокирован (денег нет)»*: отклоняет любые клиентские операции (`enterPin`, `withdrawCash`, `finishSession`) до вызова операции инкассации `loadCash(amount > 0)`, разблокирующей банкомат с переходом в `WaitingState`.],
+    [Класс `phone::BlockedState`],
+    [Реализует поведение в состоянии *«Заблокирован (нет средств)»*: отклоняет операции связи (`makeCall`, `answerCall`, `endCall`) до вызова `topUpBalance(amount)`, который при достижении положительного баланса (`balance > 0`) разблокирует телефон с переходом в `WaitingState`.],
     [`Client` \ (Клиент)],
-    [Приложение `ATMControllerApp` (`main.cpp`)],
-    [Создаёт экземпляры конечного автомата `ATM`, управляет ими через публичный интерфейс контекста и отображает результаты переходов.]
+    [Приложение `PhoneControllerApp` (`main.cpp`)],
+    [Создаёт экземпляры конечного автомата `Phone`, управляет ими через публичный интерфейс контекста и отображает результаты переходов.]
 )
 
 #pagebreak()
 
 = Диаграмма конечных автоматов (State Machine Diagram)
 
-== Матрица реакций экземпляра класса `ATM` на операции
+== Матрица реакций экземпляра класса `Phone` на операции
 
 Поведение конечного автомата полностью определяется текущим состоянием и вызываемой операцией:
 
 #table(
-    columns: (1.1fr, 1.3fr, 1.3fr, 1.1fr, 1.2fr),
+    columns: (1.05fr, 1.2fr, 1.05fr, 1.25fr, 1.45fr),
     align: (left, left, left, left, left),
-    [*Состояние*], [*`enterPin(pin)`*], [*`withdrawCash(sum)`*], [*`finishSession()`*], [*`loadCash(sum)`*],
+    [*Состояние*], [*`makeCall(target)`*], [*`answerCall()`*], [*`endCall()`*], [*`topUpBalance(amount)`*],
     [*`WaitingState`* \ (Ожидание)],
-    [Переход в `AuthenticationState`. Если связь с банком есть и PIN верен $->$ переход в `PerformingOperationsState`; при сбое связи или неверном PIN остаётся в `AuthenticationState`.],
-    [Отказ: «Сначала введите PIN-код». Состояние не меняется.],
-    [Отказ: «Активный сеанс отсутствует». Состояние не меняется.],
-    [При `sum > 0`: `totalCash += sum`. Остаётся в `WaitingState`.],
-    [*`AuthenticationState`* \ (Аутентификация пользователя)],
-    [Повторная проверка связи и PIN: при успехе $->$ переход в `PerformingOperationsState`; при сбое связи или неверном PIN остаётся в `AuthenticationState`.],
-    [Отказ: «Аутентификация не завершена». Состояние не меняется.],
-    [Прерывание входа. Переход в `WaitingState`.],
-    [Отказ: «Загрузка запрещена во время сеанса клиента».],
-    [*`PerformingOperationsState`* \ (Выполнение операций)],
-    [Предупреждение: «Пользователь уже аутентифицирован». Состояние не меняется.],
-    [Проверка связи с банком ($1 - p$). При наличии связи и `sum <= totalCash`: выдача (`totalCash -= sum`). Если `totalCash == 0` $->$ переход в `BlockedState`, иначе остаётся в `PerformingOperationsState`.],
-    [Завершение обслуживания клиента. Переход в `WaitingState`.],
-    [Отказ: «Сначала завершите сеанс клиента».],
-    [*`BlockedState`* \ (Заблокирован: денег нет)],
-    [Отказ: «Банкомат заблокирован (нет наличных)».],
-    [Отказ: «Банкомат заблокирован (в кассетах 0 руб.)».],
-    [Отказ: «Ожидается инкассация».],
-    [При `sum > 0`: `totalCash += sum`, разблокировка $->$ переход в `WaitingState`.]
+    [Проверка `balance > 0` и вероятности вызова ($p$). При успехе $->$ переход в `CallingState`; при сбое связи остаётся в `WaitingState`.],
+    [Отказ: «Нет активного вызова». Состояние не меняется.],
+    [Отказ: «Нет активного вызова или разговора». Состояние не меняется.],
+    [При `amount > 0`: `balance += amount`. Остаётся в `WaitingState`.],
+    [*`CallingState`* \ (Звонок)],
+    [Отказ: «Телефон уже выполняет вызов». Состояние не меняется.],
+    [Установление голосового соединения $->$ переход в `TalkingState`.],
+    [Сброс/отмена вызова до ответа собеседника $->$ переход в `WaitingState`.],
+    [При `amount > 0`: `balance += amount`. Остаётся в `CallingState`.],
+    [*`TalkingState`* \ (Разговор)],
+    [Отказ: «Линия занята, идёт разговор». Состояние не меняется.],
+    [Предупреждение: «Соединение уже установлено». Состояние не меняется.],
+    [Завершение разговора и списание тарифа (`balance -= callCost`). Если `balance > 0` $->$ `WaitingState`; если `balance <= 0` $->$ `BlockedState`.],
+    [При `amount > 0`: `balance += amount`. Остаётся в `TalkingState`.],
+    [*`BlockedState`* \ (Заблокирован: нет средств)],
+    [Отказ: «Телефон заблокирован (нет средств на счёте)».],
+    [Отказ: «Приём вызовов невозможен — телефон заблокирован».],
+    [Отказ: «Телефон заблокирован, активных вызовов нет».],
+    [При `amount > 0`: `balance += amount`. Если `balance > 0` $->$ разблокировка и переход в `WaitingState`, иначе остаётся в `BlockedState`.]
 )
 
-== Граф переходов конечного автомата «Банкомат»
+== Граф переходов конечного автомата «Телефон»
 
-При создании экземпляра `ATM` проверяется начальный запас наличных: при `totalCash > 0` автомат переходит в начальное состояние `WaitingState`, а при `totalCash == 0` --- сразу в состояние `BlockedState`.
+При создании экземпляра `Phone` проверяется начальный баланс счёта: при `balance > 0` автомат переходит в начальное состояние `WaitingState`, а при `balance <= 0` --- сразу в состояние `BlockedState`.
 
 #align(center)[
   #figure(
     image("state_diagram.drawio.svg", width: 100%),
-    caption: [Диаграмма конечных автоматов (State Machine Diagram) системы «Банкомат»]
+    caption: [Диаграмма конечных автоматов (State Machine Diagram) системы «Телефон»]
   )
 ]
 
@@ -139,12 +139,12 @@
 = Диаграмма классов реализуемой программы (Class Diagram)
 
 Архитектура программного комплекса разделена на два уровня:
-1. *Библиотека классов шаблона «Состояние» (`src/atm_state_lib.hpp`, `src/atm_state_lib.cpp`)*:
-   - класс контекста `ATM`, инкапсулирующий состояние и бизнес-правила;
-   - абстрактный базовый класс `ATMState`;
-   - четыре класса конкретных состояний (`WaitingState`, `AuthenticationState`, `PerformingOperationsState`, `BlockedState`);
+1. *Библиотека классов шаблона «Состояние» (`src/phone_state_lib.hpp`, `src/phone_state_lib.cpp`)*:
+   - класс контекста `Phone`, инкапсулирующий атрибуты телефона и делегирующий вызовы объекту состояния;
+   - абстрактный базовый класс `PhoneState`;
+   - четыре класса конкретных состояний (`WaitingState`, `CallingState`, `TalkingState`, `BlockedState`);
    - структура `OperationResult`, возвращающая подробный отчёт о каждом вызове операции (успешность, сообщение, предыдущее и новое состояние).
-2. *Управляющее консольное приложение (`src/main.cpp`)* и *модульные тесты (`src/test_atm.cpp`)*.
+2. *Управляющее консольное приложение (`src/main.cpp`)* и *модульные тесты (`src/test_phone.cpp`)*.
 
 #align(center)[
   #figure(
@@ -157,16 +157,16 @@
 
 = Программная реализация на языке C++
 
-Ниже приведены ключевые фрагменты исходного кода библиотеки классов (`src/atm_state_lib.hpp` и `src/atm_state_lib.cpp`), демонстрирующие реализацию шаблона проектирования «Состояние».
+Ниже приведены ключевые фрагменты исходного кода библиотеки классов (`src/phone_state_lib.hpp` и `src/phone_state_lib.cpp`), демонстрирующие реализацию шаблона проектирования «Состояние».
 
-== Интерфейс состояния и класс конечного автомата (`src/atm_state_lib.hpp`)
+== Интерфейс состояния и класс конечного автомата (`src/phone_state_lib.hpp`)
 
 ```cpp
-namespace atm {
+namespace phone {
 
-class ATM;
+class Phone;
 
-/// Структура результата выполнения операции банкомата
+/// Структура результата выполнения операции телефона
 struct OperationResult {
     bool success;               ///< Признак успешного выполнения операции
     std::string message;        ///< Описание реакции автомата на операцию
@@ -175,90 +175,84 @@ struct OperationResult {
 };
 
 /// Абстрактный класс (интерфейс) «Состояние» (State в шаблоне GoF)
-class ATMState {
+class PhoneState {
 public:
-    virtual ~ATMState() = default;
+    virtual ~PhoneState() = default;
     virtual std::string getName() const = 0;
-    virtual OperationResult enterPin(ATM& atm, const std::string& pin) = 0;
-    virtual OperationResult withdrawCash(ATM& atm, int amount) = 0;
-    virtual OperationResult finishSession(ATM& atm) = 0;
-    virtual OperationResult loadCash(ATM& atm, int amount) = 0;
+    virtual OperationResult makeCall(Phone& phone, const std::string& targetNumber) = 0;
+    virtual OperationResult answerCall(Phone& phone) = 0;
+    virtual OperationResult endCall(Phone& phone) = 0;
+    virtual OperationResult topUpBalance(Phone& phone, int amount) = 0;
 };
 
-/// Класс «Банкомат» / «Конечный автомат» (Context в шаблоне GoF)
-class ATM {
+/// Класс «Телефон» / «Конечный автомат» (Context в шаблоне GoF)
+class Phone {
 private:
-    std::string id_;                          ///< ID банкомата
-    int totalCash_;                           ///< Общая сумма денег в банкомате
-    double connectionLossProbability_;        ///< Вероятность отсутствия связи с банком
-    std::string validPin_;                    ///< Эталонный PIN-код
-    std::shared_ptr<ATMState> currentState_;  ///< Текущее состояние автомата
-    std::mt19937 rng_;                        ///< Генератор случайных чисел
-    std::vector<std::string> historyLog_;     ///< Журнал переходов
+    std::string phoneNumber_;                  ///< Номер телефона абонента
+    int balance_;                              ///< Текущий баланс счёта (в руб.)
+    double callProbability_;                   ///< Вероятность дозвона / вызова
+    int callCost_;                             ///< Стоимость одного разговора
+    std::string activePeerNumber_;             ///< Номер собеседника
+    std::shared_ptr<PhoneState> currentState_; ///< Текущее состояние автомата
+    std::mt19937 rng_;                         ///< Генератор случайных чисел
+    std::vector<std::string> historyLog_;      ///< Журнал переходов
 
 public:
-    ATM(std::string id, int initialCash, double connectionLossProb,
-        std::string validPin = "1234", unsigned int randomSeed = 42);
+    Phone(std::string phoneNumber, int initialBalance, double callProbability,
+          int callCost = 50, unsigned int randomSeed = 42);
 
     // Делегирование операций текущему состоянию
-    OperationResult enterPin(const std::string& pin);
-    OperationResult withdrawCash(int amount);
-    OperationResult finishSession();
-    OperationResult loadCash(int amount);
+    OperationResult makeCall(const std::string& targetNumber = "+7-900-000-00-00");
+    OperationResult answerCall();
+    OperationResult endCall();
+    OperationResult topUpBalance(int amount);
 
-    void setState(std::shared_ptr<ATMState> newState);
-    std::shared_ptr<ATMState> getState() const;
+    void setState(std::shared_ptr<PhoneState> newState);
+    std::shared_ptr<PhoneState> getState() const;
     std::string getStateName() const;
-    bool checkBankConnection();
-    bool verifyPin(const std::string& pin) const;
-    void addCash(int amount);
-    void deductCash(int amount);
+    bool checkCallProbability();
+    void addBalance(int amount);
+    void deductCallCost();
 };
 
-} // namespace atm
+} // namespace phone
 ```
 
-== Реализация переходов в конкретных состояниях (`src/atm_state_lib.cpp`)
+== Реализация переходов в конкретных состояниях (`src/phone_state_lib.cpp`)
 
 ```cpp
-// Ввод PIN-кода в состоянии «Ожидание» (WaitingState)
-OperationResult WaitingState::enterPin(ATM& atm, const std::string& pin) {
+// Инициирование вызова в состоянии «Ожидание» (WaitingState)
+OperationResult WaitingState::makeCall(Phone& phone, const std::string& targetNumber) {
     const std::string prevState = getName();
-    // Переход в состояние «Аутентификация пользователя»
-    atm.setState(std::make_shared<AuthenticationState>());
-
-    if (!atm.checkBankConnection()) {
-        return {false, "Сбой связи с банком при проверке PIN-кода.", prevState, atm.getStateName()};
+    if (phone.getBalance() <= 0) {
+        phone.setState(std::make_shared<BlockedState>());
+        return {false, "Недостаточно средств на счёте. Телефон заблокирован.",
+                prevState, phone.getStateName()};
     }
-    if (!atm.verifyPin(pin)) {
-        return {false, "Неверный PIN-код («" + pin + "»).", prevState, atm.getStateName()};
+    if (!phone.checkCallProbability()) {
+        return {false, "Вызов не состоялся (сбой сети/абонент недоступен).",
+                prevState, phone.getStateName()};
     }
-
-    // При наличии связи и верном PIN — переход в «Выполнение операций»
-    atm.setState(std::make_shared<PerformingOperationsState>());
-    return {true, "Аутентификация пройдена успешно.", prevState, atm.getStateName()};
+    phone.setActivePeerNumber(targetNumber);
+    phone.setState(std::make_shared<CallingState>());
+    return {true, "Инициирован звонок абоненту «" + targetNumber + "».",
+            prevState, phone.getStateName()};
 }
 
-// Выдача наличных в состоянии «Выполнение операций» (PerformingOperationsState)
-OperationResult PerformingOperationsState::withdrawCash(ATM& atm, int amount) {
+// Завершение разговора в состоянии «Разговор» (TalkingState)
+OperationResult TalkingState::endCall(Phone& phone) {
     const std::string prevState = getName();
-    if (amount <= 0) {
-        return {false, "Отказ: сумма должна быть больше нуля.", prevState, atm.getStateName()};
-    }
-    if (!atm.checkBankConnection()) {
-        return {false, "Ошибка транзакции: отсутствует связь с банком.", prevState, atm.getStateName()};
-    }
-    if (amount > atm.getTotalCash()) {
-        return {false, "Отказ: недостаточно средств в банкомате.", prevState, atm.getStateName()};
-    }
+    const std::string peer = phone.getActivePeerNumber();
+    phone.deductCallCost();
+    phone.setActivePeerNumber("");
 
-    atm.deductCash(amount);
-    if (atm.getTotalCash() == 0) {
-        atm.setState(std::make_shared<BlockedState>());
-        return {true, "Выдано " + std::to_string(amount) + " руб. Остаток 0 руб. — банкомат заблокирован.",
-                prevState, atm.getStateName()};
+    if (phone.getBalance() <= 0) {
+        phone.setState(std::make_shared<BlockedState>());
+        return {true, "Разговор с «" + peer + "» завершён. Баланс исчерпан — блокировка!",
+                prevState, phone.getStateName()};
     }
-    return {true, "Выдано " + std::to_string(amount) + " руб.", prevState, atm.getStateName()};
+    phone.setState(std::make_shared<WaitingState>());
+    return {true, "Разговор с «" + peer + "» завершён.", prevState, phone.getStateName()};
 }
 ```
 
@@ -266,58 +260,57 @@ OperationResult PerformingOperationsState::withdrawCash(ATM& atm, int amount) {
 
 = Результаты тестирования программы
 
-Тестирование программного комплекса проводилось в двух режимах: автоматическое модульное тестирование (`build/test_atm`) и сквозной демонстрационный сценарий (`build/atm_app --demo`).
+Тестирование программного комплекса проводилось в двух режимах: автоматическое модульное тестирование (`build/test_phone`) и сквозной демонстрационный сценарий (`build/phone_app --demo`).
 
 == Протокол модульного тестирования (`make test`)
 
 ```text
 $ make -C lab-4 test
-g++ -std=c++17 -Wall -Wextra -pedantic -O2 -c src/atm_state_lib.cpp -o build/atm_state_lib.o
-ar rcs build/libatm_state.a build/atm_state_lib.o
-g++ -std=c++17 -Wall -Wextra -pedantic -O2 src/test_atm.cpp build/libatm_state.a -o build/test_atm
-./build/test_atm
+g++ -std=c++17 -Wall -Wextra -pedantic -O2 -c src/phone_state_lib.cpp -o build/phone_state_lib.o
+ar rcs build/libphone_state.a build/phone_state_lib.o
+g++ -std=c++17 -Wall -Wextra -pedantic -O2 src/test_phone.cpp build/libphone_state.a -o build/test_phone
+./build/test_phone
 ================================================================================
-   ЗАПУСК МОДУЛЬНЫХ ТЕСТОВ БИБЛИОТЕКИ КЛАССОВ «БАНКОМАТ» (ПАТТЕРН «СОСТОЯНИЕ»)
+    ЗАПУСК МОДУЛЬНЫХ ТЕСТОВ БИБЛИОТЕКИ КЛАССОВ «ТЕЛЕФОН» (ПАТТЕРН «СОСТОЯНИЕ»)
 ================================================================================
-[PASS] testInitialStates — проверка начальных состояний автомата
+[PASS] testInitialStates — проверка начальных состояний телефона
 [PASS] testWaitingStateReactions — реакции в состоянии WaitingState
-[PASS] testAuthenticationStateTransitions — переходы состояния AuthenticationState
-[PASS] testPerformingOperationsAndBlocking — выполнение операций и блокировка при 0 руб.
-[PASS] testBlockedStateAndUnblocking — блокировка и разблокировка инкассацией
+[PASS] testCallingStateTransitions — переходы состояния CallingState
+[PASS] testTalkingStateAndBlocking — разговор, списание средств и блокировка
+[PASS] testBlockedStateAndUnblocking — блокировка и разблокировка пополнением баланса
 ================================================================================
  ИТОГ: Все 5 тестовых наборов успешно пройдены (100% ОК).
 ================================================================================
 ```
 
-== Протокол демонстрационного сценария (`./build/atm_app --demo`)
+== Протокол демонстрационного сценария (`./build/phone_app --demo`)
 
-В ходе демонстрационного сценария последовательно проверяются все 15 переходов и реакций конечного автомата `ATM-SGU-01`:
+В ходе демонстрационного сценария последовательно проверяются все 15 переходов и реакций конечного автомата `+7-917-555-01-01`:
 
 #table(
     columns: (0.4fr, 1.5fr, 1.6fr, 1.5fr),
     align: (center, left, left, left),
-    [*Шаг*], [*Вызываемая операция*], [*Переход состояний*], [*Результат и остаток средств*],
-    [1], [`withdrawCash(2000)`], [`WaitingState` $->$ `WaitingState`], [ОТКЛОНЕНО: сначала введите PIN (10 000 руб.)],
-    [2], [`loadCash(5000)`], [`WaitingState` $->$ `WaitingState`], [УСПЕШНО: инкассация +5000 руб. (15 000 руб.)],
-    [3], [`enterPin("0000")` (неверный)], [`WaitingState` $->$ `AuthenticationState`], [ОТКЛОНЕНО: неверный PIN, ожидание повтора],
-    [4], [`withdrawCash(1000)`], [`AuthenticationState` $->$ `AuthenticationState`], [ОТКЛОНЕНО: вход ещё не завершён],
-    [5], [`finishSession()`], [`AuthenticationState` $->$ `WaitingState`], [УСПЕШНО: отмена входа, возврат в ожидание],
-    [6], [`enterPin("1234")` при $p = 1.0$], [`WaitingState` $->$ `AuthenticationState`], [ОТКЛОНЕНО: сбой связи с банком],
-    [7], [`enterPin("1234")` при $p = 0.0$], [`AuthenticationState` $->$ `PerformingOperationsState`], [УСПЕШНО: повторный ввод PIN прошёл],
-    [8], [`withdrawCash(6000)`], [`PerformingOperationsState` $->$ `PerformingOperationsState`], [УСПЕШНО: выдано 6000 руб. (остаток 9000 руб.)],
-    [9], [`withdrawCash(20000)`], [`PerformingOperationsState` $->$ `PerformingOperationsState`], [ОТКЛОНЕНО: запрошено больше остатка],
-    [10], [`withdrawCash(9000)`], [`PerformingOperationsState` $->$ `BlockedState`], [УСПЕШНО: выдано 9000 руб., остаток 0 руб. $->$ блокировка],
-    [11], [`enterPin("1234")`], [`BlockedState` $->$ `BlockedState`], [ОТКЛОНЕНО: банкомат заблокирован (нет денег)],
-    [12], [`withdrawCash(500)`], [`BlockedState` $->$ `BlockedState`], [ОТКЛОНЕНО: в кассетах 0 руб.],
-    [13], [`loadCash(25000)`], [`BlockedState` $->$ `WaitingState`], [УСПЕШНО: загружено 25 000 руб., разблокировка],
-    [14], [`enterPin("1234")`], [`WaitingState` $->$ `PerformingOperationsState`], [УСПЕШНО: вход с первой попытки],
-    [15], [`finishSession()`], [`PerformingOperationsState` $->$ `WaitingState`], [УСПЕШНО: завершение сеанса клиента]
+    [*Шаг*], [*Вызываемая операция*], [*Переход состояний*], [*Результат и баланс*],
+    [1], [`answerCall()`], [`WaitingState` $->$ `WaitingState`], [ОТКЛОНЕНО: нет входящего вызова (100 руб.)],
+    [2], [`endCall()`], [`WaitingState` $->$ `WaitingState`], [ОТКЛОНЕНО: нет активного разговора (100 руб.)],
+    [3], [`topUpBalance(50)`], [`WaitingState` $->$ `WaitingState`], [УСПЕШНО: пополнение +50 руб. (150 руб.)],
+    [4], [`makeCall(...)` при $p = 0.0$], [`WaitingState` $->$ `WaitingState`], [ОТКЛОНЕНО: сбой вызова (150 руб.)],
+    [5], [`makeCall(...)` при $p = 1.0$], [`WaitingState` $->$ `CallingState`], [УСПЕШНО: идут гудки вызова (150 руб.)],
+    [6], [`makeCall(...)` повторно], [`CallingState` $->$ `CallingState`], [ОТКЛОНЕНО: линия уже занята вызовом],
+    [7], [`endCall()` до ответа], [`CallingState` $->$ `WaitingState`], [УСПЕШНО: сброс вызова без списания (150 руб.)],
+    [8], [`makeCall(...)` повторно], [`WaitingState` $->$ `CallingState`], [УСПЕШНО: повторный вызов абонента],
+    [9], [`answerCall()`], [`CallingState` $->$ `TalkingState`], [УСПЕШНО: соединение установлено (150 руб.)],
+    [10], [`endCall()` (тариф 50 руб.)], [`TalkingState` $->$ `WaitingState`], [УСПЕШНО: списано 50 руб., остаток 100 руб.],
+    [11], [`endCall()` (тариф 100 руб.)], [`TalkingState` $->$ `BlockedState`], [УСПЕШНО: остаток 0 руб. $->$ блокировка],
+    [12], [`makeCall(...)`], [`BlockedState` $->$ `BlockedState`], [ОТКЛОНЕНО: телефон заблокирован (0 руб.)],
+    [13], [`answerCall()`], [`BlockedState` $->$ `BlockedState`], [ОТКЛОНЕНО: приём вызовов заблокирован],
+    [14], [`topUpBalance(200)`], [`BlockedState` $->$ `WaitingState`], [УСПЕШНО: баланс 200 руб., разблокировка],
+    [15], [Звонок + разговор + `endCall()`], [`TalkingState` $->$ `WaitingState`], [УСПЕШНО: списано 50 руб., остаток 150 руб.]
 )
 
 = Заключение
 
-В рамках лабораторной работы №4 по варианту 5/1 спроектирована и реализована на языке C++ программная система «Банкомат» на основе поведенческого шаблона проектирования «Состояние» (State):
-- Разработана диаграмма конечных автоматов и специфицирована матрица реакций экземпляра класса `ATM` на операции `enterPin`, `withdrawCash`, `finishSession` и `loadCash` в четырёх состояниях (`WaitingState`, `AuthenticationState`, `PerformingOperationsState`, `BlockedState`).
+В рамках лабораторной работы №4 по варианту 5/1 спроектирована и реализована на языке C++ программная система «Телефон» на основе поведенческого шаблона проектирования «Состояние» (State):
+- Разработана диаграмма конечных автоматов и специфицирована матрица реакций экземпляра класса `Phone` на операции `makeCall`, `answerCall`, `endCall` и `topUpBalance` в четырёх состояниях (`WaitingState`, `CallingState`, `TalkingState`, `BlockedState`).
 - Построена UML-диаграмма классов и установлено взаимно-однозначное соответствие между классами программы и элементами шаблона GoF (`Context`, `State`, `ConcreteState`).
-- Реализована библиотека классов `libatm_state.a`, консольное приложение `atm_app` и набор модульных тестов `test_atm`, подтвердивших корректность всех переходов и граничных условий (неверный PIN-код, потеря связи с банком, исчерпание средств и последующая инкассация).
-
+- Реализована библиотека классов `libphone_state.a`, консольное приложение `phone_app` и набор модульных тестов `test_phone`, подтвердивших корректность всех переходов и граничных условий (вероятность недозвона, сброс вызова до ответа, тарификация разговора, блокировка при исчерпании средств и разблокировка при пополнении счёта).

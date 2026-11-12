@@ -1,54 +1,54 @@
 @startuml
 skinparam monochrome false
-skinparam roundcorner 10
+skinparam roundcorner 16
 skinparam shadowing false
 
 skinparam state {
     BackgroundColor White
     BorderColor #2C3E50
-    ArrowColor #2980B9
+    ArrowColor #2C3E50
     StartColor #27AE60
     EndColor #C0392B
+    FontName Helvetica
 }
 
-[*] --> WaitingState : [totalCash > 0]
-[*] --> BlockedState : [totalCash == 0]
+[*] --> WaitingState : [balance > 0]
+[*] --> BlockedState : [balance <= 0]
 
-state WaitingState as "WaitingState\n(Ожидание)" {
-    WaitingState : entry / ожидание клиента
-    WaitingState : loadCash(amount) [amount > 0] / totalCash += amount
-    WaitingState : withdrawCash(amount) / отказ
-    WaitingState : finishSession() / отказ
+state "WaitingState (Ожидание)" as WaitingState #dae8fc {
+    WaitingState : entry / ожидание вызова (линия свободна)
+    WaitingState : makeCall(target) [вызов не прошёл] / остаётся в ожидании
+    WaitingState : topUpBalance(amount) [amount > 0] / balance += amount
+    WaitingState : answerCall() / отказ
+    WaitingState : endCall() / отказ
 }
 
-state AuthenticationState as "AuthenticationState\n(Аутентификация пользователя)" {
-    AuthenticationState : entry / проверка связи с банком и PIN-кода
-    AuthenticationState : enterPin(pin) [нет связи или неверный PIN] / повторный ввод
-    AuthenticationState : withdrawCash(amount) / отказ
-    AuthenticationState : loadCash(amount) / отказ
+state "CallingState (Звонок)" as CallingState #ffe6cc {
+    CallingState : entry / идут гудки вызова абонента
+    CallingState : topUpBalance(amount) [amount > 0] / balance += amount
+    CallingState : makeCall(target) / отказ (линия занята)
 }
 
-state PerformingOperationsState as "PerformingOperationsState\n(Выполнение операций)" {
-    PerformingOperationsState : entry / доступ к операциям открыт
-    PerformingOperationsState : withdrawCash(amount) [связь есть и amount < totalCash] / выдача
-    PerformingOperationsState : withdrawCash(amount) [нет связи или amount > totalCash] / отказ
-    PerformingOperationsState : enterPin(pin) / отказ
-    PerformingOperationsState : loadCash(amount) / отказ
+state "TalkingState (Разговор)" as TalkingState #d5e8d4 {
+    TalkingState : entry / голосовое соединение установлено
+    TalkingState : topUpBalance(amount) [amount > 0] / balance += amount
+    TalkingState : makeCall(target) / отказ (идёт разговор)
+    TalkingState : answerCall() / отказ (уже на линии)
 }
 
-state BlockedState as "BlockedState\n(Заблокирован: денег нет)" {
-    BlockedState : entry / выдача заблокирована (totalCash == 0)
-    BlockedState : enterPin(pin) / отказ
-    BlockedState : withdrawCash(amount) / отказ
-    BlockedState : finishSession() / отказ
+state "BlockedState (Заблокирован: нет средств)" as BlockedState #f8cecc {
+    BlockedState : entry / звонки заблокированы (balance <= 0)
+    BlockedState : topUpBalance(amount) [balance <= 0] / остаётся заблокирован
+    BlockedState : makeCall(target) / отказ
+    BlockedState : answerCall() / отказ
+    BlockedState : endCall() / отказ
 }
 
-WaitingState --> AuthenticationState : enterPin(pin) [нет связи или неверный PIN]
-AuthenticationState --> WaitingState : finishSession()
-WaitingState --> PerformingOperationsState : enterPin(pin) [связь есть и PIN верный]
-AuthenticationState --> PerformingOperationsState : enterPin(pin) [связь есть и PIN верный]
-PerformingOperationsState --> WaitingState : finishSession()
-PerformingOperationsState --> BlockedState : withdrawCash(amount) [amount == totalCash]
-BlockedState --> WaitingState : loadCash(amount) [amount > 0]
+WaitingState --> CallingState : makeCall(target) [balance > 0 и вызов прошёл]
+CallingState --> WaitingState : endCall() [отмена вызова]
+CallingState --> TalkingState : answerCall()
+TalkingState --> WaitingState : endCall() [balance - callCost > 0]
+TalkingState --> BlockedState : endCall() [balance - callCost <= 0]
+BlockedState --> WaitingState : topUpBalance(amount) [balance > 0]
 
 @enduml

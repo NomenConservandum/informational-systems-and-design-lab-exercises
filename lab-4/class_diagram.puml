@@ -2,42 +2,83 @@
 skinparam classAttributeIconSize 0
 skinparam monochrome false
 skinparam roundcorner 10
-skinparam packageStyle rectangle
+skinparam shadowing false
 
 skinparam class {
     BackgroundColor White
     BorderColor #2C3E50
-    ArrowColor #2980B9
+    ArrowColor #2C3E50
+    FontName Helvetica
 }
 
-class ATMControllerApp {
-    - atms: List<ATM>
+class PhoneControllerApp {
+    - phones: List<Phone>
     - activeIdx: Integer
     + runDemonstrationScenario(): void
     + runInteractiveMenu(): void
 }
 
-class ATM {
-    - id: String
-    - totalCash: Integer
-    - connectionLossProbability: Double
-    - validPin: String
-    - currentState: ATMState
+class Phone {
+    - phoneNumber: String
+    - balance: Integer
+    - callProbability: Double
+    - callCost: Integer
+    - activePeerNumber: String
+    - currentState: PhoneState
     - historyLog: List<String>
-    + enterPin(pin: String): OperationResult
-    + withdrawCash(amount: Integer): OperationResult
-    + finishSession(): OperationResult
-    + loadCash(amount: Integer): OperationResult
-    + setState(state: ATMState): void
-    + getState(): ATMState
+    + makeCall(targetNumber: String): OperationResult
+    + answerCall(): OperationResult
+    + endCall(): OperationResult
+    + topUpBalance(amount: Integer): OperationResult
+    + setState(state: PhoneState): void
+    + getState(): PhoneState
     + getStateName(): String
-    + checkBankConnection(): Boolean
-    + verifyPin(pin: String): Boolean
-    + addCash(amount: Integer): void
-    + deductCash(amount: Integer): void
-    + getId(): String
-    + getTotalCash(): Integer
-    + getConnectionLossProbability(): Double
+    + checkCallProbability(): Boolean
+    + addBalance(amount: Integer): void
+    + deductCallCost(): void
+    + getPhoneNumber(): String
+    + getBalance(): Integer
+    + getCallProbability(): Double
+}
+
+interface PhoneState <<interface>> {
+    + getName(): String
+    + makeCall(phone: Phone, targetNumber: String): OperationResult
+    + answerCall(phone: Phone): OperationResult
+    + endCall(phone: Phone): OperationResult
+    + topUpBalance(phone: Phone, amount: Integer): OperationResult
+}
+
+class WaitingState {
+    + getName(): String
+    + makeCall(phone: Phone, targetNumber: String): OperationResult
+    + answerCall(phone: Phone): OperationResult
+    + endCall(phone: Phone): OperationResult
+    + topUpBalance(phone: Phone, amount: Integer): OperationResult
+}
+
+class CallingState {
+    + getName(): String
+    + makeCall(phone: Phone, targetNumber: String): OperationResult
+    + answerCall(phone: Phone): OperationResult
+    + endCall(phone: Phone): OperationResult
+    + topUpBalance(phone: Phone, amount: Integer): OperationResult
+}
+
+class TalkingState {
+    + getName(): String
+    + makeCall(phone: Phone, targetNumber: String): OperationResult
+    + answerCall(phone: Phone): OperationResult
+    + endCall(phone: Phone): OperationResult
+    + topUpBalance(phone: Phone, amount: Integer): OperationResult
+}
+
+class BlockedState {
+    + getName(): String
+    + makeCall(phone: Phone, targetNumber: String): OperationResult
+    + answerCall(phone: Phone): OperationResult
+    + endCall(phone: Phone): OperationResult
+    + topUpBalance(phone: Phone, amount: Integer): OperationResult
 }
 
 class OperationResult {
@@ -47,55 +88,24 @@ class OperationResult {
     + currentState: String
 }
 
-interface ATMState {
-    + getName(): String
-    + enterPin(atm: ATM, pin: String): OperationResult
-    + withdrawCash(atm: ATM, amount: Integer): OperationResult
-    + finishSession(atm: ATM): OperationResult
-    + loadCash(atm: ATM, amount: Integer): OperationResult
-}
+PhoneControllerApp "1" *-- "1..*" Phone : manages
+Phone "1" o-- "1" PhoneState : currentState
+Phone ..> OperationResult : returns
 
-class WaitingState {
-    + getName(): String
-    + enterPin(atm: ATM, pin: String): OperationResult
-    + withdrawCash(atm: ATM, amount: Integer): OperationResult
-    + finishSession(atm: ATM): OperationResult
-    + loadCash(atm: ATM, amount: Integer): OperationResult
-}
+PhoneState <|.. WaitingState
+PhoneState <|.. CallingState
+PhoneState <|.. TalkingState
+PhoneState <|.. BlockedState
 
-class AuthenticationState {
-    + getName(): String
-    + enterPin(atm: ATM, pin: String): OperationResult
-    + withdrawCash(atm: ATM, amount: Integer): OperationResult
-    + finishSession(atm: ATM): OperationResult
-    + loadCash(atm: ATM, amount: Integer): OperationResult
-}
-
-class PerformingOperationsState {
-    + getName(): String
-    + enterPin(atm: ATM, pin: String): OperationResult
-    + withdrawCash(atm: ATM, amount: Integer): OperationResult
-    + finishSession(atm: ATM): OperationResult
-    + loadCash(atm: ATM, amount: Integer): OperationResult
-}
-
-class BlockedState {
-    + getName(): String
-    + enterPin(atm: ATM, pin: String): OperationResult
-    + withdrawCash(atm: ATM, amount: Integer): OperationResult
-    + finishSession(atm: ATM): OperationResult
-    + loadCash(atm: ATM, amount: Integer): OperationResult
-}
-
-ATMControllerApp "1" *-- "1..*" ATM : manages >
-ATM "1" o-- "1" ATMState : currentState >
-ATM ..> OperationResult : returns
-
-ATMState <|.. WaitingState
-ATMState <|.. AuthenticationState
-ATMState <|.. PerformingOperationsState
-ATMState <|.. BlockedState
-
-note "Соответствие шаблону GoF «Состояние» (State):\n• Context → ATM\n• State → ATMState\n• ConcreteState → WaitingState, AuthenticationState,\n  PerformingOperationsState, BlockedState\n• Client → ATMControllerApp" as N1
+note top of PhoneState
+  Соответствие шаблону проектирования GoF «Состояние» (State):
+  • Context (конечный автомат) → Phone
+  • State (интерфейс состояния) → PhoneState
+  • ConcreteState → WaitingState (Ожидание)
+  • ConcreteState → CallingState (Звонок)
+  • ConcreteState → TalkingState (Разговор)
+  • ConcreteState → BlockedState (Заблокирован: нет средств)
+  • Client → PhoneControllerApp
+end note
 
 @enduml

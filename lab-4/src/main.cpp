@@ -1,241 +1,275 @@
 /**
  * @file main.cpp
- * @brief Консольное приложение для управления состояниями экземпляров класса
- *        Конечный автомат («Банкомат») по шаблону проектирования «Состояние».
+ * @brief Консольное приложение для управления состояниями экземпляров
+ *        класса «Конечный автомат» (Phone / «Телефон») — Вариант 5/1.
  *
  * Поддерживает два режима работы:
- * 1. Автоматический демонстрационный прогон всех состояний и операций: `./atm_app --demo`
- * 2. Интерактивный консольный режим управления экземплярами банкоматов: `./atm_app`
+ * 1) Автоматический демонстрационный сценарий (`./build/phone_app --demo`),
+ *    последовательно проверяющий все состояния, переходы и реакции автомата.
+ * 2) Интерактивное консольное меню (`./build/phone_app`) для создания нескольких
+ *    экземпляров класса Phone и ручного вызова операций.
  */
 
-#include "atm_state_lib.hpp"
+#include "phone_state_lib.hpp"
 
+#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <string>
 #include <vector>
 
-using namespace atm;
+namespace {
 
-/**
- * @brief Вспомогательная функция вывода результата операции на экран консоли.
- */
-void printStep(int stepNumber, const std::string& actionDesc, const OperationResult& res, const ATM& atm) {
-    std::cout << "Шаг " << stepNumber << ". Действие: " << actionDesc << "\n"
-              << "   Переход:   " << res.previousState << " -> " << res.currentState << "\n"
-              << "   Результат: " << (res.success ? "[УСПЕШНО] " : "[ОТКЛОНЕНО] ") << res.message << "\n"
-              << "   Статус:    " << atm.getStatusSummary() << "\n"
-              << "--------------------------------------------------------------------------------\n";
+using phone::OperationResult;
+using phone::Phone;
+
+/// Печать результата одиночной операции
+void printOperationReport(int stepNumber,
+                          const std::string& actionTitle,
+                          const OperationResult& res,
+                          const Phone& device) {
+    std::cout << "--------------------------------------------------------------------------------\n";
+    if (stepNumber > 0) {
+        std::cout << "Шаг " << stepNumber << ". ";
+    }
+    std::cout << "Операция: " << actionTitle << "\n";
+    std::cout << "  Статус выполнения : " << (res.success ? "УСПЕШНО" : "ОТКЛОНЕНО / ОШИБКА") << "\n";
+    std::cout << "  Переход состояний : " << res.previousState << "  -->  " << res.currentState << "\n";
+    std::cout << "  Реакция автомата  : " << res.message << "\n";
+    std::cout << "  Текущий баланс    : " << device.getBalance() << " руб.\n";
 }
 
 /**
- * @brief Демонстрационный сценарий, проверяющий все 4 состояния и все реакции
- *        экземпляра класса ATM на операции.
+ * @brief Класс консольного контроллера для управления экземплярами класса Phone.
  */
-void runDemonstrationScenario() {
-    std::cout << "================================================================================\n"
-              << "   ДЕМОНСТРАЦИЯ РАБОТЫ КОНЕЧНОГО АВТОМАТА «БАНКОМАТ» (ПАТТЕРН «СОСТОЯНИЕ»)\n"
-              << "================================================================================\n\n";
+class PhoneControllerApp {
+private:
+    std::vector<Phone> phones_;
+    std::size_t activeIdx_ = 0;
 
-    ATM atm("ATM-SGU-01", 10000, 0.0, "1234", 100);
-    std::cout << "Создан экземпляр: " << atm.getStatusSummary() << "\n"
-              << "--------------------------------------------------------------------------------\n";
+public:
+    PhoneControllerApp() {
+        phones_.emplace_back("+7-917-100-01-01", 100, 1.00, 50, 101);
+        phones_.emplace_back("+7-917-200-02-02", 0, 0.80, 50, 202);
+    }
 
-    int step = 1;
+    /// Запуск полного демонстрационного сценария (для отчёта и проверки)
+    void runDemonstrationScenario() {
+        std::cout << "================================================================================\n";
+        std::cout << "  ДЕМОНСТРАЦИЯ РАБОТЫ ШАБЛОНА «СОСТОЯНИЕ» (STATE) — СИСТЕМА «ТЕЛЕФОН» (ВАР. 5/1)\n";
+        std::cout << "================================================================================\n\n";
 
-    // 1. Попытка снять деньги в состоянии «Ожидание» (без ввода PIN-кода)
-    printStep(step++, "withdrawCash(2000) в состоянии WaitingState", atm.withdrawCash(2000), atm);
+        Phone demoPhone("+7-917-555-01-01", 100, 1.0, 50, 42);
+        std::cout << "Создан экземпляр конечного автомата:\n  " << demoPhone.getStatusSummary() << "\n\n";
 
-    // 2. Пополнение банкомата в состоянии «Ожидание»
-    printStep(step++, "loadCash(5000) в состоянии WaitingState", atm.loadCash(5000), atm);
+        int step = 1;
 
-    // 3. Ввод неверного PIN-кода -> переход в «Аутентификация пользователя»
-    printStep(step++, "enterPin(\"0000\") — неверный PIN-код", atm.enterPin("0000"), atm);
+        // 1. Попытка ответить на звонок в режиме ожидания
+        printOperationReport(step++, "answerCall() — попытка ответить без входящего вызова",
+                             demoPhone.answerCall(), demoPhone);
 
-    // 4. Попытка снять деньги в состоянии «Аутентификация пользователя»
-    printStep(step++, "withdrawCash(1000) до завершения аутентификации", atm.withdrawCash(1000), atm);
+        // 2. Попытка завершить разговор в режиме ожидания
+        printOperationReport(step++, "endCall() — попытка завершить несуществующий разговор",
+                             demoPhone.endCall(), demoPhone);
 
-    // 5. Отмена аутентификации -> возврат в «Ожидание»
-    printStep(step++, "finishSession() — отмена входа из AuthenticationState", atm.finishSession(), atm);
+        // 3. Пополнение баланса в состоянии ожидания
+        printOperationReport(step++, "topUpBalance(50) — пополнение счёта в режиме ожидания",
+                             demoPhone.topUpBalance(50), demoPhone);
 
-    // 6. Моделирование отсутствия связи с банком при вводе PIN-кода (p = 1.0)
-    atm.setConnectionLossProbability(1.0);
-    printStep(step++, "enterPin(\"1234\") при обрыве связи с банком (p = 1.0)", atm.enterPin("1234"), atm);
+        // 4. Сбой вызова при вероятности дозвона p = 0.0
+        demoPhone.setCallProbability(0.0);
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") при p = 0.0 (сбой вызова)",
+                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
-    // 7. Восстановление связи с банком (p = 0.0) и повторный ввод верного PIN-кода
-    atm.setConnectionLossProbability(0.0);
-    printStep(step++, "enterPin(\"1234\") в состоянии AuthenticationState при восстановленной связи",
-              atm.enterPin("1234"), atm);
+        // 5. Успешный вызов при p = 1.0 (WaitingState -> CallingState)
+        demoPhone.setCallProbability(1.0);
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") при p = 1.0 (начало звонка)",
+                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
-    // 8. Частичное снятие наличных в состоянии «Выполнение операций»
-    printStep(step++, "withdrawCash(6000) в состоянии PerformingOperationsState", atm.withdrawCash(6000), atm);
+        // 6. Попытка позвонить повторно во время активного гудка
+        printOperationReport(step++, "makeCall(\"+7-900-999-88-77\") во время активного звонка",
+                             demoPhone.makeCall("+7-900-999-88-77"), demoPhone);
 
-    // 9. Попытка снять сумму больше остатка в банкомате
-    printStep(step++, "withdrawCash(20000) — сумма превышает остаток в банкомате", atm.withdrawCash(20000), atm);
+        // 7. Сброс звонка до ответа (CallingState -> WaitingState)
+        printOperationReport(step++, "endCall() — отмена/сброс вызова до ответа собеседника",
+                             demoPhone.endCall(), demoPhone);
 
-    // 10. Снятие всего оставшегося баланса (9000 руб.) -> переход в «Заблокирован (денег нет)»
-    printStep(step++, "withdrawCash(9000) — полное исчерпание средств и блокировка банкомата",
-              atm.withdrawCash(9000), atm);
+        // 8. Повторный набор номера (WaitingState -> CallingState)
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") — повторный вызов",
+                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
-    // 11. Попытка ввести PIN-код в заблокированном банкомате
-    printStep(step++, "enterPin(\"1234\") в состоянии BlockedState", atm.enterPin("1234"), atm);
+        // 9. Ответ на звонок (CallingState -> TalkingState)
+        printOperationReport(step++, "answerCall() — собеседник ответил, начало разговора",
+                             demoPhone.answerCall(), demoPhone);
 
-    // 12. Попытка снять деньги в заблокированном банкомате
-    printStep(step++, "withdrawCash(500) в состоянии BlockedState", atm.withdrawCash(500), atm);
+        // 10. Завершение первого разговора (списание 50 руб., остаток 100 руб. > 0 -> WaitingState)
+        printOperationReport(step++, "endCall() — завершение 1-го разговора (списание 50 руб.)",
+                             demoPhone.endCall(), demoPhone);
 
-    // 13. Загрузка денег службой инкассации -> разблокировка и переход в «Ожидание»
-    printStep(step++, "loadCash(25000) в состоянии BlockedState (инкассация и разблокировка)",
-              atm.loadCash(25000), atm);
+        // 11. Новый звонок, ответ и завершение с обнулением баланса (стоимость 100 руб. -> BlockedState)
+        demoPhone.setCallCost(100);
+        demoPhone.makeCall("+7-900-444-55-66");
+        demoPhone.answerCall();
+        printOperationReport(step++, "endCall() при тарифе 100 руб. (исчерпание баланса -> блокировка)",
+                             demoPhone.endCall(), demoPhone);
 
-    // 14. Успешный вход с первой попытки (WaitingState -> AuthenticationState -> PerformingOperationsState)
-    printStep(step++, "enterPin(\"1234\") в состоянии WaitingState", atm.enterPin("1234"), atm);
+        // 12. Попытка позвонить с заблокированного телефона
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") в состоянии BlockedState",
+                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
-    // 15. Штатное завершение работы клиента
-    printStep(step++, "finishSession() в состоянии PerformingOperationsState", atm.finishSession(), atm);
-}
+        // 13. Попытка ответить на звонок в состоянии BlockedState
+        printOperationReport(step++, "answerCall() в состоянии BlockedState",
+                             demoPhone.answerCall(), demoPhone);
 
-/**
- * @brief Интерактивное консольное меню для управления несколькими экземплярами ATM.
- */
-void runInteractiveMenu() {
-    std::vector<ATM> atms;
-    atms.emplace_back("ATM-01", 15000, 0.15, "1234", 42);
-    atms.emplace_back("ATM-02", 0, 0.05, "4321", 77);
+        // 14. Пополнение баланса для разблокировки (BlockedState -> WaitingState)
+        demoPhone.setCallCost(50);
+        printOperationReport(step++, "topUpBalance(200) — пополнение счёта и разблокировка",
+                             demoPhone.topUpBalance(200), demoPhone);
 
-    std::size_t activeIdx = 0;
+        // 15. Контрольный полный цикл звонка после разблокировки
+        demoPhone.makeCall("+7-900-777-00-00");
+        demoPhone.answerCall();
+        printOperationReport(step++, "Контрольный звонок + разговор + endCall() после разблокировки",
+                             demoPhone.endCall(), demoPhone);
 
-    while (true) {
-        ATM& currentAtm = atms[activeIdx];
-        std::cout << "\n================================================================================\n"
-                  << " УПРАВЛЕНИЕ КОНЕЧНЫМИ АВТОМАТАМИ «БАНКОМАТ» (Активный: #" << (activeIdx + 1) << ")\n"
-                  << " " << currentAtm.getStatusSummary() << "\n"
-                  << "================================================================================\n"
-                  << " 1. Ввести PIN-код (enterPin)\n"
-                  << " 2. Снять заданную сумму (withdrawCash)\n"
-                  << " 3. Завершить работу (finishSession)\n"
-                  << " 4. Загрузить деньги в банкомат (loadCash)\n"
-                  << " 5. Изменить вероятность отсутствия связи с банком\n"
-                  << " 6. Показать журнал переходов текущего банкомата\n"
-                  << " 7. Переключить активный банкомат / создать новый экземпляр\n"
-                  << " 8. Запустить полный демонстрационный сценарий\n"
-                  << " 0. Выход\n"
-                  << "Выберите действие: ";
+        std::cout << "================================================================================\n";
+        std::cout << "Итоговое состояние автомата:\n  " << demoPhone.getStatusSummary() << "\n";
+        std::cout << "================================================================================\n";
+    }
 
-        int choice = -1;
-        if (!(std::cin >> choice)) {
-            if (std::cin.eof()) {
-                std::cout << "\nЗавершение работы приложения.\n";
-                break;
-            }
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Некорректный ввод. Введите номер пункта меню.\n";
-            continue;
-        }
+    /// Интерактивное меню для ручного управления экземплярами класса Phone
+    void runInteractiveMenu() {
+        while (true) {
+            const Phone& current = phones_.at(activeIdx_);
+            std::cout << "\n================================================================================\n";
+            std::cout << " УПРАВЛЕНИЕ КОНЕЧНЫМИ АВТОМАТАМИ «ТЕЛЕФОН» (ПАТТЕРН «СОСТОЯНИЕ»)\n";
+            std::cout << "================================================================================\n";
+            std::cout << " Активный телефон [" << activeIdx_ << "]: " << current.getStatusSummary() << "\n";
+            std::cout << "--------------------------------------------------------------------------------\n";
+            std::cout << " 1. Позвонить (makeCall)\n";
+            std::cout << " 2. Ответить на звонок (answerCall)\n";
+            std::cout << " 3. Завершить разговор / сбросить вызов (endCall)\n";
+            std::cout << " 4. Пополнить баланс (topUpBalance)\n";
+            std::cout << " 5. Изменить вероятность успешного вызова (setCallProbability)\n";
+            std::cout << " 6. Показать журнал переходов текущего телефона\n";
+            std::cout << " 7. Список всех телефонов / переключить активный телефон\n";
+            std::cout << " 8. Добавить новый экземпляр телефона\n";
+            std::cout << " 9. Запустить автоматический демонстрационный сценарий\n";
+            std::cout << " 0. Выход\n";
+            std::cout << "--------------------------------------------------------------------------------\n";
+            std::cout << "Выберите пункт меню: ";
 
-        if (choice == 0) {
-            std::cout << "Завершение работы приложения.\n";
-            break;
-        }
-
-        switch (choice) {
-            case 1: {
-                std::string pin;
-                std::cout << "Введите PIN-код (эталонный для этого банкомата: "
-                          << currentAtm.getValidPin() << "): ";
-                std::cin >> pin;
-                OperationResult res = currentAtm.enterPin(pin);
-                std::cout << "-> [" << res.previousState << " -> " << res.currentState << "] "
-                          << res.message << "\n";
-                break;
-            }
-            case 2: {
-                int amount = 0;
-                std::cout << "Введите сумму для снятия (руб.): ";
-                std::cin >> amount;
-                OperationResult res = currentAtm.withdrawCash(amount);
-                std::cout << "-> [" << res.previousState << " -> " << res.currentState << "] "
-                          << res.message << "\n";
-                break;
-            }
-            case 3: {
-                OperationResult res = currentAtm.finishSession();
-                std::cout << "-> [" << res.previousState << " -> " << res.currentState << "] "
-                          << res.message << "\n";
-                break;
-            }
-            case 4: {
-                int amount = 0;
-                std::cout << "Введите сумму загрузки наличных (руб.): ";
-                std::cin >> amount;
-                OperationResult res = currentAtm.loadCash(amount);
-                std::cout << "-> [" << res.previousState << " -> " << res.currentState << "] "
-                          << res.message << "\n";
-                break;
-            }
-            case 5: {
-                double prob = 0.0;
-                std::cout << "Введите вероятность отсутствия связи [0.0 .. 1.0]: ";
-                std::cin >> prob;
-                currentAtm.setConnectionLossProbability(prob);
-                std::cout << "-> Установлена вероятность обрыва связи: "
-                          << currentAtm.getConnectionLossProbability() << "\n";
-                break;
-            }
-            case 6: {
-                std::cout << "\n--- Журнал переходов банкомата [" << currentAtm.getId() << "] ---\n";
-                for (const auto& entry : currentAtm.getHistoryLog()) {
-                    std::cout << " • " << entry << "\n";
+            int choice = -1;
+            if (!(std::cin >> choice)) {
+                if (std::cin.eof()) {
+                    std::cout << "\nЗавершение работы.\n";
+                    break;
                 }
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Некорректный ввод.\n";
+                continue;
+            }
+
+            if (choice == 0) {
+                std::cout << "Выход из программы.\n";
                 break;
             }
-            case 7: {
-                std::cout << "\nСписок экземпляров класса ATM:\n";
-                for (std::size_t i = 0; i < atms.size(); ++i) {
-                    std::cout << " [" << (i + 1) << "] " << atms[i].getStatusSummary() << "\n";
+
+            Phone& activePhone = phones_.at(activeIdx_);
+            switch (choice) {
+                case 1: {
+                    std::cout << "Введите номер вызываемого абонента: ";
+                    std::string target;
+                    std::cin >> target;
+                    auto res = activePhone.makeCall(target);
+                    printOperationReport(0, "makeCall(\"" + target + "\")", res, activePhone);
+                    break;
                 }
-                std::cout << "Введите номер существующего банкомата или 0 для создания нового: ";
-                int sub = 0;
-                std::cin >> sub;
-                if (sub == 0) {
-                    std::string id, pin;
-                    int cash = 0;
-                    double prob = 0.0;
-                    std::cout << "ID нового банкомата: ";
-                    std::cin >> id;
-                    std::cout << "Начальная сумма наличных (руб.): ";
-                    std::cin >> cash;
-                    std::cout << "Вероятность обрыва связи [0.0..1.0]: ";
+                case 2: {
+                    auto res = activePhone.answerCall();
+                    printOperationReport(0, "answerCall()", res, activePhone);
+                    break;
+                }
+                case 3: {
+                    auto res = activePhone.endCall();
+                    printOperationReport(0, "endCall()", res, activePhone);
+                    break;
+                }
+                case 4: {
+                    std::cout << "Введите сумму пополнения (руб.): ";
+                    int amount = 0;
+                    std::cin >> amount;
+                    auto res = activePhone.topUpBalance(amount);
+                    printOperationReport(0, "topUpBalance(" + std::to_string(amount) + ")", res, activePhone);
+                    break;
+                }
+                case 5: {
+                    std::cout << "Введите вероятность дозвона [0.0 .. 1.0]: ";
+                    double p = 1.0;
+                    std::cin >> p;
+                    activePhone.setCallProbability(p);
+                    std::cout << "Установлена вероятность: " << activePhone.getCallProbability() << "\n";
+                    break;
+                }
+                case 6: {
+                    std::cout << "\n--- Журнал переходов телефона " << activePhone.getPhoneNumber() << " ---\n";
+                    for (const auto& entry : activePhone.getHistoryLog()) {
+                        std::cout << "  " << entry << "\n";
+                    }
+                    break;
+                }
+                case 7: {
+                    std::cout << "\nДоступные экземпляры класса Phone:\n";
+                    for (std::size_t i = 0; i < phones_.size(); ++i) {
+                        std::cout << "  [" << i << "] " << phones_[i].getStatusSummary()
+                                  << (i == activeIdx_ ? "  <-- АКТИВНЫЙ" : "") << "\n";
+                    }
+                    std::cout << "Введите индекс телефона для переключения: ";
+                    std::size_t idx = 0;
+                    std::cin >> idx;
+                    if (idx < phones_.size()) {
+                        activeIdx_ = idx;
+                    } else {
+                        std::cout << "Некорректный индекс.\n";
+                    }
+                    break;
+                }
+                case 8: {
+                    std::string number;
+                    int balance = 0;
+                    double prob = 1.0;
+                    std::cout << "Введите номер нового телефона: ";
+                    std::cin >> number;
+                    std::cout << "Введите начальный баланс (руб.): ";
+                    std::cin >> balance;
+                    std::cout << "Введите вероятность вызова [0.0 .. 1.0]: ";
                     std::cin >> prob;
-                    std::cout << "PIN-код по умолчанию: ";
-                    std::cin >> pin;
-                    atms.emplace_back(id, cash, prob, pin);
-                    activeIdx = atms.size() - 1;
-                    std::cout << "-> Создан и выбран новый экземпляр [" << id << "].\n";
-                } else if (sub >= 1 && static_cast<std::size_t>(sub) <= atms.size()) {
-                    activeIdx = static_cast<std::size_t>(sub - 1);
-                    std::cout << "-> Выбран банкомат [" << atms[activeIdx].getId() << "].\n";
+                    phones_.emplace_back(number, balance, prob);
+                    activeIdx_ = phones_.size() - 1;
+                    std::cout << "Создан и выбран телефон: " << phones_.back().getStatusSummary() << "\n";
+                    break;
                 }
-                break;
+                case 9: {
+                    runDemonstrationScenario();
+                    break;
+                }
+                default:
+                    std::cout << "Неизвестная команда.\n";
+                    break;
             }
-            case 8: {
-                runDemonstrationScenario();
-                break;
-            }
-            default:
-                std::cout << "Неизвестная команда.\n";
-                break;
         }
     }
-}
+};
+
+} // namespace
 
 int main(int argc, char* argv[]) {
+    PhoneControllerApp app;
     if (argc > 1 && std::string(argv[1]) == "--demo") {
-        runDemonstrationScenario();
+        app.runDemonstrationScenario();
         return 0;
     }
-
-    runInteractiveMenu();
+    app.runInteractiveMenu();
     return 0;
 }
-

@@ -1,38 +1,44 @@
+# Makefile для Лабораторной работы №4 (Вариант 5/1: Паттерн «Состояние» — система «Телефон»)
+
 CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic -O2
+AR       := ar
+ARFLAGS  := rcs
 
-SRC_DIR  := src
 BUILD_DIR := build
+SRC_DIR   := src
 
-LIB_Target := $(BUILD_DIR)/libatm_state.a
-APP_Target := $(BUILD_DIR)/atm_app
-TST_Target := $(BUILD_DIR)/test_atm
+LIB_OBJ    := $(BUILD_DIR)/phone_state_lib.o
+STATIC_LIB := $(BUILD_DIR)/libphone_state.a
+APP_BIN    := $(BUILD_DIR)/phone_app
+TEST_BIN   := $(BUILD_DIR)/test_phone
 
-all: $(LIB_Target) $(APP_Target) $(TST_Target)
+.PHONY: all app test demo clean
+
+all: $(STATIC_LIB) $(APP_BIN) $(TEST_BIN)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-$(BUILD_DIR)/atm_state_lib.o: $(SRC_DIR)/atm_state_lib.cpp $(SRC_DIR)/atm_state_lib.hpp | $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/atm_state_lib.cpp -o $(BUILD_DIR)/atm_state_lib.o
+$(LIB_OBJ): $(SRC_DIR)/phone_state_lib.cpp $(SRC_DIR)/phone_state_lib.hpp | $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/phone_state_lib.cpp -o $(LIB_OBJ)
 
-$(LIB_Target): $(BUILD_DIR)/atm_state_lib.o
-	ar rcs $(LIB_Target) $(BUILD_DIR)/atm_state_lib.o
+$(STATIC_LIB): $(LIB_OBJ)
+	$(AR) $(ARFLAGS) $(STATIC_LIB) $(LIB_OBJ)
 
-$(APP_Target): $(SRC_DIR)/main.cpp $(LIB_Target)
-	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.cpp $(LIB_Target) -o $(APP_Target)
+$(APP_BIN): $(SRC_DIR)/main.cpp $(STATIC_LIB)
+	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.cpp $(STATIC_LIB) -o $(APP_BIN)
 
-$(TST_Target): $(SRC_DIR)/test_atm.cpp $(LIB_Target)
-	$(CXX) $(CXXFLAGS) $(SRC_DIR)/test_atm.cpp $(LIB_Target) -o $(TST_Target)
+$(TEST_BIN): $(SRC_DIR)/test_phone.cpp $(STATIC_LIB)
+	$(CXX) $(CXXFLAGS) $(SRC_DIR)/test_phone.cpp $(STATIC_LIB) -o $(TEST_BIN)
 
-test: $(TST_Target)
-	./$(TST_Target)
+app: $(APP_BIN)
 
-demo: $(APP_Target)
-	./$(APP_Target) --demo
+test: $(TEST_BIN)
+	./$(TEST_BIN)
+
+demo: $(APP_BIN)
+	./$(APP_BIN) --demo
 
 clean:
 	rm -rf $(BUILD_DIR)
-
-.PHONY: all test demo clean
-
