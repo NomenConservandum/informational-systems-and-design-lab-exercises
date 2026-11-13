@@ -24,6 +24,7 @@ class Phone {
     - callProbability: Double
     - callCost: Integer
     - activePeerNumber: String
+    - isIncomingCall: Boolean
     - currentState: PhoneState
     - historyLog: List<String>
     + makeCall(targetNumber: String): OperationResult
@@ -33,9 +34,10 @@ class Phone {
     + setState(state: PhoneState): void
     + getState(): PhoneState
     + getStateName(): String
-    + checkCallProbability(): Boolean
     + addBalance(amount: Integer): void
     + deductCallCost(): void
+    + isIncomingCall(): Boolean
+    + setIncomingCall(incoming: Boolean): void
     + getPhoneNumber(): String
     + getBalance(): Integer
     + getCallProbability(): Double
@@ -104,7 +106,7 @@ note top of PhoneState
   • ConcreteState → WaitingState (Ожидание)
   • ConcreteState → CallingState (Звонок)
   • ConcreteState → TalkingState (Разговор)
-  • ConcreteState → BlockedState (Заблокирован: нет средств)
+  • ConcreteState → BlockedState (Заблокирован: баланс отрицательный)
   • Client → PhoneControllerApp
 end note
 

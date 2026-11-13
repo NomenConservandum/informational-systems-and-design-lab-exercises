@@ -49,8 +49,8 @@ private:
 
 public:
     PhoneControllerApp() {
-        phones_.emplace_back("+7-917-100-01-01", 100, 1.00, 50, 101);
-        phones_.emplace_back("+7-917-200-02-02", 0, 0.80, 50, 202);
+        phones_.emplace_back("+7-917-100-01-01", 100, 1.00, 50);
+        phones_.emplace_back("+7-917-200-02-02", -20, 0.80, 50);
     }
 
     /// Запуск полного демонстрационного сценария (для отчёта и проверки)
@@ -59,77 +59,81 @@ public:
         std::cout << "  ДЕМОНСТРАЦИЯ РАБОТЫ ШАБЛОНА «СОСТОЯНИЕ» (STATE) — СИСТЕМА «ТЕЛЕФОН» (ВАР. 5/1)\n";
         std::cout << "================================================================================\n\n";
 
-        Phone demoPhone("+7-917-555-01-01", 100, 1.0, 50, 42);
+        Phone demoPhone("+7-917-555-01-01", 100, 1.0, 50);
         std::cout << "Создан экземпляр конечного автомата:\n  " << demoPhone.getStatusSummary() << "\n\n";
 
         int step = 1;
 
-        // 1. Попытка ответить на звонок в режиме ожидания
-        printOperationReport(step++, "answerCall() — попытка ответить без входящего вызова",
-                             demoPhone.answerCall(), demoPhone);
-
-        // 2. Попытка завершить разговор в режиме ожидания
+        // 1. Попытка завершить несуществующий разговор в режиме ожидания
         printOperationReport(step++, "endCall() — попытка завершить несуществующий разговор",
                              demoPhone.endCall(), demoPhone);
 
-        // 3. Пополнение баланса в состоянии ожидания
+        // 2. Пополнение баланса в состоянии ожидания
         printOperationReport(step++, "topUpBalance(50) — пополнение счёта в режиме ожидания",
                              demoPhone.topUpBalance(50), demoPhone);
 
-        // 4. Сбой вызова при вероятности дозвона p = 0.0
-        demoPhone.setCallProbability(0.0);
-        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") при p = 0.0 (сбой вызова)",
-                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
+        // 3. Приём бесплатного входящего звонка в WaitingState (WaitingState -> TalkingState)
+        printOperationReport(step++, "answerCall() — приём входящего звонка в WaitingState",
+                             demoPhone.answerCall(), demoPhone);
 
-        // 5. Успешный вызов при p = 1.0 (WaitingState -> CallingState)
-        demoPhone.setCallProbability(1.0);
-        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") при p = 1.0 (начало звонка)",
+        // 4. Завершение входящего разговора без списания (TalkingState -> WaitingState, баланс 150 руб.)
+        printOperationReport(step++, "endCall() — завершение бесплатного входящего разговора",
+                             demoPhone.endCall(), demoPhone);
+
+        // 5. Инициирование исходящего вызова (WaitingState -> CallingState)
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") — начало исходящего звонка",
                              demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
         // 6. Попытка позвонить повторно во время активного гудка
         printOperationReport(step++, "makeCall(\"+7-900-999-88-77\") во время активного звонка",
                              demoPhone.makeCall("+7-900-999-88-77"), demoPhone);
 
-        // 7. Сброс звонка до ответа (CallingState -> WaitingState)
+        // 7. Сброс вызова до ответа (CallingState -> WaitingState)
         printOperationReport(step++, "endCall() — отмена/сброс вызова до ответа собеседника",
                              demoPhone.endCall(), demoPhone);
 
-        // 8. Повторный набор номера (WaitingState -> CallingState)
-        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") — повторный вызов",
-                             demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
-
-        // 9. Ответ на звонок (CallingState -> TalkingState)
-        printOperationReport(step++, "answerCall() — собеседник ответил, начало разговора",
+        // 8. Повторный набор + ответ собеседника (WaitingState -> CallingState -> TalkingState)
+        demoPhone.makeCall("+7-900-111-22-33");
+        printOperationReport(step++, "makeCall() + answerCall() — соединение по исходящему звонку",
                              demoPhone.answerCall(), demoPhone);
 
-        // 10. Завершение первого разговора (списание 50 руб., остаток 100 руб. > 0 -> WaitingState)
-        printOperationReport(step++, "endCall() — завершение 1-го разговора (списание 50 руб.)",
+        // 9. Завершение исходящего разговора до ровно нулевого баланса (тариф 150 -> баланс 0 руб. >= 0 -> WaitingState)
+        demoPhone.setCallCost(150);
+        printOperationReport(step++, "endCall() при тарифе 150 руб. (баланс 0 руб. >= 0 -> остаётся WaitingState)",
                              demoPhone.endCall(), demoPhone);
 
-        // 11. Новый звонок, ответ и завершение с обнулением баланса (стоимость 100 руб. -> BlockedState)
-        demoPhone.setCallCost(100);
+        // 10. При нулевом балансе (0 руб.) входящие звонки доступны и бесплатны
+        demoPhone.answerCall();
+        printOperationReport(step++, "answerCall() + endCall() при 0 руб. (бесплатный входящий -> WaitingState)",
+                             demoPhone.endCall(), demoPhone);
+
+        // 11. Исходящий звонок при 0 руб. уводит баланс в -50 руб. (< 0 -> BlockedState)
+        demoPhone.setCallCost(50);
         demoPhone.makeCall("+7-900-444-55-66");
         demoPhone.answerCall();
-        printOperationReport(step++, "endCall() при тарифе 100 руб. (исчерпание баланса -> блокировка)",
+        printOperationReport(step++, "endCall() при 0 руб. и тарифе 50 руб. (баланс -50 < 0 -> BlockedState)",
                              demoPhone.endCall(), demoPhone);
 
-        // 12. Попытка позвонить с заблокированного телефона
-        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") в состоянии BlockedState",
+        // 12. В состоянии BlockedState (-50 руб.) исходящие вызовы запрещены
+        printOperationReport(step++, "makeCall(\"+7-900-111-22-33\") в состоянии BlockedState (-50 руб.)",
                              demoPhone.makeCall("+7-900-111-22-33"), demoPhone);
 
-        // 13. Попытка ответить на звонок в состоянии BlockedState
-        printOperationReport(step++, "answerCall() в состоянии BlockedState",
+        // 13. В состоянии BlockedState (-50 руб.) входящий звонок ПРИНИМАЕТСЯ (BlockedState -> TalkingState)
+        printOperationReport(step++, "answerCall() в состоянии BlockedState (-50 руб.) — приём входящего вызова",
                              demoPhone.answerCall(), demoPhone);
 
-        // 14. Пополнение баланса для разблокировки (BlockedState -> WaitingState)
-        demoPhone.setCallCost(50);
-        printOperationReport(step++, "topUpBalance(200) — пополнение счёта и разблокировка",
+        // 14. Завершение входящего разговора без списания (баланс -50 руб. < 0 -> обратно в BlockedState)
+        printOperationReport(step++, "endCall() — завершение входящего при -50 руб. (0 руб. -> BlockedState)",
+                             demoPhone.endCall(), demoPhone);
+
+        // 15. Пополнение баланса до >= 0 (+200 -> 150 руб. -> разблокировка в WaitingState)
+        printOperationReport(step++, "topUpBalance(200) — выход из отрицательного баланса (150 руб. -> WaitingState)",
                              demoPhone.topUpBalance(200), demoPhone);
 
-        // 15. Контрольный полный цикл звонка после разблокировки
+        // 16. Контрольный исходящий звонок после разблокировки (-50 -> 100 руб.)
         demoPhone.makeCall("+7-900-777-00-00");
         demoPhone.answerCall();
-        printOperationReport(step++, "Контрольный звонок + разговор + endCall() после разблокировки",
+        printOperationReport(step++, "Контрольный исходящий звонок + разговор + endCall() после разблокировки",
                              demoPhone.endCall(), demoPhone);
 
         std::cout << "================================================================================\n";
@@ -150,7 +154,7 @@ public:
             std::cout << " 2. Ответить на звонок (answerCall)\n";
             std::cout << " 3. Завершить разговор / сбросить вызов (endCall)\n";
             std::cout << " 4. Пополнить баланс (topUpBalance)\n";
-            std::cout << " 5. Изменить вероятность успешного вызова (setCallProbability)\n";
+            std::cout << " 5. Изменить параметр вероятности поступления звонка (setCallProbability)\n";
             std::cout << " 6. Показать журнал переходов текущего телефона\n";
             std::cout << " 7. Список всех телефонов / переключить активный телефон\n";
             std::cout << " 8. Добавить новый экземпляр телефона\n";
@@ -205,11 +209,11 @@ public:
                     break;
                 }
                 case 5: {
-                    std::cout << "Введите вероятность дозвона [0.0 .. 1.0]: ";
+                    std::cout << "Введите вероятность поступления звонка [0.0 .. 1.0]: ";
                     double p = 1.0;
                     std::cin >> p;
                     activePhone.setCallProbability(p);
-                    std::cout << "Установлена вероятность: " << activePhone.getCallProbability() << "\n";
+                    std::cout << "Установлено значение атрибута: " << activePhone.getCallProbability() << "\n";
                     break;
                 }
                 case 6: {
@@ -243,7 +247,7 @@ public:
                     std::cin >> number;
                     std::cout << "Введите начальный баланс (руб.): ";
                     std::cin >> balance;
-                    std::cout << "Введите вероятность вызова [0.0 .. 1.0]: ";
+                    std::cout << "Введите вероятность поступления звонка [0.0 .. 1.0]: ";
                     std::cin >> prob;
                     phones_.emplace_back(number, balance, prob);
                     activeIdx_ = phones_.size() - 1;

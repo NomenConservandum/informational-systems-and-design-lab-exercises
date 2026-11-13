@@ -10,14 +10,13 @@
  *     1. WaitingState  («Ожидание»)
  *     2. CallingState  («Звонок»)
  *     3. TalkingState  («Разговор»)
- *     4. BlockedState  («Заблокирован (нет средств)»)
+ *     4. BlockedState  («Заблокирован (баланс отрицательный)»)
  */
 
 #ifndef PHONE_STATE_LIB_HPP
 #define PHONE_STATE_LIB_HPP
 
 #include <memory>
-#include <random>
 #include <string>
 #include <vector>
 
@@ -69,12 +68,14 @@ public:
  * @class WaitingState
  * @brief Конкретное состояние «Ожидание» (ConcreteState в шаблоне GoF).
  *
- * Телефон включён, баланс положительный (balance > 0), линия свободна.
+ * Телефон включён, баланс неотрицательный (balance >= 0), линия свободна.
  * Допустимые операции:
- * - makeCall(targetNumber): проверяет доступность связи/вызова с учётом вероятности
- *   callProbability; при успехе переводит автомат в состояние CallingState («Звонок»).
+ * - makeCall(targetNumber): инициирует исходящий вызов и переводит автомат в
+ *   состояние CallingState («Звонок»).
+ * - answerCall(): принимает бесплатный входящий звонок и переводит автомат
+ *   в состояние TalkingState («Разговор»).
  * - topUpBalance(amount): увеличивает баланс, оставаясь в WaitingState.
- * - answerCall(), endCall(): отклоняются, так как активного звонка нет.
+ * - endCall(): отклоняется, так как активного звонка нет.
  */
 class WaitingState : public PhoneState {
 public:
@@ -89,12 +90,12 @@ public:
  * @class CallingState
  * @brief Конкретное состояние «Звонок» (ConcreteState в шаблоне GoF).
  *
- * На телефоне идёт исходящий или входящий вызов (гудки вызова).
+ * На телефоне идёт исходящий вызов (гудки ожидания ответа абонента).
  * Допустимые операции:
  * - answerCall(): устанавливает соединение и переводит автомат в состояние
  *   TalkingState («Разговор»).
  * - endCall(): отменяет/сбрасывает вызов без списания средств и возвращает
- *   автомат в состояние WaitingState («Ожидание»).
+ *   автомат в WaitingState (при balance >= 0) или в BlockedState (при balance < 0).
  * - topUpBalance(amount): пополняет счёт без прерывания вызова.
  * - makeCall(): отклоняется (линия уже занята вызовом).
  */
@@ -113,9 +114,10 @@ public:
  *
  * Голосовое соединение установлено, идёт разговор с абонентом.
  * Допустимые операции:
- * - endCall(): завершает разговор и списывает стоимость звонка (callCost).
- *   Если после списания balance <= 0, телефон автоматически переходит в
- *   состояние BlockedState («Заблокирован (нет средств)»); если balance > 0 —
+ * - endCall(): завершает разговор. Для исходящего вызова списывается стоимость
+ *   звонка (callCost), для входящего вызова списание равно 0 руб.
+ *   Если после завершения balance < 0, телефон переходит в состояние
+ *   BlockedState («Заблокирован (баланс отрицательный)»); если balance >= 0 —
  *   возвращается в состояние WaitingState («Ожидание»).
  * - topUpBalance(amount): пополняет баланс во время разговора.
  * - makeCall(), answerCall(): отклоняются (разговор уже активен).
@@ -131,14 +133,17 @@ public:
 
 /**
  * @class BlockedState
- * @brief Конкретное состояние «Заблокирован (нет средств)» (ConcreteState в шаблоне GoF).
+ * @brief Конкретное состояние «Заблокирован (баланс отрицательный)» (ConcreteState в шаблоне GoF).
  *
- * Баланс телефона равен нулю или отрицателен (balance <= 0).
+ * Баланс телефона строго отрицателен (balance < 0).
+ * Платные исходящие вызовы заблокированы, однако приём входящих звонков
+ * доступен и бесплатен (списание происходит со счёта звонящего).
  * Допустимые операции:
  * - topUpBalance(amount): пополняет баланс на сумму amount > 0. Если итоговый
- *   balance > 0, телефон разблокируется и переходит в WaitingState («Ожидание»);
- *   если balance <= 0 — остаётся в BlockedState.
- * - makeCall(), answerCall(), endCall(): отклоняются до пополнения баланса.
+ *   balance >= 0, телефон разблокируется и переходит в WaitingState («Ожидание»);
+ *   если balance < 0 — остаётся в BlockedState.
+ * - answerCall(): принимает бесплатный входящий вызов и переводит телефон в TalkingState.
+ * - makeCall(), endCall(): отклоняются.
  */
 class BlockedState : public PhoneState {
 public:
@@ -156,7 +161,7 @@ public:
  * Инкапсулирует атрибуты предметной области по ТЗ:
  * - номер телефона (phoneNumber_);
  * - текущий баланс средств на счёте (balance_);
- * - вероятность успешного вызова / поступления звонка (callProbability_).
+ * - вероятность поступления звонка (callProbability_).
  * Хранит ссылку на объект текущего состояния (currentState_) и делегирует ему
  * выполнение всех операций жизненного цикла.
  */
@@ -164,11 +169,11 @@ class Phone {
 private:
     std::string phoneNumber_;                  ///< Номер телефона абонента
     int balance_;                              ///< Текущий баланс счёта (в руб.)
-    double callProbability_;                   ///< Вероятность дозвона / поступления вызова [0.0..1.0]
-    int callCost_;                             ///< Стоимость одного разговора (в руб.)
+    double callProbability_;                   ///< Вероятность поступления звонка [0.0..1.0]
+    int callCost_;                             ///< Стоимость одного исходящего разговора (в руб.)
     std::string activePeerNumber_;             ///< Номер собеседника в текущем вызове/разговоре
+    bool isIncomingCall_;                      ///< Признак входящего (бесплатного) звонка
     std::shared_ptr<PhoneState> currentState_; ///< Текущее состояние автомата
-    std::mt19937 rng_;                         ///< Генератор псевдослучайных чисел
     std::vector<std::string> historyLog_;      ///< Журнал переходов и операций
 
     void recordHistory(const OperationResult& result, const std::string& operationDesc);
@@ -177,16 +182,14 @@ public:
     /**
      * @brief Конструктор конечного автомата «Телефон».
      * @param phoneNumber Номер телефона.
-     * @param initialBalance Начальный баланс счёта (при <= 0 переходит в BlockedState).
-     * @param callProbability Вероятность успешного вызова / поступления звонка в [0.0, 1.0].
-     * @param callCost Тариф за один сеанс разговора (по умолчанию 50 руб.).
-     * @param randomSeed Зерно ГПСЧ для воспроизводимости тестов.
+     * @param initialBalance Начальный баланс счёта (при < 0 переходит в BlockedState).
+     * @param callProbability Вероятность поступления звонка в [0.0, 1.0] (атрибут модели по ТЗ).
+     * @param callCost Тариф за один исходящий разговор (по умолчанию 50 руб.).
      */
     Phone(std::string phoneNumber,
           int initialBalance,
-          double callProbability,
-          int callCost = 50,
-          unsigned int randomSeed = 42);
+          double callProbability = 1.0,
+          int callCost = 50);
 
     // Публичные операции ТЗ (делегируются текущему объекту состояния)
     OperationResult makeCall(const std::string& targetNumber = "+7-900-000-00-00");
@@ -200,7 +203,6 @@ public:
     std::string getStateName() const;
 
     // Вспомогательные методы контекста
-    bool checkCallProbability();
     void addBalance(int amount);
     void deductCallCost();
 
@@ -213,6 +215,8 @@ public:
     void setCallCost(int cost);
     const std::string& getActivePeerNumber() const;
     void setActivePeerNumber(const std::string& peerNumber);
+    bool isIncomingCall() const;
+    void setIncomingCall(bool incoming);
     const std::vector<std::string>& getHistoryLog() const;
     std::string getStatusSummary() const;
 };

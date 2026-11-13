@@ -14,52 +14,73 @@ namespace {
 
 using phone::Phone;
 
-/// Тест 1: Начальные состояния конечного автомата при положительном и нулевом/отрицательном балансе
+/// Тест 1: Начальные состояния конечного автомата при неотрицательном (вкл. 0) и отрицательном балансе
 void testInitialStates() {
     Phone activePhone("+7-900-100-00-01", 150, 1.0);
     assert(activePhone.getStateName().find("WaitingState") != std::string::npos);
     assert(activePhone.getBalance() == 150);
 
+    // Нулевой баланс НЕ является отрицательным -> телефон в режиме WaitingState
     Phone zeroBalancePhone("+7-900-100-00-02", 0, 1.0);
-    assert(zeroBalancePhone.getStateName().find("BlockedState") != std::string::npos);
+    assert(zeroBalancePhone.getStateName().find("WaitingState") != std::string::npos);
 
+    // Отрицательный баланс -> BlockedState (баланс отрицательный)
     Phone negativeBalancePhone("+7-900-100-00-03", -40, 1.0);
     assert(negativeBalancePhone.getStateName().find("BlockedState") != std::string::npos);
 
-    std::cout << "[PASS] testInitialStates — проверка начальных состояний телефона\n";
+    std::cout << "[PASS] testInitialStates — проверка начальных состояний телефона (0 >= 0 -> Ожидание, < 0 -> Заблокирован)\n";
 }
 
 /// Тест 2: Реакции автомата в состоянии «Ожидание» (WaitingState)
 void testWaitingStateReactions() {
     Phone phone("+7-900-200-00-01", 100, 1.0, 50);
 
-    // Нельзя ответить на звонок или завершить разговор в режиме ожидания
-    auto r1 = phone.answerCall();
+    // Нельзя завершить разговор в режиме ожидания
+    auto r1 = phone.endCall();
     assert(!r1.success);
     assert(phone.getStateName().find("WaitingState") != std::string::npos);
 
-    auto r2 = phone.endCall();
-    assert(!r2.success);
-    assert(phone.getStateName().find("WaitingState") != std::string::npos);
-
     // Пополнение счёта в режиме ожидания
-    auto r3 = phone.topUpBalance(50);
-    assert(r3.success);
+    auto r2 = phone.topUpBalance(50);
+    assert(r2.success);
     assert(phone.getBalance() == 150);
     assert(phone.getStateName().find("WaitingState") != std::string::npos);
 
     // Отказ при нулевой или отрицательной сумме пополнения
-    auto r4 = phone.topUpBalance(-10);
-    assert(!r4.success);
+    auto r3 = phone.topUpBalance(-10);
+    assert(!r3.success);
     assert(phone.getBalance() == 150);
 
-    // При вероятности вызова p = 0.0 звонок не проходит, телефон остаётся в WaitingState
+    // Детерминированное поведение: даже при callProbability == 0.0 случайных отказов нет
     phone.setCallProbability(0.0);
-    auto r5 = phone.makeCall("+7-900-999-00-00");
-    assert(!r5.success);
+    assert(phone.getCallProbability() == 0.0);
+
+    // Входящий звонок в WaitingState принимается без случайных отказов (WaitingState -> TalkingState)
+    // и при завершении разговора баланс НЕ уменьшается (0 руб.)
+    auto r4 = phone.answerCall();
+    assert(r4.success);
+    assert(phone.getStateName().find("TalkingState") != std::string::npos);
+
+    auto r5 = phone.endCall();
+    assert(r5.success);
+    assert(phone.getBalance() == 150);
     assert(phone.getStateName().find("WaitingState") != std::string::npos);
 
-    std::cout << "[PASS] testWaitingStateReactions — реакции в состоянии WaitingState\n";
+    // Исходящий звонок также детерминирован и не блокируется значением callProbability
+    auto r6 = phone.makeCall("+7-900-999-00-00");
+    assert(r6.success);
+    assert(phone.getStateName().find("CallingState") != std::string::npos);
+    assert(phone.endCall().success);
+    assert(phone.getStateName().find("WaitingState") != std::string::npos);
+
+    // Проверка при нулевом балансе (0 руб.): можно как принимать входящие, так и позвонить
+    Phone zeroPhone("+7-900-200-00-02", 0, 1.0, 50);
+    assert(zeroPhone.answerCall().success);
+    assert(zeroPhone.endCall().success);
+    assert(zeroPhone.getBalance() == 0);
+    assert(zeroPhone.getStateName().find("WaitingState") != std::string::npos);
+
+    std::cout << "[PASS] testWaitingStateReactions — реакции в состоянии WaitingState и бесплатные входящие\n";
 }
 
 /// Тест 3: Переходы в состоянии «Звонок» (CallingState)
@@ -91,9 +112,9 @@ void testCallingStateTransitions() {
     std::cout << "[PASS] testCallingStateTransitions — переходы состояния CallingState\n";
 }
 
-/// Тест 4: Состояние «Разговор» (TalkingState) и блокировка при исчерпании баланса
+/// Тест 4: Состояние «Разговор» (TalkingState): 0 руб. оставляет в WaitingState, < 0 -> BlockedState
 void testTalkingStateAndBlocking() {
-    Phone phone("+7-900-400-00-01", 100, 1.0, 60);
+    Phone phone("+7-900-400-00-01", 100, 1.0, 50);
 
     assert(phone.makeCall("+7-900-555-66-77").success);
     assert(phone.answerCall().success);
@@ -103,52 +124,77 @@ void testTalkingStateAndBlocking() {
     assert(!phone.makeCall("+7-900-000-00-00").success);
     assert(!phone.answerCall().success);
 
-    // Завершение первого разговора: списание 60 руб., остаток 40 руб. > 0 -> WaitingState
+    // Завершение первого исходящего разговора: списание 50 руб., остаток 50 >= 0 -> WaitingState
     auto r1 = phone.endCall();
     assert(r1.success);
-    assert(phone.getBalance() == 40);
+    assert(phone.getBalance() == 50);
     assert(phone.getStateName().find("WaitingState") != std::string::npos);
 
-    // Второй разговор: списание ещё 60 руб., баланс становится -20 руб. <= 0 -> BlockedState
+    // Второй исходящий разговор: списание 50 руб., баланс ровно 0 >= 0 -> ещё WaitingState
     assert(phone.makeCall("+7-900-555-66-77").success);
     assert(phone.answerCall().success);
     auto r2 = phone.endCall();
     assert(r2.success);
+    assert(phone.getBalance() == 0);
+    assert(phone.getStateName().find("WaitingState") != std::string::npos);
+
+    // Третий исходящий разговор при нулевом балансе уводит баланс в -50 < 0 -> BlockedState
+    assert(phone.makeCall("+7-900-555-66-77").success);
+    assert(phone.answerCall().success);
+    auto r3 = phone.endCall();
+    assert(r3.success);
+    assert(phone.getBalance() == -50);
+    assert(phone.getStateName().find("BlockedState") != std::string::npos);
+
+    std::cout << "[PASS] testTalkingStateAndBlocking — тарификация исходящих и блокировка при balance < 0\n";
+}
+
+/// Тест 5: Блокировка при отрицательном балансе, приём входящих звонков и разблокировка при balance >= 0
+void testBlockedStateAndUnblocking() {
+    Phone phone("+7-900-500-00-01", -40, 1.0, 50);
+    assert(phone.getStateName().find("BlockedState") != std::string::npos);
+
+    // При отрицательном балансе исходящие звонки и endCall без разговора запрещены
+    assert(!phone.makeCall("+7-900-123-45-67").success);
+    assert(!phone.endCall().success);
+
+    // При отрицательном балансе (-40 руб.) входящий звонок ПРИНИМАЕТСЯ детерминированно (BlockedState -> TalkingState)
+    phone.setCallProbability(0.0);
+    assert(phone.answerCall().success);
+    assert(phone.getStateName().find("TalkingState") != std::string::npos);
+
+    // Завершение входящего разговора не списывает средства (0 руб.) и возвращает в BlockedState (-40 руб.)
+    assert(phone.endCall().success);
+    assert(phone.getBalance() == -40);
+    assert(phone.getStateName().find("BlockedState") != std::string::npos);
+
+    // Частичное пополнение (+20 руб.): баланс -20 < 0 -> по-прежнему заблокирован для исходящих
+    auto r1 = phone.topUpBalance(20);
+    assert(r1.success);
     assert(phone.getBalance() == -20);
     assert(phone.getStateName().find("BlockedState") != std::string::npos);
 
-    std::cout << "[PASS] testTalkingStateAndBlocking — разговор, списание средств и блокировка\n";
-}
-
-/// Тест 5: Ограничения в состоянии «Заблокирован» (BlockedState) и разблокировка пополнением
-void testBlockedStateAndUnblocking() {
-    Phone phone("+7-900-500-00-01", -20, 1.0, 50);
-    assert(phone.getStateName().find("BlockedState") != std::string::npos);
-
-    // Любые звонки в заблокированном состоянии запрещены
-    assert(!phone.makeCall("+7-900-123-45-67").success);
-    assert(!phone.answerCall().success);
-    assert(!phone.endCall().success);
-
-    // Частичное пополнение до 0 руб. оставляет телефон заблокированным
-    auto r1 = phone.topUpBalance(20);
-    assert(!r1.success);
+    // Приём входящего звонка + пополнение во время разговора до 0 руб. (>= 0) -> разблокировка в WaitingState
+    assert(phone.answerCall().success);
+    assert(phone.topUpBalance(20).success);
     assert(phone.getBalance() == 0);
-    assert(phone.getStateName().find("BlockedState") != std::string::npos);
-
-    // Пополнение до положительного баланса (+100 руб.) разблокирует телефон -> WaitingState
-    auto r2 = phone.topUpBalance(100);
-    assert(r2.success);
-    assert(phone.getBalance() == 100);
+    assert(phone.endCall().success);
     assert(phone.getStateName().find("WaitingState") != std::string::npos);
 
-    // Проверка работоспособности после разблокировки
-    assert(phone.makeCall("+7-900-123-45-67").success);
-    assert(phone.answerCall().success);
-    assert(phone.endCall().success);
-    assert(phone.getBalance() == 50);
+    // Проверка прямого выхода из BlockedState пополнением до 0 и > 0
+    Phone blockedTwo("+7-900-500-00-02", -30, 1.0, 50);
+    assert(blockedTwo.topUpBalance(30).success);
+    assert(blockedTwo.getBalance() == 0);
+    assert(blockedTwo.getStateName().find("WaitingState") != std::string::npos);
 
-    std::cout << "[PASS] testBlockedStateAndUnblocking — блокировка и разблокировка пополнением баланса\n";
+    // После разблокировки исходящий звонок снова доступен
+    blockedTwo.topUpBalance(100);
+    assert(blockedTwo.makeCall("+7-900-123-45-67").success);
+    assert(blockedTwo.answerCall().success);
+    assert(blockedTwo.endCall().success);
+    assert(blockedTwo.getBalance() == 50);
+
+    std::cout << "[PASS] testBlockedStateAndUnblocking — блокировка при balance < 0, бесплатные входящие и разблокировка\n";
 }
 
 } // namespace

@@ -1,5 +1,3 @@
-# Makefile для Лабораторной работы №4 (Вариант 5/1: Паттерн «Состояние» — система «Телефон»)
-
 CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic -O2
 AR       := ar

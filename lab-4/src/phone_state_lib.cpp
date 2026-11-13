@@ -12,6 +12,20 @@
 
 namespace phone {
 
+namespace {
+
+/// Переводит телефон в состояние разговора по входящему (бесплатному) звонку
+OperationResult acceptIncomingCall(Phone& phone,
+                                   const std::string& prevState,
+                                   const std::string& message) {
+    phone.setIncomingCall(true);
+    phone.setActivePeerNumber("Входящий абонент");
+    phone.setState(std::make_shared<TalkingState>());
+    return {true, message, prevState, phone.getStateName()};
+}
+
+} // namespace
+
 // ============================================================================
 // 1. Состояние «Ожидание» (WaitingState)
 // ============================================================================
@@ -32,45 +46,34 @@ OperationResult WaitingState::makeCall(Phone& phone, const std::string& targetNu
         };
     }
 
-    if (phone.getBalance() <= 0) {
+    if (phone.getBalance() < 0) {
         phone.setState(std::make_shared<BlockedState>());
         return {
             false,
-            "Отказ: недостаточно средств на счёте (" + std::to_string(phone.getBalance()) +
-                " руб.). Телефон заблокирован.",
+            "Отказ: баланс отрицательный (" + std::to_string(phone.getBalance()) +
+                " руб.). Исходящие вызовы заблокированы.",
             prevState,
             phone.getStateName()
         };
     }
 
-    // Проверка вероятности успешного дозвона / поступления вызова
-    if (!phone.checkCallProbability()) {
-        return {
-            false,
-            "Вызов на номер «" + targetNumber +
-                "» не состоялся (сработала вероятность недоступности сети/абонента). Телефон остаётся в режиме ожидания.",
-            prevState,
-            phone.getStateName()
-        };
-    }
-
+    phone.setIncomingCall(false);
     phone.setActivePeerNumber(targetNumber);
     phone.setState(std::make_shared<CallingState>());
     return {
         true,
-        "Инициирован звонок абоненту «" + targetNumber + "». Идут гудки вызова.",
+        "Инициирован исходящий звонок абоненту «" + targetNumber + "». Идут гудки вызова.",
         prevState,
         phone.getStateName()
     };
 }
 
 OperationResult WaitingState::answerCall(Phone& phone) {
-    return {
-        false,
-        "Отказ: невозможно ответить на звонок в режиме ожидания (нет активного вызова).",
+    return acceptIncomingCall(
+        phone,
         getName(),
-        phone.getStateName()
-    };
+        "Принят входящий звонок. Установлено голосовое соединение (входящие вызовы бесплатны)."
+    );
 }
 
 OperationResult WaitingState::endCall(Phone& phone) {
@@ -137,10 +140,16 @@ OperationResult CallingState::endCall(Phone& phone) {
     const std::string prevState = getName();
     const std::string peer = phone.getActivePeerNumber();
     phone.setActivePeerNumber("");
-    phone.setState(std::make_shared<WaitingState>());
+    phone.setIncomingCall(false);
+    if (phone.getBalance() >= 0) {
+        phone.setState(std::make_shared<WaitingState>());
+    } else {
+        phone.setState(std::make_shared<BlockedState>());
+    }
     return {
         true,
-        "Вызов абонента «" + peer + "» сброшен до начала разговора. Возврат в режим ожидания.",
+        "Вызов абонента «" + peer + "» сброшен до начала разговора. Переход в состояние " +
+            phone.getStateName() + ".",
         prevState,
         phone.getStateName()
     };
@@ -198,18 +207,46 @@ OperationResult TalkingState::answerCall(Phone& phone) {
 OperationResult TalkingState::endCall(Phone& phone) {
     const std::string prevState = getName();
     const std::string peer = phone.getActivePeerNumber();
+    const bool incoming = phone.isIncomingCall();
     const int cost = phone.getCallCost();
 
-    phone.deductCallCost();
     phone.setActivePeerNumber("");
+    phone.setIncomingCall(false);
 
-    if (phone.getBalance() <= 0) {
+    if (incoming) {
+        if (phone.getBalance() < 0) {
+            phone.setState(std::make_shared<BlockedState>());
+            return {
+                true,
+                "Входящий разговор («" + peer +
+                    "») завершён (0 руб. — списание происходит со счёта звонящего). Баланс отрицательный (" +
+                    std::to_string(phone.getBalance()) +
+                    " руб.) — исходящие звонки по-прежнему заблокированы.",
+                prevState,
+                phone.getStateName()
+            };
+        }
+
+        phone.setState(std::make_shared<WaitingState>());
+        return {
+            true,
+            "Входящий разговор («" + peer +
+                "») завершён (0 руб. — списание происходит со счёта звонящего). Остаток на счёте: " +
+                std::to_string(phone.getBalance()) + " руб.",
+            prevState,
+            phone.getStateName()
+        };
+    }
+
+    phone.deductCallCost();
+
+    if (phone.getBalance() < 0) {
         phone.setState(std::make_shared<BlockedState>());
         return {
             true,
             "Разговор с «" + peer + "» завершён. Списано " + std::to_string(cost) +
-                " руб. Баланс исчерпан (" + std::to_string(phone.getBalance()) +
-                " руб.) — телефон переведён в состояние блокировки!",
+                " руб. Баланс стал отрицательным (" + std::to_string(phone.getBalance()) +
+                " руб.) — исходящие вызовы заблокированы!",
             prevState,
             phone.getStateName()
         };
@@ -248,37 +285,38 @@ OperationResult TalkingState::topUpBalance(Phone& phone, int amount) {
 }
 
 // ============================================================================
-// 4. Состояние «Заблокирован (нет средств)» (BlockedState)
+// 4. Состояние «Заблокирован (баланс отрицательный)» (BlockedState)
 // ============================================================================
 
 std::string BlockedState::getName() const {
-    return "BlockedState (Заблокирован: нет средств)";
+    return "BlockedState (Заблокирован: баланс отрицательный)";
 }
 
 OperationResult BlockedState::makeCall(Phone& phone, const std::string& /*targetNumber*/) {
     return {
         false,
-        "Отказ: телефон заблокирован из-за нулевого/отрицательного баланса (" +
-            std::to_string(phone.getBalance()) + " руб.). Пополните счёт.",
+        "Отказ: исходящие вызовы заблокированы из-за отрицательного баланса (" +
+            std::to_string(phone.getBalance()) +
+            " руб.). Пополните счёт (приём входящих звонков доступен).",
         getName(),
         phone.getStateName()
     };
 }
 
 OperationResult BlockedState::answerCall(Phone& phone) {
-    return {
-        false,
-        "Отказ: приём и обслуживание вызовов невозможны — телефон заблокирован (" +
-            std::to_string(phone.getBalance()) + " руб.).",
+    return acceptIncomingCall(
+        phone,
         getName(),
-        phone.getStateName()
-    };
+        "Принят входящий звонок при отрицательном балансе (" +
+            std::to_string(phone.getBalance()) +
+            " руб.). Входящие вызовы бесплатны — установлено соединение."
+    );
 }
 
 OperationResult BlockedState::endCall(Phone& phone) {
     return {
         false,
-        "Отказ: телефон заблокирован, активных вызовов нет.",
+        "Отказ: телефон заблокирован для исходящих, активных вызовов нет.",
         getName(),
         phone.getStateName()
     };
@@ -289,29 +327,29 @@ OperationResult BlockedState::topUpBalance(Phone& phone, int amount) {
     if (amount <= 0) {
         return {
             false,
-            "Отказ: сумма пополнения для разблокировки должна быть больше нуля.",
+            "Отказ: сумма пополнения должна быть строго больше нуля.",
             prevState,
             phone.getStateName()
         };
     }
 
     phone.addBalance(amount);
-    if (phone.getBalance() > 0) {
+    if (phone.getBalance() >= 0) {
         phone.setState(std::make_shared<WaitingState>());
         return {
             true,
             "Счёт пополнен на " + std::to_string(amount) + " руб. (баланс: " +
                 std::to_string(phone.getBalance()) +
-                " руб.). Телефон разблокирован и переведён в режим ожидания.",
+                " руб. >= 0). Исходящие вызовы разблокированы, переход в режим ожидания.",
             prevState,
             phone.getStateName()
         };
     }
 
     return {
-        false,
-        "Счёт пополнен на " + std::to_string(amount) + " руб., но баланс всё ещё неположителен (" +
-            std::to_string(phone.getBalance()) + " руб.). Телефон остаётся заблокированным.",
+        true,
+        "Счёт пополнен на " + std::to_string(amount) + " руб., но баланс всё ещё отрицательный (" +
+            std::to_string(phone.getBalance()) + " руб.). Исходящие вызовы по-прежнему заблокированы.",
         prevState,
         phone.getStateName()
     };
@@ -324,15 +362,14 @@ OperationResult BlockedState::topUpBalance(Phone& phone, int amount) {
 Phone::Phone(std::string phoneNumber,
              int initialBalance,
              double callProbability,
-             int callCost,
-             unsigned int randomSeed)
+             int callCost)
     : phoneNumber_(std::move(phoneNumber)),
       balance_(initialBalance),
       callProbability_(std::clamp(callProbability, 0.0, 1.0)),
       callCost_(std::max(1, callCost)),
       activePeerNumber_(""),
-      rng_(randomSeed) {
-    if (balance_ > 0) {
+      isIncomingCall_(false) {
+    if (balance_ >= 0) {
         currentState_ = std::make_shared<WaitingState>();
     } else {
         currentState_ = std::make_shared<BlockedState>();
@@ -340,7 +377,7 @@ Phone::Phone(std::string phoneNumber,
 
     historyLog_.push_back(
         "[Инициализация] Телефон «" + phoneNumber_ + "» создан. Начальный баланс: " +
-        std::to_string(balance_) + " руб., вероятность дозвона: " +
+        std::to_string(balance_) + " руб., вероятность поступления звонка: " +
         std::to_string(callProbability_) + ", тариф: " + std::to_string(callCost_) +
         " руб./разговор. Начальное состояние: " + currentState_->getName());
 }
@@ -390,17 +427,6 @@ std::string Phone::getStateName() const {
     return currentState_ ? currentState_->getName() : "Unknown";
 }
 
-bool Phone::checkCallProbability() {
-    if (callProbability_ >= 1.0) {
-        return true;
-    }
-    if (callProbability_ <= 0.0) {
-        return false;
-    }
-    std::uniform_real_distribution<double> dist(0.0, 1.0);
-    return dist(rng_) <= callProbability_;
-}
-
 void Phone::addBalance(int amount) {
     if (amount > 0) {
         balance_ += amount;
@@ -443,6 +469,14 @@ void Phone::setActivePeerNumber(const std::string& peerNumber) {
     activePeerNumber_ = peerNumber;
 }
 
+bool Phone::isIncomingCall() const {
+    return isIncomingCall_;
+}
+
+void Phone::setIncomingCall(bool incoming) {
+    isIncomingCall_ = incoming;
+}
+
 const std::vector<std::string>& Phone::getHistoryLog() const {
     return historyLog_;
 }
@@ -450,7 +484,7 @@ const std::vector<std::string>& Phone::getHistoryLog() const {
 std::string Phone::getStatusSummary() const {
     std::ostringstream oss;
     oss << "Телефон [Номер: " << phoneNumber_ << " | Состояние: " << getStateName()
-        << " | Баланс: " << balance_ << " руб. | Вероятность вызова: " << std::fixed
+        << " | Баланс: " << balance_ << " руб. | Вероятность поступления звонка: " << std::fixed
         << std::setprecision(2) << callProbability_ << " | Тариф: " << callCost_ << " руб.]";
     return oss.str();
 }

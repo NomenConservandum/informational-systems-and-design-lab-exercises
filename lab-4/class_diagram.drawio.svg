@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1390px" height="760px" viewBox="0 0 1390 760" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1390px" height="780px" viewBox="0 0 1390 780" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;mxfile host=&quot;app.diagrams.net&quot; agent=&quot;DrawIO&quot; version=&quot;24.7.17&quot;&gt;
   &lt;diagram name=&quot;Диаграмма классов — Телефон (Вариант 5/1)&quot; id=&quot;lab4-phone-class&quot;&gt;
-    &lt;mxGraphModel dx=&quot;1420&quot; dy=&quot;780&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1400&quot; pageHeight=&quot;760&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1420&quot; dy=&quot;780&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1400&quot; pageHeight=&quot;780&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
       &lt;root&gt;
         &lt;mxCell id=&quot;0&quot; /&gt;
         &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
@@ -18,19 +18,19 @@
         &lt;mxGeometry y=&quot;72&quot; width=&quot;310&quot; height=&quot;40&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;cls_phone&quot; value=&quot;Phone&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;60&quot; y=&quot;235&quot; width=&quot;375&quot; height=&quot;355&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxGeometry x=&quot;60&quot; y=&quot;215&quot; width=&quot;375&quot; height=&quot;380&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;cls_phone_f&quot; value=&quot;- phoneNumber: String&amp;#xa;- balance: Integer&amp;#xa;- callProbability: Double&amp;#xa;- callCost: Integer&amp;#xa;- activePeerNumber: String&amp;#xa;- currentState: PhoneState&amp;#xa;- historyLog: List&amp;lt;String&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_phone&quot;&gt;
-        &lt;mxGeometry y=&quot;26&quot; width=&quot;375&quot; height=&quot;113&quot; as=&quot;geometry&quot; /&gt;
+      &lt;mxCell id=&quot;cls_phone_f&quot; value=&quot;- phoneNumber: String&amp;#xa;- balance: Integer&amp;#xa;- callProbability: Double&amp;#xa;- callCost: Integer&amp;#xa;- activePeerNumber: String&amp;#xa;- isIncomingCall: Boolean&amp;#xa;- currentState: PhoneState&amp;#xa;- historyLog: List&amp;lt;String&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_phone&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;375&quot; height=&quot;128&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;cls_phone_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;cls_phone&quot;&gt;
-        &lt;mxGeometry y=&quot;139&quot; width=&quot;375&quot; height=&quot;8&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxGeometry y=&quot;154&quot; width=&quot;375&quot; height=&quot;8&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;cls_phone_m&quot; value=&quot;+ makeCall(targetNumber: String): OperationResult&amp;#xa;+ answerCall(): OperationResult&amp;#xa;+ endCall(): OperationResult&amp;#xa;+ topUpBalance(amount: Integer): OperationResult&amp;#xa;+ setState(state: PhoneState): void&amp;#xa;+ getState(): PhoneState&amp;#xa;+ getStateName(): String&amp;#xa;+ checkCallProbability(): Boolean&amp;#xa;+ addBalance(amount: Integer): void&amp;#xa;+ deductCallCost(): void&amp;#xa;+ getPhoneNumber(): String&amp;#xa;+ getBalance(): Integer&amp;#xa;+ getCallProbability(): Double&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_phone&quot;&gt;
-        &lt;mxGeometry y=&quot;147&quot; width=&quot;375&quot; height=&quot;208&quot; as=&quot;geometry&quot; /&gt;
+      &lt;mxCell id=&quot;cls_phone_m&quot; value=&quot;+ makeCall(targetNumber: String): OperationResult&amp;#xa;+ answerCall(): OperationResult&amp;#xa;+ endCall(): OperationResult&amp;#xa;+ topUpBalance(amount: Integer): OperationResult&amp;#xa;+ setState(state: PhoneState): void&amp;#xa;+ getState(): PhoneState&amp;#xa;+ getStateName(): String&amp;#xa;+ addBalance(amount: Integer): void&amp;#xa;+ deductCallCost(): void&amp;#xa;+ isIncomingCall(): Boolean&amp;#xa;+ setIncomingCall(incoming: Boolean): void&amp;#xa;+ getPhoneNumber(): String&amp;#xa;+ getBalance(): Integer&amp;#xa;+ getCallProbability(): Double&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_phone&quot;&gt;
+        &lt;mxGeometry y=&quot;162&quot; width=&quot;375&quot; height=&quot;218&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;cls_res&quot; value=&quot;OperationResult&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;60&quot; y=&quot;640&quot; width=&quot;250&quot; height=&quot;96&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxGeometry x=&quot;60&quot; y=&quot;655&quot; width=&quot;250&quot; height=&quot;96&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;cls_res_f&quot; value=&quot;+ success: Boolean&amp;#xa;+ message: String&amp;#xa;+ previousState: String&amp;#xa;+ currentState: String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_res&quot;&gt;
         &lt;mxGeometry y=&quot;26&quot; width=&quot;250&quot; height=&quot;68&quot; as=&quot;geometry&quot; /&gt;
@@ -65,7 +65,7 @@
       &lt;mxCell id=&quot;cls_blocked_m&quot; value=&quot;+ getName(): String&amp;#xa;+ makeCall(phone: Phone, target: String): OperationResult&amp;#xa;+ answerCall(phone: Phone): OperationResult&amp;#xa;+ endCall(phone: Phone): OperationResult&amp;#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;cls_blocked&quot;&gt;
         &lt;mxGeometry y=&quot;26&quot; width=&quot;435&quot; height=&quot;86&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;note_gof&quot; value=&quot;Соответствие шаблону проектирования GoF «Состояние» (State):&amp;#xa;• Context (конечный автомат) → Phone&amp;#xa;• State (интерфейс состояния) → PhoneState&amp;#xa;• ConcreteState → WaitingState (Ожидание)&amp;#xa;• ConcreteState → CallingState (Звонок)&amp;#xa;• ConcreteState → TalkingState (Разговор)&amp;#xa;• ConcreteState → BlockedState (Заблокирован: нет средств)&amp;#xa;• Client → PhoneControllerApp&quot; style=&quot;shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontFamily=Helvetica;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+      &lt;mxCell id=&quot;note_gof&quot; value=&quot;Соответствие шаблону проектирования GoF «Состояние» (State):&amp;#xa;• Context (конечный автомат) → Phone&amp;#xa;• State (интерфейс состояния) → PhoneState&amp;#xa;• ConcreteState → WaitingState (Ожидание)&amp;#xa;• ConcreteState → CallingState (Звонок)&amp;#xa;• ConcreteState → TalkingState (Разговор)&amp;#xa;• ConcreteState → BlockedState (Заблокирован: баланс отрицательный)&amp;#xa;• Client → PhoneControllerApp&quot; style=&quot;shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontFamily=Helvetica;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
         &lt;mxGeometry x=&quot;610&quot; y=&quot;60&quot; width=&quot;560&quot; height=&quot;125&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;rel_app_phone&quot; value=&quot;1 manages 1..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;strokeColor=#2C3E50;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;cls_app&quot; target=&quot;cls_phone&quot;&gt;
@@ -132,37 +132,39 @@
   <line x1="60" y1="124" x2="370" y2="124" stroke="#9673a6" stroke-width="1"/>
   <text x="68" y="143" font-family="Courier New, monospace" font-size="11" fill="#000000">+ runDemonstrationScenario(): void</text>
   <text x="68" y="158" font-family="Courier New, monospace" font-size="11" fill="#000000">+ runInteractiveMenu(): void</text>
-  <rect x="60" y="235" width="375" height="355" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
-  <path d="M 60 261 L 60 243 Q 60 235 68 235 L 427 235 Q 435 235 435 243 L 435 261 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
-  <text x="247.5" y="253" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">Phone</text>
-  <text x="68" y="276" font-family="Courier New, monospace" font-size="11" fill="#000000">- phoneNumber: String</text>
-  <text x="68" y="291" font-family="Courier New, monospace" font-size="11" fill="#000000">- balance: Integer</text>
-  <text x="68" y="306" font-family="Courier New, monospace" font-size="11" fill="#000000">- callProbability: Double</text>
-  <text x="68" y="321" font-family="Courier New, monospace" font-size="11" fill="#000000">- callCost: Integer</text>
-  <text x="68" y="336" font-family="Courier New, monospace" font-size="11" fill="#000000">- activePeerNumber: String</text>
-  <text x="68" y="351" font-family="Courier New, monospace" font-size="11" fill="#000000">- currentState: PhoneState</text>
-  <text x="68" y="366" font-family="Courier New, monospace" font-size="11" fill="#000000">- historyLog: List&lt;String&gt;</text>
-  <line x1="60" y1="374" x2="435" y2="374" stroke="#6c8ebf" stroke-width="1"/>
-  <text x="68" y="393" font-family="Courier New, monospace" font-size="11" fill="#000000">+ makeCall(targetNumber: String): OperationResult</text>
-  <text x="68" y="408" font-family="Courier New, monospace" font-size="11" fill="#000000">+ answerCall(): OperationResult</text>
-  <text x="68" y="423" font-family="Courier New, monospace" font-size="11" fill="#000000">+ endCall(): OperationResult</text>
-  <text x="68" y="438" font-family="Courier New, monospace" font-size="11" fill="#000000">+ topUpBalance(amount: Integer): OperationResult</text>
-  <text x="68" y="453" font-family="Courier New, monospace" font-size="11" fill="#000000">+ setState(state: PhoneState): void</text>
-  <text x="68" y="468" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getState(): PhoneState</text>
-  <text x="68" y="483" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getStateName(): String</text>
-  <text x="68" y="498" font-family="Courier New, monospace" font-size="11" fill="#000000">+ checkCallProbability(): Boolean</text>
-  <text x="68" y="513" font-family="Courier New, monospace" font-size="11" fill="#000000">+ addBalance(amount: Integer): void</text>
-  <text x="68" y="528" font-family="Courier New, monospace" font-size="11" fill="#000000">+ deductCallCost(): void</text>
-  <text x="68" y="543" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getPhoneNumber(): String</text>
-  <text x="68" y="558" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getBalance(): Integer</text>
-  <text x="68" y="573" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getCallProbability(): Double</text>
-  <rect x="60" y="640" width="250" height="96" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
-  <path d="M 60 666 L 60 648 Q 60 640 68 640 L 302 640 Q 310 640 310 648 L 310 666 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
-  <text x="185.0" y="658" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">OperationResult</text>
-  <text x="68" y="681" font-family="Courier New, monospace" font-size="11" fill="#000000">+ success: Boolean</text>
-  <text x="68" y="696" font-family="Courier New, monospace" font-size="11" fill="#000000">+ message: String</text>
-  <text x="68" y="711" font-family="Courier New, monospace" font-size="11" fill="#000000">+ previousState: String</text>
-  <text x="68" y="726" font-family="Courier New, monospace" font-size="11" fill="#000000">+ currentState: String</text>
+  <rect x="60" y="215" width="375" height="380" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 60 241 L 60 223 Q 60 215 68 215 L 427 215 Q 435 215 435 223 L 435 241 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="247.5" y="233" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">Phone</text>
+  <text x="68" y="256" font-family="Courier New, monospace" font-size="11" fill="#000000">- phoneNumber: String</text>
+  <text x="68" y="271" font-family="Courier New, monospace" font-size="11" fill="#000000">- balance: Integer</text>
+  <text x="68" y="286" font-family="Courier New, monospace" font-size="11" fill="#000000">- callProbability: Double</text>
+  <text x="68" y="301" font-family="Courier New, monospace" font-size="11" fill="#000000">- callCost: Integer</text>
+  <text x="68" y="316" font-family="Courier New, monospace" font-size="11" fill="#000000">- activePeerNumber: String</text>
+  <text x="68" y="331" font-family="Courier New, monospace" font-size="11" fill="#000000">- isIncomingCall: Boolean</text>
+  <text x="68" y="346" font-family="Courier New, monospace" font-size="11" fill="#000000">- currentState: PhoneState</text>
+  <text x="68" y="361" font-family="Courier New, monospace" font-size="11" fill="#000000">- historyLog: List&lt;String&gt;</text>
+  <line x1="60" y1="369" x2="435" y2="369" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="68" y="388" font-family="Courier New, monospace" font-size="11" fill="#000000">+ makeCall(targetNumber: String): OperationResult</text>
+  <text x="68" y="403" font-family="Courier New, monospace" font-size="11" fill="#000000">+ answerCall(): OperationResult</text>
+  <text x="68" y="418" font-family="Courier New, monospace" font-size="11" fill="#000000">+ endCall(): OperationResult</text>
+  <text x="68" y="433" font-family="Courier New, monospace" font-size="11" fill="#000000">+ topUpBalance(amount: Integer): OperationResult</text>
+  <text x="68" y="448" font-family="Courier New, monospace" font-size="11" fill="#000000">+ setState(state: PhoneState): void</text>
+  <text x="68" y="463" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getState(): PhoneState</text>
+  <text x="68" y="478" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getStateName(): String</text>
+  <text x="68" y="493" font-family="Courier New, monospace" font-size="11" fill="#000000">+ addBalance(amount: Integer): void</text>
+  <text x="68" y="508" font-family="Courier New, monospace" font-size="11" fill="#000000">+ deductCallCost(): void</text>
+  <text x="68" y="523" font-family="Courier New, monospace" font-size="11" fill="#000000">+ isIncomingCall(): Boolean</text>
+  <text x="68" y="538" font-family="Courier New, monospace" font-size="11" fill="#000000">+ setIncomingCall(incoming: Boolean): void</text>
+  <text x="68" y="553" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getPhoneNumber(): String</text>
+  <text x="68" y="568" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getBalance(): Integer</text>
+  <text x="68" y="583" font-family="Courier New, monospace" font-size="11" fill="#000000">+ getCallProbability(): Double</text>
+  <rect x="60" y="655" width="250" height="96" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
+  <path d="M 60 681 L 60 663 Q 60 655 68 655 L 302 655 Q 310 655 310 663 L 310 681 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
+  <text x="185.0" y="673" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">OperationResult</text>
+  <text x="68" y="696" font-family="Courier New, monospace" font-size="11" fill="#000000">+ success: Boolean</text>
+  <text x="68" y="711" font-family="Courier New, monospace" font-size="11" fill="#000000">+ message: String</text>
+  <text x="68" y="726" font-family="Courier New, monospace" font-size="11" fill="#000000">+ previousState: String</text>
+  <text x="68" y="741" font-family="Courier New, monospace" font-size="11" fill="#000000">+ currentState: String</text>
   <rect x="685" y="235" width="435" height="125" rx="8" ry="8" fill="#ffffff" stroke="#d6b656" stroke-width="1.3"/>
   <path d="M 685 275 L 685 243 Q 685 235 693 235 L 1112 235 Q 1120 235 1120 243 L 1120 275 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.3"/>
   <text x="902.5" y="250" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
@@ -212,19 +214,19 @@
   <text x="697" y="122" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteState → WaitingState (Ожидание)</text>
   <text x="697" y="136" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteState → CallingState (Звонок)</text>
   <text x="697" y="150" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteState → TalkingState (Разговор)</text>
-  <text x="697" y="164" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteState → BlockedState (Заблокирован: нет средств)</text>
+  <text x="697" y="164" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• ConcreteState → BlockedState (Заблокирован: баланс отрицательный)</text>
   <text x="697" y="178" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000">• Client → PhoneControllerApp</text>
-  <line x1="215" y1="186" x2="215" y2="235" stroke="#2C3E50" stroke-width="1.2"/>
+  <line x1="215" y1="186" x2="215" y2="215" stroke="#2C3E50" stroke-width="1.2"/>
   <polygon points="215,172 220,179 215,186 210,179" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
-  <rect x="172" y="196" width="86" height="15" fill="#ffffff"/>
-  <text x="215" y="207" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">1 manages 1..*</text>
+  <rect x="172" y="188" width="86" height="15" fill="#ffffff"/>
+  <text x="215" y="199" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">1 manages 1..*</text>
   <line x1="449" y1="295" x2="685" y2="295" stroke="#2C3E50" stroke-width="1.2"/>
   <polygon points="435,295 442,290 449,295 442,300" fill="#ffffff" stroke="#2C3E50" stroke-width="1.2"/>
   <rect x="518" y="286" width="88" height="15" fill="#ffffff"/>
   <text x="562" y="297" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">1 currentState 1</text>
-  <line x1="185" y1="590" x2="185" y2="640" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-arrow)"/>
-  <rect x="160" y="608" width="50" height="14" fill="#ffffff"/>
-  <text x="185" y="619" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">returns</text>
+  <line x1="185" y1="595" x2="185" y2="655" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-arrow)"/>
+  <rect x="160" y="618" width="50" height="14" fill="#ffffff"/>
+  <text x="185" y="629" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">returns</text>
   <path d="M 682 440 L 682 400 L 902 400" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3"/>
   <path d="M 1147 440 L 1147 400 L 902 400" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3"/>
   <path d="M 900 656 L 930 656" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3"/>
