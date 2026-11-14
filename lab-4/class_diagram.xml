@@ -1,119 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" agent="DrawIO" version="24.7.17">
+<mxfile host="app.diagrams.net" agent="DrawIO">
   <diagram name="Диаграмма классов — Телефон (Вариант 5/1)" id="lab4-phone-class">
-    <mxGraphModel dx="1420" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="780" math="0" shadow="0">
+    <mxGraphModel dx="1355" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="780" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-      <mxCell id="cls_app" value="PhoneControllerApp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="60" y="60" width="310" height="112" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_app_f" value="- phones: List&lt;Phone&gt;&#xa;- activeIdx: Integer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_app">
-        <mxGeometry y="26" width="310" height="38" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_app_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9673a6;" vertex="1" parent="cls_app">
-        <mxGeometry y="64" width="310" height="8" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_app_m" value="+ runDemonstrationScenario(): void&#xa;+ runInteractiveMenu(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_app">
-        <mxGeometry y="72" width="310" height="40" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_phone" value="Phone" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="60" y="215" width="375" height="380" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_phone_f" value="- phoneNumber: String&#xa;- balance: Integer&#xa;- callProbability: Double&#xa;- callCost: Integer&#xa;- activePeerNumber: String&#xa;- isIncomingCall: Boolean&#xa;- currentState: PhoneState&#xa;- historyLog: List&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_phone">
-        <mxGeometry y="26" width="375" height="128" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_phone_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;" vertex="1" parent="cls_phone">
-        <mxGeometry y="154" width="375" height="8" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_phone_m" value="+ makeCall(targetNumber: String): OperationResult&#xa;+ answerCall(): OperationResult&#xa;+ endCall(): OperationResult&#xa;+ topUpBalance(amount: Integer): OperationResult&#xa;+ setState(state: PhoneState): void&#xa;+ getState(): PhoneState&#xa;+ getStateName(): String&#xa;+ addBalance(amount: Integer): void&#xa;+ deductCallCost(): void&#xa;+ isIncomingCall(): Boolean&#xa;+ setIncomingCall(incoming: Boolean): void&#xa;+ getPhoneNumber(): String&#xa;+ getBalance(): Integer&#xa;+ getCallProbability(): Double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_phone">
-        <mxGeometry y="162" width="375" height="218" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_res" value="OperationResult" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="60" y="655" width="250" height="96" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_res_f" value="+ success: Boolean&#xa;+ message: String&#xa;+ previousState: String&#xa;+ currentState: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_res">
-        <mxGeometry y="26" width="250" height="68" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_state" value="&lt;&lt;interface&gt;&gt;&#xa;PhoneState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="685" y="235" width="435" height="125" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_state_m" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_state">
-        <mxGeometry y="40" width="435" height="85" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_waiting" value="WaitingState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="465" y="440" width="435" height="112" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_waiting_m" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_waiting">
-        <mxGeometry y="26" width="435" height="86" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_calling" value="CallingState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="930" y="440" width="435" height="112" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_calling_m" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_calling">
-        <mxGeometry y="26" width="435" height="86" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_talking" value="TalkingState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="465" y="600" width="435" height="112" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_talking_m" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_talking">
-        <mxGeometry y="26" width="435" height="86" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_blocked" value="BlockedState" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="930" y="600" width="435" height="112" as="geometry" />
-      </mxCell>
-      <mxCell id="cls_blocked_m" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="cls_blocked">
-        <mxGeometry y="26" width="435" height="86" as="geometry" />
-      </mxCell>
-      <mxCell id="note_gof" value="Соответствие шаблону проектирования GoF «Состояние» (State):&#xa;• Context (конечный автомат) → Phone&#xa;• State (интерфейс состояния) → PhoneState&#xa;• ConcreteState → WaitingState (Ожидание)&#xa;• ConcreteState → CallingState (Звонок)&#xa;• ConcreteState → TalkingState (Разговор)&#xa;• ConcreteState → BlockedState (Заблокирован: баланс отрицательный)&#xa;• Client → PhoneControllerApp" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="610" y="60" width="560" height="125" as="geometry" />
-      </mxCell>
-      <mxCell id="rel_app_phone" value="1 manages 1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;strokeColor=#2C3E50;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cls_app" target="cls_phone">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_phone_state" value="1 currentState 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=0;startSize=14;strokeColor=#2C3E50;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cls_phone" target="cls_state">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_phone_res" value="returns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;dashed=1;strokeColor=#2980B9;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cls_phone" target="cls_res">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_impl_wait" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" edge="1" parent="1" source="cls_waiting" target="cls_state">
-        <mxGeometry relative="1" as="geometry">
-          <Array as="points">
-            <mxPoint x="682" y="400" />
-            <mxPoint x="902" y="400" />
-          </Array>
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_impl_call" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" edge="1" parent="1" source="cls_calling" target="cls_state">
-        <mxGeometry relative="1" as="geometry">
-          <Array as="points">
-            <mxPoint x="1147" y="400" />
-            <mxPoint x="902" y="400" />
-          </Array>
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_impl_talk" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" edge="1" parent="1" source="cls_talking" target="cls_state">
-        <mxGeometry relative="1" as="geometry">
-          <Array as="points">
-            <mxPoint x="915" y="656" />
-            <mxPoint x="915" y="400" />
-            <mxPoint x="902" y="400" />
-          </Array>
-        </mxGeometry>
-      </mxCell>
-      <mxCell id="rel_impl_block" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" edge="1" parent="1" source="cls_blocked" target="cls_state">
-        <mxGeometry relative="1" as="geometry">
-          <Array as="points">
-            <mxPoint x="915" y="656" />
-            <mxPoint x="915" y="400" />
-            <mxPoint x="902" y="400" />
-          </Array>
-        </mxGeometry>
-      </mxCell>
+        <mxCell id="cls_phone" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="Phone" vertex="1">
+          <mxGeometry height="380" width="375" x="60" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_phone_f" parent="cls_phone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="- phoneNumber: String&#xa;- balance: Integer&#xa;- callProbability: Double&#xa;- callCost: Integer&#xa;- activePeerNumber: String&#xa;- isIncomingCall: Boolean&#xa;- currentState: PhoneState&#xa;- historyLog: List&lt;String&gt;" vertex="1">
+          <mxGeometry height="128" width="375" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_phone_sep" parent="cls_phone" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="8" width="375" y="154" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_phone_m" parent="cls_phone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ makeCall(targetNumber: String): OperationResult&#xa;+ answerCall(): OperationResult&#xa;+ endCall(): OperationResult&#xa;+ topUpBalance(amount: Integer): OperationResult&#xa;+ setState(state: PhoneState): void&#xa;+ getState(): PhoneState&#xa;+ getStateName(): String&#xa;+ addBalance(amount: Integer): void&#xa;+ deductCallCost(): void&#xa;+ isIncomingCall(): Boolean&#xa;+ setIncomingCall(incoming: Boolean): void&#xa;+ getPhoneNumber(): String&#xa;+ getBalance(): Integer&#xa;+ getCallProbability(): Double" vertex="1">
+          <mxGeometry height="218" width="375" y="162" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_res" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="OperationResult" vertex="1">
+          <mxGeometry height="96" width="250" x="60" y="655" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_res_f" parent="cls_res" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ success: Boolean&#xa;+ message: String&#xa;+ previousState: String&#xa;+ currentState: String" vertex="1">
+          <mxGeometry height="68" width="250" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_state" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="&lt;&lt;interface&gt;&gt;&#xa;PhoneState" vertex="1">
+          <mxGeometry height="125" width="435" x="685" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_state_m" parent="cls_state" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" vertex="1">
+          <mxGeometry height="85" width="435" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_waiting" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="WaitingState" vertex="1">
+          <mxGeometry height="112" width="435" x="465" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_waiting_m" parent="cls_waiting" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" vertex="1">
+          <mxGeometry height="86" width="435" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_calling" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="CallingState" vertex="1">
+          <mxGeometry height="112" width="435" x="930" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_calling_m" parent="cls_calling" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" vertex="1">
+          <mxGeometry height="86" width="435" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_talking" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="TalkingState" vertex="1">
+          <mxGeometry height="112" width="435" x="465" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_talking_m" parent="cls_talking" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" vertex="1">
+          <mxGeometry height="86" width="435" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_blocked" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="BlockedState" vertex="1">
+          <mxGeometry height="112" width="435" x="930" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_blocked_m" parent="cls_blocked" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" value="+ getName(): String&#xa;+ makeCall(phone: Phone, target: String): OperationResult&#xa;+ answerCall(phone: Phone): OperationResult&#xa;+ endCall(phone: Phone): OperationResult&#xa;+ topUpBalance(phone: Phone, amount: Integer): OperationResult" vertex="1">
+          <mxGeometry height="86" width="435" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="note_gof" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;fontFamily=Helvetica;fontColor=#000000;" value="Соответствие шаблону проектирования GoF «Состояние» (State):&#xa;• Context (конечный автомат) → Phone&#xa;• State (интерфейс состояния) → PhoneState&#xa;• ConcreteState → WaitingState (Ожидание)&#xa;• ConcreteState → CallingState (Звонок)&#xa;• ConcreteState → TalkingState (Разговор)&#xa;• ConcreteState → BlockedState (Заблокирован: баланс отрицательный)&#xa;• Client → PhoneControllerApp" vertex="1">
+          <mxGeometry height="125" width="560" x="610" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_phone_state" edge="1" parent="1" source="cls_phone" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=0;startSize=14;strokeColor=#2C3E50;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" target="cls_state" value="1 currentState 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_phone_res" edge="1" parent="1" source="cls_phone" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;dashed=1;strokeColor=#2980B9;strokeWidth=1.2;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" target="cls_res" value="returns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_impl_wait" edge="1" parent="1" source="cls_waiting" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" target="cls_state" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="682" y="400" />
+              <mxPoint x="902" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_impl_call" edge="1" parent="1" source="cls_calling" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" target="cls_state" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1147" y="400" />
+              <mxPoint x="902" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_impl_talk" edge="1" parent="1" source="cls_talking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" target="cls_state" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="656" />
+              <mxPoint x="915" y="400" />
+              <mxPoint x="902" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_impl_block" edge="1" parent="1" source="cls_blocked" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;dashed=1;strokeColor=#2C3E50;strokeWidth=1.2;" target="cls_state" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="656" />
+              <mxPoint x="915" y="400" />
+              <mxPoint x="902" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

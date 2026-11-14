@@ -1,11 +1,4 @@
-/**
- * @file test_phone.cpp
- * @brief Модульные тесты для библиотеки классов шаблона «Состояние» (State)
- *        системы «Телефон» (Вариант 5/1).
- */
-
 #include "phone_state_lib.hpp"
-
 #include <cassert>
 #include <iostream>
 #include <string>
@@ -31,7 +24,7 @@ void testInitialStates() {
     std::cout << "[PASS] testInitialStates — проверка начальных состояний телефона (0 >= 0 -> Ожидание, < 0 -> Заблокирован)\n";
 }
 
-/// Тест 2: Реакции автомата в состоянии «Ожидание» (WaitingState)
+/// Тест 2: Реакции автомата в состоянии \"Ожидание\" (WaitingState)
 void testWaitingStateReactions() {
     Phone phone("+7-900-200-00-01", 100, 1.0, 50);
 
@@ -83,7 +76,7 @@ void testWaitingStateReactions() {
     std::cout << "[PASS] testWaitingStateReactions — реакции в состоянии WaitingState и бесплатные входящие\n";
 }
 
-/// Тест 3: Переходы в состоянии «Звонок» (CallingState)
+/// Тест 3: Переходы в состоянии \"Звонок\" (CallingState)
 void testCallingStateTransitions() {
     Phone phone("+7-900-300-00-01", 100, 1.0, 50);
 
@@ -112,7 +105,7 @@ void testCallingStateTransitions() {
     std::cout << "[PASS] testCallingStateTransitions — переходы состояния CallingState\n";
 }
 
-/// Тест 4: Состояние «Разговор» (TalkingState): 0 руб. оставляет в WaitingState, < 0 -> BlockedState
+/// Тест 4: Состояние \"Разговор\" (TalkingState): 0 руб. оставляет в WaitingState, < 0 -> BlockedState
 void testTalkingStateAndBlocking() {
     Phone phone("+7-900-400-00-01", 100, 1.0, 50);
 
@@ -201,7 +194,7 @@ void testBlockedStateAndUnblocking() {
 
 int main() {
     std::cout << "================================================================================\n";
-    std::cout << "    ЗАПУСК МОДУЛЬНЫХ ТЕСТОВ БИБЛИОТЕКИ КЛАССОВ «ТЕЛЕФОН» (ПАТТЕРН «СОСТОЯНИЕ»)\n";
+    std::cout << "    ЗАПУСК МОДУЛЬНЫХ ТЕСТОВ БИБЛИОТЕКИ КЛАССОВ \"ТЕЛЕФОН\" (ПАТТЕРН \"СОСТОЯНИЕ\")\n";
     std::cout << "================================================================================\n";
 
     testInitialStates();
@@ -211,7 +204,7 @@ int main() {
     testBlockedStateAndUnblocking();
 
     std::cout << "================================================================================\n";
-    std::cout << " ИТОГ: Все 5 тестовых наборов успешно пройдены (100% ОК).\n";
+    std::cout << " Завершение пяти тестовых наборов.\n";
     std::cout << "================================================================================\n";
     return 0;
 }

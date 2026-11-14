@@ -1,9 +1,3 @@
-/**
- * @file phone_state_lib.cpp
- * @brief Реализация библиотеки классов шаблона проектирования «Состояние» (State)
- *        для системы «Телефон» (Вариант 5/1).
- */
-
 #include "phone_state_lib.hpp"
 
 #include <algorithm>
