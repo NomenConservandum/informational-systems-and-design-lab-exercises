@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net" agent="DrawIO" version="24.7.17">
   <diagram name="Диаграмма состояний — Телефон (Вариант 5/1)" id="lab4-phone-state">
-    <mxGraphModel dx="1250" dy="620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="580" math="0" shadow="0">
+    <mxGraphModel dx="1280" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1230" pageHeight="600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
       <mxCell id="start" value="" style="ellipse;html=1;fillColor=#27AE60;strokeColor=#1E8449;strokeWidth=1.5;" vertex="1" parent="1">
         <mxGeometry x="291" y="20" width="28" height="28" as="geometry" />
       </mxCell>
-      <mxCell id="st_waiting" value="WaitingState (Ожидание)&#xa;entry / ожидание вызова (линия свободна)&#xa;makeCall(target) [вызов не прошёл] / ожидание&#xa;topUpBalance(amount) [amount &gt; 0] / balance += amount&#xa;answerCall() / отказ, endCall() / отказ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
-        <mxGeometry x="110" y="100" width="390" height="105" as="geometry" />
+      <mxCell id="st_waiting" value="WaitingState (Ожидание)&#xa;entry / ожидание вызова (balance &gt;= 0)&#xa;topUpBalance(amount) [amount &gt; 0] / balance += amount&#xa;endCall() / отказ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxGeometry x="110" y="95" width="390" height="115" as="geometry" />
       </mxCell>
-      <mxCell id="st_calling" value="CallingState (Звонок)&#xa;entry / идут гудки вызова абонента&#xa;topUpBalance(amount) [amount &gt; 0] / balance += amount&#xa;makeCall(target) / отказ (линия занята)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
-        <mxGeometry x="740" y="100" width="390" height="105" as="geometry" />
+      <mxCell id="st_calling" value="CallingState (Звонок)&#xa;entry / идут гудки исходящего вызова&#xa;topUpBalance(amount) [amount &gt; 0] / balance += amount&#xa;makeCall(target) / отказ (линия занята)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxGeometry x="780" y="95" width="390" height="115" as="geometry" />
       </mxCell>
       <mxCell id="st_talking" value="TalkingState (Разговор)&#xa;entry / голосовое соединение установлено&#xa;topUpBalance(amount) [amount &gt; 0] / balance += amount&#xa;makeCall(target) / отказ (идёт разговор)&#xa;answerCall() / отказ (уже на линии)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
-        <mxGeometry x="740" y="400" width="390" height="115" as="geometry" />
+        <mxGeometry x="780" y="430" width="390" height="120" as="geometry" />
       </mxCell>
-      <mxCell id="st_blocked" value="BlockedState (Заблокирован: нет средств)&#xa;entry / звонки заблокированы (balance &lt;= 0)&#xa;topUpBalance(amount) [balance &lt;= 0] / заблокирован&#xa;makeCall(target) / отказ, answerCall() / отказ&#xa;endCall() / отказ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
-        <mxGeometry x="110" y="400" width="390" height="115" as="geometry" />
+      <mxCell id="st_blocked" value="BlockedState (Заблокирован: баланс отрицательный)&#xa;entry / исходящие заблокированы (balance &lt; 0)&#xa;topUpBalance(amount) [balance &lt; 0] / заблокирован&#xa;makeCall(target) / отказ (баланс &lt; 0)&#xa;endCall() / отказ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxGeometry x="110" y="430" width="390" height="120" as="geometry" />
       </mxCell>
-      <mxCell id="e_init_wait" value="[balance &gt; 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="start" target="st_waiting">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
+      <mxCell id="e_init_wait" value="[balance &gt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="start" target="st_waiting">
+        <mxGeometry relative="1" as="geometry" />
       </mxCell>
-      <mxCell id="e_init_block" value="[balance &lt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="start" target="st_blocked">
+      <mxCell id="e_init_block" value="[balance &lt; 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="start" target="st_blocked">
         <mxGeometry relative="1" as="geometry">
           <Array as="points">
             <mxPoint x="45" y="34" />
-            <mxPoint x="45" y="458" />
+            <mxPoint x="45" y="490" />
           </Array>
         </mxGeometry>
       </mxCell>
-      <mxCell id="e_wait_call" value="makeCall(target) [balance &gt; 0 и вызов прошёл]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_waiting" target="st_calling">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
+      <mxCell id="e_wait_call" value="makeCall(target) [balance &gt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_waiting" target="st_calling">
+        <mxGeometry relative="1" as="geometry" />
       </mxCell>
       <mxCell id="e_call_wait" value="endCall() [отмена вызова]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_calling" target="st_waiting">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
+        <mxGeometry relative="1" as="geometry" />
       </mxCell>
-      <mxCell id="e_call_talk" value="answerCall()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_calling" target="st_talking">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
+      <mxCell id="e_call_talk" value="answerCall() [ответ собеседника]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_calling" target="st_talking">
+        <mxGeometry relative="1" as="geometry" />
       </mxCell>
-      <mxCell id="e_talk_wait" value="endCall() [balance - callCost &gt; 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_talking" target="st_waiting">
+      <mxCell id="e_wait_talk" value="answerCall() [входящий, 0 руб.]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_waiting" target="st_talking">
         <mxGeometry relative="1" as="geometry">
           <Array as="points">
-            <mxPoint x="620" y="432" />
-            <mxPoint x="620" y="310" />
-            <mxPoint x="352" y="310" />
+            <mxPoint x="420" y="270" />
+            <mxPoint x="850" y="270" />
           </Array>
         </mxGeometry>
       </mxCell>
-      <mxCell id="e_talk_block" value="endCall() [balance - callCost &lt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_talking" target="st_blocked">
+      <mxCell id="e_talk_wait" value="endCall() [исх.: -callCost, вх.: 0; balance &gt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_talking" target="st_waiting">
         <mxGeometry relative="1" as="geometry">
+          <Array as="points">
+            <mxPoint x="810" y="355" />
+            <mxPoint x="370" y="355" />
+          </Array>
         </mxGeometry>
       </mxCell>
-      <mxCell id="e_block_wait" value="topUpBalance(amount) [balance &gt; 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_blocked" target="st_waiting">
-        <mxGeometry relative="1" as="geometry">
-        </mxGeometry>
+      <mxCell id="e_talk_block" value="endCall() [исх.: -callCost, вх.: 0; balance &lt; 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_talking" target="st_blocked">
+        <mxGeometry relative="1" as="geometry" />
+      </mxCell>
+      <mxCell id="e_block_talk" value="answerCall() [входящий, 0 руб.]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_blocked" target="st_talking">
+        <mxGeometry relative="1" as="geometry" />
+      </mxCell>
+      <mxCell id="e_block_wait" value="topUpBalance(amount) [balance &gt;= 0]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="st_blocked" target="st_waiting">
+        <mxGeometry relative="1" as="geometry" />
       </mxCell>
       </root>
     </mxGraphModel>

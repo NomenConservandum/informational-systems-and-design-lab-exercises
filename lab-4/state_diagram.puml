@@ -12,19 +12,17 @@ skinparam state {
     FontName Helvetica
 }
 
-[*] --> WaitingState : [balance > 0]
-[*] --> BlockedState : [balance <= 0]
+[*] --> WaitingState : [balance >= 0]
+[*] --> BlockedState : [balance < 0]
 
 state "WaitingState (Ожидание)" as WaitingState #dae8fc {
-    WaitingState : entry / ожидание вызова (линия свободна)
-    WaitingState : makeCall(target) [вызов не прошёл] / остаётся в ожидании
+    WaitingState : entry / ожидание вызова (balance >= 0)
     WaitingState : topUpBalance(amount) [amount > 0] / balance += amount
-    WaitingState : answerCall() / отказ
     WaitingState : endCall() / отказ
 }
 
 state "CallingState (Звонок)" as CallingState #ffe6cc {
-    CallingState : entry / идут гудки вызова абонента
+    CallingState : entry / идут гудки исходящего вызова
     CallingState : topUpBalance(amount) [amount > 0] / balance += amount
     CallingState : makeCall(target) / отказ (линия занята)
 }
@@ -36,19 +34,20 @@ state "TalkingState (Разговор)" as TalkingState #d5e8d4 {
     TalkingState : answerCall() / отказ (уже на линии)
 }
 
-state "BlockedState (Заблокирован: нет средств)" as BlockedState #f8cecc {
-    BlockedState : entry / звонки заблокированы (balance <= 0)
-    BlockedState : topUpBalance(amount) [balance <= 0] / остаётся заблокирован
-    BlockedState : makeCall(target) / отказ
-    BlockedState : answerCall() / отказ
+state "BlockedState (Заблокирован: баланс отрицательный)" as BlockedState #f8cecc {
+    BlockedState : entry / исходящие заблокированы (balance < 0)
+    BlockedState : topUpBalance(amount) [balance < 0] / заблокирован
+    BlockedState : makeCall(target) / отказ (баланс < 0)
     BlockedState : endCall() / отказ
 }
 
-WaitingState --> CallingState : makeCall(target) [balance > 0 и вызов прошёл]
+WaitingState --> CallingState : makeCall(target) [balance >= 0]
 CallingState --> WaitingState : endCall() [отмена вызова]
-CallingState --> TalkingState : answerCall()
-TalkingState --> WaitingState : endCall() [balance - callCost > 0]
-TalkingState --> BlockedState : endCall() [balance - callCost <= 0]
-BlockedState --> WaitingState : topUpBalance(amount) [balance > 0]
+CallingState --> TalkingState : answerCall() [ответ собеседника]
+WaitingState --> TalkingState : answerCall() [входящий, 0 руб.]
+BlockedState --> TalkingState : answerCall() [входящий, 0 руб.]
+TalkingState --> WaitingState : endCall() [исх.: -callCost, вх.: 0; balance >= 0]
+TalkingState --> BlockedState : endCall() [исх.: -callCost, вх.: 0; balance < 0]
+BlockedState --> WaitingState : topUpBalance(amount) [balance >= 0]
 
 @enduml

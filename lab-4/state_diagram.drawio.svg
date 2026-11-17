@@ -1,65 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1180px" height="550px" viewBox="0 0 1180 550" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1230px" height="600px" viewBox="0 0 1230 600" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;mxfile host=&quot;app.diagrams.net&quot; agent=&quot;DrawIO&quot; version=&quot;24.7.17&quot;&gt;
   &lt;diagram name=&quot;Диаграмма состояний — Телефон (Вариант 5/1)&quot; id=&quot;lab4-phone-state&quot;&gt;
-    &lt;mxGraphModel dx=&quot;1250&quot; dy=&quot;620&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1200&quot; pageHeight=&quot;580&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1280&quot; dy=&quot;650&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1230&quot; pageHeight=&quot;600&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
       &lt;root&gt;
         &lt;mxCell id=&quot;0&quot; /&gt;
         &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
       &lt;mxCell id=&quot;start&quot; value=&quot;&quot; style=&quot;ellipse;html=1;fillColor=#27AE60;strokeColor=#1E8449;strokeWidth=1.5;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
         &lt;mxGeometry x=&quot;291&quot; y=&quot;20&quot; width=&quot;28&quot; height=&quot;28&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;st_waiting&quot; value=&quot;WaitingState (Ожидание)&amp;#xa;entry / ожидание вызова (линия свободна)&amp;#xa;makeCall(target) [вызов не прошёл] / ожидание&amp;#xa;topUpBalance(amount) [amount &amp;gt; 0] / balance += amount&amp;#xa;answerCall() / отказ, endCall() / отказ&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;110&quot; y=&quot;100&quot; width=&quot;390&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+      &lt;mxCell id=&quot;st_waiting&quot; value=&quot;WaitingState (Ожидание)&amp;#xa;entry / ожидание вызова (balance &amp;gt;= 0)&amp;#xa;topUpBalance(amount) [amount &amp;gt; 0] / balance += amount&amp;#xa;endCall() / отказ&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;110&quot; y=&quot;95&quot; width=&quot;390&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;st_calling&quot; value=&quot;CallingState (Звонок)&amp;#xa;entry / идут гудки вызова абонента&amp;#xa;topUpBalance(amount) [amount &amp;gt; 0] / balance += amount&amp;#xa;makeCall(target) / отказ (линия занята)&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;740&quot; y=&quot;100&quot; width=&quot;390&quot; height=&quot;105&quot; as=&quot;geometry&quot; /&gt;
+      &lt;mxCell id=&quot;st_calling&quot; value=&quot;CallingState (Звонок)&amp;#xa;entry / идут гудки исходящего вызова&amp;#xa;topUpBalance(amount) [amount &amp;gt; 0] / balance += amount&amp;#xa;makeCall(target) / отказ (линия занята)&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;780&quot; y=&quot;95&quot; width=&quot;390&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;st_talking&quot; value=&quot;TalkingState (Разговор)&amp;#xa;entry / голосовое соединение установлено&amp;#xa;topUpBalance(amount) [amount &amp;gt; 0] / balance += amount&amp;#xa;makeCall(target) / отказ (идёт разговор)&amp;#xa;answerCall() / отказ (уже на линии)&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;740&quot; y=&quot;400&quot; width=&quot;390&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
+        &lt;mxGeometry x=&quot;780&quot; y=&quot;430&quot; width=&quot;390&quot; height=&quot;120&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;st_blocked&quot; value=&quot;BlockedState (Заблокирован: нет средств)&amp;#xa;entry / звонки заблокированы (balance &amp;lt;= 0)&amp;#xa;topUpBalance(amount) [balance &amp;lt;= 0] / заблокирован&amp;#xa;makeCall(target) / отказ, answerCall() / отказ&amp;#xa;endCall() / отказ&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
-        &lt;mxGeometry x=&quot;110&quot; y=&quot;400&quot; width=&quot;390&quot; height=&quot;115&quot; as=&quot;geometry&quot; /&gt;
+      &lt;mxCell id=&quot;st_blocked&quot; value=&quot;BlockedState (Заблокирован: баланс отрицательный)&amp;#xa;entry / исходящие заблокированы (balance &amp;lt; 0)&amp;#xa;topUpBalance(amount) [balance &amp;lt; 0] / заблокирован&amp;#xa;makeCall(target) / отказ (баланс &amp;lt; 0)&amp;#xa;endCall() / отказ&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;arcSize=16;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontColor=#000000;fontSize=11;verticalAlign=middle;align=center;fontFamily=Helvetica;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;110&quot; y=&quot;430&quot; width=&quot;390&quot; height=&quot;120&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_init_wait&quot; value=&quot;[balance &amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;start&quot; target=&quot;st_waiting&quot;&gt;
-        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
-        &lt;/mxGeometry&gt;
+      &lt;mxCell id=&quot;e_init_wait&quot; value=&quot;[balance &amp;gt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;start&quot; target=&quot;st_waiting&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_init_block&quot; value=&quot;[balance &amp;lt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;start&quot; target=&quot;st_blocked&quot;&gt;
+      &lt;mxCell id=&quot;e_init_block&quot; value=&quot;[balance &amp;lt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;start&quot; target=&quot;st_blocked&quot;&gt;
         &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
           &lt;Array as=&quot;points&quot;&gt;
             &lt;mxPoint x=&quot;45&quot; y=&quot;34&quot; /&gt;
-            &lt;mxPoint x=&quot;45&quot; y=&quot;458&quot; /&gt;
+            &lt;mxPoint x=&quot;45&quot; y=&quot;490&quot; /&gt;
           &lt;/Array&gt;
         &lt;/mxGeometry&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_wait_call&quot; value=&quot;makeCall(target) [balance &amp;gt; 0 и вызов прошёл]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_calling&quot;&gt;
-        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
-        &lt;/mxGeometry&gt;
+      &lt;mxCell id=&quot;e_wait_call&quot; value=&quot;makeCall(target) [balance &amp;gt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_calling&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;mxCell id=&quot;e_call_wait&quot; value=&quot;endCall() [отмена вызова]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_calling&quot; target=&quot;st_waiting&quot;&gt;
-        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
-        &lt;/mxGeometry&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_call_talk&quot; value=&quot;answerCall()&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_calling&quot; target=&quot;st_talking&quot;&gt;
-        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
-        &lt;/mxGeometry&gt;
+      &lt;mxCell id=&quot;e_call_talk&quot; value=&quot;answerCall() [ответ собеседника]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_calling&quot; target=&quot;st_talking&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_talk_wait&quot; value=&quot;endCall() [balance - callCost &amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_talking&quot; target=&quot;st_waiting&quot;&gt;
+      &lt;mxCell id=&quot;e_wait_talk&quot; value=&quot;answerCall() [входящий, 0 руб.]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_waiting&quot; target=&quot;st_talking&quot;&gt;
         &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
           &lt;Array as=&quot;points&quot;&gt;
-            &lt;mxPoint x=&quot;620&quot; y=&quot;432&quot; /&gt;
-            &lt;mxPoint x=&quot;620&quot; y=&quot;310&quot; /&gt;
-            &lt;mxPoint x=&quot;352&quot; y=&quot;310&quot; /&gt;
+            &lt;mxPoint x=&quot;420&quot; y=&quot;270&quot; /&gt;
+            &lt;mxPoint x=&quot;850&quot; y=&quot;270&quot; /&gt;
           &lt;/Array&gt;
         &lt;/mxGeometry&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_talk_block&quot; value=&quot;endCall() [balance - callCost &amp;lt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_talking&quot; target=&quot;st_blocked&quot;&gt;
+      &lt;mxCell id=&quot;e_talk_wait&quot; value=&quot;endCall() [исх.: -callCost, вх.: 0; balance &amp;gt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_talking&quot; target=&quot;st_waiting&quot;&gt;
         &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
+          &lt;Array as=&quot;points&quot;&gt;
+            &lt;mxPoint x=&quot;810&quot; y=&quot;355&quot; /&gt;
+            &lt;mxPoint x=&quot;370&quot; y=&quot;355&quot; /&gt;
+          &lt;/Array&gt;
         &lt;/mxGeometry&gt;
       &lt;/mxCell&gt;
-      &lt;mxCell id=&quot;e_block_wait&quot; value=&quot;topUpBalance(amount) [balance &amp;gt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_blocked&quot; target=&quot;st_waiting&quot;&gt;
-        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;&gt;
-        &lt;/mxGeometry&gt;
+      &lt;mxCell id=&quot;e_talk_block&quot; value=&quot;endCall() [исх.: -callCost, вх.: 0; balance &amp;lt; 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_talking&quot; target=&quot;st_blocked&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_block_talk&quot; value=&quot;answerCall() [входящий, 0 руб.]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_blocked&quot; target=&quot;st_talking&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_block_wait&quot; value=&quot;topUpBalance(amount) [balance &amp;gt;= 0]&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2C3E50;strokeWidth=1.2;endArrow=block;endFill=1;fontSize=10;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;st_blocked&quot; target=&quot;st_waiting&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
       &lt;/mxCell&gt;
       &lt;/root&gt;
     &lt;/mxGraphModel&gt;
@@ -72,51 +76,80 @@
   </defs>
   <rect width="100%" height="100%" fill="#ffffff"/>
   <circle cx="305" cy="34" r="14" fill="#27AE60" stroke="#1E8449" stroke-width="1.5"/>
-  <rect x="110" y="100" width="390" height="105" rx="16" ry="16" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
-  <text x="305.0" y="124.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">WaitingState (Ожидание)</text>
-  <text x="305.0" y="140.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / ожидание вызова (линия свободна)</text>
-  <text x="305.0" y="156.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) [вызов не прошёл] / ожидание</text>
-  <text x="305.0" y="172.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
-  <text x="305.0" y="188.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">answerCall() / отказ, endCall() / отказ</text>
-  <rect x="740" y="100" width="390" height="105" rx="16" ry="16" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
-  <text x="935.0" y="132.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">CallingState (Звонок)</text>
-  <text x="935.0" y="148.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / идут гудки вызова абонента</text>
-  <text x="935.0" y="164.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
-  <text x="935.0" y="180.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ (линия занята)</text>
-  <rect x="740" y="400" width="390" height="115" rx="16" ry="16" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="935.0" y="429.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">TalkingState (Разговор)</text>
-  <text x="935.0" y="445.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / голосовое соединение установлено</text>
-  <text x="935.0" y="461.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
-  <text x="935.0" y="477.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ (идёт разговор)</text>
-  <text x="935.0" y="493.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">answerCall() / отказ (уже на линии)</text>
-  <rect x="110" y="400" width="390" height="115" rx="16" ry="16" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
-  <text x="305.0" y="429.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">BlockedState (Заблокирован: нет средств)</text>
-  <text x="305.0" y="445.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / звонки заблокированы (balance &lt;= 0)</text>
-  <text x="305.0" y="461.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [balance &lt;= 0] / заблокирован</text>
-  <text x="305.0" y="477.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ, answerCall() / отказ</text>
-  <text x="305.0" y="493.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">endCall() / отказ</text>
-  <path d="M 305 48 L 305 100" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="257.5" y="65.0" width="95" height="16" fill="#ffffff"/>
-  <text x="305" y="76.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">[balance &gt; 0]</text>
-  <path d="M 291 34 L 45 34 L 45 458 L 110 458" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="1.0" y="239.0" width="88" height="16" fill="#ffffff"/>
-  <text x="45" y="250.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">[balance &lt;= 0]</text>
-  <path d="M 500 135 L 740 135" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="507.0" y="120.0" width="226" height="16" fill="#ffffff"/>
-  <text x="620" y="131.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">makeCall(target) [balance &gt; 0 и вызов прошёл]</text>
-  <path d="M 740 175 L 500 175" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="550.0" y="160.0" width="140" height="16" fill="#ffffff"/>
-  <text x="620" y="171.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [отмена вызова]</text>
-  <path d="M 935 205 L 935 400" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="892.5" y="291.0" width="85" height="16" fill="#ffffff"/>
-  <text x="935" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">answerCall()</text>
-  <path d="M 740 432 L 620 432 L 620 310 L 352 310 L 352 205" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="397.5" y="295.0" width="195" height="16" fill="#ffffff"/>
-  <text x="495" y="306.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [balance - callCost &gt; 0]</text>
-  <path d="M 740 482 L 500 482" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="520.0" y="467.0" width="200" height="16" fill="#ffffff"/>
-  <text x="620" y="478.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [balance - callCost &lt;= 0]</text>
-  <path d="M 258 400 L 258 205" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="165.5" y="291.0" width="185" height="16" fill="#ffffff"/>
-  <text x="258" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">topUpBalance(amount) [balance &gt; 0]</text>
+
+  <rect x="110" y="95" width="390" height="115" rx="16" ry="16" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="305" y="128" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">WaitingState (Ожидание)</text>
+  <text x="305" y="146" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / ожидание вызова (balance &gt;= 0)</text>
+  <text x="305" y="163" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
+  <text x="305" y="180" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">endCall() / отказ</text>
+
+  <rect x="780" y="95" width="390" height="115" rx="16" ry="16" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="975" y="128" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">CallingState (Звонок)</text>
+  <text x="975" y="146" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / идут гудки исходящего вызова</text>
+  <text x="975" y="163" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
+  <text x="975" y="180" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ (линия занята)</text>
+
+  <rect x="780" y="430" width="390" height="120" rx="16" ry="16" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="975" y="458" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">TalkingState (Разговор)</text>
+  <text x="975" y="476" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / голосовое соединение установлено</text>
+  <text x="975" y="493" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [amount &gt; 0] / balance += amount</text>
+  <text x="975" y="510" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ (идёт разговор)</text>
+  <text x="975" y="527" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">answerCall() / отказ (уже на линии)</text>
+
+  <rect x="110" y="430" width="390" height="120" rx="16" ry="16" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="305" y="458" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">BlockedState (Заблокирован: баланс отрицательный)</text>
+  <text x="305" y="476" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">entry / исходящие заблокированы (balance &lt; 0)</text>
+  <text x="305" y="493" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">topUpBalance(amount) [balance &lt; 0] / заблокирован</text>
+  <text x="305" y="510" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">makeCall(target) / отказ (баланс &lt; 0)</text>
+  <text x="305" y="527" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#000000" text-anchor="middle">endCall() / отказ</text>
+
+  <!-- start -> WaitingState -->
+  <path d="M 305 48 L 305 95" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="258" y="62" width="94" height="16" fill="#ffffff"/>
+  <text x="305" y="73" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">[balance &gt;= 0]</text>
+
+  <!-- start -> BlockedState -->
+  <path d="M 291 34 L 45 34 L 45 490 L 110 490" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="5" y="255" width="80" height="16" fill="#ffffff"/>
+  <text x="45" y="266" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">[balance &lt; 0]</text>
+
+  <!-- WaitingState -> CallingState -->
+  <path d="M 500 130 L 780 130" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="545" y="114" width="190" height="16" fill="#ffffff"/>
+  <text x="640" y="125" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">makeCall(target) [balance &gt;= 0]</text>
+
+  <!-- CallingState -> WaitingState -->
+  <path d="M 780 175 L 500 175" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="565" y="159" width="150" height="16" fill="#ffffff"/>
+  <text x="640" y="170" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [отмена вызова]</text>
+
+  <!-- CallingState -> TalkingState -->
+  <path d="M 975 210 L 975 430" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="890" y="310" width="170" height="16" fill="#ffffff"/>
+  <text x="975" y="321" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">answerCall() [ответ собеседника]</text>
+
+  <!-- WaitingState -> TalkingState -->
+  <path d="M 420 210 L 420 270 L 850 270 L 850 430" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="545" y="255" width="180" height="16" fill="#ffffff"/>
+  <text x="635" y="266" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">answerCall() [входящий, 0 руб.]</text>
+
+  <!-- TalkingState -> WaitingState -->
+  <path d="M 810 430 L 810 355 L 370 355 L 370 210" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="460" y="340" width="260" height="16" fill="#ffffff"/>
+  <text x="590" y="351" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [исх.: -callCost, вх.: 0; balance &gt;= 0]</text>
+
+  <!-- TalkingState -> BlockedState -->
+  <path d="M 780 465 L 500 465" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="515" y="449" width="250" height="16" fill="#ffffff"/>
+  <text x="640" y="460" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">endCall() [исх.: -callCost, вх.: 0; balance &lt; 0]</text>
+
+  <!-- BlockedState -> TalkingState -->
+  <path d="M 500 515 L 780 515" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="550" y="499" width="180" height="16" fill="#ffffff"/>
+  <text x="640" y="510" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">answerCall() [входящий, 0 руб.]</text>
+
+  <!-- BlockedState -> WaitingState -->
+  <path d="M 245 430 L 245 210" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="140" y="310" width="210" height="16" fill="#ffffff"/>
+  <text x="245" y="321" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#000000" text-anchor="middle">topUpBalance(amount) [balance &gt;= 0]</text>
 </svg>
