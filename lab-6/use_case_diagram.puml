@@ -7,92 +7,87 @@ skinparam usecase {
   BorderColor #2C3E50
 }
 
-actor "Гость" as Guest
-actor "Зарегистрированный пользователь" as RegUser
-actor "Клиент" as Client
-actor "Сотрудник организации" as Staff
-actor "Владелец организации" as OrgOwner
-actor "Редактор контента" as Editor
-actor "Администратор системы" as Admin
-actor "Владелец сайта" as SiteOwner
+actor "Незарегистрированный пользователь" as act_guest
+actor "Пользователь" as act_user
+actor "Клиент" as act_client
+actor "Пользователь организации" as act_staff
+actor "Владелец организации" as act_owner
+actor "Редактор (п. 3.3.4 ТЗ)" as act_editor
+actor "Администратор" as act_admin
+actor "Владелец сайта" as act_site
+actor "Сервис SMS" as act_sms
+actor "Платежная система" as act_pay
+actor "Email-сервер (доп. эксперта)" as act_email
 
-Client --|> RegUser
-Staff --|> RegUser
-OrgOwner --|> Staff
-Editor --|> RegUser
-Admin --|> RegUser
-SiteOwner --|> RegUser
-
-actor "SMS-шлюз" as SmsGw
-actor "Email-сервер" as EmailGw
-actor "Платёжная система" as PayGw
-
-rectangle "Информационная система «Project Record»" {
-  usecase "UC1: Просмотр каталога и расписания" as UC1
-  usecase "UC2: Поиск и фильтрация услуг" as UC2
-  usecase "UC3: Регистрация аккаунта" as UC3
-  usecase "UC4: Подтверждение Email / SMS-кода" as UC4
-  usecase "UC5: Авторизация и сброс пароля" as UC5
-  usecase "UC6: Управление профилем и телефоном" as UC6
-  usecase "UC7: Форум и комментарии" as UC7
-  usecase "UC8: Пожелания по сайту" as UC8
-  usecase "UC9: Онлайн-запись / бронирование" as UC9
-  usecase "UC10: Отправка SMS/Email уведомлений" as UC10
-  usecase "UC11: Отмена или перенос брони" as UC11
-  usecase "UC12: Избранное, Like и отзывы" as UC12
-  usecase "UC13: Онлайн-консультация и звонок" as UC13
-  usecase "UC14: Справочники организации" as UC14
-  usecase "UC15: График работы и периодичность" as UC15
-  usecase "UC16: Очередь и разрешение конфликтов" as UC16
-  usecase "UC17: База клиентов (Обычный/VIP)" as UC17
-  usecase "UC18: Импорт/экспорт расписания" as UC18
-  usecase "UC19: Новости организации и ответы" as UC19
-  usecase "UC20: Создание и статус организации" as UC20
-  usecase "UC21: Делегирование прав управления" as UC21
-  usecase "UC22: Оплата подписки" as UC22
-  usecase "UC23: Отчёты организации (XLS/PDF)" as UC23
-  usecase "UC24: Редактирование контента сайта" as UC24
-  usecase "UC25: Модерация и блокировка профилей/IP" as UC25
-  usecase "UC26: Модерация единого каталога услуг" as UC26
-  usecase "UC27: Управление форумом и аудит логов" as UC27
-  usecase "UC28: Сводная аналитика владельца сайта" as UC28
-
-  UC3 ..> UC4 : <<include>>
-  UC6 ..> UC4 : <<include>>
-  UC9 ..> UC10 : <<include>>
+rectangle "Информационная система «Project Record (Электронная запись)»" {
+  usecase "UC1: Просмотр каталога и расписания (2.3.1.1–3)" as uc1
+  usecase "UC2: Поиск и фильтрация услуг и цен (2.3.1.1, 2.3.1.6)" as uc2
+  usecase "UC3: Зарегистрироваться как Клиент (п. 3.2.1)" as uc3
+  usecase "UC4: Зарегистрироваться как Организация (п. 3.2.2)" as uc4
+  usecase "UC5: Войти в Систему (п. 3.2.3)" as uc5
+  usecase "UC6: Восстановить пароль (п. 3.2.4.4.2)" as uc6
+  usecase "UC7: Изменить личный профиль и телефон (п. 3.2.4)" as uc7
+  usecase "UC8: Удалить профиль (п. 3.2.4.4.3)" as uc8
+  usecase "UC9: Общаться на форуме и комментировать (3.3.2, 3.3.4)" as uc9
+  usecase "UC10: Добавить пожелание по сайту (2.3.3.4, 3.3.3)" as uc10
+  usecase "UC11: Записаться на приём / бронь (п. 2.3.1.5, 3.2.16)" as uc11
+  usecase "UC12: Избранное, отзывы и оценка likeIt (2.3.1.1–2, 2.3.1.8)" as uc12
+  usecase "UC13: Обратная связь и обратный звонок (п. 2.3.1.7)" as uc13
+  usecase "UC14: Он-лайн консультация клиента (п. 2.3.1.9)" as uc14
+  usecase "UC15: Управлять справочниками (п. 3.2.9)" as uc15
+  usecase "UC16: Добавить новость организации (п. 3.2.10)" as uc16
+  usecase "UC17: Изменить график работы (п. 3.2.11)" as uc17
+  usecase "UC18: Загрузить/выгрузить расписание (п. 3.2.12)" as uc18
+  usecase "UC19: Управлять Клиентами: Обычный / VIP (п. 3.2.13)" as uc19
+  usecase "UC20: Разрешать конфликты и записи (2.3.2.7, 3.2.16.4.1)" as uc20
+  usecase "UC21: Консультировать клиентов и отвечать на отзывы (2.3.2.9)" as uc21
+  usecase "UC22: Добавить, изменить и активировать организацию (3.2.7)" as uc22
+  usecase "UC23: Дать права на управление организацией (п. 3.2.8)" as uc23
+  usecase "UC24: Оплатить за сервис (п. 3.2.14, 2.3.3.2)" as uc24
+  usecase "UC25: Получить отчёты по организации (3.2.15, 3.3.9.2)" as uc25
+  usecase "UC26: Публиковать/изменять/ удалять новости сайта (п. 3.3.4)" as uc26
+  usecase "UC27: Изменить профиль другого пользователя (п. 3.2.5)" as uc27
+  usecase "UC28: Заблокировать/разблокировать пользователя (п. 3.2.6)" as uc28
+  usecase "UC29: Модерировать услуги и справочники (2.3.2.4, 3.3.5)" as uc29
+  usecase "UC30: Управлять структурой форума (п. 3.3.2)" as uc30
+  usecase "UC31: Получить отчёты для Владельца сайта (2.3.3.1, 3.3.9.3)" as uc31
+  usecase "UC32: Отправить SMS-код / уведомление (3.2.1, 3.2.4, 3.3.1)" as uc32
+  usecase "UC33: Обработать платёжную транзакцию (3.2.14, 2.3.3.2)" as uc33
+  usecase "UC34: Отправить Email-уведомление (текст п. 3.2.1, 3.2.4, 3.2.16)" as uc34
 }
 
-Guest --> UC1
-Guest --> UC2
-Guest --> UC3
-Guest --> UC5
-RegUser --> UC6
-RegUser --> UC7
-RegUser --> UC8
-Client --> UC9
-Client --> UC11
-Client --> UC12
-Client --> UC13
-Staff --> UC14
-Staff --> UC15
-Staff --> UC16
-Staff --> UC17
-Staff --> UC18
-Staff --> UC19
-OrgOwner --> UC20
-OrgOwner --> UC21
-OrgOwner --> UC22
-OrgOwner --> UC23
-Editor --> UC24
-Admin --> UC25
-Admin --> UC26
-Admin --> UC27
-SiteOwner --> UC28
-
-UC4 -- SmsGw
-UC4 -- EmailGw
-UC5 -- EmailGw
-UC10 -- SmsGw
-UC10 -- EmailGw
-UC22 -- PayGw
+act_guest --> uc1
+act_guest --> uc2
+act_guest --> uc3
+act_guest --> uc4
+act_guest --> uc5
+act_guest --> uc6
+act_user --> uc7
+act_user --> uc8
+act_user --> uc9
+act_user --> uc10
+act_client --> uc11
+act_client --> uc12
+act_client --> uc13
+act_client --> uc14
+act_staff --> uc15
+act_staff --> uc16
+act_staff --> uc17
+act_staff --> uc18
+act_staff --> uc19
+act_staff --> uc20
+act_staff --> uc21
+act_owner --> uc22
+act_owner --> uc23
+act_owner --> uc24
+act_owner --> uc25
+act_editor --> uc26
+act_admin --> uc27
+act_admin --> uc28
+act_admin --> uc29
+act_admin --> uc30
+act_site --> uc31
+uc32 -- act_sms
+uc33 -- act_pay
+uc34 -- act_email
 @enduml

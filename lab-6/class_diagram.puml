@@ -1,32 +1,6 @@
 @startuml
 skinparam classAttributeIconSize 0
-skinparam roundcorner 10
-
-enum UserStatus {
-  PENDING_ACTIVATION
-  ACTIVE
-  BLOCKED
-  DELETED
-}
-enum RoleType {
-  CLIENT
-  ORG_MANAGER
-  ORG_OWNER
-  EDITOR
-  ADMIN
-  SITE_OWNER
-}
-enum ClientTier {
-  REGULAR
-  VIP
-}
-enum BookingStatus {
-  PENDING
-  CONFIRMED
-  CONFLICT
-  CANCELLED
-  COMPLETED
-}
+skinparam roundcorner 8
 
 class User {
   - id: UUID
@@ -41,8 +15,28 @@ class User {
   - status: UserStatus
   - isDeleted: Boolean
   + authenticate(pwd: String): Boolean
-  + updateProfile(dto: ProfileDto): void
+  + updateProfile(name: String, tel: String): void
   + softDelete(): void
+}
+
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+  DELETED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum RoleType {
+  CLIENT
+  ORG_USER
+  ORG_OWNER
+  EDITOR
+  ADMIN
+  SITE_OWNER
 }
 
 class OrganizationRoleAssignment {
@@ -61,6 +55,30 @@ class ClientOrganizationRelation {
   + setTier(tier: ClientTier): void
 }
 
+enum ClientTier {
+  REGULAR
+  VIP
+}
+
+class AuditLogEntry {
+  - id: UUID
+  - entityName: String
+  - entityId: UUID
+  - oldValuesJson: String
+  - newValuesJson: String
+  - changedByUserId: UUID
+  - ipAddress: String
+  - sessionId: String
+  - timestamp: DateTime
+  + getDiffSummary(): String
+}
+
+class AuditRepository {
+  - storageEngine: String
+  + recordChange(e: AuditLogEntry): void
+  + findByEntity(id: UUID): List<AuditLogEntry>
+}
+
 class Organization {
   - id: UUID
   - name: String
@@ -70,7 +88,7 @@ class Organization {
   - email: String
   - mapCoordinates: String
   - isActive: Boolean
-  - isPaidPlan: Boolean
+  - paymentStatus: PaymentStatus
   + activate(): void
   + deactivate(): void
   + addService(s: Service): void
@@ -101,7 +119,7 @@ interface IBookableResource {
   + isAvailable(s: DateTime, e: DateTime): Boolean
 }
 
-class Employee implements IBookableResource {
+class Employee {
   - id: UUID
   - fullName: String
   - bio: String
@@ -110,7 +128,7 @@ class Employee implements IBookableResource {
   + isAvailable(s: DateTime, e: DateTime): Boolean
 }
 
-class Room implements IBookableResource {
+class Room {
   - id: UUID
   - name: String
   - capacity: Integer
@@ -132,10 +150,17 @@ class WorkSchedule {
 class RecurrenceRule {
   - id: UUID
   - frequency: FrequencyType
-  - intervalWeeks: Integer
-  - daysOfWeek: List<DayOfWeek>
+  - intervalCount: Integer
+  - daysOfWeek: List<Integer>
   - endDate: Date
   + generateOccurrences(): List<WorkSchedule>
+}
+
+enum FrequencyType {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
 }
 
 class Booking {
@@ -149,50 +174,48 @@ class Booking {
   - remindBeforeMin: Integer
   + confirm(): void
   + cancel(): void
-  + reschedule(newStart: DateTime): void
+  + reschedule(st: DateTime): void
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CONFLICT
+  CANCELLED
+  COMPLETED
 }
 
 class BookingController {
   - notifService: NotificationService
   - auditRepo: AuditRepository
-  + createBooking(cmd: CreateCmd): Booking
+  + createBooking(cliId: UUID, resId: UUID, st: DateTime): Booking
   + resolveConflict(id: UUID): void
   + exportSchedule(fmt: String): ByteArray
+}
+
+class NotificationService {
+  - senders: Map<NotificationChannel, INotificationSender>
+  + addSender(ch: NotificationChannel, s: INotificationSender): void
+  + notifyUser(u: User, msg: String): void
+}
+
+enum NotificationChannel {
+  SMS
+  EMAIL
 }
 
 interface INotificationSender {
   + send(recipient: String, text: String): Boolean
 }
-class SmsNotificationSender implements INotificationSender {
+
+class SmsNotificationSender {
   - apiKey: String
-  + send(r: String, text: String): Boolean
-}
-class EmailNotificationSender implements INotificationSender {
-  - smtpHost: String
-  + send(r: String, text: String): Boolean
-}
-class NotificationService {
-  - senders: Map<Channel, INotificationSender>
-  + registerSender(c: Channel, s: INotificationSender)
-  + notifyUser(u: User, msg: String): void
+  + send(to: String, txt: String): Boolean
 }
 
-class AuditLogEntry {
-  - id: UUID
-  - entityName: String
-  - entityId: UUID
-  - oldValuesJson: String
-  - newValuesJson: String
-  - changedByUserId: UUID
-  - ipAddress: String
-  - sessionId: String
-  - timestamp: DateTime
-  + getDiffSummary(): String
-}
-class AuditRepository {
-  - storage: DbConnection
-  + recordChange(entry: AuditLogEntry): void
-  + findByEntity(id: UUID): List<AuditLogEntry>
+class EmailNotificationSender {
+  - smtpHost: String
+  + send(to: String, txt: String): Boolean
 }
 
 class PaymentTransaction {
@@ -203,14 +226,24 @@ class PaymentTransaction {
   - createdAt: DateTime
   + processPayment(): Boolean
 }
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
 class Review {
   - id: UUID
   - authorId: UUID
-  - targetId: UUID
+  - organizationId: UUID
+  - employeeId: UUID
   - rating: Integer
   - commentText: String
   + publish(): void
 }
+
 class NewsItem {
   - id: UUID
   - organizationId: UUID
@@ -220,18 +253,38 @@ class NewsItem {
   + addComment(u: User, text: String): void
 }
 
-User "1" --> "0..*" Booking : оформляет
-User "1" --> "0..*" OrganizationRoleAssignment
-Organization "1" <-- "*" OrganizationRoleAssignment
-Organization "1" *-- "0..*" Service
-ServiceCategory "1" o-- "0..*" Service
-Organization "1" o-- "0..*" IBookableResource
-IBookableResource "1" *-- "0..*" WorkSchedule
-WorkSchedule "0..*" --> "0..1" RecurrenceRule
-IBookableResource "1" --> "0..*" Booking
-Service "1" --> "0..*" Booking
-BookingController ..> NotificationService
-BookingController ..> AuditRepository
-NotificationService "1" o-- "*" INotificationSender
-AuditRepository "1" --> "*" AuditLogEntry
+User ..> UserStatus
+User ..> Gender
+User --> OrganizationRoleAssignment : назначается
+OrganizationRoleAssignment --> Organization : к организации
+OrganizationRoleAssignment ..> RoleType
+User --> ClientOrganizationRelation
+ClientOrganizationRelation --> Organization
+ClientOrganizationRelation ..> ClientTier
+User --> Booking : оформляет
+AuditRepository --> AuditLogEntry : хранит
+Organization --> ServiceCategory : использует
+ServiceCategory o-- Service
+Organization *-- Service
+Organization o-- IBookableResource
+Employee ..|> IBookableResource
+Room ..|> IBookableResource
+IBookableResource *-- WorkSchedule
+WorkSchedule --> RecurrenceRule : повторяется
+RecurrenceRule ..> FrequencyType
+IBookableResource --> Booking : бронируется
+Service --> Booking : в брони
+Booking ..> BookingStatus
+BookingController ..> NotificationService : delegates
+BookingController ..> AuditRepository : audit
+NotificationService ..> NotificationChannel
+NotificationService o-- INotificationSender
+SmsNotificationSender ..|> INotificationSender
+EmailNotificationSender ..|> INotificationSender
+Organization --> PaymentTransaction
+PaymentTransaction ..> PaymentStatus
+Organization *-- NewsItem
+User --> Review : автор
+Organization --> Review
+Employee --> Review
 @enduml
