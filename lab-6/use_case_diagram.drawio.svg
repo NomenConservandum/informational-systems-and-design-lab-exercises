@@ -1,0 +1,482 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1340px" height="1000px" viewBox="0 0 1340 1000" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;mxfile host=&quot;app.diagrams.net&quot; agent=&quot;DrawIO&quot; version=&quot;24.7.17&quot;&gt;
+  &lt;diagram name=&quot;Use Case Diagram — Project Record&quot; id=&quot;lab6_use_case&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1340&quot; dy=&quot;1000&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1340&quot; pageHeight=&quot;1000&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+      &lt;root&gt;
+        &lt;mxCell id=&quot;0&quot; /&gt;
+        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
+      &lt;mxCell id=&quot;sys_box&quot; value=&quot;Информационная система «Project Record (Электронная запись)» — исправленная модель прецедентов&quot; style=&quot;shape=folder;fontStyle=1;tabWidth=620;tabHeight=28;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;whiteSpace=wrap;verticalAlign=top;align=left;spacingLeft=10;fillColor=#f8f9fa;strokeColor=#495057;fontFamily=Helvetica;fontSize=12;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;330&quot; y=&quot;10&quot; width=&quot;820&quot; height=&quot;970&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_guest&quot; value=&quot;Гость&amp;#xa;(Неавториз.)&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f5f5f5;strokeColor=#666666;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;47&quot; y=&quot;65&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_user&quot; value=&quot;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&amp;#xa;Зарегистрированный&amp;#xa;пользователь&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;56&quot; y=&quot;415&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_client&quot; value=&quot;Клиент&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;252&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_staff&quot; value=&quot;Сотрудник&amp;#xa;организации&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;400&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_owner&quot; value=&quot;Владелец&amp;#xa;организации&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;562&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_editor&quot; value=&quot;Редактор&amp;#xa;контента&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;685&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_admin&quot; value=&quot;Администратор&amp;#xa;системы&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;795&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;act_site&quot; value=&quot;Владелец&amp;#xa;сайта&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;197&quot; y=&quot;900&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ext_sms&quot; value=&quot;SMS-шлюз&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1237&quot; y=&quot;115&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ext_email&quot; value=&quot;Email-сервер&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1237&quot; y=&quot;255&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ext_pay&quot; value=&quot;Платёжная&amp;#xa;система&quot; style=&quot;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=10;fontStyle=1;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1237&quot; y=&quot;550&quot; width=&quot;36&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc1&quot; value=&quot;UC1: Просмотр каталога&amp;#xa;организаций и расписания&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;45&quot; width=&quot;225&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc2&quot; value=&quot;UC2: Поиск и фильтрация&amp;#xa;услуг и цен&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;615&quot; y=&quot;45&quot; width=&quot;220&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc3&quot; value=&quot;UC3: Регистрация аккаунта&amp;#xa;(Клиент / Организация)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;118&quot; width=&quot;225&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc5&quot; value=&quot;UC5: Авторизация и&amp;#xa;восстановление пароля&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;615&quot; y=&quot;118&quot; width=&quot;220&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc4&quot; value=&quot;UC4: Подтверждение&amp;#xa;Email / SMS-кода&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;900&quot; y=&quot;82&quot; width=&quot;220&quot; height=&quot;56&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc6&quot; value=&quot;UC6: Управление профилем&amp;#xa;и смена телефона&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;192&quot; width=&quot;225&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc7&quot; value=&quot;UC7: Общение на форуме и&amp;#xa;комментирование новостей&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;615&quot; y=&quot;192&quot; width=&quot;235&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc8&quot; value=&quot;UC8: Пожелания по сайту&amp;#xa;(Feedback)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;900&quot; y=&quot;192&quot; width=&quot;220&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc9&quot; value=&quot;UC9: Онлайн-запись на приём&amp;#xa;/ бронирование&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;266&quot; width=&quot;230&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc11&quot; value=&quot;UC11: Отмена или перенос&amp;#xa;своей брони&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;620&quot; y=&quot;266&quot; width=&quot;225&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc10&quot; value=&quot;UC10: Отправка SMS и&amp;#xa;Email-уведомлений&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;900&quot; y=&quot;266&quot; width=&quot;220&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc12&quot; value=&quot;UC12: Избранное, оценка&amp;#xa;(Like) и отзывы&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;344&quot; width=&quot;230&quot; height=&quot;50&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc13&quot; value=&quot;UC13: Онлайн-консультация&amp;#xa;и обратный звонок&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;620&quot; y=&quot;344&quot; width=&quot;230&quot; height=&quot;50&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc14&quot; value=&quot;UC14: Справочники (услуги,&amp;#xa;сотрудники, помещения)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;412&quot; width=&quot;235&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc15&quot; value=&quot;UC15: График работы и&amp;#xa;правила периодичности&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;620&quot; y=&quot;412&quot; width=&quot;230&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc16&quot; value=&quot;UC16: Управление очередью и&amp;#xa;разрешение конфликтов&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;880&quot; y=&quot;412&quot; width=&quot;240&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc17&quot; value=&quot;UC17: База клиентов&amp;#xa;(статусы Обычный / VIP)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;482&quot; width=&quot;235&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc18&quot; value=&quot;UC18: Импорт и экспорт&amp;#xa;расписания&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;620&quot; y=&quot;482&quot; width=&quot;230&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc19&quot; value=&quot;UC19: Новости организации&amp;#xa;и ответы клиентам&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;880&quot; y=&quot;482&quot; width=&quot;240&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc20&quot; value=&quot;UC20: Создание и статус&amp;#xa;организации&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;558&quot; width=&quot;235&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc21&quot; value=&quot;UC21: Делегирование прав&amp;#xa;управления сотрудникам&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;620&quot; y=&quot;558&quot; width=&quot;235&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc22&quot; value=&quot;UC22: Оплата подписки и&amp;#xa;дополнительных опций&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;885&quot; y=&quot;558&quot; width=&quot;235&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc23&quot; value=&quot;UC23: Отчёты по организации&amp;#xa;(выгрузка XLS / PDF)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;626&quot; width=&quot;250&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc24&quot; value=&quot;UC24: Редактирование новостей&amp;#xa;и контента сайта&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;700&quot; width=&quot;270&quot; height=&quot;52&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc25&quot; value=&quot;UC25: Проверка профилей,&amp;#xa;блокировка пользователей и IP&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;774&quot; width=&quot;265&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc26&quot; value=&quot;UC26: Модерация единого&amp;#xa;каталога типов услуг&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;650&quot; y=&quot;774&quot; width=&quot;250&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc27&quot; value=&quot;UC27: Управление форумом и&amp;#xa;просмотр журнала аудита&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;920&quot; y=&quot;774&quot; width=&quot;210&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;uc28&quot; value=&quot;UC28: Сводная аналитика и отчёты&amp;#xa;владельца платформы (XLS / PDF)&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.4;fontFamily=Helvetica;fontSize=10.5;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;360&quot; y=&quot;868&quot; width=&quot;330&quot; height=&quot;56&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;note_lsp&quot; value=&quot;Исправление нарушения LSP (Диаграмма 1 исходного ТЗ):&amp;#xa;• Гость не является родителем авторизованных ролей.&amp;#xa;• Авторизованные роли разделены по принципу LSP/ISP&amp;#xa;  и наследуют базового «Зарегистрированного пользователя»&amp;#xa;  либо назначаются через композицию прав.&quot; style=&quot;shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;725&quot; y=&quot;860&quot; width=&quot;400&quot; height=&quot;98&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_1&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_client&quot; target=&quot;act_user&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_2&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;act_user&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_3&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_owner&quot; target=&quot;act_staff&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_4&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_editor&quot; target=&quot;act_user&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_5&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_admin&quot; target=&quot;act_user&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;egen_6&quot; value=&quot;&quot; style=&quot;endArrow=block;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.2;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_site&quot; target=&quot;act_user&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_1&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_guest&quot; target=&quot;uc1&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_guest&quot; target=&quot;uc2&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_guest&quot; target=&quot;uc3&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_4&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_guest&quot; target=&quot;uc5&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_user&quot; target=&quot;uc6&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_6&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_user&quot; target=&quot;uc7&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_7&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_user&quot; target=&quot;uc8&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_8&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_client&quot; target=&quot;uc9&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_9&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_client&quot; target=&quot;uc11&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_10&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_client&quot; target=&quot;uc12&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_11&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_client&quot; target=&quot;uc13&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_12&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc14&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_13&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc15&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_14&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc16&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_15&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc17&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_16&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc18&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_17&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_staff&quot; target=&quot;uc19&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_18&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_owner&quot; target=&quot;uc20&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_19&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_owner&quot; target=&quot;uc21&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_20&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_owner&quot; target=&quot;uc22&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_21&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_owner&quot; target=&quot;uc23&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_22&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_editor&quot; target=&quot;uc24&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_23&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_admin&quot; target=&quot;uc25&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_24&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_admin&quot; target=&quot;uc26&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_25&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_admin&quot; target=&quot;uc27&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_26&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;act_site&quot; target=&quot;uc28&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_27&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_sms&quot; target=&quot;uc4&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_28&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_sms&quot; target=&quot;uc10&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_29&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_email&quot; target=&quot;uc4&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_30&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_email&quot; target=&quot;uc5&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_31&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_email&quot; target=&quot;uc10&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;ea_32&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;strokeColor=#495057;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;ext_pay&quot; target=&quot;uc22&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;einc_1&quot; value=&quot;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&quot; style=&quot;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;fontFamily=Helvetica;fontSize=9.5;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;uc3&quot; target=&quot;uc4&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;einc_2&quot; value=&quot;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&quot; style=&quot;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;fontFamily=Helvetica;fontSize=9.5;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;uc6&quot; target=&quot;uc4&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;einc_3&quot; value=&quot;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&quot; style=&quot;dashed=1;endArrow=open;endFill=0;strokeColor=#2980B9;strokeWidth=1.2;fontFamily=Helvetica;fontSize=9.5;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;uc9&quot; target=&quot;uc10&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;/root&gt;
+    &lt;/mxGraphModel&gt;
+  &lt;/diagram&gt;
+&lt;/mxfile&gt;">
+  <defs>
+    <marker id="hollow-tri" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#ffffff" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+    <marker id="open-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#2980B9" stroke-width="1.3"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <path d="M 330 38 L 330 10 L 950 10 L 950 38 M 330 38 L 1150 38 L 1150 980 L 330 980 Z" fill="#f8f9fa" stroke="#495057" stroke-width="1.4"/>
+  <text x="342" y="29" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000">Информационная система «Project Record (Электронная запись)» — исправленная модель прецедентов</text>
+  <path d="M 197 279 L 145 279 L 145 442 L 92 442" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#hollow-tri)"/>
+  <path d="M 197 427 L 145 427 L 145 442" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 197 712 L 145 712 L 145 442" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 197 822 L 145 822 L 145 442" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 197 927 L 145 927 L 145 442" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+  <path d="M 215 562 L 215 495" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#hollow-tri)"/>
+  <path d="M 83 82 L 360 71" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 83 75 L 280 75 L 280 107 L 725 107 L 725 97" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 83 96 L 270 96 L 270 144 L 360 144" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 83 104 L 255 104 L 255 178 L 725 178 L 725 170" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 92 435 L 122 435 L 122 218 L 360 218" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 122 218 L 122 252 L 732 252 L 732 244" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 122 252 L 1010 252 L 1010 244" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 279 L 360 292" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 283 L 295 283 L 295 328 L 732 328 L 732 318" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 290 L 285 290 L 285 361 L 360 361" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 294 L 275 294 L 275 396 L 735 396 L 735 386" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 427 L 360 439" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 433 L 300 433 L 300 472 L 735 472 L 735 466" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 300 472 L 1000 472 L 1000 466" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 440 L 290 440 L 290 508 L 360 508" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 290 508 L 290 544 L 735 544 L 735 534" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 290 544 L 1000 544 L 1000 534" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 587 L 360 584" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 594 L 305 594 L 305 616 L 737 616 L 737 610" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 305 616 L 1002 616 L 1002 610" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 602 L 290 602 L 290 652 L 360 652" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 712 L 360 726" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 822 L 360 801" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 828 L 295 828 L 295 842 L 775 842 L 775 828" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 295 842 L 1025 842 L 1025 828" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 233 927 L 300 927 L 300 896 L 360 896" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 1120 110 L 1237 135" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 1120 284 L 1185 284 L 1185 150 L 1237 150" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 1120 118 L 1170 118 L 1170 272 L 1237 272" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 835 152 L 1170 152" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 1120 296 L 1237 288" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 1120 584 L 1237 577" fill="none" stroke="#495057" stroke-width="1.1"/>
+  <path d="M 585 135 L 598 135 L 598 109 L 900 109" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-arrow)"/>
+  <rect x="833" y="97" width="64" height="14" fill="#f8f9fa"/>
+  <text x="865" y="107" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2980B9" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+  <path d="M 585 206 L 602 206 L 602 181 L 1010 181 L 1010 138" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-arrow)"/>
+  <rect x="833" y="169" width="64" height="14" fill="#f8f9fa"/>
+  <text x="865" y="179" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2980B9" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+  <path d="M 590 292 L 606 292 L 606 331 L 872 331 L 872 292 L 900 292" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-arrow)"/>
+  <rect x="708" y="320" width="64" height="14" fill="#f8f9fa"/>
+  <text x="740" y="330" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#2980B9" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+  <ellipse cx="472.5" cy="71.0" rx="112.5" ry="26.0" fill="#ffffff" stroke="#2C3E50" stroke-width="1.4"/>
+  <text x="472.5" y="68.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC1: Просмотр каталога</text>
+  <text x="472.5" y="81.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">организаций и расписания</text>
+  <ellipse cx="725.0" cy="71.0" rx="110.0" ry="26.0" fill="#ffffff" stroke="#2C3E50" stroke-width="1.4"/>
+  <text x="725.0" y="68.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC2: Поиск и фильтрация</text>
+  <text x="725.0" y="81.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">услуг и цен</text>
+  <ellipse cx="472.5" cy="144.0" rx="112.5" ry="26.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.4"/>
+  <text x="472.5" y="141.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC3: Регистрация аккаунта</text>
+  <text x="472.5" y="154.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">(Клиент / Организация)</text>
+  <ellipse cx="725.0" cy="144.0" rx="110.0" ry="26.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.4"/>
+  <text x="725.0" y="141.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC5: Авторизация и</text>
+  <text x="725.0" y="154.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">восстановление пароля</text>
+  <ellipse cx="1010.0" cy="110.0" rx="110.0" ry="28.0" fill="#fff2cc" stroke="#d6b656" stroke-width="1.4"/>
+  <text x="1010.0" y="107.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC4: Подтверждение</text>
+  <text x="1010.0" y="120.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">Email / SMS-кода</text>
+  <ellipse cx="472.5" cy="218.0" rx="112.5" ry="26.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.4"/>
+  <text x="472.5" y="215.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC6: Управление профилем</text>
+  <text x="472.5" y="228.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">и смена телефона</text>
+  <ellipse cx="732.5" cy="218.0" rx="117.5" ry="26.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.4"/>
+  <text x="732.5" y="215.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC7: Общение на форуме и</text>
+  <text x="732.5" y="228.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">комментирование новостей</text>
+  <ellipse cx="1010.0" cy="218.0" rx="110.0" ry="26.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.4"/>
+  <text x="1010.0" y="215.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC8: Пожелания по сайту</text>
+  <text x="1010.0" y="228.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">(Feedback)</text>
+  <ellipse cx="475.0" cy="292.0" rx="115.0" ry="26.0" fill="#d5e8d4" stroke="#82b366" stroke-width="1.4"/>
+  <text x="475.0" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC9: Онлайн-запись на приём</text>
+  <text x="475.0" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">/ бронирование</text>
+  <ellipse cx="732.5" cy="292.0" rx="112.5" ry="26.0" fill="#d5e8d4" stroke="#82b366" stroke-width="1.4"/>
+  <text x="732.5" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC11: Отмена или перенос</text>
+  <text x="732.5" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">своей брони</text>
+  <ellipse cx="1010.0" cy="292.0" rx="110.0" ry="26.0" fill="#fff2cc" stroke="#d6b656" stroke-width="1.4"/>
+  <text x="1010.0" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC10: Отправка SMS и</text>
+  <text x="1010.0" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">Email-уведомлений</text>
+  <ellipse cx="475.0" cy="369.0" rx="115.0" ry="25.0" fill="#d5e8d4" stroke="#82b366" stroke-width="1.4"/>
+  <text x="475.0" y="366.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC12: Избранное, оценка</text>
+  <text x="475.0" y="379.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">(Like) и отзывы</text>
+  <ellipse cx="735.0" cy="369.0" rx="115.0" ry="25.0" fill="#d5e8d4" stroke="#82b366" stroke-width="1.4"/>
+  <text x="735.0" y="366.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC13: Онлайн-консультация</text>
+  <text x="735.0" y="379.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">и обратный звонок</text>
+  <ellipse cx="477.5" cy="439.0" rx="117.5" ry="27.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="477.5" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC14: Справочники (услуги,</text>
+  <text x="477.5" y="449.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">сотрудники, помещения)</text>
+  <ellipse cx="735.0" cy="439.0" rx="115.0" ry="27.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="735.0" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC15: График работы и</text>
+  <text x="735.0" y="449.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">правила периодичности</text>
+  <ellipse cx="1000.0" cy="439.0" rx="120.0" ry="27.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="1000.0" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC16: Управление очередью и</text>
+  <text x="1000.0" y="449.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">разрешение конфликтов</text>
+  <ellipse cx="477.5" cy="508.0" rx="117.5" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="477.5" y="505.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC17: База клиентов</text>
+  <text x="477.5" y="518.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">(статусы Обычный / VIP)</text>
+  <ellipse cx="735.0" cy="508.0" rx="115.0" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="735.0" y="505.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC18: Импорт и экспорт</text>
+  <text x="735.0" y="518.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">расписания</text>
+  <ellipse cx="1000.0" cy="508.0" rx="120.0" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="1000.0" y="505.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC19: Новости организации</text>
+  <text x="1000.0" y="518.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">и ответы клиентам</text>
+  <ellipse cx="477.5" cy="584.0" rx="117.5" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="477.5" y="581.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC20: Создание и статус</text>
+  <text x="477.5" y="594.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">организации</text>
+  <ellipse cx="737.5" cy="584.0" rx="117.5" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="737.5" y="581.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC21: Делегирование прав</text>
+  <text x="737.5" y="594.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">управления сотрудникам</text>
+  <ellipse cx="1002.5" cy="584.0" rx="117.5" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="1002.5" y="581.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC22: Оплата подписки и</text>
+  <text x="1002.5" y="594.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">дополнительных опций</text>
+  <ellipse cx="485.0" cy="652.0" rx="125.0" ry="26.0" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.4"/>
+  <text x="485.0" y="649.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC23: Отчёты по организации</text>
+  <text x="485.0" y="662.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">(выгрузка XLS / PDF)</text>
+  <ellipse cx="495.0" cy="726.0" rx="135.0" ry="26.0" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.4"/>
+  <text x="495.0" y="723.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC24: Редактирование новостей</text>
+  <text x="495.0" y="736.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">и контента сайта</text>
+  <ellipse cx="492.5" cy="801.0" rx="132.5" ry="27.0" fill="#f8cecc" stroke="#b85450" stroke-width="1.4"/>
+  <text x="492.5" y="798.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC25: Проверка профилей,</text>
+  <text x="492.5" y="811.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">блокировка пользователей и IP</text>
+  <ellipse cx="775.0" cy="801.0" rx="125.0" ry="27.0" fill="#f8cecc" stroke="#b85450" stroke-width="1.4"/>
+  <text x="775.0" y="798.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC26: Модерация единого</text>
+  <text x="775.0" y="811.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">каталога типов услуг</text>
+  <ellipse cx="1025.0" cy="801.0" rx="105.0" ry="27.0" fill="#f8cecc" stroke="#b85450" stroke-width="1.4"/>
+  <text x="1025.0" y="798.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC27: Управление форумом и</text>
+  <text x="1025.0" y="811.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">просмотр журнала аудита</text>
+  <ellipse cx="525.0" cy="896.0" rx="165.0" ry="28.0" fill="#fff2cc" stroke="#d6b656" stroke-width="1.4"/>
+  <text x="525.0" y="893.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">UC28: Сводная аналитика и отчёты</text>
+  <text x="525.0" y="906.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#000000" text-anchor="middle">владельца платформы (XLS / PDF)</text>
+  <path d="M 725 860 L 1111 860 L 1125 874 L 1125 958 L 725 958 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.3"/>
+  <path d="M 1111 860 L 1111 874 L 1125 874" fill="none" stroke="#d6b656" stroke-width="1.1"/>
+  <text x="735" y="878" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#000000">Исправление нарушения LSP (Диаграмма 1 исходного ТЗ):</text>
+  <text x="735" y="893" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• Гость не является родителем авторизованных ролей.</text>
+  <text x="735" y="908" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• Авторизованные роли разделены по принципу LSP/ISP</text>
+  <text x="735" y="923" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">  и наследуют базового «Зарегистрированного пользователя»</text>
+  <text x="735" y="938" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">  либо назначаются через композицию прав.</text>
+  <circle cx="65" cy="75" r="9" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
+  <line x1="65" y1="84" x2="65" y2="104" stroke="#666666" stroke-width="1.5"/>
+  <line x1="51" y1="91" x2="79" y2="91" stroke="#666666" stroke-width="1.5"/>
+  <line x1="65" y1="104" x2="54" y2="119" stroke="#666666" stroke-width="1.5"/>
+  <line x1="65" y1="104" x2="76" y2="119" stroke="#666666" stroke-width="1.5"/>
+  <text x="65" y="133" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Гость</text>
+  <text x="65" y="146" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">(Неавториз.)</text>
+  <circle cx="74" cy="425" r="9" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <line x1="74" y1="434" x2="74" y2="454" stroke="#6c8ebf" stroke-width="1.5"/>
+  <line x1="60" y1="441" x2="88" y2="441" stroke="#6c8ebf" stroke-width="1.5"/>
+  <line x1="74" y1="454" x2="63" y2="469" stroke="#6c8ebf" stroke-width="1.5"/>
+  <line x1="74" y1="454" x2="85" y2="469" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="74" y="483" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="normal" fill="#000000" text-anchor="middle">&lt;&lt;abstract&gt;&gt;</text>
+  <text x="74" y="496" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Зарегистрированный</text>
+  <text x="74" y="509" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">пользователь</text>
+  <circle cx="215" cy="262" r="9" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <line x1="215" y1="271" x2="215" y2="291" stroke="#82b366" stroke-width="1.5"/>
+  <line x1="201" y1="278" x2="229" y2="278" stroke="#82b366" stroke-width="1.5"/>
+  <line x1="215" y1="291" x2="204" y2="306" stroke="#82b366" stroke-width="1.5"/>
+  <line x1="215" y1="291" x2="226" y2="306" stroke="#82b366" stroke-width="1.5"/>
+  <text x="215" y="320" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Клиент</text>
+  <circle cx="215" cy="410" r="9" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="419" x2="215" y2="439" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="201" y1="426" x2="229" y2="426" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="439" x2="204" y2="454" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="439" x2="226" y2="454" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="215" y="468" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Сотрудник</text>
+  <text x="215" y="481" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">организации</text>
+  <circle cx="215" cy="572" r="9" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="581" x2="215" y2="601" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="201" y1="588" x2="229" y2="588" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="601" x2="204" y2="616" stroke="#d79b00" stroke-width="1.5"/>
+  <line x1="215" y1="601" x2="226" y2="616" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="215" y="630" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Владелец</text>
+  <text x="215" y="643" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">организации</text>
+  <circle cx="215" cy="695" r="9" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+  <line x1="215" y1="704" x2="215" y2="724" stroke="#9673a6" stroke-width="1.5"/>
+  <line x1="201" y1="711" x2="229" y2="711" stroke="#9673a6" stroke-width="1.5"/>
+  <line x1="215" y1="724" x2="204" y2="739" stroke="#9673a6" stroke-width="1.5"/>
+  <line x1="215" y1="724" x2="226" y2="739" stroke="#9673a6" stroke-width="1.5"/>
+  <text x="215" y="753" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Редактор</text>
+  <text x="215" y="766" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">контента</text>
+  <circle cx="215" cy="805" r="9" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <line x1="215" y1="814" x2="215" y2="834" stroke="#b85450" stroke-width="1.5"/>
+  <line x1="201" y1="821" x2="229" y2="821" stroke="#b85450" stroke-width="1.5"/>
+  <line x1="215" y1="834" x2="204" y2="849" stroke="#b85450" stroke-width="1.5"/>
+  <line x1="215" y1="834" x2="226" y2="849" stroke="#b85450" stroke-width="1.5"/>
+  <text x="215" y="863" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Администратор</text>
+  <text x="215" y="876" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">системы</text>
+  <circle cx="215" cy="910" r="9" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="215" y1="919" x2="215" y2="939" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="201" y1="926" x2="229" y2="926" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="215" y1="939" x2="204" y2="954" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="215" y1="939" x2="226" y2="954" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="215" y="968" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Владелец</text>
+  <text x="215" y="981" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">сайта</text>
+  <circle cx="1255" cy="125" r="9" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="134" x2="1255" y2="154" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1241" y1="141" x2="1269" y2="141" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="154" x2="1244" y2="169" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="154" x2="1266" y2="169" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="1255" y="183" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">SMS-шлюз</text>
+  <circle cx="1255" cy="265" r="9" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="274" x2="1255" y2="294" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1241" y1="281" x2="1269" y2="281" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="294" x2="1244" y2="309" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="294" x2="1266" y2="309" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="1255" y="323" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Email-сервер</text>
+  <circle cx="1255" cy="560" r="9" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="569" x2="1255" y2="589" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1241" y1="576" x2="1269" y2="576" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="589" x2="1244" y2="604" stroke="#d6b656" stroke-width="1.5"/>
+  <line x1="1255" y1="589" x2="1266" y2="604" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="1255" y="618" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Платёжная</text>
+  <text x="1255" y="631" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">система</text>
+</svg>

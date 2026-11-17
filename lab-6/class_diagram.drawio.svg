@@ -1,0 +1,719 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1620px" height="1075px" viewBox="0 -15 1620 1075" content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;mxfile host=&quot;app.diagrams.net&quot; agent=&quot;DrawIO&quot; version=&quot;24.7.17&quot;&gt;
+  &lt;diagram name=&quot;Class Diagram (SOLID &amp;amp; GRASP) — Project Record&quot; id=&quot;lab6_class_diag&quot;&gt;
+    &lt;mxGraphModel dx=&quot;1620&quot; dy=&quot;1075&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;1620&quot; pageHeight=&quot;1075&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;
+      &lt;root&gt;
+        &lt;mxCell id=&quot;0&quot; /&gt;
+        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;
+      &lt;mxCell id=&quot;c_user&quot; value=&quot;User&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;25&quot; width=&quot;300&quot; height=&quot;248&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_user_f&quot; value=&quot;- id: UUID&amp;#xa;- login: String&amp;#xa;- passwordHash: String&amp;#xa;- firstName: String&amp;#xa;- lastName: String&amp;#xa;- gender: Gender&amp;#xa;- phone: String&amp;#xa;- email: String&amp;#xa;- city: String&amp;#xa;- status: UserStatus&amp;#xa;- isDeleted: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_user&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;300&quot; height=&quot;160&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_user_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;c_user&quot;&gt;
+        &lt;mxGeometry y=&quot;186&quot; width=&quot;300&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_user_m&quot; value=&quot;+ authenticate(pwd: String): Boolean&amp;#xa;+ updateProfile(dto: ProfileDto): void&amp;#xa;+ softDelete(): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_user&quot;&gt;
+        &lt;mxGeometry y=&quot;192&quot; width=&quot;300&quot; height=&quot;56&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ustatus&quot; value=&quot;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&amp;#xa;UserStatus&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;355&quot; y=&quot;25&quot; width=&quot;185&quot; height=&quot;112&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ustatus_f&quot; value=&quot;PENDING_ACTIVATION&amp;#xa;ACTIVE&amp;#xa;BLOCKED&amp;#xa;DELETED&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_ustatus&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;185&quot; height=&quot;62&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_role&quot; value=&quot;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&amp;#xa;RoleType&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;355&quot; y=&quot;152&quot; width=&quot;185&quot; height=&quot;128&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_role_f&quot; value=&quot;CLIENT&amp;#xa;ORG_MANAGER&amp;#xa;ORG_OWNER&amp;#xa;EDITOR&amp;#xa;ADMIN&amp;#xa;SITE_OWNER&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_role&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;185&quot; height=&quot;90&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_orgrole&quot; value=&quot;OrganizationRoleAssignment&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;298&quot; width=&quot;300&quot; height=&quot;118&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_orgrole_f&quot; value=&quot;- userId: UUID&amp;#xa;- organizationId: UUID&amp;#xa;- role: RoleType&amp;#xa;- grantedAt: DateTime&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_orgrole&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;300&quot; height=&quot;62&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_orgrole_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;c_orgrole&quot;&gt;
+        &lt;mxGeometry y=&quot;88&quot; width=&quot;300&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_orgrole_m&quot; value=&quot;+ hasPermission(perm: String): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_orgrole&quot;&gt;
+        &lt;mxGeometry y=&quot;94&quot; width=&quot;300&quot; height=&quot;24&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_clrel&quot; value=&quot;ClientOrganizationRelation&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;438&quot; width=&quot;300&quot; height=&quot;118&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_clrel_f&quot; value=&quot;- clientId: UUID&amp;#xa;- organizationId: UUID&amp;#xa;- tier: ClientTier&amp;#xa;- isFavorite: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_clrel&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;300&quot; height=&quot;62&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_clrel_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;&quot; vertex=&quot;1&quot; parent=&quot;c_clrel&quot;&gt;
+        &lt;mxGeometry y=&quot;88&quot; width=&quot;300&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_clrel_m&quot; value=&quot;+ setTier(tier: ClientTier): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_clrel&quot;&gt;
+        &lt;mxGeometry y=&quot;94&quot; width=&quot;300&quot; height=&quot;24&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_tier&quot; value=&quot;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&amp;#xa;ClientTier&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;355&quot; y=&quot;438&quot; width=&quot;185&quot; height=&quot;86&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_tier_f&quot; value=&quot;REGULAR&amp;#xa;VIP&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_tier&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;185&quot; height=&quot;34&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit&quot; value=&quot;AuditLogEntry&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;580&quot; width=&quot;300&quot; height=&quot;184&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_f&quot; value=&quot;- id: UUID&amp;#xa;- entityName: String&amp;#xa;- entityId: UUID&amp;#xa;- oldValuesJson: String&amp;#xa;- newValuesJson: String&amp;#xa;- changedByUserId: UUID&amp;#xa;- ipAddress: String&amp;#xa;- sessionId: String&amp;#xa;- timestamp: DateTime&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_audit&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;300&quot; height=&quot;132&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9673a6;&quot; vertex=&quot;1&quot; parent=&quot;c_audit&quot;&gt;
+        &lt;mxGeometry y=&quot;158&quot; width=&quot;300&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_m&quot; value=&quot;+ getDiffSummary(): String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_audit&quot;&gt;
+        &lt;mxGeometry y=&quot;164&quot; width=&quot;300&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_repo&quot; value=&quot;AuditRepository&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;792&quot; width=&quot;300&quot; height=&quot;95&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_repo_f&quot; value=&quot;- storage: DbConnection&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_audit_repo&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;300&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_repo_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9673a6;&quot; vertex=&quot;1&quot; parent=&quot;c_audit_repo&quot;&gt;
+        &lt;mxGeometry y=&quot;46&quot; width=&quot;300&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_audit_repo_m&quot; value=&quot;+ recordChange(entry: AuditLogEntry): void&amp;#xa;+ findByEntity(id: UUID): List&amp;lt;AuditLogEntry&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_audit_repo&quot;&gt;
+        &lt;mxGeometry y=&quot;52&quot; width=&quot;300&quot; height=&quot;43&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_org&quot; value=&quot;Organization&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;585&quot; y=&quot;25&quot; width=&quot;315&quot; height=&quot;222&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_org_f&quot; value=&quot;- id: UUID&amp;#xa;- name: String&amp;#xa;- description: String&amp;#xa;- address: String&amp;#xa;- phone: String&amp;#xa;- email: String&amp;#xa;- mapCoordinates: String&amp;#xa;- isActive: Boolean&amp;#xa;- isPaidPlan: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_org&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;315&quot; height=&quot;132&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_org_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_org&quot;&gt;
+        &lt;mxGeometry y=&quot;158&quot; width=&quot;315&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_org_m&quot; value=&quot;+ activate(): void&amp;#xa;+ deactivate(): void&amp;#xa;+ addService(s: Service): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_org&quot;&gt;
+        &lt;mxGeometry y=&quot;164&quot; width=&quot;315&quot; height=&quot;58&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_cat&quot; value=&quot;ServiceCategory&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;945&quot; y=&quot;25&quot; width=&quot;255&quot; height=&quot;108&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_cat_f&quot; value=&quot;- id: UUID&amp;#xa;- name: String&amp;#xa;- isApprovedByAdmin: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_cat&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;255&quot; height=&quot;48&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_cat_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_cat&quot;&gt;
+        &lt;mxGeometry y=&quot;74&quot; width=&quot;255&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_cat_m&quot; value=&quot;+ approve(): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_cat&quot;&gt;
+        &lt;mxGeometry y=&quot;80&quot; width=&quot;255&quot; height=&quot;28&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_srv&quot; value=&quot;Service&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;945&quot; y=&quot;155&quot; width=&quot;255&quot; height=&quot;168&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_srv_f&quot; value=&quot;- id: UUID&amp;#xa;- name: String&amp;#xa;- description: String&amp;#xa;- price: Decimal&amp;#xa;- durationMin: Integer&amp;#xa;- bufferMin: Integer&amp;#xa;- isDeleted: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_srv&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;255&quot; height=&quot;104&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_srv_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_srv&quot;&gt;
+        &lt;mxGeometry y=&quot;130&quot; width=&quot;255&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_srv_m&quot; value=&quot;+ calculateEndTime(st: DateTime): DateTime&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_srv&quot;&gt;
+        &lt;mxGeometry y=&quot;136&quot; width=&quot;255&quot; height=&quot;32&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_res&quot; value=&quot;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&amp;#xa;IBookableResource&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;585&quot; y=&quot;285&quot; width=&quot;330&quot; height=&quot;128&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_res_m&quot; value=&quot;+ getId(): UUID&amp;#xa;+ getName(): String&amp;#xa;+ getWorkSchedules(): List&amp;lt;WorkSchedule&amp;gt;&amp;#xa;+ isAvailable(s: DateTime, e: DateTime): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_res&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;330&quot; height=&quot;90&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_emp&quot; value=&quot;Employee&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;560&quot; y=&quot;450&quot; width=&quot;225&quot; height=&quot;130&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_emp_f&quot; value=&quot;- id: UUID&amp;#xa;- fullName: String&amp;#xa;- bio: String&amp;#xa;- photoUrl: String&amp;#xa;- likesCount: Integer&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_emp&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;225&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_emp_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_emp&quot;&gt;
+        &lt;mxGeometry y=&quot;102&quot; width=&quot;225&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_emp_m&quot; value=&quot;+ isAvailable(s, e): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_emp&quot;&gt;
+        &lt;mxGeometry y=&quot;108&quot; width=&quot;225&quot; height=&quot;22&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_room&quot; value=&quot;Room&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;805&quot; y=&quot;450&quot; width=&quot;210&quot; height=&quot;122&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_room_f&quot; value=&quot;- id: UUID&amp;#xa;- name: String&amp;#xa;- capacity: Integer&amp;#xa;- floor: String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_room&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;210&quot; height=&quot;62&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_room_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_room&quot;&gt;
+        &lt;mxGeometry y=&quot;88&quot; width=&quot;210&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_room_m&quot; value=&quot;+ isAvailable(s, e): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_room&quot;&gt;
+        &lt;mxGeometry y=&quot;94&quot; width=&quot;210&quot; height=&quot;28&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sched&quot; value=&quot;WorkSchedule&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;560&quot; y=&quot;615&quot; width=&quot;270&quot; height=&quot;162&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sched_f&quot; value=&quot;- id: UUID&amp;#xa;- date: Date&amp;#xa;- startTime: Time&amp;#xa;- endTime: Time&amp;#xa;- isFloating: Boolean&amp;#xa;- minGapMinutes: Integer&amp;#xa;- isPublished: Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_sched&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;270&quot; height=&quot;104&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sched_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;&quot; vertex=&quot;1&quot; parent=&quot;c_sched&quot;&gt;
+        &lt;mxGeometry y=&quot;130&quot; width=&quot;270&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sched_m&quot; value=&quot;+ hasOverlap(other: WorkSchedule): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_sched&quot;&gt;
+        &lt;mxGeometry y=&quot;136&quot; width=&quot;270&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rec&quot; value=&quot;RecurrenceRule&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;860&quot; y=&quot;615&quot; width=&quot;275&quot; height=&quot;148&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rec_f&quot; value=&quot;- id: UUID&amp;#xa;- frequency: FrequencyType&amp;#xa;- intervalWeeks: Integer&amp;#xa;- daysOfWeek: List&amp;lt;DayOfWeek&amp;gt;&amp;#xa;- endDate: Date&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_rec&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;275&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rec_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;&quot; vertex=&quot;1&quot; parent=&quot;c_rec&quot;&gt;
+        &lt;mxGeometry y=&quot;102&quot; width=&quot;275&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rec_m&quot; value=&quot;+ generateOccurrences(): List&amp;lt;WorkSchedule&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_rec&quot;&gt;
+        &lt;mxGeometry y=&quot;108&quot; width=&quot;275&quot; height=&quot;40&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_book&quot; value=&quot;Booking&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;560&quot; y=&quot;815&quot; width=&quot;295&quot; height=&quot;195&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_book_f&quot; value=&quot;- id: UUID&amp;#xa;- clientId: UUID&amp;#xa;- resourceId: UUID&amp;#xa;- serviceId: UUID&amp;#xa;- startTime: DateTime&amp;#xa;- endTime: DateTime&amp;#xa;- status: BookingStatus&amp;#xa;- remindBeforeMin: Integer&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_book&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;295&quot; height=&quot;118&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_book_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#b85450;&quot; vertex=&quot;1&quot; parent=&quot;c_book&quot;&gt;
+        &lt;mxGeometry y=&quot;144&quot; width=&quot;295&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_book_m&quot; value=&quot;+ confirm(): void&amp;#xa;+ cancel(): void&amp;#xa;+ reschedule(newStart: DateTime): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_book&quot;&gt;
+        &lt;mxGeometry y=&quot;150&quot; width=&quot;295&quot; height=&quot;45&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_bstatus&quot; value=&quot;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&amp;#xa;BookingStatus&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;885&quot; y=&quot;845&quot; width=&quot;195&quot; height=&quot;125&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_bstatus_f&quot; value=&quot;PENDING&amp;#xa;CONFIRMED&amp;#xa;CONFLICT&amp;#xa;CANCELLED&amp;#xa;COMPLETED&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_bstatus&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;195&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ctrl&quot; value=&quot;BookingController&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;25&quot; width=&quot;345&quot; height=&quot;132&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ctrl_f&quot; value=&quot;- notifService: NotificationService&amp;#xa;- auditRepo: AuditRepository&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_ctrl&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;345&quot; height=&quot;34&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ctrl_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9673a6;&quot; vertex=&quot;1&quot; parent=&quot;c_ctrl&quot;&gt;
+        &lt;mxGeometry y=&quot;60&quot; width=&quot;345&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_ctrl_m&quot; value=&quot;+ createBooking(cmd: CreateCmd): Booking&amp;#xa;+ resolveConflict(id: UUID): void&amp;#xa;+ exportSchedule(fmt: String): ByteArray&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_ctrl&quot;&gt;
+        &lt;mxGeometry y=&quot;66&quot; width=&quot;345&quot; height=&quot;66&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsvc&quot; value=&quot;NotificationService&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;185&quot; width=&quot;345&quot; height=&quot;112&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsvc_f&quot; value=&quot;- senders: Map&amp;lt;Channel, INotificationSender&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_notsvc&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;345&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsvc_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;c_notsvc&quot;&gt;
+        &lt;mxGeometry y=&quot;46&quot; width=&quot;345&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsvc_m&quot; value=&quot;+ registerSender(c: Channel, s: INotificationSender)&amp;#xa;+ notifyUser(u: User, msg: String): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_notsvc&quot;&gt;
+        &lt;mxGeometry y=&quot;52&quot; width=&quot;345&quot; height=&quot;60&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsend&quot; value=&quot;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&amp;#xa;INotificationSender&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;328&quot; width=&quot;345&quot; height=&quot;92&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_notsend_m&quot; value=&quot;+ send(recipient: String, text: String): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_notsend&quot;&gt;
+        &lt;mxGeometry y=&quot;38&quot; width=&quot;345&quot; height=&quot;54&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sms&quot; value=&quot;SmsNotificationSender&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1210&quot; y=&quot;455&quot; width=&quot;185&quot; height=&quot;74&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sms_f&quot; value=&quot;- apiKey: String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_sms&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;185&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sms_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;&quot; vertex=&quot;1&quot; parent=&quot;c_sms&quot;&gt;
+        &lt;mxGeometry y=&quot;46&quot; width=&quot;185&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_sms_m&quot; value=&quot;+ send(r, text): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_sms&quot;&gt;
+        &lt;mxGeometry y=&quot;52&quot; width=&quot;185&quot; height=&quot;22&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_email&quot; value=&quot;EmailNotificationSender&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1410&quot; y=&quot;455&quot; width=&quot;185&quot; height=&quot;74&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_email_f&quot; value=&quot;- smtpHost: String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_email&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;185&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_email_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;&quot; vertex=&quot;1&quot; parent=&quot;c_email&quot;&gt;
+        &lt;mxGeometry y=&quot;46&quot; width=&quot;185&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_email_m&quot; value=&quot;+ send(r, text): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_email&quot;&gt;
+        &lt;mxGeometry y=&quot;52&quot; width=&quot;185&quot; height=&quot;22&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_pay&quot; value=&quot;PaymentTransaction&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;565&quot; width=&quot;345&quot; height=&quot;134&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_pay_f&quot; value=&quot;- id: UUID&amp;#xa;- organizationId: UUID&amp;#xa;- amount: Decimal&amp;#xa;- status: PaymentStatus&amp;#xa;- createdAt: DateTime&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_pay&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;345&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_pay_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;&quot; vertex=&quot;1&quot; parent=&quot;c_pay&quot;&gt;
+        &lt;mxGeometry y=&quot;102&quot; width=&quot;345&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_pay_m&quot; value=&quot;+ processPayment(): Boolean&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_pay&quot;&gt;
+        &lt;mxGeometry y=&quot;108&quot; width=&quot;345&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rev&quot; value=&quot;Review&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;725&quot; width=&quot;345&quot; height=&quot;134&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rev_f&quot; value=&quot;- id: UUID&amp;#xa;- authorId: UUID&amp;#xa;- targetId: UUID&amp;#xa;- rating: Integer&amp;#xa;- commentText: String&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_rev&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;345&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rev_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;c_rev&quot;&gt;
+        &lt;mxGeometry y=&quot;102&quot; width=&quot;345&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_rev_m&quot; value=&quot;+ publish(): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_rev&quot;&gt;
+        &lt;mxGeometry y=&quot;108&quot; width=&quot;345&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_news&quot; value=&quot;NewsItem&quot; style=&quot;swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;fontFamily=Helvetica;fontSize=11;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;1245&quot; y=&quot;885&quot; width=&quot;345&quot; height=&quot;128&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_news_f&quot; value=&quot;- id: UUID&amp;#xa;- organizationId: UUID&amp;#xa;- title: String&amp;#xa;- content: String&amp;#xa;- publishedAt: DateTime&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_news&quot;&gt;
+        &lt;mxGeometry y=&quot;26&quot; width=&quot;345&quot; height=&quot;76&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_news_sep&quot; value=&quot;&quot; style=&quot;line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;&quot; vertex=&quot;1&quot; parent=&quot;c_news&quot;&gt;
+        &lt;mxGeometry y=&quot;102&quot; width=&quot;345&quot; height=&quot;6&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;c_news_m&quot; value=&quot;+ addComment(u: User, text: String): void&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=10;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;c_news&quot;&gt;
+        &lt;mxGeometry y=&quot;108&quot; width=&quot;345&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;note_solid&quot; value=&quot;Ключевые улучшения по SOLID и GRASP (относительно разд. 5 ТЗ):&amp;#xa;• LSP + Композиция: роли вынесены в OrganizationRoleAssignment вместо наследования.&amp;#xa;• ISP + Polymorphism: интерфейс IBookableResource объединяет Employee и Room.&amp;#xa;• Восстановлена связь User 1 -&amp;gt; 0..* Booking (потерянная в разд. 5 ТЗ).&amp;#xa;• OCP + DIP: NotificationService зависит от абстракции INotificationSender.&amp;#xa;• SRP + Pure Fabrication: аудит вынесен в AuditRepository + AuditLogEntry.&quot; style=&quot;shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;fontColor=#000000;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;
+        &lt;mxGeometry x=&quot;25&quot; y=&quot;925&quot; width=&quot;490&quot; height=&quot;112&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_st&quot; value=&quot;uses&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=9;dashed=1;strokeColor=#2980B9;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_ustatus&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_org&quot; value=&quot;1..* владелец 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_org&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_or&quot; value=&quot;1 имеет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_orgrole&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_or_org&quot; value=&quot;* для 1&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_orgrole&quot; target=&quot;c_org&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_or_role&quot; value=&quot;uses&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=9;dashed=1;strokeColor=#2980B9;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_orgrole&quot; target=&quot;c_role&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_clrel&quot; value=&quot;1 имеет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_clrel&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_clrel_t&quot; value=&quot;uses&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=9;dashed=1;strokeColor=#2980B9;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_clrel&quot; target=&quot;c_tier&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_book&quot; value=&quot;1 оформляет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_book&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_aud_rep&quot; value=&quot;1 хранит *&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_audit_repo&quot; target=&quot;c_audit&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_org_cat&quot; value=&quot;0..* использует *&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_org&quot; target=&quot;c_cat&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_cat_srv&quot; value=&quot;1 содержит 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=0;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_cat&quot; target=&quot;c_srv&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_org_srv&quot; value=&quot;1 предоставляет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_org&quot; target=&quot;c_srv&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_org_res&quot; value=&quot;1 владеет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=0;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_org&quot; target=&quot;c_res&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_emp_res&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=10;dashed=1;strokeColor=#2C3E50;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_emp&quot; target=&quot;c_res&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_room_res&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=10;dashed=1;strokeColor=#2C3E50;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_room&quot; target=&quot;c_res&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_res_sch&quot; value=&quot;1 имеет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_res&quot; target=&quot;c_sched&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_sch_rec&quot; value=&quot;0..* по правилу 0..1&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_sched&quot; target=&quot;c_rec&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_res_book&quot; value=&quot;1 бронируется 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_res&quot; target=&quot;c_book&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_srv_book&quot; value=&quot;1 в брони 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_srv&quot; target=&quot;c_book&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_book_st&quot; value=&quot;uses&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=9;dashed=1;strokeColor=#2980B9;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_book&quot; target=&quot;c_bstatus&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_ctrl_not&quot; value=&quot;delegates&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=9;dashed=1;strokeColor=#2980B9;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_ctrl&quot; target=&quot;c_notsvc&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_not_send&quot; value=&quot;1..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=0;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_notsvc&quot; target=&quot;c_notsend&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_sms_i&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=10;dashed=1;strokeColor=#2C3E50;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_sms&quot; target=&quot;c_notsend&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_email_i&quot; value=&quot;&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=10;dashed=1;strokeColor=#2C3E50;strokeWidth=1.1;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_email&quot; target=&quot;c_notsend&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_org_pay&quot; value=&quot;1 оплачивает 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_org&quot; target=&quot;c_pay&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_org_news&quot; value=&quot;1 публикует 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=12;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_org&quot; target=&quot;c_news&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;mxCell id=&quot;e_u_rev&quot; value=&quot;1 оставляет 0..*&quot; style=&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;endSize=10;strokeColor=#2C3E50;strokeWidth=1.1;fontSize=9.5;fontFamily=Helvetica;labelBackgroundColor=#ffffff;&quot; edge=&quot;1&quot; parent=&quot;1&quot; source=&quot;c_user&quot; target=&quot;c_rev&quot;&gt;
+        &lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot; /&gt;
+      &lt;/mxCell&gt;
+      &lt;/root&gt;
+    &lt;/mxGraphModel&gt;
+  &lt;/diagram&gt;
+&lt;/mxfile&gt;">
+  <defs>
+    <marker id="hollow-tri" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#ffffff" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+    <marker id="open-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+    <marker id="open-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#2980B9" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-hollow" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 5 L 7 1 L 13 5 L 7 9 z" fill="#ffffff" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 5 L 7 1 L 13 5 L 7 9 z" fill="#2C3E50" stroke="#2C3E50" stroke-width="1.2"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <path d="M 325 75 L 355 75" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <path d="M 325 320 L 555 320 L 555 110 L 585 110" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="421.4" y="305.0" width="47.2" height="13" fill="#ffffff"/>
+  <text x="445" y="315" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">* для 1</text>
+  <path d="M 585 38 L 562 38 L 562 8 L 338 8 L 338 38 L 325 38" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="395.6" y="-5.0" width="108.8" height="13" fill="#ffffff"/>
+  <text x="450" y="5" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">0..* владелец 0..1</text>
+  <path d="M 175 270 L 175 295" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="178.6" y="272.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="205" y="282" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 325 350 L 342 350 L 342 220 L 355 220" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <path d="M 105 270 L 105 282 L 10 282 L 10 495 L 25 495" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="33.6" y="478.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="60" y="488" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 325 480 L 355 480" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <path d="M 175 792 L 175 764" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="173.0" y="769.0" width="64.0" height="13" fill="#ffffff"/>
+  <text x="205" y="779" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 хранит *</text>
+  <path d="M 325 262 L 338 262 L 338 892 L 560 892" fill="none" stroke="#b85450" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="368.4" y="876.0" width="159.2" height="13" fill="#ffffff"/>
+  <text x="448" y="886" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#b85450" text-anchor="middle">1 оформляет 0..* (испр. ТЗ)</text>
+  <path d="M 900 75 L 945 75" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="915.2" y="58.0" width="13.6" height="13" fill="#ffffff"/>
+  <text x="922" y="68" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">*</text>
+  <path d="M 1072 133 L 1072 155" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-start="url(#diamond-hollow)"/>
+  <rect x="1071.6" y="134.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="1098" y="144" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 900 200 L 945 200" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-start="url(#diamond-filled)"/>
+  <rect x="895.6" y="183.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="922" y="193" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 745 247 L 745 285" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-start="url(#diamond-hollow)"/>
+  <rect x="743.6" y="258.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="770" y="268" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 672 450 L 672 432 L 750 432 L 750 413" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#hollow-tri)"/>
+  <path d="M 910 450 L 910 432 L 750 432" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <path d="M 585 385 L 542 385 L 542 695 L 560 695" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-start="url(#diamond-filled)"/>
+  <rect x="483.6" y="678.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="510" y="688" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 830 690 L 860 690" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="829.8" y="672.0" width="30.4" height="13" fill="#ffffff"/>
+  <text x="845" y="682" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">0..1</text>
+  <path d="M 1052 323 L 1052 595 L 1148 595 L 1148 805 L 790 805 L 790 815" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="1006.6" y="789.0" width="136.8" height="13" fill="#ffffff"/>
+  <text x="1075" y="799" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 услуга -&gt; 0..* броней</text>
+  <path d="M 560 402 L 525 402 L 525 852 L 560 852" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="426.2" y="836.0" width="97.6" height="13" fill="#ffffff"/>
+  <text x="475" y="846" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 ресурс -&gt; 0..*</text>
+  <path d="M 855 908 L 885 908" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <path d="M 1417 157 L 1417 185" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <rect x="1420.8" y="163.0" width="58.4" height="13" fill="#ffffff"/>
+  <text x="1450" y="173" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2980B9" text-anchor="middle">delegates</text>
+  <path d="M 1245 90 L 1232 90 L 1232 825 L 325 825" fill="none" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#open-blue)"/>
+  <rect x="1208.0" y="355.0" width="36.0" height="13" fill="#ffffff"/>
+  <text x="1226" y="365" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2980B9" text-anchor="middle">audit</text>
+  <path d="M 1417 297 L 1417 328" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-start="url(#diamond-hollow)"/>
+  <rect x="1422.0" y="304.0" width="36.0" height="13" fill="#ffffff"/>
+  <text x="1440" y="314" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : *</text>
+  <path d="M 1302 455 L 1302 436 L 1417 436 L 1417 420" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#hollow-tri)"/>
+  <path d="M 1502 455 L 1502 436 L 1417 436" fill="none" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <path d="M 900 144 L 1208 144 L 1208 630 L 1245 630" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="1158.6" y="612.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="1185" y="622" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 1208 630 L 1208 945 L 1245 945" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="1165.6" y="928.0" width="52.8" height="13" fill="#ffffff"/>
+  <text x="1192" y="938" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 : 0..*</text>
+  <path d="M 325 250 L 346 250 L 346 1020 L 1162 1020 L 1162 785 L 1245 785" fill="none" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#open-arrow)"/>
+  <rect x="911.6" y="1004.0" width="136.8" height="13" fill="#ffffff"/>
+  <text x="980" y="1014" font-family="Helvetica, Arial, sans-serif" font-size="9.2" fill="#2C3E50" text-anchor="middle">1 автор -&gt; 0..* отзывов</text>
+  <rect x="25" y="25" width="300" height="248" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 25 51 L 25 33 Q 25 25 33 25 L 317 25 Q 325 25 325 33 L 325 51 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="175.0" y="42" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">User</text>
+  <text x="31" y="64" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="31" y="78" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- login: String</text>
+  <text x="31" y="92" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- passwordHash: String</text>
+  <text x="31" y="106" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- firstName: String</text>
+  <text x="31" y="120" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- lastName: String</text>
+  <text x="31" y="134" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- gender: Gender</text>
+  <text x="31" y="148" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- phone: String</text>
+  <text x="31" y="162" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- email: String</text>
+  <text x="31" y="176" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- city: String</text>
+  <text x="31" y="190" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- status: UserStatus</text>
+  <text x="31" y="204" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isDeleted: Boolean</text>
+  <line x1="25" y1="211" x2="325" y2="211" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="31" y="228" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ authenticate(pwd: String): Boolean</text>
+  <text x="31" y="242" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ updateProfile(dto: ProfileDto): void</text>
+  <text x="31" y="256" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ softDelete(): void</text>
+  <rect x="355" y="25" width="185" height="112" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
+  <path d="M 355 63 L 355 33 Q 355 25 363 25 L 532 25 Q 540 25 540 33 L 540 63 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
+  <text x="447.5" y="39" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="447.5" y="54" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">UserStatus</text>
+  <text x="361" y="76" font-family="Courier New, monospace" font-size="9.8" fill="#000000">PENDING_ACTIVATION</text>
+  <text x="361" y="90" font-family="Courier New, monospace" font-size="9.8" fill="#000000">ACTIVE</text>
+  <text x="361" y="104" font-family="Courier New, monospace" font-size="9.8" fill="#000000">BLOCKED</text>
+  <text x="361" y="118" font-family="Courier New, monospace" font-size="9.8" fill="#000000">DELETED</text>
+  <rect x="355" y="152" width="185" height="128" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
+  <path d="M 355 190 L 355 160 Q 355 152 363 152 L 532 152 Q 540 152 540 160 L 540 190 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
+  <text x="447.5" y="166" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="447.5" y="181" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">RoleType</text>
+  <text x="361" y="203" font-family="Courier New, monospace" font-size="9.8" fill="#000000">CLIENT</text>
+  <text x="361" y="217" font-family="Courier New, monospace" font-size="9.8" fill="#000000">ORG_MANAGER</text>
+  <text x="361" y="231" font-family="Courier New, monospace" font-size="9.8" fill="#000000">ORG_OWNER</text>
+  <text x="361" y="245" font-family="Courier New, monospace" font-size="9.8" fill="#000000">EDITOR</text>
+  <text x="361" y="259" font-family="Courier New, monospace" font-size="9.8" fill="#000000">ADMIN</text>
+  <text x="361" y="273" font-family="Courier New, monospace" font-size="9.8" fill="#000000">SITE_OWNER</text>
+  <rect x="25" y="298" width="300" height="118" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 25 324 L 25 306 Q 25 298 33 298 L 317 298 Q 325 298 325 306 L 325 324 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="175.0" y="315" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">OrganizationRoleAssignment</text>
+  <text x="31" y="337" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- userId: UUID</text>
+  <text x="31" y="351" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- organizationId: UUID</text>
+  <text x="31" y="365" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- role: RoleType</text>
+  <text x="31" y="379" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- grantedAt: DateTime</text>
+  <line x1="25" y1="386" x2="325" y2="386" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="31" y="403" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ hasPermission(perm: String): Boolean</text>
+  <rect x="25" y="438" width="300" height="118" rx="8" ry="8" fill="#ffffff" stroke="#82b366" stroke-width="1.3"/>
+  <path d="M 25 464 L 25 446 Q 25 438 33 438 L 317 438 Q 325 438 325 446 L 325 464 Z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.3"/>
+  <text x="175.0" y="455" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">ClientOrganizationRelation</text>
+  <text x="31" y="477" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- clientId: UUID</text>
+  <text x="31" y="491" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- organizationId: UUID</text>
+  <text x="31" y="505" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- tier: ClientTier</text>
+  <text x="31" y="519" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isFavorite: Boolean</text>
+  <line x1="25" y1="526" x2="325" y2="526" stroke="#82b366" stroke-width="1"/>
+  <text x="31" y="543" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ setTier(tier: ClientTier): void</text>
+  <rect x="355" y="438" width="185" height="86" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
+  <path d="M 355 476 L 355 446 Q 355 438 363 438 L 532 438 Q 540 438 540 446 L 540 476 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
+  <text x="447.5" y="452" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="447.5" y="467" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">ClientTier</text>
+  <text x="361" y="489" font-family="Courier New, monospace" font-size="9.8" fill="#000000">REGULAR</text>
+  <text x="361" y="503" font-family="Courier New, monospace" font-size="9.8" fill="#000000">VIP</text>
+  <rect x="25" y="580" width="300" height="184" rx="8" ry="8" fill="#ffffff" stroke="#9673a6" stroke-width="1.3"/>
+  <path d="M 25 606 L 25 588 Q 25 580 33 580 L 317 580 Q 325 580 325 588 L 325 606 Z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.3"/>
+  <text x="175.0" y="597" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">AuditLogEntry</text>
+  <text x="31" y="619" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="31" y="633" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- entityName: String</text>
+  <text x="31" y="647" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- entityId: UUID</text>
+  <text x="31" y="661" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- oldValuesJson: String</text>
+  <text x="31" y="675" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- newValuesJson: String</text>
+  <text x="31" y="689" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- changedByUserId: UUID</text>
+  <text x="31" y="703" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- ipAddress: String</text>
+  <text x="31" y="717" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- sessionId: String</text>
+  <text x="31" y="731" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- timestamp: DateTime</text>
+  <line x1="25" y1="738" x2="325" y2="738" stroke="#9673a6" stroke-width="1"/>
+  <text x="31" y="755" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ getDiffSummary(): String</text>
+  <rect x="25" y="792" width="300" height="95" rx="8" ry="8" fill="#ffffff" stroke="#9673a6" stroke-width="1.3"/>
+  <path d="M 25 818 L 25 800 Q 25 792 33 792 L 317 792 Q 325 792 325 800 L 325 818 Z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.3"/>
+  <text x="175.0" y="809" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">AuditRepository</text>
+  <text x="31" y="831" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- storage: DbConnection</text>
+  <line x1="25" y1="838" x2="325" y2="838" stroke="#9673a6" stroke-width="1"/>
+  <text x="31" y="855" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ recordChange(entry: AuditLogEntry): void</text>
+  <text x="31" y="869" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ findByEntity(id: UUID): List&lt;AuditLogEntry&gt;</text>
+  <rect x="585" y="25" width="315" height="222" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 585 51 L 585 33 Q 585 25 593 25 L 892 25 Q 900 25 900 33 L 900 51 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="742.5" y="42" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Organization</text>
+  <text x="591" y="64" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="591" y="78" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- name: String</text>
+  <text x="591" y="92" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- description: String</text>
+  <text x="591" y="106" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- address: String</text>
+  <text x="591" y="120" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- phone: String</text>
+  <text x="591" y="134" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- email: String</text>
+  <text x="591" y="148" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- mapCoordinates: String</text>
+  <text x="591" y="162" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isActive: Boolean</text>
+  <text x="591" y="176" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isPaidPlan: Boolean</text>
+  <line x1="585" y1="183" x2="900" y2="183" stroke="#d79b00" stroke-width="1"/>
+  <text x="591" y="200" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ activate(): void</text>
+  <text x="591" y="214" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ deactivate(): void</text>
+  <text x="591" y="228" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ addService(s: Service): void</text>
+  <rect x="945" y="25" width="255" height="108" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 945 51 L 945 33 Q 945 25 953 25 L 1192 25 Q 1200 25 1200 33 L 1200 51 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="1072.5" y="42" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">ServiceCategory</text>
+  <text x="951" y="64" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="951" y="78" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- name: String</text>
+  <text x="951" y="92" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isApprovedByAdmin: Boolean</text>
+  <line x1="945" y1="99" x2="1200" y2="99" stroke="#d79b00" stroke-width="1"/>
+  <text x="951" y="116" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ approve(): void</text>
+  <rect x="945" y="155" width="255" height="168" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 945 181 L 945 163 Q 945 155 953 155 L 1192 155 Q 1200 155 1200 163 L 1200 181 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="1072.5" y="172" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Service</text>
+  <text x="951" y="194" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="951" y="208" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- name: String</text>
+  <text x="951" y="222" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- description: String</text>
+  <text x="951" y="236" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- price: Decimal</text>
+  <text x="951" y="250" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- durationMin: Integer</text>
+  <text x="951" y="264" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- bufferMin: Integer</text>
+  <text x="951" y="278" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isDeleted: Boolean</text>
+  <line x1="945" y1="285" x2="1200" y2="285" stroke="#d79b00" stroke-width="1"/>
+  <text x="951" y="302" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ calculateEndTime(st: DateTime): DateTime</text>
+  <rect x="585" y="285" width="330" height="128" rx="8" ry="8" fill="#ffffff" stroke="#d6b656" stroke-width="1.3"/>
+  <path d="M 585 323 L 585 293 Q 585 285 593 285 L 907 285 Q 915 285 915 293 L 915 323 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.3"/>
+  <text x="750.0" y="299" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="750.0" y="314" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">IBookableResource</text>
+  <text x="591" y="336" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ getId(): UUID</text>
+  <text x="591" y="350" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ getName(): String</text>
+  <text x="591" y="364" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ getWorkSchedules(): List&lt;WorkSchedule&gt;</text>
+  <text x="591" y="378" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ isAvailable(s: DateTime, e: DateTime): Boolean</text>
+  <rect x="560" y="450" width="225" height="130" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 560 476 L 560 458 Q 560 450 568 450 L 777 450 Q 785 450 785 458 L 785 476 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="672.5" y="467" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Employee</text>
+  <text x="566" y="489" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="566" y="503" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- fullName: String</text>
+  <text x="566" y="517" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- bio: String</text>
+  <text x="566" y="531" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- photoUrl: String</text>
+  <text x="566" y="545" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- likesCount: Integer</text>
+  <line x1="560" y1="552" x2="785" y2="552" stroke="#d79b00" stroke-width="1"/>
+  <text x="566" y="569" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ isAvailable(s, e): Boolean</text>
+  <rect x="805" y="450" width="210" height="122" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 805 476 L 805 458 Q 805 450 813 450 L 1007 450 Q 1015 450 1015 458 L 1015 476 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="910.0" y="467" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Room</text>
+  <text x="811" y="489" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="811" y="503" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- name: String</text>
+  <text x="811" y="517" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- capacity: Integer</text>
+  <text x="811" y="531" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- floor: String</text>
+  <line x1="805" y1="538" x2="1015" y2="538" stroke="#d79b00" stroke-width="1"/>
+  <text x="811" y="555" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ isAvailable(s, e): Boolean</text>
+  <rect x="560" y="615" width="270" height="162" rx="8" ry="8" fill="#ffffff" stroke="#82b366" stroke-width="1.3"/>
+  <path d="M 560 641 L 560 623 Q 560 615 568 615 L 822 615 Q 830 615 830 623 L 830 641 Z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.3"/>
+  <text x="695.0" y="632" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">WorkSchedule</text>
+  <text x="566" y="654" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="566" y="668" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- date: Date</text>
+  <text x="566" y="682" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- startTime: Time</text>
+  <text x="566" y="696" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- endTime: Time</text>
+  <text x="566" y="710" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isFloating: Boolean</text>
+  <text x="566" y="724" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- minGapMinutes: Integer</text>
+  <text x="566" y="738" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- isPublished: Boolean</text>
+  <line x1="560" y1="745" x2="830" y2="745" stroke="#82b366" stroke-width="1"/>
+  <text x="566" y="762" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ hasOverlap(other: WorkSchedule): Boolean</text>
+  <rect x="860" y="615" width="275" height="148" rx="8" ry="8" fill="#ffffff" stroke="#82b366" stroke-width="1.3"/>
+  <path d="M 860 641 L 860 623 Q 860 615 868 615 L 1127 615 Q 1135 615 1135 623 L 1135 641 Z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.3"/>
+  <text x="997.5" y="632" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">RecurrenceRule</text>
+  <text x="866" y="654" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="866" y="668" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- frequency: FrequencyType</text>
+  <text x="866" y="682" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- intervalWeeks: Integer</text>
+  <text x="866" y="696" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- daysOfWeek: List&lt;DayOfWeek&gt;</text>
+  <text x="866" y="710" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- endDate: Date</text>
+  <line x1="860" y1="717" x2="1135" y2="717" stroke="#82b366" stroke-width="1"/>
+  <text x="866" y="734" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ generateOccurrences(): List&lt;WorkSchedule&gt;</text>
+  <rect x="560" y="815" width="295" height="195" rx="8" ry="8" fill="#ffffff" stroke="#b85450" stroke-width="1.3"/>
+  <path d="M 560 841 L 560 823 Q 560 815 568 815 L 847 815 Q 855 815 855 823 L 855 841 Z" fill="#f8cecc" stroke="#b85450" stroke-width="1.3"/>
+  <text x="707.5" y="832" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Booking</text>
+  <text x="566" y="854" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="566" y="868" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- clientId: UUID</text>
+  <text x="566" y="882" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- resourceId: UUID</text>
+  <text x="566" y="896" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- serviceId: UUID</text>
+  <text x="566" y="910" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- startTime: DateTime</text>
+  <text x="566" y="924" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- endTime: DateTime</text>
+  <text x="566" y="938" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- status: BookingStatus</text>
+  <text x="566" y="952" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- remindBeforeMin: Integer</text>
+  <line x1="560" y1="959" x2="855" y2="959" stroke="#b85450" stroke-width="1"/>
+  <text x="566" y="976" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ confirm(): void</text>
+  <text x="566" y="990" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ cancel(): void</text>
+  <text x="566" y="1004" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ reschedule(newStart: DateTime): void</text>
+  <rect x="885" y="845" width="195" height="125" rx="8" ry="8" fill="#ffffff" stroke="#666666" stroke-width="1.3"/>
+  <path d="M 885 883 L 885 853 Q 885 845 893 845 L 1072 845 Q 1080 845 1080 853 L 1080 883 Z" fill="#f5f5f5" stroke="#666666" stroke-width="1.3"/>
+  <text x="982.5" y="859" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="982.5" y="874" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">BookingStatus</text>
+  <text x="891" y="896" font-family="Courier New, monospace" font-size="9.8" fill="#000000">PENDING</text>
+  <text x="891" y="910" font-family="Courier New, monospace" font-size="9.8" fill="#000000">CONFIRMED</text>
+  <text x="891" y="924" font-family="Courier New, monospace" font-size="9.8" fill="#000000">CONFLICT</text>
+  <text x="891" y="938" font-family="Courier New, monospace" font-size="9.8" fill="#000000">CANCELLED</text>
+  <text x="891" y="952" font-family="Courier New, monospace" font-size="9.8" fill="#000000">COMPLETED</text>
+  <rect x="1245" y="25" width="345" height="132" rx="8" ry="8" fill="#ffffff" stroke="#9673a6" stroke-width="1.3"/>
+  <path d="M 1245 51 L 1245 33 Q 1245 25 1253 25 L 1582 25 Q 1590 25 1590 33 L 1590 51 Z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.3"/>
+  <text x="1417.5" y="42" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">BookingController</text>
+  <text x="1251" y="64" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- notifService: NotificationService</text>
+  <text x="1251" y="78" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- auditRepo: AuditRepository</text>
+  <line x1="1245" y1="85" x2="1590" y2="85" stroke="#9673a6" stroke-width="1"/>
+  <text x="1251" y="102" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ createBooking(cmd: CreateCmd): Booking</text>
+  <text x="1251" y="116" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ resolveConflict(id: UUID): void</text>
+  <text x="1251" y="130" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ exportSchedule(fmt: String): ByteArray</text>
+  <rect x="1245" y="185" width="345" height="112" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 1245 211 L 1245 193 Q 1245 185 1253 185 L 1582 185 Q 1590 185 1590 193 L 1590 211 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="1417.5" y="202" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">NotificationService</text>
+  <text x="1251" y="224" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- senders: Map&lt;Channel, INotificationSender&gt;</text>
+  <line x1="1245" y1="231" x2="1590" y2="231" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="1251" y="248" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ registerSender(c: Channel, s: INotificationSender)</text>
+  <text x="1251" y="262" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ notifyUser(u: User, msg: String): void</text>
+  <rect x="1245" y="328" width="345" height="92" rx="8" ry="8" fill="#ffffff" stroke="#d6b656" stroke-width="1.3"/>
+  <path d="M 1245 366 L 1245 336 Q 1245 328 1253 328 L 1582 328 Q 1590 328 1590 336 L 1590 366 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.3"/>
+  <text x="1417.5" y="342" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="1417.5" y="357" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">INotificationSender</text>
+  <text x="1251" y="379" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ send(recipient: String, text: String): Boolean</text>
+  <rect x="1210" y="455" width="185" height="74" rx="8" ry="8" fill="#ffffff" stroke="#82b366" stroke-width="1.3"/>
+  <path d="M 1210 481 L 1210 463 Q 1210 455 1218 455 L 1387 455 Q 1395 455 1395 463 L 1395 481 Z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.3"/>
+  <text x="1302.5" y="472" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">SmsNotificationSender</text>
+  <text x="1216" y="494" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- apiKey: String</text>
+  <line x1="1210" y1="501" x2="1395" y2="501" stroke="#82b366" stroke-width="1"/>
+  <text x="1216" y="518" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ send(r, text): Boolean</text>
+  <rect x="1410" y="455" width="185" height="74" rx="8" ry="8" fill="#ffffff" stroke="#82b366" stroke-width="1.3"/>
+  <path d="M 1410 481 L 1410 463 Q 1410 455 1418 455 L 1587 455 Q 1595 455 1595 463 L 1595 481 Z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.3"/>
+  <text x="1502.5" y="472" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">EmailNotificationSender</text>
+  <text x="1416" y="494" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- smtpHost: String</text>
+  <line x1="1410" y1="501" x2="1595" y2="501" stroke="#82b366" stroke-width="1"/>
+  <text x="1416" y="518" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ send(r, text): Boolean</text>
+  <rect x="1245" y="565" width="345" height="134" rx="8" ry="8" fill="#ffffff" stroke="#d79b00" stroke-width="1.3"/>
+  <path d="M 1245 591 L 1245 573 Q 1245 565 1253 565 L 1582 565 Q 1590 565 1590 573 L 1590 591 Z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.3"/>
+  <text x="1417.5" y="582" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">PaymentTransaction</text>
+  <text x="1251" y="604" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="1251" y="618" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- organizationId: UUID</text>
+  <text x="1251" y="632" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- amount: Decimal</text>
+  <text x="1251" y="646" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- status: PaymentStatus</text>
+  <text x="1251" y="660" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- createdAt: DateTime</text>
+  <line x1="1245" y1="667" x2="1590" y2="667" stroke="#d79b00" stroke-width="1"/>
+  <text x="1251" y="684" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ processPayment(): Boolean</text>
+  <rect x="1245" y="725" width="345" height="134" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 1245 751 L 1245 733 Q 1245 725 1253 725 L 1582 725 Q 1590 725 1590 733 L 1590 751 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="1417.5" y="742" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Review</text>
+  <text x="1251" y="764" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="1251" y="778" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- authorId: UUID</text>
+  <text x="1251" y="792" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- targetId: UUID</text>
+  <text x="1251" y="806" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- rating: Integer</text>
+  <text x="1251" y="820" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- commentText: String</text>
+  <line x1="1245" y1="827" x2="1590" y2="827" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="1251" y="844" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ publish(): void</text>
+  <rect x="1245" y="885" width="345" height="128" rx="8" ry="8" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.3"/>
+  <path d="M 1245 911 L 1245 893 Q 1245 885 1253 885 L 1582 885 Q 1590 885 1590 893 L 1590 911 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.3"/>
+  <text x="1417.5" y="902" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">NewsItem</text>
+  <text x="1251" y="924" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- id: UUID</text>
+  <text x="1251" y="938" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- organizationId: UUID</text>
+  <text x="1251" y="952" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- title: String</text>
+  <text x="1251" y="966" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- content: String</text>
+  <text x="1251" y="980" font-family="Courier New, monospace" font-size="9.8" fill="#000000">- publishedAt: DateTime</text>
+  <line x1="1245" y1="987" x2="1590" y2="987" stroke="#6c8ebf" stroke-width="1"/>
+  <text x="1251" y="1004" font-family="Courier New, monospace" font-size="9.8" fill="#000000">+ addComment(u: User, text: String): void</text>
+  <path d="M 25 925 L 501 925 L 515 939 L 515 1037 L 25 1037 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.3"/>
+  <path d="M 501 925 L 501 939 L 515 939" fill="none" stroke="#d6b656" stroke-width="1.1"/>
+  <text x="35" y="943" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#000000">Ключевые улучшения по SOLID и GRASP (относительно разд. 5 ТЗ):</text>
+  <text x="35" y="959" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• LSP + Композиция: роли вынесены в OrganizationRoleAssignment вместо наследования.</text>
+  <text x="35" y="975" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• ISP + Polymorphism: интерфейс IBookableResource объединяет Employee и Room.</text>
+  <text x="35" y="991" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• Восстановлена связь User 1 -&gt; 0..* Booking (потерянная в разд. 5 ТЗ).</text>
+  <text x="35" y="1007" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• OCP + DIP: NotificationService зависит от абстракции INotificationSender.</text>
+  <text x="35" y="1023" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#000000">• SRP + Pure Fabrication: аудит вынесен в AuditRepository + AuditLogEntry.</text>
+</svg>
