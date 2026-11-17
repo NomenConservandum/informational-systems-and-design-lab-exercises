@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net" agent="DrawIO" version="24.7.17">
   <diagram name="Use Case Diagram — Project Record" id="lab6_uc_diag">
-    <mxGraphModel dx="1380" dy="1410" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1380" pageHeight="1410" math="0" shadow="0">
+    <mxGraphModel dx="1380" dy="1340" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1380" pageHeight="1340" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
       <mxCell id="sys_bound" value="Информационная система «Project Record (Электронная запись)»" style="shape=rect;whiteSpace=wrap;html=1;verticalAlign=top;align=center;fontStyle=1;fontSize=12;fillColor=#ffffff;strokeColor=#2C3E50;strokeWidth=1.5;spacingTop=6;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="275" y="10" width="855" height="1380" as="geometry" />
+        <mxGeometry x="275" y="10" width="855" height="1310" as="geometry" />
       </mxCell>
       <mxCell id="act_guest" value="Незарегистрированный&#xa;пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontStyle=1;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
         <mxGeometry x="92" y="70" width="36" height="56" as="geometry" />
@@ -33,13 +33,10 @@
         <mxGeometry x="92" y="1042" width="36" height="56" as="geometry" />
       </mxCell>
       <mxCell id="act_sms" value="Сервис SMS" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="1257" y="1118" width="36" height="56" as="geometry" />
+        <mxGeometry x="1257" y="1126" width="36" height="56" as="geometry" />
       </mxCell>
       <mxCell id="act_pay" value="Платежная&#xa;система" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="1257" y="1206" width="36" height="56" as="geometry" />
-      </mxCell>
-      <mxCell id="act_email" value="Email-сервер&#xa;(доп. эксперта)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="1257" y="1296" width="36" height="56" as="geometry" />
+        <mxGeometry x="1257" y="1222" width="36" height="56" as="geometry" />
       </mxCell>
       <mxCell id="uc1" value="UC1: Просмотр каталога&#xa;и расписания (2.3.1.1–3)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9.5;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
         <mxGeometry x="295" y="56" width="255" height="50" as="geometry" />
@@ -135,16 +132,13 @@
         <mxGeometry x="295" y="1058" width="460" height="48" as="geometry" />
       </mxCell>
       <mxCell id="uc32" value="UC32: Отправить SMS-код /&#xa;уведомление (3.2.1, 3.2.4, 3.3.1)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9.5;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="640" y="1132" width="460" height="48" as="geometry" />
+        <mxGeometry x="640" y="1140" width="460" height="50" as="geometry" />
       </mxCell>
       <mxCell id="uc33" value="UC33: Обработать платёжную&#xa;транзакцию (3.2.14, 2.3.3.2)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9.5;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="640" y="1220" width="460" height="48" as="geometry" />
+        <mxGeometry x="640" y="1236" width="460" height="50" as="geometry" />
       </mxCell>
-      <mxCell id="uc34" value="UC34: Отправить Email-уведомление&#xa;(текст п. 3.2.1, 3.2.4, 3.2.16)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9.5;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="640" y="1308" width="460" height="48" as="geometry" />
-      </mxCell>
-      <mxCell id="uc_note" value="Модель прецедентов (принцип «один актор — один сценарий»):&#xa;• Каждый ВИ связан строго с 1 актором; общие ВИ, межролевые&#xa;  include и наследование акторов исключены.&#xa;• Акторы ТЗ: Незарегистрированный пользователь, Пользователь,&#xa;  Клиент, Пользователь орг., Владелец орг., Администратор,&#xa;  Владелец сайта, Сервис SMS, Платежная система, Редактор (3.3.4).&#xa;• Предложение эксперта: выделен внешний актор Email-сервер." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9.2;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
-        <mxGeometry x="295" y="1142" width="320" height="190" as="geometry" />
+      <mxCell id="uc_note" value="Модель прецедентов (принцип «один актор — один сценарий»):&#xa;• Каждый ВИ связан строго с 1 актором; общие ВИ, межролевые&#xa;  include и наследование акторов исключены.&#xa;• Акторы из ТЗ: Незарегистрированный пользователь, Пользователь,&#xa;  Клиент, Пользователь организации, Владелец организации,&#xa;  Редактор (п. 3.3.4), Администратор, Владелец сайта,&#xa;  Сервис SMS, Платежная система." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9.2;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontFamily=Helvetica;fontColor=#000000;" vertex="1" parent="1">
+        <mxGeometry x="295" y="1136" width="320" height="162" as="geometry" />
       </mxCell>
       <mxCell id="e_uc_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.1;" edge="1" parent="1" source="act_guest" target="uc1">
         <mxGeometry relative="1" as="geometry" />
@@ -243,9 +237,6 @@
         <mxGeometry relative="1" as="geometry" />
       </mxCell>
       <mxCell id="e_uc_32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.1;" edge="1" parent="1" source="act_pay" target="uc33">
-        <mxGeometry relative="1" as="geometry" />
-      </mxCell>
-      <mxCell id="e_uc_33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#2C3E50;strokeWidth=1.1;" edge="1" parent="1" source="act_email" target="uc34">
         <mxGeometry relative="1" as="geometry" />
       </mxCell>
       </root>

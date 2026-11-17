@@ -17,7 +17,6 @@ actor "Администратор" as act_admin
 actor "Владелец сайта" as act_site
 actor "Сервис SMS" as act_sms
 actor "Платежная система" as act_pay
-actor "Email-сервер (доп. эксперта)" as act_email
 
 rectangle "Информационная система «Project Record (Электронная запись)»" {
   usecase "UC1: Просмотр каталога и расписания (2.3.1.1–3)" as uc1
@@ -53,7 +52,6 @@ rectangle "Информационная система «Project Record (Эле�
   usecase "UC31: Получить отчёты для Владельца сайта (2.3.3.1, 3.3.9.3)" as uc31
   usecase "UC32: Отправить SMS-код / уведомление (3.2.1, 3.2.4, 3.3.1)" as uc32
   usecase "UC33: Обработать платёжную транзакцию (3.2.14, 2.3.3.2)" as uc33
-  usecase "UC34: Отправить Email-уведомление (текст п. 3.2.1, 3.2.4, 3.2.16)" as uc34
 }
 
 act_guest --> uc1
@@ -89,5 +87,4 @@ act_admin --> uc30
 act_site --> uc31
 uc32 -- act_sms
 uc33 -- act_pay
-uc34 -- act_email
 @enduml
